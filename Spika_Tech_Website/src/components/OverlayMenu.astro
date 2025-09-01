@@ -265,7 +265,8 @@ const currentLang = getCurrentLocale();
             const proyectosArrow = document.querySelector('#proyectos-mobile-btn svg');
             
             if (submenuMovil && proyectosArrow && proyectosArrow instanceof HTMLElement) {
-                submenuMovil.classList.add('hidden');
+                submenuMovil.classList.remove('is-open');
+                setTimeout(() => submenuMovil.classList.add('hidden'), 400);
                 proyectosArrow.style.transform = 'rotate(0deg)';
             }
         });
@@ -299,10 +300,14 @@ const currentLang = getCurrentLocale();
             if (isHidden) {
                 // Mostrar submenú
                 submenuMovil.classList.remove('hidden');
+                requestAnimationFrame(() => {
+                    submenuMovil.classList.add('is-open');
+                });
                 proyectosArrow.style.transform = 'rotate(180deg)';
             } else {
                 // Ocultar submenú
-                submenuMovil.classList.add('hidden');
+                submenuMovil.classList.remove('is-open');
+                setTimeout(() => submenuMovil.classList.add('hidden'), 400);
                 proyectosArrow.style.transform = 'rotate(0deg)';
             }
         });
@@ -327,10 +332,14 @@ const currentLang = getCurrentLocale();
             if (isHidden) {
                 // Mostrar submenú
                 submenuActualidadMovil.classList.remove('hidden');
+                requestAnimationFrame(() => {
+                    submenuActualidadMovil.classList.add('is-open');
+                });
                 actualidadArrow.style.transform = 'rotate(180deg)';
             } else {
                 // Ocultar submenú
-                submenuActualidadMovil.classList.add('hidden');
+                submenuActualidadMovil.classList.remove('is-open');
+                setTimeout(() => submenuActualidadMovil.classList.add('hidden'), 400);
                 actualidadArrow.style.transform = 'rotate(0deg)';
             }
         });
@@ -438,15 +447,15 @@ const currentLang = getCurrentLocale();
     /* Estilos para el submenú móvil */
     #submenu-movil,
     #submenu-actualidad-movil {
-        transition: all 0.4s ease-out;
+        transition: opacity 0.4s ease-out, transform 0.4s ease-out, max-height 0.4s ease-out;
         opacity: 0;
         transform: translateY(-15px);
         max-height: 0;
         overflow: hidden;
     }
     
-    #submenu-movil:not(.hidden),
-    #submenu-actualidad-movil:not(.hidden) {
+    #submenu-movil.is-open,
+    #submenu-actualidad-movil.is-open {
         opacity: 1;
         transform: translateY(0);
         max-height: 200px;
@@ -467,23 +476,23 @@ const currentLang = getCurrentLocale();
     }
 
     /* Animación escalonada para enlaces móviles */
-    #submenu-movil:not(.hidden) a:nth-child(1),
-    #submenu-actualidad-movil:not(.hidden) a:nth-child(1) {
+    #submenu-movil.is-open a:nth-child(1),
+    #submenu-actualidad-movil.is-open a:nth-child(1) {
         transition-delay: 0.1s;
     }
 
-    #submenu-movil:not(.hidden) a:nth-child(2),
-    #submenu-actualidad-movil:not(.hidden) a:nth-child(2) {
+    #submenu-movil.is-open a:nth-child(2),
+    #submenu-actualidad-movil.is-open a:nth-child(2) {
         transition-delay: 0.2s;
     }
 
-    #submenu-movil:not(.hidden) a:nth-child(3),
-    #submenu-actualidad-movil:not(.hidden) a:nth-child(3) {
+    #submenu-movil.is-open a:nth-child(3),
+    #submenu-actualidad-movil.is-open a:nth-child(3) {
         transition-delay: 0.3s;
     }
 
-    #submenu-movil:not(.hidden) a,
-    #submenu-actualidad-movil:not(.hidden) a {
+    #submenu-movil.is-open a,
+    #submenu-actualidad-movil.is-open a {
         opacity: 1;
         transform: translateY(0);
     }
