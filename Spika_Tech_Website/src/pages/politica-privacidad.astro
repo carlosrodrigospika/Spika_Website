@@ -1,0 +1,295 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Política de Privacidad - Spika Tech">
+    <Header />
+    <main class="min-h-screen bg-[#f8faf9]">
+        <!-- Header con gradiente y color corporativo -->
+        <div class="bg-gradient-to-r from-[#003035] to-[#4b858e] text-white py-12" style="padding-top: 80px;">
+            <div class="container mx-auto px-4 max-w-4xl">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 bg-[#cedf00] rounded-full flex items-center justify-center mr-4">
+                        <svg class="w-6 h-6 text-[#003035]" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h1 class="text-4xl font-bold" style="color:#cedf00" data-i18n="PoliticaPrivacidad.title"></h1>
+                </div>
+                <p class="text-lg text-[#cedf00] leading-relaxed" data-i18n="PoliticaPrivacidad.subtitle">
+                    
+                </p>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-4 py-8 max-w-4xl">
+            <!-- Introducción -->
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 border-l-4" style="border-color:#cedf00">
+                <p class="text-[#003035] text-lg leading-relaxed" data-i18n="PoliticaPrivacidad.introduction">
+                   
+                </p>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                <div class="flex items-center mb-6">
+                    <div class="w-10 h-10 bg-[#cedf00] rounded-full flex items-center justify-center mr-4">
+                        <span class="text-[#003035] font-bold text-lg">1</span>
+                    </div>
+                    <h2 class="text-2xl font-bold" style="color:#003035" data-i18n="PoliticaPrivacidad.sections.info_collection.title"></h2>
+                </div>
+                <p class="text-[#003035] mb-6" data-i18n="PoliticaPrivacidad.sections.info_collection.description">
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-[#f8faf9] rounded-lg p-6 border" style="border-color:#4b858e">
+                        <h3 class="text-lg font-semibold mb-3 flex items-center" style="color:#4b858e">
+                            <svg class="w-5 h-5 mr-2 text-[#cedf00]" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span data-i18n="PoliticaPrivacidad.sections.info_collection.personal_data.title"></span>
+                        </h3>
+                        <p class="text-[#003035] text-sm" data-i18n="PoliticaPrivacidad.sections.info_collection.personal_data.description">
+                        </p>
+                    </div>
+
+                    <div class="bg-[#f8faf9] rounded-lg p-6 border" style="border-color:#4b858e">
+                        <h3 class="text-lg font-semibold mb-3 flex items-center" style="color:#4b858e">
+                            <svg class="w-5 h-5 mr-2 text-[#cedf00]" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"></path>
+                            </svg>
+                            <span data-i18n="PoliticaPrivacidad.sections.info_collection.non_personal_data.title"></span>
+                        </h3>
+                        <p class="text-[#003035] text-sm" data-i18n="PoliticaPrivacidad.sections.info_collection.non_personal_data.description">
+                            
+                        </p>
+                    </div>
+
+                    <div class="bg-[#f8faf9] rounded-lg p-6 border" style="border-color:#4b858e">
+                        <h3 class="text-lg font-semibold mb-3 flex items-center" style="color:#4b858e">
+                            <svg class="w-5 h-5 mr-2 text-[#cedf00]" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span data-i18n="PoliticaPrivacidad.sections.info_collection.third_party_data.title"></span>
+                        </h3>
+                        <p class="text-[#003035] text-sm" data-i18n="PoliticaPrivacidad.sections.info_collection.third_party_data.description">
+                             
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                <div class="flex items-center mb-6">
+                    <div class="w-10 h-10 bg-[#cedf00] rounded-full flex items-center justify-center mr-4">
+                        <span class="text-[#003035] font-bold text-lg">2</span>
+                    </div>
+                    <h2 class="text-2xl font-bold" style="color:#003035" data-i18n="PoliticaPrivacidad.sections.usage.title"></h2>
+                </div>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="bg-[#f8faf9] rounded-lg p-4 border-l-4" style="border-color:#cedf00">
+                        <ul class="space-y-3 text-[#003035]">
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-[#4b858e] mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span data-i18n="PoliticaPrivacidad.sections.usage.purposes.0"></span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-[#4b858e] mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span data-i18n="PoliticaPrivacidad.sections.usage.purposes.1"></span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-[#4b858e] mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span data-i18n="PoliticaPrivacidad.sections.usage.purposes.2"></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-[#f8faf9] rounded-lg p-4 border-l-4" style="border-color:#cedf00">
+                        <ul class="space-y-3 text-[#003035]">
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-[#4b858e] mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span data-i18n="PoliticaPrivacidad.sections.usage.purposes.3"></span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-[#4b858e] mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span data-i18n="PoliticaPrivacidad.sections.usage.purposes.4"></span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-[#4b858e] mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span data-i18n="PoliticaPrivacidad.sections.usage.purposes.5"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                <div class="flex items-center mb-6">
+                    <div class="w-10 h-10 bg-[#cedf00] rounded-full flex items-center justify-center mr-4">
+                        <span class="text-[#003035] font-bold text-lg">3</span>
+                    </div>
+                    <h2 class="text-2xl font-bold" style="color:#003035" data-i18n="PoliticaPrivacidad.sections.sharing.title"></h2>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-[#f8faf9] rounded-lg p-6 border-l-4" style="border-color:#4b858e">
+                        <h3 class="font-semibold mb-2" style="color:#4b858e" data-i18n="PoliticaPrivacidad.sections.sharing.service_providers.title"></h3>
+                        <p class="text-[#003035]" data-i18n="PoliticaPrivacidad.sections.sharing.service_providers.description"></p>
+                    </div>
+                    <div class="bg-[#f8faf9] rounded-lg p-6 border-l-4" style="border-color:#4b858e">
+                        <h3 class="font-semibold mb-2" style="color:#4b858e" data-i18n="PoliticaPrivacidad.sections.sharing.legal_obligations.title"></h3>
+                        <p class="text-[#003035]" data-i18n="PoliticaPrivacidad.sections.sharing.legal_obligations.description"></p>
+                    </div>
+                    <div class="bg-[#f8faf9] rounded-lg p-6 border-l-4" style="border-color:#4b858e">
+                        <h3 class="font-semibold mb-2" style="color:#4b858e" data-i18n="PoliticaPrivacidad.sections.sharing.business_transfers.title"></h3>
+                        <p class="text-[#003035]" data-i18n="PoliticaPrivacidad.sections.sharing.business_transfers.description"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 border-l-4" style="border-color:#cedf00">
+                <div class="flex items-center mb-6">
+                    <div class="w-10 h-10 bg-[#cedf00] rounded-full flex items-center justify-center mr-4">
+                        <span class="text-[#003035] font-bold text-lg">4</span>
+                    </div>
+                    <h2 class="text-2xl font-bold" style="color:#003035" data-i18n="PoliticaPrivacidad.sections.security.title">Seguridad de los Datos</h2>
+                </div>
+                <p class="text-[#003035] leading-relaxed" data-i18n="PoliticaPrivacidad.sections.security.description"></p>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                <div class="flex items-center mb-6">
+                    <div class="w-10 h-10 bg-[#cedf00] rounded-full flex items-center justify-center mr-4">
+                        <span class="text-[#003035] font-bold text-lg">5</span>
+                    </div>
+                    <h2 class="text-2xl font-bold" style="color:#003035" data-i18n="PoliticaPrivacidad.sections.rights.title"></h2>
+                </div>
+                <p class="text-[#003035] mb-6" data-i18n="PoliticaPrivacidad.sections.rights.description"></p>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="bg-[#f8faf9] rounded-lg p-6 border" style="border-color:#4b858e">
+                        <h3 class="font-semibold mb-3 flex items-center" style="color:#4b858e">
+                            <svg class="w-5 h-5 mr-2 text-[#cedf00]" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span data-i18n="PoliticaPrivacidad.sections.rights.access.title"></span>
+                        </h3>
+                        <p class="text-[#003035] text-sm" data-i18n="PoliticaPrivacidad.sections.rights.access.description"></p>
+                    </div>
+                    <div class="bg-[#f8faf9] rounded-lg p-6 border" style="border-color:#4b858e">
+                        <h3 class="font-semibold mb-3 flex items-center" style="color:#4b858e">
+                            <svg class="w-5 h-5 mr-2 text-[#cedf00]" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span data-i18n="PoliticaPrivacidad.sections.rights.correction.title"></span>
+                        </h3>
+                        <p class="text-[#003035] text-sm" data-i18n="PoliticaPrivacidad.sections.rights.correction.description"></p>
+                    </div>
+                    <div class="bg-[#f8faf9] rounded-lg p-6 border" style="border-color:#4b858e">
+                        <h3 class="font-semibold mb-3 flex items-center" style="color:#4b858e">
+                            <svg class="w-5 h-5 mr-2 text-[#cedf00]" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span data-i18n="PoliticaPrivacidad.sections.rights.deletion.title"></span>
+                        </h3>
+                        <p class="text-[#003035] text-sm" data-i18n="PoliticaPrivacidad.sections.rights.deletion.description"></p>
+                    </div>
+                    <div class="bg-[#f8faf9] rounded-lg p-6 border" style="border-color:#4b858e">
+                        <h3 class="font-semibold mb-3 flex items-center" style="color:#4b858e">
+                            <svg class="w-5 h-5 mr-2 text-[#cedf00]" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span data-i18n="PoliticaPrivacidad.sections.rights.objection.title"></span>
+                        </h3>
+                        <p class="text-[#003035] text-sm" data-i18n="PoliticaPrivacidad.sections.rights.objection.description"></p>
+                    </div>
+                </div>
+                <div class="mt-6 bg-[#f8faf9] rounded-lg p-6 border-l-4" style="border-color:#cedf00">
+                    <p class="text-[#003035]" data-i18n="PoliticaPrivacidad.sections.rights.contact_info">
+                        <a href="mailto:carlosz@spikatech.com" class="font-semibold transition-colors" style="color:#4b858e"></a>  <a href="mailto:admin.its@spikatech.com" class="font-semibold transition-colors" style="color:#4b858e">admin.its@spikatech.com</a>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                <div class="flex items-center mb-6">
+                    <div class="w-10 h-10 bg-[#cedf00] rounded-full flex items-center justify-center mr-4">
+                        <span class="text-[#003035] font-bold text-lg">6</span>
+                    </div>
+                    <h2 class="text-2xl font-bold" style="color:#003035" data-i18n="PoliticaPrivacidad.sections.third_party.title">Sitios Web de Terceros</h2>
+                </div>
+                <div class="bg-[#f8faf9] rounded-lg p-6 border-l-4" style="border-color:#4b858e">
+                    <p class="text-[#003035]" data-i18n="PoliticaPrivacidad.sections.third_party.description"></p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                <div class="flex items-center mb-6">
+                    <div class="w-10 h-10 bg-[#cedf00] rounded-full flex items-center justify-center mr-4">
+                        <span class="text-[#003035] font-bold text-lg">7</span>
+                    </div>
+                    <h2 class="text-2xl font-bold" style="color:#003035" data-i18n="PoliticaPrivacidad.sections.changes.title">Cambios a Esta Política de Privacidad</h2>
+                </div>
+                <div class="bg-[#f8faf9] rounded-lg p-6 border-l-4" style="border-color:#4b858e">
+                    <p class="text-[#003035]" data-i18n="PoliticaPrivacidad.sections.changes.description"> </p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 border-l-4" style="border-color:#cedf00">
+                <div class="flex items-center mb-6">
+                    <div class="w-10 h-10 bg-[#cedf00] rounded-full flex items-center justify-center mr-4">
+                        <span class="text-[#003035] font-bold text-lg">8</span>
+                    </div>
+                    <h2 class="text-2xl font-bold" style="color:#003035" data-i18n="PoliticaPrivacidad.sections.contact.title"></h2>
+                </div>
+                <p class="text-[#003035] mb-4" data-i18n="PoliticaPrivacidad.sections.contact.description"></p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="mailto:carlosz@spikatech.com" class="inline-flex items-center bg-[#cedf00] text-[#003035] px-6 py-3 rounded-lg font-semibold hover:bg-[#4b858e] hover:text-white transition-colors">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                        </svg>
+                        carlosz@spikatech.com
+                    </a>
+                    <a href="mailto:admin.its@spikatech.com" class="inline-flex items-center bg-[#cedf00] text-[#003035] px-6 py-3 rounded-lg font-semibold hover:bg-[#4b858e] hover:text-white transition-colors">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                        </svg>
+                        admin.its@spikatech.com
+                    </a>
+                </div>
+            </div>
+
+            <!-- Botón volver -->
+            <div class="text-center">
+                <a href="/" class="inline-flex items-center bg-[#cedf00] text-[#003035] px-8 py-4 rounded-xl font-semibold hover:bg-[#4b858e] hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    <span data-i18n="PoliticaPrivacidad.back_button"></span>
+                </a>
+            </div>
+        </div>
+    </main>
+    <Footer />
+
+    <script>
+        import { initializeTranslations } from '../i18n/config.ts';
+        
+        // Inicializar traducciones cuando se carga la página
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeTranslations();
+        });
+    </script>
+</Layout> 

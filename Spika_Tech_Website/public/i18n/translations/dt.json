@@ -1,0 +1,714 @@
+{
+  "OverlayMenu": {
+    "Compañia": "Unsere Firma",
+    "Proyectos": "Projekte",
+    "Desarrollos": "Entwicklungen",
+    "Noticias": "Nachrichten",
+    "Contacto": "Kontakt",
+    "Linkedin": "LinkedIn",
+    "Instagram": "Instagram",
+    "X": "X",
+    "Youtube": "YouTube",
+    "VRCardio": "VR-CARDIO",
+    "PRAS": "PRAS",
+    "Magallanes": "Erste Weltumsegelung",
+    "Eventos": "Veranstaltungen",
+    "Actualidad": "Nachrichten"
+  },
+  "Desarrollos": {
+    "title": "ENTWICKLUNG UND FORSCHUNG",
+    "text1": "Entdecken Sie",
+    "text2": "alles, was wir können. Wir präsentieren unsere herausragendsten Entwicklungen, Forschungen, Schlüsseldaten und exklusive Artikel über die Bereiche, in denen",
+    "text3": "wir den Unterschied machen.",
+    "text4": "Erfahren Sie, wie wir bei Spika Tech Ideen in",
+    "text5": "reale und innovative Lösungen umwandeln."
+  },
+  "Hero": {
+    "title": {
+      "line1": "Verpflichtet",
+      "line2": "mit der",
+      "line3": "Transformation",
+      "line4": "der Gesellschaft"
+    },
+    "point1": {
+      "number": "01.",
+      "prefix": "Wir wenden",
+      "tech": "Deep Tech",
+      "middle": "an, um echte Herausforderungen mit",
+      "impact": "direkter Wirkung",
+      "suffix": "auf Menschen und Organisationen zu lösen"
+    },
+    "point2": {
+      "number": "02.",
+      "prefix": "Führend in",
+      "innovation": "angewandter Innovation",
+      "middle": "und führend bei der",
+      "transformation": "digitalen Transformation"
+    },
+    "point3": {
+      "number": "03.",
+      "prefix": "Team aus Ärzten und Ingenieuren, Experten für",
+      "expertise": "KI, autonome Systeme und erweiterte Realität",
+      "suffix": "verpflichtet zu Exzellenz und echter Wirkung."
+    },
+    "sections": {
+      "01": "Wer sind wir?",
+      "02": "Unsere Projekte",
+      "03": "Entwicklungstypen",
+      "04": "Nachrichten"
+    },
+    "marquee": "Willkommen bei Spika Tech - "
+  },
+  "Proyectos": {
+    "title": "Unsere Projekte",
+    "subtitle": {
+      "prefix": "Team aus Ärzten und Ingenieuren,",
+      "expertise": "Experten für KI, autonome Systeme und erweiterte Realität",
+      "suffix": "verpflichtet zu Exzellenz und echter Wirkung."
+    },
+    "vrcardio": {
+      "title": "VR-CARDIO",
+      "description": "Plattform für die Planung und intraoperative Führung von Herzrhythmusstörungsinterventionen mit Virtual-Reality-Technologien."
+    },
+    "pras": {
+      "title": "PRAS",
+      "description": "Robotische Plattform für die Gesundheitsversorgung. Sozialer und assistiver Roboter für Krankenhausumgebungen und Seniorenheime."
+    },
+    "magallanes": {
+      "title": "Erste Weltumsegelung",
+      "description": "Immersive 3D-, Virtual-Reality- und Augmented-Reality-Ausstellung, die die epische Geschichte der ersten Weltumsegelung von Magellan und Elcano erzählt."
+    }
+  },
+  "Noticias": {
+    "title": "Neueste Nachrichten",
+    "subtitle": "Entdecken Sie die neuesten Nachrichten und Erfolge von Spika Tech",
+    "volver": "Zurück",
+    "masNoticias": "Mehr Nachrichten",
+    "etiquetas": "Tags",
+    "todasNoticias": "Alle Nachrichten",
+    "categorias": "Kategorien",
+    "todasCategorias": "Alle Kategorien",
+    "anterior": "Vorherige",
+    "siguiente": "Nächste"
+  },
+  "Partners": {
+    "prefix": "Unsere",
+    "highlight": "Partner"
+  },
+  "SideNav": {
+    "hero": "Wer sind wir?",
+    "proyectos": "Unsere Projekte",
+    "desarrollos": "Entwicklungstypen",
+    "noticias": "Nachrichten"
+  },
+  "Header": {
+    "contacto": "Kontakt"
+  },
+  "Footer": {
+    "address": {
+      "street": "Calle Alcalá de Guadaíra 6",
+      "city": "Madrid (28018)"
+    },
+    "menu": "MENÜ",
+    "menuItems": {
+      "proyectos": "Projekte",
+      "desarrollos": "Entwicklungen",
+      "noticias": "Nachrichten",
+      "contacto": "Kontakt"
+    },
+    "social": "SOZIALE MEDIEN",
+    "socialItems": {
+      "instagram": "Instagram",
+      "youtube": "YouTube",
+      "linkedin": "LinkedIn",
+      "X": "X"
+    },
+    "info": "INFORMATION",
+    "emailPlaceholder": "E-Mail eingeben",
+    "submit": "OK",
+    "privacy": "Datenschutzrichtlinie",
+    "cookies": "Cookies-Richtlinie",
+    "security": "Sicherheitsrichtlinie",
+    "emailValidation": {
+      "success": "E-Mail erfolgreich gesendet"
+    }
+  },
+  "Company": {
+    "marquee": "Den Weg der Technologie von morgen erleuchten",
+    "values": {
+      "title": "01 Unsere Werte",
+      "values1": "Innovation",
+      "values2": "Erfahrung",
+      "values3": "Menschen",
+      "values4": "Exzellenz"
+    },
+    "horizontal": {
+      "section1": {
+        "text": "Wir nutzen Deep Tech, um",
+        "highlight": "positive Wirkung",
+        "suffix": "in der Gesellschaft zu erzeugen."
+      },
+      "section2": {
+        "text": "Wir schaffen angewandte Lösungen mit aufstrebenden Technologien, die konkrete Herausforderungen lösen."
+      },
+      "section3": {
+        "text": "Verpflichtet zu wissenschaftlicher Strenge und Qualität im Dienst der Menschen."
+      }
+    },
+    "history": {
+      "title": "02 Unsere Geschichte",
+      "paragraph1": {
+        "prefix": "• Wir setzen auf",
+        "highlight1": "soziale Transformation",
+        "middle": "durch die Schaffung von",
+        "highlight2": "innovativen Lösungen",
+        "highlight3": "Algorithmusforschung und Verbesserung der Benutzerfreundlichkeit und Zugänglichkeit",
+        "suffix": ", einem strategischen Plan folgend, der Erfolg durch Leidenschaft und Anstrengung anstrebt, um die Gesellschaft zu erreichen."
+      },
+      "paragraph2": {
+        "prefix": "• Verpflichtet zur",
+        "highlight": "Gesellschaftstransformation",
+        "suffix": "durch die Schaffung innovativer Werkzeuge, Algorithmusforschung und Verbesserung der Softwarebenutzerfreundlichkeit und -qualität."
+      },
+      "paragraph3": {
+        "prefix": "• Unser Ziel ist es, zu",
+        "highlight1": "Weltführern und Marktreferenzen",
+        "middle": ", Produkten und Qualität zu werden, in der Forschung zu kooperieren und die Nutzung von",
+        "highlight2": "Künstlicher Intelligenz, Virtual Reality, Augmented Reality und Robotik",
+        "suffix": "zu fördern."
+      },
+      "highlight": {
+        "prefix": "Spika Tech wurde 2015 gegründet,",
+        "middle": "fokussiert auf",
+        "highlight": "Forschung und Innovation",
+        "suffix": "in verschiedenen Sektoren."
+      }
+    },
+    "timeline": {
+      "2019": {
+        "seal": "Exzellenz-Siegel"
+      },
+      "2020": {
+        "eibt": "EIBT-Siegel"
+      },
+      "2021": {
+        "eu": "EU-finanziert",
+        "oracle": "Oracle-Preis",
+        "eic": "EIC Accelerator gewährt"
+      },
+      "2022": {
+        "qia": "QIA Innovationspotenzial-Preis"
+      },
+      "2023": {
+        "qia_international": "QIA Internationaler Innovationspotenzial-Preis"
+      },
+      "2024": {
+        "aemps": "Medizinproduktvalidierung in VR-CARDIO",
+        "health_market": "Health to Market-Preis",
+        "iso13485": "ISO 13485-Zertifizierung",
+        "madrid": "Madrid Excellent-Siegel für Innovation und Qualität"
+      },
+      "2025": {
+        "iso27001": "ISO 27001-Zertifizierung",
+        "valor_publico": "Öffentlicher Wert-Preis MWC Barcelona"
+      }
+    },
+    "sections": {
+      "01": "Unsere Werte",
+      "02": "Unsere Geschichte"
+    }
+  },
+  "Magallanes": {
+    "hero": {
+      "title": "ERSTE WELTUMSEGELUNG",
+      "explore": "Erlebe die Erfahrung"
+    },
+    "experience": {
+      "title": {
+        "prefix": "ELCANO UND MAGELLAN FORMTEN",
+        "highlight": "UNSERE GESCHICHTE"
+      },
+      "subtitle": "Virtual Reality, Augmented Reality und Mixed Reality transportieren das Publikum zu den Schlüsselszenen der Expedition"
+    },
+    "slides": {
+      "slide1": {
+        "title": {
+          "prefix": "Immersive Reise in",
+          "highlight": "Virtual Reality"
+        },
+        "description": "Virtual Reality ermöglicht es den Benutzern, die historische Reise von Magellan und Elcano mit interaktiven Schiffen, Karten und immersiven Landschaften zu erkunden."
+      },
+      "slide2": {
+        "title": {
+          "prefix": "Realistische",
+          "highlight": "Augmented Reality",
+          "suffix": "Instrumente"
+        },
+        "description": "Augmented Reality ermöglicht es den Benutzern, mit realistischen und zeitgenössischen Instrumenten aus der Zeit von Magellan und Elcano zu interagieren."
+      },
+      "slide3": {
+        "title": "360° historisches Video",
+        "description": "360°-Projektionen tauchen die Benutzer in Schlüsselmomente von Magellans Reise ein und heben die entscheidenden Momente der Expedition in einer dynamischen und interaktiven Umgebung hervor."
+      },
+      "slide4": {
+        "title": {
+          "highlight": "Erlebnis",
+          "suffix": "historisch und realistisch"
+        },
+        "description": "Erkunde realistische und detaillierte Elemente von Magellans Reise und erwecke die Geschichte mit authentischen Nachbildungen zum Leben."
+      }
+    },
+    "sections": {
+      "01": "Präsentation",
+      "02": "Galerie"
+    }
+  },
+  "PRAS": {
+    "hero": {
+      "title": "PRAS",
+      "explore": "Erkunde das Produkt"
+    },
+    "experience": {
+      "title": {
+        "prefix": "DIE",
+        "highlight": "ZUKUNFT",
+        "suffix": "DER ROBOTIK"
+      },
+      "description": "PRAS ist eine aktuelle Roboterplattform, die für die Gesundheitsversorgung entwickelt wurde. Ihr soziales und unterstützendes Design ist für Krankenhausumgebungen und Pflegeheime gedacht und erleichtert die Interaktion und Unterstützung von Patienten und medizinischem Personal durch fortschrittliche und sichere Technologie."
+    },
+    "slides": {
+      "slide1": {
+        "title": "Was ist PRAS?",
+        "subtitle": "Fortschrittliche Technologie im praktischen Einsatz",
+        "description1": "PRAS ist eine mobile Roboterplattform für Krankenhausumgebungen. Derzeit verfügt sie über eine funktionsfähige Version (TRL-7), die Medikamente über einen Roboterarm liefern und die Temperatur von Patienten mit RGB- und Wärmekameras messen kann.",
+        "description2": "Sie integriert ChatOS, ein Sprach- oder Textsteuerungssystem über eine mobile App, das die Interaktion mit dem medizinischen Personal erleichtert. Sie wurde auf dem MWC Shanghai 2023 vorgestellt."
+      },
+      "slide2": {
+        "title": "Wettbewerbsvorteile von PRAS",
+        "description1": "PRAS bietet eine kostengünstige Roboterlösung, die deutlich günstiger ist als andere Plattformen (>30.000 USD). Ihr modulares Design ermöglicht Anpassungen und Aktualisierungen ohne Austausch der gesamten Ausrüstung.",
+        "description2": "Sie verfügt über ein unbegrenztes Batteriesystem, basierend auf austauschbaren Doppelbatterien, das Ausfallzeiten vermeidet. Außerdem ermöglicht sie gleichzeitige Interaktion über mehrere Schnittstellen."
+      },
+      "slide3": {
+        "title": "Vision",
+        "description1": "PRAS basiert auf optimiertem Design, Fertigung mit Standardkomponenten und 3D-Druck.",
+        "description2": "Ihre ROS-basierte Software ermöglicht flexible Anpassung und Kostenreduzierung. Sie ist als zugängliche Lösung für den wachsenden globalen Cobot-Markt konzipiert.",
+        "description3": "Sie ist als zugängliche Lösung für den wachsenden globalen Cobot-Markt konzipiert."
+      }
+    },
+    "features": {
+      "lowcost": {
+        "title": "Echte Kostengünstigkeit:",
+        "items": [
+          "Drastisch niedrigere Kosten im Vergleich zu anderen Plattformen.",
+          "Darauf ausgerichtet, Robotik für KMUs und Gesundheitszentren mit begrenztem Budget erschwinglich zu machen."
+        ]
+      },
+      "modular": {
+        "title": "Modulares Design",
+        "items": [
+          "Ermöglicht das Hinzufügen, Ersetzen oder Aktualisieren von Komponenten ohne die gesamte Einheit zu ändern.",
+          "Anpassbar an verschiedene Umgebungen und klinische Bedürfnisse."
+        ]
+      },
+      "battery": {
+        "title": "Unbegrenztes Batteriesystem",
+        "items": [
+          "Arbeitet kontinuierlich dank eines Doppelbatteriesystems mit automatischer Umschaltung.",
+          "Der Bediener kann Batterien austauschen, ohne den Roboterbetrieb zu unterbrechen."
+        ]
+      },
+      "interface": {
+        "title": "Multiple Schnittstelle",
+        "items": [
+          "Gleichzeitige Steuerung von verschiedenen Geräten und Medien.",
+          "Flüssige Kommunikation zwischen Personal und Roboter (Text, Sprache, Mobil, etc.)."
+        ]
+      }
+    },
+    "design": {
+      "title": "Design",
+      "description1": "Sein elegantes Design ist intuitiv und verbindet",
+      "description2": "Eleganz und Leistung.",
+      "description3": "PRAS kann je nach auszuführender Arbeit in verschiedene Prototypen modularisiert werden."
+    },
+    "design_carousel": {
+      "01": "PRAS Botlite ist eine autonome Roboterplattform, die für präzise Bewegungen in Innenräumen entwickelt wurde. Sie bewegt sich mittels zweier Antriebsräder und einer Differentialantriebsarchitektur, die es ihr ermöglicht, sich um sich selbst zu drehen und wendig durch enge Räume zu navigieren. Sie ist mit Sensoren wie LiDAR, Kameras und einer Trägheitsmesseinheit (IMU) ausgestattet, die es ihr ermöglichen, eine Karte der Umgebung zu erstellen, Hindernisse zu erkennen und sich intelligent zu bewegen. Ihre robuste und anpassbare Struktur macht sie zum idealen Ausgangspunkt für Bildungs-, Industrie- oder Forschungsanwendungen.",
+      "01_title": "PRAS Botlite",
+      "02": "Durch das Hinzufügen eines kollaborativen Roboterarms zur Basis erhält PRAS Botlite die Fähigkeit, physisch mit seiner Umgebung zu interagieren. Diese Konfiguration ermöglicht es dem Roboter nicht nur, sich zu bewegen, sondern auch Aktionen wie das Greifen von Objekten, deren Platzierung an verschiedenen Orten oder das Drücken von Tasten auszuführen. In Kombination mit seiner RGB-D-Kamera kann das System Objekte in 3D erkennen und lokalisieren, Bewegungen verfolgen, Interessenpunkte identifizieren und die Armbewegung in Echtzeit anpassen. Dies ermöglicht komplexe Aufgaben wie visionsgestütztes Pick-and-Place, KI-geführte Manipulation oder Interaktion mit Umgebungselementen ohne menschliches Eingreifen. All dies kann über eine intuitive Schnittstelle programmiert und gesteuert werden, die auch für Benutzer ohne technische Kenntnisse konzipiert ist.",
+      "02_title": "PRAS Botlite + Roboterarm",
+      "03": "Mit der Integration eines humanoiden Oberkörpers verwandelt sich PRAS Botlite in einen sozialen Roboter, der sich ausdrücken und mit Menschen kommunizieren kann. Das humanoide Modul verfügt über einen beweglichen Kopf, einen Bildschirm zur Anzeige von Gesichtsausdrücken und artikulierte Arme, die es ihm ermöglichen, seine Botschaften mit Gesten zu begleiten. Dank seines Sprachsystems und Verständnisses natürlicher Sprache kann er einfache Gespräche führen, Fragen beantworten oder Benutzer in einer interaktiven Erfahrung führen. Diese Version ist ideal für Demonstrationen, Kundenservice, Bildung oder Umgebungen, in denen die Kommunikation zwischen Menschen und Robotern von zentraler Bedeutung ist.",
+      "03_title": "PRAS Botlite + Humanoid",
+      "04": "In seiner Telepräsenz-Version verfügt PRAS Botlite über einen großformatigen Bildschirm und ein bidirektionales Audiosystem, das es einer Person ermöglicht, sich aus der Ferne zu verbinden und sich durch einen physischen Raum zu bewegen, als wäre sie dort. Diese Konfiguration verwandelt den Roboter in einen mobilen Avatar, ideal für Meetings, geführte Besichtigungen, Fernunterstützung oder Teilnahme an Veranstaltungen ohne physische Anwesenheit. Der Benutzer kann die Richtung des Roboters von überall auf der Welt aus steuern und in Echtzeit über Video und Audio kommunizieren, während die Plattform dank ihrer Sensoren und autonomen Fähigkeiten für eine reibungslose und sichere Navigation sorgt. Eine effektive und vielseitige Lösung zur Überwindung geografischer Barrieren.",
+      "04_title": "PRAS Botlite für Telepräsenz"
+    },
+    "sections": {
+      "01": "Präsentation",
+      "02": "Galerie",
+      "03": "Design",
+      "04": "Funktionen"
+    }
+  },
+  "VRCardio": {
+    "hero": {
+      "title": {
+        "line1": "LEBEN RETTEN",
+        "line2": "IST EINE",
+        "highlight": "PFLICHT"
+      },
+      "description": {
+        "prefix": "VR-CARDIO ist ein innovatives und vielseitiges Werkzeug, das",
+        "highlight1": "endoskopische Visualisierung und 3D-Holographie, 360º",
+        "middle": "in",
+        "highlight2": "Virtual und Augmented Reality",
+        "suffix": "bietet und die Diagnose und Behandlung von Arrhythmien revolutioniert."
+      }
+    },
+    "problems": {
+      "title": "Probleme und Lösung",
+      "problems": {
+        "title": "Probleme",
+        "list": [
+          "Herzrhythmusstörungen betreffen 10%-20% der Bevölkerung und verursachen 15% der Schlaganfälle bei Erwachsenen.",
+          "Aktuelle Interventionen (Katheterablation) sind invasiv, teuer, langwierig und erfordern hochqualifizierte Spezialisten."
+        ]
+      },
+      "solution": {
+        "title": "Lösung",
+        "list": [
+          "Nicht-invasives System, das einen IoT-Anzug, Elektronik und Software mit 3D-, 360º-Visualisierung und KI kombiniert.",
+          "Bietet schnellere, sicherere und genauere Diagnose ohne invasive Operationen oder Katheter."
+        ]
+      }
+    },
+    "advantages": {
+      "title": "Vorteile und klinische Anwendung",
+      "benefits": {
+        "title": "Vorteile",
+        "list": [
+          "Erweiterte Diagnose ohne chirurgische Risiken.",
+          "Einsparungen bei operativen und Krankenhauskosten.",
+          "Präzise Visualisierung der elektrischen Aktivität in 3D-holographisch.",
+          "Reduzierung negativer psychologischer Faktoren."
+        ]
+      },
+      "clinical": {
+        "title": "In der klinischen Praxis",
+        "list": [
+          "Frühe Identifizierung von Arrhythmien.",
+          "Echtzeitmessung.",
+          "Verbesserung der chirurgischen Planung und therapeutischen Entscheidungen."
+        ]
+      }
+    },
+    "business": {
+      "title": "Geschäftsmodell und Projektion",
+      "model": {
+        "title": "Modell",
+        "list": [
+          "SaaS mit wiederverwendbarer Hardware (vollständige Lizenz + Wearable).",
+          "Einsparungen bei Krankenhauskosten und -zeiten.",
+          "Präzise Visualisierung der elektrischen Aktivität in 3D-holographisch.",
+          "Reduzierung von falsch positiven/negativen Ergebnissen."
+        ]
+      },
+      "progress": {
+        "title": "Fortschritt und Markt",
+        "list": [
+          "Frühe Identifizierung von Arrhythmien.",
+          "Detaillierte nicht-invasive Analyse.",
+          "Verbesserung der chirurgischen Planung und therapeutischen Entscheidungen."
+        ]
+      }
+    },
+    "packaging": {
+      "title": "Verpackungspräsentation"
+    },
+    "ifu": {
+      "title": "IFU VR-CARDIO",
+      "description": "Laden Sie hier die",
+      "highlight": "Gebrauchsanweisung",
+      "suffix": "unseres Projekts herunter",
+      "button": "HERUNTERLADEN"
+    },
+    "sections": {
+      "01": "Präsentation",
+      "02": "Funktion",
+      "03": "Verpackung",
+      "04": "Gebrauchsanweisung"
+    }
+  },
+  "Contacto": {
+    "hero": {
+      "title": "Kontakt",
+      "subtitle": "Benötigen Sie weitere Informationen? Kontaktieren Sie uns und wir organisieren eine Besprechung."
+    },
+    "info": {
+      "title": "Kontaktinformation",
+      "email": "E-Mail",
+      "address": "Adresse",
+      "address_text": "Av. del Alcalde de Móstoles, s/n 28933 Móstoles, Madrid",
+      "phone": "Telefon"
+    },
+    "form": {
+      "title": "Schreiben Sie uns eine Nachricht",
+      "name": "Vollständiger Name *",
+      "name_placeholder": "Ihr vollständiger Name",
+      "email": "E-Mail *",
+      "email_placeholder": "ihre@email.com",
+      "subject": "Betreff *",
+      "subject_placeholder": "Wie können wir Ihnen helfen?",
+      "message": "Nachricht *",
+      "message_placeholder": "Erzählen Sie uns mehr Details zu Ihrer Anfrage...",
+      "button": "Nachricht senden",
+      "success": "Nachricht erfolgreich gesendet! Wir melden uns bald bei Ihnen."
+    }
+  },
+  "PoliticaPrivacidad": {
+    "title": "Datenschutzerklärung",
+    "subtitle": "Bei Spika Tech verpflichten wir uns zum Schutz Ihrer Privatsphäre und zur Transparenz im Umgang mit Ihren persönlichen Daten.",
+    "introduction": "Bei Spika Tech (https://spikatech.com) verpflichten wir uns zum Schutz Ihrer Privatsphäre. Diese Datenschutzerklärung erläutert, wie wir Ihre Informationen erheben, verwenden, offenlegen und schützen, wenn Sie unsere Website besuchen. Bitte lesen Sie diese Richtlinie sorgfältig durch. Wenn Sie mit den Bedingungen dieser Richtlinie nicht einverstanden sind, bitten wir Sie, unsere Website nicht zu nutzen.",
+    "sections": {
+      "info_collection": {
+        "title": "Informationen, die wir sammeln",
+        "description": "Wir können Informationen über Sie auf verschiedene Arten sammeln, einschließlich:",
+        "personal_data": {
+          "title": "Personenbezogene Daten",
+          "description": "Kontaktinformationen: Wenn Sie sich für unseren Newsletter anmelden, uns kontaktieren oder an interaktiven Funktionen unserer Website teilnehmen, können wir Ihren Namen, Ihre E-Mail-Adresse, Telefonnummer oder andere Kontaktdaten erfassen."
+        },
+        "non_personal_data": {
+          "title": "Nicht personenbezogene Daten",
+          "description": "Protokolldaten und Cookies: Diese umfassen Ihre IP-Adresse, Browsertyp, Betriebssystem, besuchte Seiten und andere Nutzungsinformationen."
+        },
+        "third_party_data": {
+          "title": "Daten von Dritten",
+          "description": "Analysedienste: Wir erhalten Daten von Diensten wie Google Analytics über Ihr Browsing-Verhalten, um unsere Website zu verbessern."
+        }
+      },
+      "usage": {
+        "title": "Wie wir Ihre Informationen verwenden",
+        "purposes": [
+          "Bereitstellung, Betrieb und Wartung unserer Website",
+          "Verbesserung, Personalisierung und Erweiterung unserer Website",
+          "Kommunikation mit Ihnen, einschließlich Kundenservice",
+          "Analyse Ihrer Website-Nutzung und Überwachung der Leistung",
+          "Schutz der Sicherheit und Integrität unserer Website",
+          "Erfüllung gesetzlicher und regulatorischer Verpflichtungen"
+        ]
+      },
+      "sharing": {
+        "title": "Weitergabe Ihrer Informationen",
+        "service_providers": {
+          "title": "Dienstleister",
+          "description": "Wir können Ihre Informationen an Dritte weitergeben, die Dienstleistungen für uns oder in unserem Namen erbringen, wie Hosting-Dienste, E-Mail-Versand und Analysedienste."
+        },
+        "legal_obligations": {
+          "title": "Rechtliche Verpflichtungen",
+          "description": "Wir können Ihre Informationen offenlegen, wenn wir gesetzlich dazu verpflichtet sind, um rechtliche Verfahren einzuhalten oder um unsere Rechte, unser Eigentum und unsere Sicherheit zu schützen."
+        },
+        "business_transfers": {
+          "title": "Geschäftsübertragungen",
+          "description": "Im Falle einer Fusion, Übernahme oder eines Verkaufs von Vermögenswerten können Ihre Informationen als Teil dieser Transaktion übertragen werden."
+        }
+      },
+      "security": {
+        "title": "Datensicherheit",
+        "description": "Wir setzen administrative, technische und physische Sicherheitsmaßnahmen ein, um Ihre Informationen zu schützen. Obwohl wir uns bemühen, Ihre persönlichen Informationen zu schützen, ist keine Übertragungsmethode über das Internet oder elektronische Speichermethode 100% sicher, weshalb wir keine absolute Sicherheit garantieren können."
+      },
+      "rights": {
+        "title": "Ihre Rechte",
+        "description": "Je nach Ihrem Standort haben Sie möglicherweise bestimmte Rechte gemäß den geltenden Datenschutzgesetzen, einschließlich:",
+        "access": {
+          "title": "Zugang und Übertragbarkeit",
+          "description": "Sie können Zugang zu den personenbezogenen Daten anfordern, die wir über Sie haben, und in einigen Fällen eine Kopie Ihrer Daten in einem übertragbaren Format anfordern."
+        },
+        "correction": {
+          "title": "Berichtigung",
+          "description": "Sie können die Berichtigung von Ungenauigkeiten in den personenbezogenen Daten verlangen, die wir über Sie besitzen."
+        },
+        "deletion": {
+          "title": "Löschung",
+          "description": "Sie können die Löschung Ihrer personenbezogenen Daten verlangen, vorbehaltlich bestimmter Ausnahmen."
+        },
+        "objection": {
+          "title": "Widerspruch und Einschränkung",
+          "description": "Sie können der Verarbeitung Ihrer personenbezogenen Daten widersprechen oder deren Einschränkung verlangen."
+        },
+        "contact_info": "Um eines dieser Rechte auszuüben, kontaktieren Sie uns bitte unter carlosz@spikatech.com oder admin.its@spikatech.com."
+      },
+      "third_party": {
+        "title": "Websites von Drittanbietern",
+        "description": "Unsere Website kann Links zu Websites von Drittanbietern enthalten. Wir sind nicht verantwortlich für die Datenschutzpraktiken oder den Inhalt dieser Websites. Wir empfehlen Ihnen, die Datenschutzrichtlinien aller Websites zu überprüfen, die Sie von unserer Website aus besuchen."
+      },
+      "changes": {
+        "title": "Änderungen dieser Datenschutzerklärung",
+        "description": "Wir können diese Datenschutzerklärung von Zeit zu Zeit aktualisieren. Alle Änderungen werden auf dieser Seite veröffentlicht und diese Richtlinie wird aktualisiert. Wir empfehlen Ihnen, diese Richtlinie regelmäßig zu überprüfen, um über Aktualisierungen informiert zu bleiben."
+      },
+      "contact": {
+        "title": "Kontaktieren Sie uns",
+        "description": "Wenn Sie Fragen zu dieser Datenschutzerklärung oder zur Handhabung Ihrer Daten haben, können Sie uns kontaktieren unter:"
+      }
+    },
+    "back_button": "Zurück zur Startseite"
+  },
+  "PoliticaCookies": {
+    "title": "Cookie-Richtlinie",
+    "subtitle": "Informationen über die Verwendung von Cookies auf unserer Website und wie Sie Ihre Datenschutzeinstellungen verwalten können.",
+    "introduction": "Gemäß den spanischen Vorschriften, die die Verwendung von Cookies im Zusammenhang mit der Bereitstellung elektronischer Kommunikationsdienste regeln, die im Gesetz 34/2002 vom 11. Juli über Dienste der Informationsgesellschaft und den elektronischen Geschäftsverkehr festgelegt sind, informieren wir im Folgenden über Cookies.",
+    "sections": {
+      "what_are_cookies": {
+        "title": "Was sind Cookies?",
+        "description": "Cookies sind kleine Textdateien, die beim Zugriff auf bestimmte Webseiten heruntergeladen und im Browser des Computers, Smartphones oder Tablets des Benutzers gespeichert werden. Sie können in keinem Fall Computerviren enthalten oder Malware auf dem Gerät des Benutzers installieren.",
+        "advantages": "Die Verwendung von Cookies bietet zahlreiche Vorteile bei der Bereitstellung von Diensten der Informationsgesellschaft, da sie unter anderem:",
+        "benefits": [
+          "Die Navigation des Benutzers auf der Website erleichtern",
+          "Dem Benutzer den Zugriff auf die verschiedenen von der Website angebotenen Dienste erleichtern",
+          "Verhindern, dass der Benutzer bei jedem Zugriff auf die Website vordefinierte allgemeine Eigenschaften neu konfigurieren muss",
+          "Die Verbesserung der Funktionalität und der über die Website bereitgestellten Dienste fördern"
+        ]
+      },
+      "types_of_cookies": {
+        "title": "Welche Arten von Cookies verwendet diese Website?",
+        "own_cookies": {
+          "title": "Eigene Cookies:",
+          "description": "Dies sind Cookies, die von einem von Spika Tech verwalteten Gerät oder einer Domain an das Endgerät des Benutzers gesendet werden und von dem aus der vom Benutzer angeforderte Dienst bereitgestellt wird.",
+          "list_description": "Nachfolgend die Liste der von uns verwendeten Cookies:"
+        },
+        "third_party_cookies": {
+          "title": "Cookies von Drittanbietern:",
+          "description": "Dies sind Cookies, die von einem Gerät oder einer Domain, die nicht von Spika Tech verwaltet wird, sondern von einer anderen Einheit, die die durch die Cookies erhaltenen Daten verarbeitet, an das Endgerät des Benutzers gesendet werden."
+        }
+      },
+      "authorization": {
+        "title": "Wie wird SPIKA TECH, S.L. zur Verwendung der Cookies dieser Website autorisiert?",
+        "description": "In Bezug auf die Verwendung von Cookies dieser Website, die im vorherigen Abschnitt beschrieben wurden, autorisiert und stimmt der Benutzer ihrer Verwendung wie folgt zu: Wenn der Benutzer auf eine Seite der Website zugreift, sieht er einen Hinweis, der anzeigt, dass die Website von SPIKA TECH, S.L. Cookies verwendet, wobei der Benutzer die Verwendung dieser durch die Konfiguration seines Browsers akzeptieren oder ablehnen kann. Wenn der Benutzer seinen Browser nicht so konfiguriert, dass Cookies deaktiviert werden, akzeptiert er durch das Surfen auf der Website von SPIKA TECH, S.L. und die Nutzung ihrer Dienste die Verwendung von Cookies."
+      },
+      "withdraw_consent": {
+        "title": "Wie kann die Einwilligung zur Verwendung der Cookies dieser Website widerrufen werden?",
+        "description": "Der Benutzer hat die Möglichkeit, die Verwendung von Cookies jederzeit über seinen Browser zu beenden, indem er die Cookies, die auf seinem Gerät installiert sind, über die Konfiguration der Browseroptionen auf seinem Gerät (Computer, Mobiltelefon, Tablet) zulassen, blockieren oder löschen kann.",
+        "warning": "Ohne die Aktivierung der im vorherigen Abschnitt beschriebenen Cookies werden die angegebenen Webdienste nicht bereitgestellt.",
+        "browsers": {
+          "title": "Hauptbrowser:",
+          "chrome": "Chrome:",
+          "explorer": "Explorer:",
+          "firefox": "Firefox:",
+          "safari": "Safari:",
+          "cookie_settings": "Cookie-Einstellungen"
+        }
+      },
+      "updates": {
+        "title": "Aktualisierung der Cookie-Richtlinie",
+        "description": "SPIKA TECH, S.L. wird diese Richtlinie bei Bedarf aktualisieren, sei es aufgrund gesetzlicher Anforderungen oder weil neue Cookies verwendet oder bestehende entfernt werden. Jede Änderung dieser Bedingungen wird auf dieser Website veröffentlicht.",
+        "new_conditions": "Ab dem Zeitpunkt, an dem die neuen Bedingungen durch die oben genannte Veröffentlichung dem Benutzer zur Kenntnis gebracht und zur Verfügung gestellt werden, ersetzen die neuen Cookie-Richtlinien automatisch die zuvor veröffentlichten.",
+        "contact": "Wenn Sie Fragen zu dieser Cookie-Richtlinie haben, können Sie SPIKA TECH, S.L. über die folgende E-Mail-Adresse kontaktieren: comercial@spikatech.com"
+      },
+      "security_policy": {
+        "title": "Informationssicherheitsrichtlinie",
+        "description": "Durch das Surfen auf unserer Website akzeptieren Sie die Verwendung von Cookies, Sie können Ihre Zustimmung jederzeit widerrufen.",
+        "button_text": "Spika Tech – Informationssicherheitsrichtlinie"
+      }
+    },
+    "back_button": "Zurück zur Startseite"
+  },
+  "PoliticaSeguridad": {
+    "title": "Informationssicherheitsrichtlinie",
+    "subtitle": "Bei Spika Tech schützen wir Informationen als strategisches Geschäftskapital und gewährleisten Vertraulichkeit, Integrität und Verfügbarkeit.",
+    "introduction": "Unsere auf der ISO 27001-Norm basierende Informationssicherheitsrichtlinie gewährleistet die Vertraulichkeit, Integrität und Verfügbarkeit von Informationen, minimiert Risiken und sichert die Betriebskontinuität.",
+    "sections": {
+      "key_principles": {
+        "title": "Schlüsselprinzipien",
+        "principles": [
+          {
+            "title": "Risikomanagement:",
+            "description": "Wir identifizieren, bewerten und mindern Risiken im Zusammenhang mit unseren Systemen und Prozessen."
+          },
+          {
+            "title": "Zugangskontrolle:",
+            "description": "Nur autorisiertes Personal hat Zugang zu Informationen, mit minimalen Berechtigungen und unter strengen logischen und physischen Kontrollen."
+          },
+          {
+            "title": "Ganzheitlicher Schutz:",
+            "description": "Gespeicherte und übertragene Informationen werden durch aktuelle technische und organisatorische Maßnahmen geschützt."
+          },
+          {
+            "title": "Vorfallmanagement:",
+            "description": "Wir verfügen über Protokolle zur Erkennung, Reaktion und Wiederherstellung bei Sicherheitsvorfällen."
+          },
+          {
+            "title": "Kontinuierliche Schulung:",
+            "description": "Alle Mitarbeiter erhalten regelmäßige Schulungen und Sensibilisierung im Bereich Cybersicherheit."
+          },
+          {
+            "title": "Kontinuierliche Verbesserung:",
+            "description": "Wir überprüfen und aktualisieren unsere Sicherheitsmaßnahmen ständig und passen uns an technologische und regulatorische Änderungen an."
+          }
+        ]
+      },
+      "commitments": {
+        "title": "Verpflichtungen",
+        "commitments": [
+          "Verbindliche Anwendung für alle Mitarbeiter, Lieferanten und Dritte, die auf unsere Systeme oder Informationen zugreifen.",
+          "Einhaltung der geltenden Gesetzgebung, einschließlich der Datenschutz-Grundverordnung (DSGVO) und des Organischen Gesetzes zum Schutz personenbezogener Daten (LOPDGDD).",
+          "Gewährleistung der Sicherheit bei der Beschaffung von technologischen Produkten und Dienstleistungen.",
+          "Strenge Kontrolle über physische und digitale Zugriffe."
+        ]
+      },
+      "conclusion": {
+        "description": "Mit dieser Richtlinie bekräftigen wir bei Spika Tech unser Engagement für Informationssicherheit, den Schutz unserer Kunden und operative Exzellenz.",
+        "button_text": "Vollständige Richtlinie herunterladen (PDF)"
+      }
+    },
+    "back_button": "Zurück zur Startseite"
+  },
+  "Chatbot": {
+    "title": "Spika Tech Assistent",
+    "subtitle": "Wie kann ich Ihnen helfen?",
+    "welcome": "Hallo! Ich bin Ihr Spika Tech virtueller Assistent. Ich kann Ihnen alles über unser Unternehmen, Projekte und Dienstleistungen erklären. Was möchten Sie wissen?",
+    "quickOptions": {
+      "about": "Wer sind wir?",
+      "projects": "Unsere Projekte",
+      "services": "Dienstleistungen und Entwicklungen",
+      "technology": "Unsere Technologien",
+      "achievements": "Erfolge und Auszeichnungen",
+      "contact": "Kontakt"
+    },
+    "input": {
+      "placeholder": "Schreiben Sie Ihre Frage...",
+      "send": "Senden"
+    },
+    "topics": {
+      "about": {
+        "title": "Wer sind wir?",
+        "content": "Spika Tech ist ein Technologieunternehmen, das den Weg von morgen erleuchtet, indem es Deep Tech anwendet, um echte Herausforderungen mit direkter Wirkung auf Menschen und Organisationen zu lösen.\n\nWir sind führend in angewandter Innovation und leiten die digitale Transformation mit einem Team aus Ärzten und Ingenieuren, Experten für:\n• Künstliche Intelligenz\n• Autonome Systeme  \n• Erweiterte Realität (VR/AR)\n\nVerpflichtet zu Exzellenz und echter Wirkung nutzen wir aufstrebende Technologien, um positive Wirkung in der Gesellschaft zu erzeugen.\n\n**Unsere Mission**: Wir wenden Deep Tech an, um echte Herausforderungen mit direkter Wirkung auf Menschen und Organisationen zu lösen.\n\n**Unsere Werte**: Innovation, Erfahrung, Menschen und Exzellenz."
+      },
+      "projects": {
+        "title": "Unsere Projekte",
+        "content": "Wir haben drei Hauptprojekte, die unsere Expertise in aufstrebenden Technologien demonstrieren:\n\n1. **VR-CARDIO**: Plattform für die Planung und intraoperative Führung von Herzrhythmusstörungsinterventionen mit Virtual-Reality-Technologien. Dieses Projekt hat eine Medizinproduktvalidierung von AEMPS erhalten.\n\n2. **PRAS**: Robotische Plattform für die Gesundheitsversorgung. Sozialer und assistiver Roboter für Krankenhausumgebungen und Seniorenheime, entwickelt, um die Lebensqualität der Patienten zu verbessern.\n\n3. **Erste Weltumsegelung**: Immersive 3D-, Virtual-Reality- und Augmented-Reality-Ausstellung, die die epische Geschichte der ersten Weltumsegelung von Magellan und Elcano erzählt und Bildung mit Unterhaltung verbindet.\n\nJedes Projekt spiegelt unser Engagement für angewandte Innovation und positive soziale Wirkung wider."
+      },
+      "services": {
+        "title": "Dienstleistungen und Entwicklungen",
+        "content": "Wir entwickeln Virtual-Reality-Lösungen für jedes Gerät und von jedem Entwicklungsmotor.\n\n**Unsere Dienstleistungen umfassen**:\n• VR/AR-Anwendungsentwicklung\n• Künstliche Intelligenz-Systeme\n• Robotik und autonome Systeme\n• Digitale Transformationslösungen\n• Algorithmusforschung\n• Verbesserung der Benutzerfreundlichkeit und Zugänglichkeit\n\n**Technologien, die wir handhaben**:\n• Virtual Reality (VR)\n• Augmented Reality (AR)\n• Künstliche Intelligenz\n• Autonome Systeme\n• Soziale Robotik\n\nWir schaffen angewandte Lösungen mit aufstrebenden Technologien, die konkrete Herausforderungen lösen und einem strategischen Plan folgen, der Erfolg durch Leidenschaft und Anstrengung anstrebt."
+      },
+      "technology": {
+        "title": "Unsere Technologien",
+        "content": "Bei Spika Tech arbeiten wir mit den fortschrittlichsten Technologien:\n\n**Virtual und Augmented Reality**:\n• Entwicklung immersiver Erfahrungen\n• Medizinische Anwendungen (VR-CARDIO)\n• Kulturelle Ausstellungen (Erste Weltumsegelung)\n• Lösungen für jedes Gerät\n\n**Künstliche Intelligenz**:\n• Machine Learning-Algorithmen\n• Datenverarbeitungssysteme\n• Intelligente Automatisierung\n• Angewandte KI-Forschung\n\n**Robotik und autonome Systeme**:\n• Soziale Roboter (PRAS)\n• Assistenzsysteme\n• Industrielle Automatisierung\n• Krankenhausumgebungslösungen\n\n**Deep Tech**:\n• Aufstrebende Technologien\n• Angewandte Innovation\n• Hochentwickelte Lösungen\n• Digitale Transformation\n\nUnser Team aus Ärzten und Ingenieuren kombiniert akademische Erfahrung mit praktischer Anwendung."
+      },
+      "achievements": {
+        "title": "Erfolge und Auszeichnungen",
+        "content": "Spika Tech hat zahlreiche Anerkennungen erhalten, die unsere Exzellenz bestätigen:\n\n**2019**: Exzellenz-Siegel\n**2020**: EIBT-Siegel\n**2021**: \n• EU-finanziert\n• Oracle-Preis\n• EIC Accelerator gewährt\n**2022**: QIA Innovationspotenzial-Preis\n**2023**: QIA Internationaler Innovationspotenzial-Preis\n**2024**:\n• Medizinproduktvalidierung in VR-CARDIO\n• Health to Market-Preis\n• ISO 13485-Zertifizierung\n• Madrid Excellent-Siegel für Innovation und Qualität\n**2025**:\n• ISO 27001-Zertifizierung\n• Öffentlicher Wert-Preis MWC Barcelona\n\nDiese Anerkennungen spiegeln unser Engagement für Qualität, Innovation und Exzellenz in allen unseren Projekten wider."
+      },
+      "contact": {
+        "title": "Kontakt",
+        "content": "Sie können uns auf folgende Weise kontaktieren:\n\n📍 **Adresse**: Calle Alcalá de Guadaíra 6, Madrid (28018)\n\n📧 **E-Mail**: Sie können das Kontaktformular auf unserer Website verwenden\n\n📱 **Soziale Medien**:\n• LinkedIn\n• Instagram  \n• YouTube\n• X (Twitter)\n\nSie können auch unsere Website durchsuchen, um mehr über unsere Projekte und Dienstleistungen zu erfahren.\n\n**Servicezeiten**: Wir sind verfügbar, um Ihre Anfragen zu unseren Projekten und technologischen Dienstleistungen zu beantworten."
+      }
+    },
+    "defaultResponse": "Vielen Dank für Ihre Frage. Ich kann Ihnen mit Informationen über Folgendes helfen:\n\n• Wer wir sind und unsere Mission\n• Unsere Projekte (VR-CARDIO, PRAS, Erste Weltumsegelung)\n• Unsere technologischen Dienstleistungen und Entwicklungen\n• Die Technologien, die wir verwenden\n• Unsere Erfolge und Anerkennungen\n• Kontaktinformationen\n\nWas möchten Sie speziell wissen?"
+  },
+  "Eventos": {
+    "title": "Featured events",
+    "events": "Events",
+    "learn_more": "Learn more",
+    "past": "Past events",
+    "upcoming": "Upcoming events",
+    "event_date": "Event date"
+  }
+}

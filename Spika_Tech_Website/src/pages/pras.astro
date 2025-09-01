@@ -1,0 +1,1843 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Layout from '../layouts/Layout.astro';
+import SideNav from '../components/SideNav.astro';
+
+const sections = [
+  { num: '01', title: 'PRAS.sections.01' },
+  { num: '02', title: 'PRAS.sections.02' },
+  { num: '03', title: 'PRAS.sections.03' },
+  { num: '04', title: 'PRAS.sections.04' },
+];
+---
+
+<Layout>
+  <Header />
+  <SideNav sections={sections} />
+  <main id="main-scroll" class="w-full min-h-screen overflow-hidden lg:overflow-visible">
+  <!-- Inico -->
+  <section class="relative w-full min-h-screen flex flex-col justify-between bg-[#003035]" style="min-height: 100vh;justify-content: end;">
+    <video
+          class="absolute inset-0 w-full h-full object-cover z-0"
+          src="/assets/Video_PRAS.mp4"
+          autoplay
+          muted
+          playsinline
+        ></video>
+    <div class="w-1/2 flex flex-col mb-8 z-2" style="align-self: end;">
+      <hr class="border-t border-[#FFFFFF] w-3/4 mb-2" />
+      <div class="flex items-center w-3/4 gap-2 text-[#FFFFFF] text-lg" style="justify-content: space-between;">
+        <span class="cursor-pointer hover:opacity-70 transition-opacity" data-i18n="PRAS.hero.explore" onclick="document.querySelector('#section1').scrollIntoView({behavior: 'smooth'})"></span>
+        <svg 
+          width="28" 
+          height="28" 
+          fill="none" 
+          viewBox="0 0 24 24"  
+          class="cursor-pointer hover:opacity-70 transition-opacity"
+          onclick="document.querySelector('#section1').scrollIntoView({behavior: 'smooth'})">
+          <circle cx="12" cy="12" r="11" stroke="#FFFFFF" stroke-width="2"/>
+          <path d="M8 12l4 4 4-4" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Split con objeto 3D -->
+  <section class="relative min-h-[60vh] h-auto lg:h-screen flex flex-row items-stretch overflow-visible px-0">
+    <!-- Lado izquierdo blanco - solo visible en escritorio -->
+    <div class="relative w-[35%] flex items-center justify-end bg-[#003035] hidden lg:flex">
+      <div class="relative h-full flex items-center justify-center w-full">
+          <img id="pras-hero-placeholder" src="/assets/Render/PRAS.webp" alt="PRAS Preview" style="object-fit: contain; position: absolute; left: 100%; transform: translate(-60%, 0); z-index: 1;">
+          <canvas id="pras-hero-canvas" style="position: absolute; left: 100%; transform: translate(-60%, 0); z-index: 2; opacity: 0;"></canvas>
+      </div>
+    </div>
+    <!-- Lado derecho color -->
+    <div class="w-full lg:w-[65%] bg-[#FFFFFF] flex flex-col justify-between items-start px-8 py-16 min-h-[60vh] h-full relative lg:pl-[12vw]" style="align-items: center;">
+      <div class="flex-1 flex flex-col justify-center">
+        <h2 class="text-5xl lg:text-7xl mb-2 leading-tight text-center lg:text-left pras-split-text" style="transform: translateX(100%); opacity: 0; transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);">
+          <span class="text-[#003035]" data-i18n="PRAS.experience.title.prefix"></span> <span class="text-[#CEDF00]" data-i18n="PRAS.experience.title.highlight"></span> <span class="text-[#003035]" data-i18n="PRAS.experience.title.suffix"></span>
+        </h2>
+        <div class="w-full border-t border-[#003035] my-4 lg:my-6 pras-split-line" style="transform: scaleX(0); opacity: 0; transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.4s; transform-origin: center;"></div>
+
+        <div class="w-full flex lg:justify-end md:justify-center">
+          <p class="text-xs max-w-xs text-left font-light mt-4 mb-2 mr-4 pras-split-description" style="font-size: 13px; transform: translateX(100%); opacity: 0; transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.8s;">
+            <span class="text-[#003035]" data-i18n="PRAS.experience.description" style="text-align: justify;"></span>  
+          </p>
+        </div>
+        
+        <!-- Modelo PRAS centrado debajo del texto - solo visible en móvil/tablet -->
+        <div class="flex items-center justify-center mt-8 lg:hidden pras-split-mobile-model" style="transform: translateX(100%); opacity: 0; transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 1.2s;">
+          <img id="pras-mobile-placeholder" src="/assets/Render/PRAS.webp" alt="PRAS Preview" style="width: 200px; height: 200px; object-fit: contain; position: absolute; z-index: 1;">
+          <canvas id="pras-mobile-canvas" style="width: 200px; height: 200px; position: relative; z-index: 2; opacity: 0;"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contenedor de scroll horizontal simulado (3 secciones) -->
+  <section id="section1" class="relative w-full" style="height: 300vh; min-height: fit-content;">
+    <div id="horizontal-container" class="sticky top-0 left-0 flex flex-col lg:flex-row w-full lg:w-[500vw] min-h-[60vh] h-auto lg:h-screen overflow-hidden">
+      <!--  Video (primera horizontal) -->
+      <div class=" max-w-[100vw] h-auto w-full relative flex items-center justify-center z-2" style="aspect-ratio: 16/9;">
+        <video
+          class="absolute inset-0 w-full h-full object-cover z-0"
+          src="/assets/Video_PRAS_MWC.mp4"
+          autoplay
+          loop
+          muted
+          playsinline
+        ></video>
+      </div>
+      
+      <div class="w-full bg-white flex flex-col lg:flex-row">
+        
+        <!-- ¿Qué es PRAS? -->
+        <div class="flex flex-col justify-center px-8 md:px-16 py-8 horizontal-text-section" style="width: 50vw; padding-left: 6vw;">
+          <div class="text-left">
+            <div class="flex items-center mb-2">
+              <span class="text-5xl md:text-6xl font-light text-[#003035] mr-4 pras-number" style="transform: translateY(-30px); opacity: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);">01</span>
+              <div class="flex-1 border-t border-[#003035] pras-line" style="transform: scaleX(0); opacity: 0; transition: all 1s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.3s; transform-origin: left;"></div>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-light text-[#003035] mb-4 text-center pras-title" data-i18n="PRAS.slides.slide1.title" style="width: 80%; text-align: left; transform: translateY(-30px); opacity: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.6s;">
+            </h2>
+            
+            <span class="text-[#CEDF00] text-lg md:text-xl max-w-xl pras-content" data-i18n="PRAS.slides.slide1.subtitle" style="margin-top: 50px; width: 80%; display: flex; margin-left: auto; transform: translateY(-30px); opacity: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.9s;"></span>
+            <p class="text-gray-700 text-lg md:text-xl max-w-xl pras-content" data-i18n="PRAS.slides.slide1.description1" style="margin-top: 20px; width: 70%; display: flex; margin-left: auto; text-align: justify; transform: translateY(-30px); opacity: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 1.2s;"></p>
+            <p class="text-gray-700 text-lg md:text-xl max-w-xl pras-content" data-i18n="PRAS.slides.slide1.description2" style="margin-top: 20px; width: 70%; display: flex; margin-left: auto; text-align: justify; transform: translateY(-30px); opacity: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 1.5s;"></p>
+          </div>
+        </div>
+
+        <!-- Imagen 1 -->
+        <img
+          src="/assets/PRAS_Slide1.webp"
+          alt="¿Qué es PRAS?"
+          style="width: 100vw"
+        />
+
+        <!-- Imagen 2 -->
+        <img
+          src="/assets/PRAS_Slide_2.webp"
+          alt="Ventajas competitivas de PRAS"
+          style="width: 100vw"
+        />
+
+        <!-- Ventajas competitivas de PRAS -->
+        <div class="flex flex-col justify-center px-8 md:px-16 py-8 horizontal-text-section" style="width: 50vw">
+          <div class="text-left">
+            <div class="flex items-center mb-2">
+              <span class="text-5xl md:text-6xl font-light text-[#003035] mr-4 pras-number" style="transform: translateY(-30px); opacity: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);">02</span>
+              <div class="flex-1 border-t border-[#003035] pras-line" style="transform: scaleX(0); opacity: 0; transition: all 1s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.3s; transform-origin: left;"></div>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-light text-[#003035] mb-4 text-center pras-title" data-i18n="PRAS.slides.slide2.title" style="width: 80%; text-align: left; transform: translateY(-30px); opacity: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.6s;">
+            </h2>
+            <p class="text-gray-700 text-lg md:text-xl max-w-xl pras-content" data-i18n="PRAS.slides.slide2.description1" style="margin-top: 50px; width: 70%; display: flex; margin-left: auto; text-align: justify; transform: translateY(-30px); opacity: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.9s;"></p>
+            <p class="text-gray-700 text-lg md:text-xl max-w-xl pras-content" data-i18n="PRAS.slides.slide2.description2" style="margin-top: 20px; width: 70%; display: flex; margin-left: auto; text-align: justify; transform: translateY(-30px); opacity: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 1.2s;"></p>
+          </div>
+        </div>
+
+        <!-- Imagen 3 -->
+        <img
+          class="pras-image"
+          src="/assets/Slide3_PRAS.webp"
+          alt="Visión PRAS"
+          style="width: 40vw"
+        />
+
+        <!-- Visión -->
+        <div class="flex flex-col justify-center px-8 md:px-16 py-8 horizontal-text-section" style="width: 60vw; padding-right: 12vw">
+          <div class="text-left">
+            <div class="flex items-center mb-2">
+              <span class="text-5xl md:text-6xl font-light text-[#003035] mr-4 pras-number" style="transform: translateY(-30px); opacity: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);">03</span>
+              <div class="flex-1 border-t border-[#003035] pras-line" style="transform: scaleX(0); opacity: 0; transition: all 1s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.3s; transform-origin: left;"></div>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-light text-[#003035] mb-4 text-center pras-title" data-i18n="PRAS.slides.slide3.title" style="width: 80%; text-align: left; transform: translateY(-30px); opacity: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.6s;">
+            </h2>
+            <p class="text-gray-700 text-lg md:text-xl max-w-xl pras-content" data-i18n="PRAS.slides.slide3.description1" style="margin-top: 50px; width: 70%; display: flex; margin-left: auto; text-align: justify; transform: translateY(-30px); opacity: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.9s;"></p>
+            <p class="text-gray-700 text-lg md:text-xl max-w-xl pras-content" data-i18n="PRAS.slides.slide3.description2" style="margin-top: 20px; width: 70%; display: flex; margin-left: auto; text-align: justify; transform: translateY(-30px); opacity: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 1.2s;"></p>
+            <p class="text-gray-700 text-lg md:text-xl max-w-xl pras-content" data-i18n="PRAS.slides.slide3.description3" style="margin-top: 20px; width: 70%; display: flex; margin-left: auto; text-align: justify; transform: translateY(-30px); opacity: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 1.5s;"></p>
+          </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- Imagen final de feria -->
+  <section id="section2" class=" max-w-[100vw] h-auto w-full relative flex items-center justify-center z-2" style="aspect-ratio: 16/9;">
+    <div class=" max-w-[100vw] h-auto w-full relative flex items-center justify-center z-2" style="aspect-ratio: 16/9;">
+      <video
+        class="absolute inset-0 w-full h-full object-cover z-0"
+        src="/assets/EFE_Entrevist.mp4"
+        autoplay
+        loop
+        muted
+        playsinline
+      ></video>
+    </div>
+  </section>
+
+  <!-- Galería de imágenes -->
+  <section id="section2" class="w-full py-12 px-8 md:px-12 flex justify-center" style="justify-content: center;">
+    <div class="grid grid-cols-2 gap-6 justify-center">
+      <!-- Columna izquierda: imagen grande (vertical) -->
+      <div class="flex flex-col">
+        <img src="/assets/Galeria2_PRAS.webp" alt="Galería PRAS" class="w-full h-auto pras-gallery-image" style="max-width: 500px; transform: scaleX(0); opacity: 0; transition: all 2.5s cubic-bezier(0.4, 0, 0.2, 1); transform-origin: left;" />
+      </div>
+      <!-- Columna derecha: dos imágenes apiladas -->
+      <div class="flex flex-col gap-6">
+        <img src="/assets/Galeria3_PRAS.webp" alt="Galería PRAS" class="w-full h-auto pras-gallery-image" style="max-width: 500px; transform: scaleX(0); opacity: 0; transition: all 2.5s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.5s; transform-origin: left;" />
+        <img src="/assets/Galeria1_PRAS.webp" alt="Galería PRAS" class="w-full h-auto pras-gallery-image" style="max-width: 500px; transform: scaleX(0); opacity: 0; transition: all 2.5s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 1s; transform-origin: left;" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Diseño -->
+  <section id="section3" class="w-full py-16 px-8 md:px-12 bg-[#003035] flex flex-col items-center">
+            <h2 class="text-5xl md:text-6xl font-light text-white text-center mb-4 pras-design-title" data-i18n="PRAS.design.title" style="transform: translateY(-50px); opacity: 0; transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);"></h2>
+        <div class="w-full flex justify-end mb-12 design-description pras-design-description" style="width: 40%; margin-left: 40vw; transform: translateX(100%); opacity: 0; transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.3s;">
+      <p class="max-w-xl text-start text-white text-lg">
+        <span data-i18n="PRAS.design.description1"></span>
+        <span class="font-bold text-[#CEDF00]" data-i18n="PRAS.design.description2"></span>
+        <span data-i18n="PRAS.design.description3"></span>
+      </p>
+    </div>
+
+
+    <div class="md:w-full flex flex-col lg:flex-row items-center justify-center gap-12 min-h-[70vh]">
+      <div class="model-viewer-container w-full lg:w-1/2 h-[600px] lg:h-[600px] flex items-center justify-center relative pras-carousel-model" style="transform: translateX(-100%); opacity: 0; transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.9s;">
+        <!-- Placeholder para modelo 0 -->
+        <img id="carousel-placeholder-0" src="/assets/Render/PRAS_base.webp" alt="PRAS Base Preview" class="absolute transition-all duration-500 opacity-100 w-full h-full max-w-[420px] max-h-[600px] object-contain" style="z-index: 1;">
+        <!-- Placeholder para modelo 1 -->
+        <img id="carousel-placeholder-1" src="/assets/Render/PRAS.webp" alt="PRAS Preview" class="absolute transition-all duration-500 opacity-0 pointer-events-none w-full h-full max-w-[420px] max-h-[600px] object-contain" style="z-index: 1;">
+        <!-- Placeholder para modelo 2 -->
+        <img id="carousel-placeholder-2" src="/assets/Render/PRAS_humanoide.webp" alt="Corazón Preview" class="absolute transition-all duration-500 opacity-0 pointer-events-none w-full h-full max-w-[420px] max-h-[600px] object-contain" style="z-index: 1;">
+        <!-- Placeholder para modelo 3 -->
+        <img id="carousel-placeholder-3" src="/assets/Render/PRAS_tv.webp" alt="Logo Preview" class="absolute transition-all duration-500 opacity-0 pointer-events-none w-full h-full max-w-[420px] max-h-[600px] object-contain" style="z-index: 1;">
+        <!-- Canvas único para todos los modelos -->
+        <canvas id="carousel-canvas" class="absolute transition-all duration-500 opacity-0 pointer-events-none w-full h-full max-w-[420px] max-h-[600px]" style="z-index: 2;"></canvas>
+      </div>
+      <div class="flex-1 flex flex-col items-start buttons-container lg:pt-[100px] pras-carousel-text" style="align-self: flex-start; transform: translateX(100%); opacity: 0; transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.6s;">
+        <div class="flex gap-4 mb-6">
+          <button id="carousel-btn-0" class="w-14 h-14 rounded-full border-2 border-[#CEDF00] flex items-center justify-center text-2xl font-bold text-[#003035] bg-[#CEDF00] transition-all duration-300 hover:cursor-pointer">01</button>
+          <button id="carousel-btn-1" class="w-14 h-14 rounded-full border-2 border-[#CEDF00] flex items-center justify-center text-2xl font-bold text-[#CEDF00] bg-transparent transition-all duration-300 hover:cursor-pointer">02</button>
+          <button id="carousel-btn-2" class="w-14 h-14 rounded-full border-2 border-[#CEDF00] flex items-center justify-center text-2xl font-bold text-[#CEDF00] bg-transparent transition-all duration-300 hover:cursor-pointer">03</button>
+          <button id="carousel-btn-3" class="w-14 h-14 rounded-full border-2 border-[#CEDF00] flex items-center justify-center text-2xl font-bold text-[#CEDF00] bg-transparent transition-all duration-300 hover:cursor-pointer">04</button>
+        </div>
+        <div id="carousel-content" class="w-full relative" style="height: auto; min-height: 120px;">
+          <div id="carousel-slide-0" class="absolute inset-0 transition-all duration-500 opacity-100 translate-x-0 flex flex-col" style="z-index:2; height: auto;">
+            <div class="w-full">
+              <hr class="mb-4 border-[#FFFFFF]"/>
+              <div class="flex flex-row items-start gap-4">
+                <span class="text-2xl text-[#FFFFFF] font-bold min-w-[2.5rem] text-left">01</span>
+                <div>
+                  <h2 class="text-white text-base text-xl md:text-2xl" data-i18n="PRAS.design_carousel.01_title"></h2>
+                  <p class="text-white text-base mt-2" data-i18n="PRAS.design_carousel.01"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="carousel-slide-1" class="absolute inset-0 transition-all duration-500 opacity-0 pointer-events-none translate-x-10 flex flex-col" style="z-index:1; height: auto;">
+            <div class="w-full">
+              <hr class="mb-4 border-[#FFFFFF]"/>
+              <div class="flex flex-row items-start gap-4">
+                <span class="text-2xl text-[#FFFFFF] font-bold min-w-[2.5rem] text-left">02</span>
+                <div>
+                  <h2 class="text-white text-base text-xl md:text-2xl" data-i18n="PRAS.design_carousel.02_title"></h2>
+                  <p class="text-white text-base mt-2" data-i18n="PRAS.design_carousel.02"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="carousel-slide-2" class="absolute inset-0 transition-all duration-500 opacity-0 pointer-events-none translate-x-10 flex flex-col" style="z-index:1; height: auto;">
+            <div class="w-full">
+              <hr class="mb-4 border-[#FFFFFF]"/>
+              <div class="flex flex-row items-start gap-4">
+                <span class="text-2xl text-[#FFFFFF] font-bold min-w-[2.5rem] text-left">03</span>
+                <div>
+                  <h2 class="text-white text-base text-xl md:text-2xl" data-i18n="PRAS.design_carousel.03_title"></h2>
+                  <p class="text-white text-base mt-2" data-i18n="PRAS.design_carousel.03"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="carousel-slide-3" class="absolute inset-0 transition-all duration-500 opacity-0 pointer-events-none translate-x-10 flex flex-col" style="z-index:1; height: auto;">
+            <div class="w-full">
+              <hr class="mb-4 border-[#FFFFFF]"/>
+              <div class="flex flex-row items-start gap-4">
+                <span class="text-2xl text-[#FFFFFF] font-bold min-w-[2.5rem] text-left">04</span>
+                <div>
+                  <h2 class="text-white text-base text-xl md:text-2xl" data-i18n="PRAS.design_carousel.04_title"></h2>
+                  <p class="text-white text-base mt-2" data-i18n="PRAS.design_carousel.04"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Características PRAS-->
+  <section id="section4" class="w-full hidden md:flex flex-col md:flex-row items-stretch justify-center bg-white lg:px-0">
+    <!-- Columna Izquierda: Imagen sobre fondo oscuro -->
+    <div class="flex-1 flex items-center justify-center pras-features-image" style="transform: translateX(-100%); opacity: 0; transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);">
+      <img src="/assets/Imagen_características_PRAS.webp" alt="PRAS Robot" class="h-full w-full object-cover"/>
+    </div>
+    <!-- Columna Derecha: Texto -->
+    <div class="flex-1 flex flex-col justify-center bg-white py-8 px-6 lg:px-12 features-container">
+      <div class="mb-8 pras-feature-item" style="transform: translateX(100%); opacity: 0; transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);">
+        <h3 class="text-xl md:text-2xl font-semibold mb-2 text-[#CEDF00]" data-i18n="PRAS.features.lowcost.title" style="border-top: 2px solid #003035;"></h3>
+        <ul class="list-disc ml-6 text-gray-800 text-base md:text-lg">
+          <li data-i18n="PRAS.features.lowcost.items.0"></li>
+          <li data-i18n="PRAS.features.lowcost.items.1"></li>
+        </ul>
+      </div>
+      <div class="mb-8 pras-feature-item" style="transform: translateX(100%); opacity: 0; transition: all 1s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.2s;">
+        <h3 class="text-xl md:text-2xl font-semibold mb-2 text-[#CEDF00]" data-i18n="PRAS.features.modular.title" style="border-top: 2px solid #003035;"></h3>
+        <ul class="list-disc ml-6 text-gray-800 text-base md:text-lg">
+          <li data-i18n="PRAS.features.modular.items.0"></li>
+          <li data-i18n="PRAS.features.modular.items.1"></li>
+        </ul>
+      </div>
+      <div class="mb-8 pras-feature-item" style="transform: translateX(100%); opacity: 0; transition: all 1s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.4s;">
+        <h3 class="text-xl md:text-2xl font-semibold mb-2 text-[#CEDF00]" data-i18n="PRAS.features.battery.title" style="border-top: 2px solid #003035;"></h3>
+        <ul class="list-disc ml-6 text-gray-800 text-base md:text-lg">
+          <li data-i18n="PRAS.features.battery.items.0"></li>
+          <li data-i18n="PRAS.features.battery.items.1"></li>
+        </ul>
+      </div>
+      <div class="pras-feature-item" style="transform: translateX(100%); opacity: 0; transition: all 1s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.6s;">
+        <h3 class="text-xl md:text-2xl font-semibold mb-2 text-[#CEDF00]" data-i18n="PRAS.features.interface.title" style="border-top: 2px solid #003035;"></h3>
+        <ul class="list-disc ml-6 text-gray-800 text-base md:text-lg">
+          <li data-i18n="PRAS.features.interface.items.0"></li>
+          <li data-i18n="PRAS.features.interface.items.1"></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <Footer />
+</Layout>
+
+<script>
+  // Variables para controlar las animaciones de PRAS
+  let prasAnimationStates = {
+    section1: false,
+    section2: false,
+    section3: false
+  };
+
+  // Función para animar elementos de PRAS basada en el snap point actual
+  function animatePRASElementsBySection(sectionIndex: number) {
+    const numbers = document.querySelectorAll('.pras-number');
+    const lines = document.querySelectorAll('.pras-line');
+    const titles = document.querySelectorAll('.pras-title');
+    const contents = document.querySelectorAll('.pras-content');
+    
+    // Determinar qué sección debe animarse basada en el snap point
+    let targetSection = -1;
+    if (sectionIndex === 1) targetSection = 0; // Primera sección de texto
+    else if (sectionIndex === 2) targetSection = 1; // Segunda sección de texto
+    else if (sectionIndex === 3) targetSection = 2; // Tercera sección de texto
+    // Si sectionIndex es 0, significa que estamos en el video, no animar nada
+    
+    // Solo resetear todas las animaciones si estamos completamente fuera de la sección horizontal
+    if (targetSection === -1) {
+      // Verificar si realmente estamos fuera de la sección horizontal
+      const horizontalZone = document.getElementById('section1');
+      if (horizontalZone) {
+        const rect = horizontalZone.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        // Solo resetear si la sección está completamente fuera del viewport
+        if (rect.bottom < -windowHeight || rect.top > windowHeight * 2) {
+          numbers.forEach((number, index) => {
+            (number as HTMLElement).style.transform = 'translateY(-30px)';
+            (number as HTMLElement).style.opacity = '0';
+          });
+          lines.forEach((line, index) => {
+            (line as HTMLElement).style.transform = 'scaleX(0)';
+            (line as HTMLElement).style.opacity = '0';
+          });
+          titles.forEach((title, index) => {
+            (title as HTMLElement).style.transform = 'translateY(-30px)';
+            (title as HTMLElement).style.opacity = '0';
+          });
+          contents.forEach((content, index) => {
+            (content as HTMLElement).style.transform = 'translateY(-30px)';
+            (content as HTMLElement).style.opacity = '0';
+          });
+        }
+      }
+      return;
+    }
+    
+    // Animar solo la sección correspondiente
+    const targetNumber = numbers[targetSection];
+    const targetLine = lines[targetSection];
+    const targetTitle = titles[targetSection];
+    
+    // Calcular los contenidos según la sección
+    let targetContents: (Element | undefined)[] = [];
+    if (targetSection === 0) {
+      // Sección 1: subtitle + description1 + description2
+      targetContents = [contents[0], contents[1], contents[2]];
+    } else if (targetSection === 1) {
+      // Sección 2: description1 + description2
+      targetContents = [contents[3], contents[4]];
+    } else if (targetSection === 2) {
+      // Sección 3: description1 + description2 + description3
+      targetContents = [contents[5], contents[6], contents[7]];
+    }
+    
+    if (targetNumber) {
+      (targetNumber as HTMLElement).style.transform = 'translateY(0)';
+      (targetNumber as HTMLElement).style.opacity = '1';
+    }
+    
+    if (targetLine) {
+      setTimeout(() => {
+        (targetLine as HTMLElement).style.transform = 'scaleX(1)';
+        (targetLine as HTMLElement).style.opacity = '1';
+      }, 300);
+    }
+    
+    if (targetTitle) {
+      setTimeout(() => {
+        (targetTitle as HTMLElement).style.transform = 'translateY(0)';
+        (targetTitle as HTMLElement).style.opacity = '1';
+      }, 600);
+    }
+    
+    targetContents.forEach((content, index) => {
+      if (content) {
+        setTimeout(() => {
+          (content as HTMLElement).style.transform = 'translateY(0)';
+          (content as HTMLElement).style.opacity = '1';
+        }, 900 + (index * 300));
+      }
+    });
+    
+    // Solo resetear otras secciones si estamos en una sección diferente
+    // Esto evita que se quiten las animaciones cuando se hace scroll sutil
+    numbers.forEach((number, index) => {
+      if (index !== targetSection) {
+        (number as HTMLElement).style.transform = 'translateY(-30px)';
+        (number as HTMLElement).style.opacity = '0';
+      }
+    });
+    
+    lines.forEach((line, index) => {
+      if (index !== targetSection) {
+        (line as HTMLElement).style.transform = 'scaleX(0)';
+        (line as HTMLElement).style.opacity = '0';
+      }
+    });
+    
+    titles.forEach((title, index) => {
+      if (index !== targetSection) {
+        (title as HTMLElement).style.transform = 'translateY(-30px)';
+        (title as HTMLElement).style.opacity = '0';
+      }
+    });
+    
+    contents.forEach((content, index) => {
+      let contentSection = -1;
+      if (index <= 2) contentSection = 0; // Sección 1: índices 0, 1, 2
+      else if (index <= 4) contentSection = 1; // Sección 2: índices 3, 4
+      else if (index <= 7) contentSection = 2; // Sección 3: índices 5, 6, 7
+      
+      if (contentSection !== targetSection) {
+        (content as HTMLElement).style.transform = 'translateY(-30px)';
+        (content as HTMLElement).style.opacity = '0';
+      }
+    });
+  }
+
+  // Hacer la función global para que esté disponible en otros scripts
+  (window as any).animatePRASElementsBySection = animatePRASElementsBySection;
+
+  function setupHorizontalScroll() {
+    const horizontalZone = document.getElementById('section1')!;
+    const horizontalContainer = document.getElementById('horizontal-container')!;
+    if (!horizontalZone || !horizontalContainer) return;
+  
+    // Solo aplicar scroll horizontal en pantallas grandes
+    if (window.innerWidth < 1200) {
+      return;
+    }
+
+    // Configuración inicial
+    const containerWidth = horizontalContainer.scrollWidth;
+    const windowWidth = window.innerWidth;
+    const totalHeight = horizontalZone.offsetHeight;
+    const scrollableHeight = totalHeight - window.innerHeight;
+    
+    // Snap points en píxeles horizontales
+    const SNAP_POINTS = [
+      0,                            // 1. Video completo
+      windowWidth * 1,              // 2. Texto1 + mitad imagen1 
+      windowWidth * 3,              // 3. Mitad imagen2 + texto2 
+      containerWidth - windowWidth   // 4. Imagen3 + texto3
+    ];
+  
+    // Posiciones verticales (% del scroll)
+    const VERTICAL_POSITIONS = [0, 0.35, 0.65, 1];
+  
+    let isAnimating = false;
+    let currentSnapIndex = 0;
+    let wheelCount = 0;
+    let lastWheelTime = 0;
+    let isInHorizontalSection = false;
+    let isAtEdge = false;
+    let hasUserInteracted = false; // Para saber si el usuario ha interactuado con el wheel
+  
+          function goToSnap(index:any) {
+        if (isAnimating) return;
+        
+        isAnimating = true;
+        currentSnapIndex = index;
+        
+        const start = horizontalZone.offsetTop;
+        const targetScrollY = start + (VERTICAL_POSITIONS[index] * scrollableHeight);
+        const targetTranslateX = Math.min(SNAP_POINTS[index], containerWidth - windowWidth);
+    
+        horizontalContainer.style.transition = 'transform 1.5s cubic-bezier(0.4, 0.0, 0.2, 1)';
+        horizontalContainer.style.transform = `translateX(-${targetTranslateX}px)`;
+        
+        window.scrollTo({
+          top: targetScrollY,
+          behavior: 'smooth'
+        });
+
+        // Animar elementos de PRAS cuando se navega a un snap point
+        setTimeout(() => {
+          animatePRASElementsBySection(index);
+        }, 800); // Esperar a que el scroll se complete
+    
+        setTimeout(() => {
+          isAnimating = false;
+          horizontalContainer.style.transition = 'none';
+          isAtEdge = (index === 0 || index === SNAP_POINTS.length - 1);
+        }, 1500);
+      }
+  
+    function handleWheel(e:any) {
+      if (isAnimating) return;
+      
+      const now = Date.now();
+      const delta = Math.sign(e.deltaY);
+      
+      // Resetear contador si ha pasado más de 300ms desde el último wheel
+      if (now - lastWheelTime > 300) {
+        wheelCount = 0;
+      }
+      
+      wheelCount += delta;
+      lastWheelTime = now;
+  
+      const scrollY = window.scrollY;
+      const start = horizontalZone.offsetTop;
+      const end = start + scrollableHeight;
+      const wasInHorizontalSection = isInHorizontalSection;
+      isInHorizontalSection = scrollY >= start && scrollY <= end;
+  
+      // Si no estamos en la sección horizontal, permitir scroll normal
+      if (!isInHorizontalSection) {
+        return;
+      }
+  
+      // Marcar que el usuario ha interactuado
+      hasUserInteracted = true;
+  
+      // Solo procesar si hay acumulación suficiente (2 movimientos)
+      if (Math.abs(wheelCount) >= 2) {
+        const direction = Math.sign(wheelCount);
+        const newIndex = currentSnapIndex + direction;
+        
+        // Comprobar si estamos en un borde y queremos salir
+        if (isAtEdge) {
+          if ((currentSnapIndex === 0 && direction === -1) || 
+              (currentSnapIndex === SNAP_POINTS.length - 1 && direction === 1)) {
+            // Permitir salir después de 2 movimientos
+            wheelCount = 0;
+            isAtEdge = false;
+            return; // Permitirá el scroll nativo en el próximo movimiento
+          }
+        }
+  
+        // Navegación normal entre secciones
+        if (newIndex >= 0 && newIndex < SNAP_POINTS.length) {
+          goToSnap(newIndex);
+          wheelCount = 0;
+        }
+      }
+      
+      // Prevenir scroll nativo solo si no estamos en un borde intentando salir
+      if (!isAtEdge || (currentSnapIndex > 0 && currentSnapIndex < SNAP_POINTS.length - 1)) {
+        e.preventDefault();
+      }
+    }
+  
+    function handleScroll() {
+      if (isAnimating) return;
+      
+      const scrollY = window.scrollY;
+      const start = horizontalZone.offsetTop;
+      const end = start + scrollableHeight;
+  
+      // Actualizar estado de la sección
+      const wasInHorizontalSection = isInHorizontalSection;
+      isInHorizontalSection = scrollY >= start && scrollY <= end;
+      
+      // Solo ajustar posición horizontal si el usuario ha interactuado previamente
+      if (isInHorizontalSection && hasUserInteracted) {
+        const progress = (scrollY - start) / scrollableHeight;
+        const targetTranslateX = progress * (containerWidth - windowWidth);
+        horizontalContainer.style.transform = `translateX(-${targetTranslateX}px)`;
+      } else if (!isInHorizontalSection) {
+        // Resetear al entrar/salir
+        if (scrollY < start) {
+          currentSnapIndex = 0;
+          horizontalContainer.style.transform = 'translateX(0)';
+          hasUserInteracted = false; // Resetear cuando salimos completamente
+          // Resetear animaciones de PRAS
+          animatePRASElementsBySection(-1);
+        } else if (scrollY > end) {
+          currentSnapIndex = SNAP_POINTS.length - 1;
+          horizontalContainer.style.transform = `translateX(-${containerWidth - windowWidth}px)`;
+          hasUserInteracted = false; // Resetear cuando salimos completamente
+          // NO resetear animaciones cuando salimos por abajo, mantener el estado
+        }
+      } else if (isInHorizontalSection && !hasUserInteracted) {
+        // Si estamos en la sección horizontal pero no hemos interactuado,
+        // determinar el snap point actual basado en la posición del scroll
+        const progress = (scrollY - start) / scrollableHeight;
+        const snapIndex = Math.round(progress * (SNAP_POINTS.length - 1));
+        
+        if (snapIndex !== currentSnapIndex) {
+          currentSnapIndex = snapIndex;
+          // Animar elementos según el snap point detectado
+          animatePRASElementsBySection(snapIndex);
+        }
+      } else if (isInHorizontalSection && !wasInHorizontalSection) {
+        // Si acabamos de entrar en la sección horizontal (desde fuera),
+        // determinar el snap point actual y animar
+        const progress = (scrollY - start) / scrollableHeight;
+        const snapIndex = Math.round(progress * (SNAP_POINTS.length - 1));
+        
+        if (snapIndex !== currentSnapIndex) {
+          currentSnapIndex = snapIndex;
+          // Animar elementos según el snap point detectado
+          animatePRASElementsBySection(snapIndex);
+        }
+        
+        // Si entramos desde abajo (última sección), asegurar que se muestre el texto
+        if (progress > 0.8) {
+          animatePRASElementsBySection(SNAP_POINTS.length - 1);
+        }
+        
+        // Detección adicional para cuando se sube desde muy abajo
+        if (progress > 0.6) {
+          setTimeout(() => {
+            const currentProgress = (window.scrollY - start) / scrollableHeight;
+            const currentSnap = Math.round(currentProgress * (SNAP_POINTS.length - 1));
+            animatePRASElementsBySection(currentSnap);
+          }, 200);
+        }
+      }
+    }
+  
+    // Eventos
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', () => {
+      setTimeout(() => {
+        if (isInHorizontalSection) {
+          goToSnap(currentSnapIndex);
+        }
+      }, 100);
+    });
+  
+    // Inicialización
+    handleScroll();
+    horizontalContainer.style.transform = 'translateX(0)';
+    isAtEdge = true; // Estamos en el primer snap point
+    
+    // Detectar posición inicial y animar si es necesario
+    setTimeout(() => {
+      const scrollY = window.scrollY;
+      const start = horizontalZone.offsetTop;
+      const end = start + scrollableHeight;
+      
+      if (scrollY >= start && scrollY <= end && !hasUserInteracted) {
+        const progress = (scrollY - start) / scrollableHeight;
+        const snapIndex = Math.round(progress * (SNAP_POINTS.length - 1));
+        if (snapIndex !== currentSnapIndex) {
+          currentSnapIndex = snapIndex;
+          animatePRASElementsBySection(snapIndex);
+        }
+      }
+    }, 100);
+    
+    // Detección adicional para cuando se carga la página muy abajo
+    setTimeout(() => {
+      const scrollY = window.scrollY;
+      const start = horizontalZone.offsetTop;
+      const end = start + scrollableHeight;
+      
+      // Si estamos en la sección horizontal al cargar
+      if (scrollY >= start && scrollY <= end) {
+        const progress = (scrollY - start) / scrollableHeight;
+        const snapIndex = Math.round(progress * (SNAP_POINTS.length - 1));
+        
+        // Forzar la animación del snap point correspondiente
+        currentSnapIndex = snapIndex;
+        animatePRASElementsBySection(snapIndex);
+      }
+    }, 500); // Delay más largo para asegurar que todo esté cargado
+    
+    // Detección adicional para cuando se carga la página muy abajo y se sube
+    setTimeout(() => {
+      const scrollY = window.scrollY;
+      const start = horizontalZone.offsetTop;
+      const end = start + scrollableHeight;
+      
+      // Si estamos en la sección horizontal al cargar
+      if (scrollY >= start && scrollY <= end) {
+        const progress = (scrollY - start) / scrollableHeight;
+        const snapIndex = Math.round(progress * (SNAP_POINTS.length - 1));
+        
+        // Forzar la animación del snap point correspondiente
+        currentSnapIndex = snapIndex;
+        animatePRASElementsBySection(snapIndex);
+        
+        // Si estamos cerca del final, asegurar que se muestre el último texto
+        if (progress > 0.8) {
+          setTimeout(() => {
+            animatePRASElementsBySection(SNAP_POINTS.length - 1);
+          }, 100);
+        }
+      }
+    }, 1000); // Delay aún más largo para casos extremos
+  
+    // Función para activar la navegación horizontal desde la barra lateral
+    function activateHorizontalNavigation() {
+      if (isInHorizontalSection && !hasUserInteracted) {
+        hasUserInteracted = true;
+        goToSnap(0); // Ir al primer elemento
+      }
+    }
+  
+    // Detectar cuando se hace click en la barra lateral para ir a section1
+    function setupSideNavListener() {
+      const sideNavItems = document.querySelectorAll('[data-section-id="section1"]');
+      sideNavItems.forEach(item => {
+        item.addEventListener('click', () => {
+          // Marcar que se va a navegar desde la barra lateral
+          setTimeout(() => {
+            activateHorizontalNavigation();
+          }, 500); // Esperar a que el scroll se complete
+        });
+      });
+    }
+  
+    // Configurar el listener cuando el DOM esté listo
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setupSideNavListener);
+    } else {
+      setupSideNavListener();
+    }
+  }
+  
+
+  // Iniciar
+  document.addEventListener('DOMContentLoaded', setupHorizontalScroll);
+
+    import * as THREE from 'three';
+    import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+    import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+
+    // Configuración de todos los modelos
+    const modelConfigs = {
+      pras: {
+        id: 'pras-hero-canvas',
+        placeholderId: 'pras-hero-placeholder',
+        modelPath: '/assets/models/PRAS.glb',
+        scale: 2.7,
+        modelPosY: -1.9,
+        width: 420,
+        height: 600,
+        useEnhancedLighting: true
+      },
+      prasMobile: {
+        id: 'pras-mobile-canvas',
+        placeholderId: 'pras-mobile-placeholder',
+        modelPath: '/assets/models/PRAS.glb',
+        scale: 2.3,
+        modelPosY: -1.5,
+        width: 300,
+        height: 300,
+        useEnhancedLighting: true
+      }
+    };
+
+    // Configuración de los modelos del carrusel
+    const carouselModels = [
+      {
+        id: 0,
+        placeholderId: 'carousel-placeholder-0',
+        modelPath: '/assets/models/PRAS_Base.glb',
+        scale: 6,
+        modelPosY: -1,
+        width: 420,
+        height: 600,
+        useEnhancedLighting: true
+      },
+      {
+        id: 1,
+        placeholderId: 'carousel-placeholder-1',
+        modelPath: '/assets/models/PRAS.glb',
+        scale: 2.5,
+        modelPosY: -1.9,
+        width: 420,
+        height: 600,
+        useEnhancedLighting: true
+      },
+      {
+        id: 2,
+        placeholderId: 'carousel-placeholder-2',
+        modelPath: '/assets/models/PRAS_humanoide.glb',
+        scale: 3,
+        modelPosY: -1.7,
+        width: 420,
+        height: 600,
+        useEnhancedLighting: true
+      },
+      {
+        id: 3,
+        placeholderId: 'carousel-placeholder-3',
+        modelPath: '/assets/models/PRAS_TV.glb',
+        scale: 2.5,
+        modelPosY: -1.8,
+        width: 420,
+        height: 600,
+        useEnhancedLighting: true
+      }
+    ];
+
+    // Almacén de instancias de modelos
+    const modelInstances: any = {};
+
+    // Variables globales para el carrusel
+    let carouselScene: any = null;
+    let carouselCamera: any = null;
+    let carouselRenderer: any = null;
+    let carouselControls: any = null;
+    let carouselAnimationId: any = null;
+    let currentCarouselModel: any = null;
+    let loadedCarouselModels: any = {};
+    let currentCarouselIndex = 0;
+
+    // Función optimizada para crear el modelo 3D del Astrolabio
+    function createModel3D(config: any) {
+      const canvas = document.getElementById(config.id);
+      const placeholder = document.getElementById(config.placeholderId);
+      
+      if (!canvas || !placeholder) return;
+
+      // Crear escena
+      const scene = new THREE.Scene();
+      scene.background = null;
+      scene.fog = null;
+
+      // Crear cámara
+      const camera = new THREE.PerspectiveCamera(50, config.width / config.height, 0.1, 100);
+      camera.position.set(0, 0, 5);
+
+      // Crear renderer con configuración optimizada
+      const renderer = new THREE.WebGLRenderer({ 
+        canvas: canvas, 
+        alpha: true, 
+        antialias: config.useEnhancedLighting ? true : false,
+        powerPreference: "high-performance",
+        stencil: false,
+        depth: true,
+        logarithmicDepthBuffer: false
+      });
+      renderer.setSize(config.width, config.height);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, config.useEnhancedLighting ? 2 : 1.5));
+      renderer.shadowMap.enabled = false;
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      
+      if (config.useEnhancedLighting) {
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.2;
+      } else {
+        renderer.toneMapping = THREE.NoToneMapping;
+      }
+
+      // Configurar iluminación mejorada
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+      scene.add(ambientLight);
+
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2);
+      directionalLight.position.set(5, 5, 5);
+      directionalLight.castShadow = false;
+      scene.add(directionalLight);
+
+      const fillLight = new THREE.DirectionalLight(0xffffff, 0.8);
+      fillLight.position.set(-5, 0, 5);
+      scene.add(fillLight);
+
+      const topLight = new THREE.DirectionalLight(0xffffff, 1.0);
+      topLight.position.set(0, 10, 0);
+      scene.add(topLight);
+
+      const warmLight = new THREE.PointLight(0xffcc66, 0.8, 25);
+      warmLight.position.set(-3, 2, 3);
+      scene.add(warmLight);
+
+      const coolLight = new THREE.PointLight(0x6699ff, 0.6, 25);
+      coolLight.position.set(3, -2, -3);
+      scene.add(coolLight);
+
+      const frontLight = new THREE.DirectionalLight(0xffffff, 0.7);
+      frontLight.position.set(0, 0, 8);
+      scene.add(frontLight);
+
+      const backLight = new THREE.DirectionalLight(0xffffff, 0.4);
+      backLight.position.set(0, 0, -8);
+      scene.add(backLight);
+
+      const warmAmbient = new THREE.AmbientLight(0xfff4e6, 0.3);
+      scene.add(warmAmbient);
+
+      // Crear controles optimizados
+      const controls = new OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.05;
+      controls.screenSpacePanning = true;
+      controls.maxPolarAngle = Math.PI;
+      controls.minPolarAngle = 0;
+      controls.autoRotate = true;
+      controls.autoRotateSpeed = 3;
+      controls.enableZoom = false;
+      controls.enablePan = false;
+      controls.enableRotate = true;
+
+      // Variables de estado
+      let model: any = null;
+      let animationId: any = null;
+      let isVisible = true;
+      let needsRender = true;
+
+      // Función de animación optimizada
+      function animate() {
+        animationId = requestAnimationFrame(animate);
+
+        if (isVisible && model) {
+          if (controls) {
+            controls.update();
+          }
+          
+          if (needsRender || controls.autoRotate) {
+            renderer.render(scene, camera);
+            needsRender = false;
+          }
+        }
+      }
+
+      // Función de resize
+      function onResize() {
+        if (camera && renderer) {
+          camera.aspect = config.width / config.height;
+          camera.updateProjectionMatrix();
+          renderer.setSize(config.width, config.height);
+          
+          if (controls) {
+            controls.update();
+          }
+          
+          needsRender = true;
+        }
+      }
+
+      // Función de visibilidad
+      function onVisibilityChange() {
+        isVisible = !document.hidden;
+        if (isVisible) needsRender = true;
+      }
+
+      // Función de limpieza
+      function cleanup() {
+        if (animationId) {
+          cancelAnimationFrame(animationId);
+        }
+        if (renderer) {
+          renderer.dispose();
+        }
+        if (controls) {
+          controls.dispose();
+        }
+        if (scene) {
+          scene.traverse((child: any) => {
+            if (child.geometry) {
+              child.geometry.dispose();
+            }
+            if (child.material) {
+              if (Array.isArray(child.material)) {
+                child.material.forEach((material: any) => {
+                  if (material.map) material.map.dispose();
+                  material.dispose();
+                });
+              } else {
+                if (child.material.map) child.material.map.dispose();
+                child.material.dispose();
+              }
+            }
+          });
+        }
+      }
+
+      // Cargar modelo
+      const loader = new GLTFLoader();
+      loader.load(
+        config.modelPath, 
+        (gltf) => {
+          try {
+            model = gltf.scene;
+            
+            // Centrar y escalar
+            model.position.set(0, config.modelPosY, 0);
+            model.scale.setScalar(config.scale);
+            
+            // Ocultar placeholder cuando el modelo se carga
+            placeholder.style.opacity = '0';
+            placeholder.style.transition = 'opacity 0.3s ease-out';
+            canvas.style.opacity = '1';
+            canvas.style.transition = 'opacity 0.3s ease-in';
+            
+            setTimeout(() => {
+              placeholder.style.display = 'none';
+            }, 300);
+            
+            // Optimizar geometrías y materiales
+            model.traverse((child: any) => {
+              if (child.isMesh) {
+                if (child.geometry) {
+                  child.geometry.computeBoundingSphere();
+                  child.geometry.computeBoundingBox();
+                  child.geometry.computeVertexNormals();
+                }
+                
+                if (child.material) {
+                  child.material.transparent = false;
+                  child.material.needsUpdate = true;
+                  
+                  // Mejorar la iluminación de los materiales
+                  if (child.material.color) {
+                    child.material.color.multiplyScalar(1.1);
+                  }
+              
+                  if (child.material.map) {
+                    child.material.map.generateMipmaps = false;
+                    child.material.map.minFilter = THREE.LinearFilter;
+                    child.material.map.magFilter = THREE.LinearFilter;
+                  }
+                }
+              }
+            });
+
+            scene.add(model);
+            needsRender = true;
+            
+          } catch (error) {
+            console.error(`Error processing ${config.id} model:`, error);
+          }
+        }, 
+                  (progress) => {
+            // Callback de progreso (opcional)
+          }, 
+        (error) => {
+          console.error(`Error loading ${config.id} model:`, error);
+          // Intentar cargar de nuevo después de un delay
+          setTimeout(() => {
+            loader.load(config.modelPath, (gltf) => {
+              try {
+                model = gltf.scene;
+                model.position.set(0, config.modelPosY, 0);
+                model.scale.setScalar(config.scale);
+                scene.add(model);
+                needsRender = true;
+                
+                placeholder.style.opacity = '0';
+                placeholder.style.transition = 'opacity 0.3s ease-out';
+                canvas.style.opacity = '1';
+                canvas.style.transition = 'opacity 0.3s ease-in';
+                
+                setTimeout(() => {
+                  placeholder.style.display = 'none';
+                }, 300);
+                
+              } catch (retryError) {
+                console.error(`Error on retry for ${config.id}:`, retryError);
+              }
+            });
+          }, 2000);
+        }
+      );
+
+      // Iniciar animación
+      animate();
+
+      // Agregar event listeners
+      window.addEventListener('resize', onResize, { passive: true });
+      document.addEventListener('visibilitychange', onVisibilityChange, { passive: true });
+
+      // Retornar funciones de limpieza
+      return {
+        cleanup,
+        onResize,
+        onVisibilityChange
+      };
+    }
+
+    // Función para inicializar el carrusel con un solo canvas
+    function initCarousel() {
+      const canvas = document.getElementById('carousel-canvas');
+      if (!canvas) return;
+
+      // Obtener dimensiones del contenedor
+      const container = canvas.parentElement;
+      if (!container) return;
+      
+      const containerWidth = container.clientWidth;
+      const containerHeight = container.clientHeight;
+      const size = Math.min(containerWidth, containerHeight, 420); // Máximo 420px
+      const height = Math.min(containerHeight, 600); // Altura máxima 600px
+
+      // Crear escena
+      carouselScene = new THREE.Scene();
+      carouselScene.background = null;
+      carouselScene.fog = null;
+
+      // Crear cámara
+      carouselCamera = new THREE.PerspectiveCamera(50, size / height, 0.1, 100);
+      carouselCamera.position.set(0, 0, 5);
+
+      // Crear renderer
+      carouselRenderer = new THREE.WebGLRenderer({ 
+        canvas: canvas, 
+        alpha: true, 
+        antialias: true,
+        powerPreference: "high-performance",
+        stencil: false,
+        depth: true,
+        logarithmicDepthBuffer: false
+      });
+      carouselRenderer.setSize(size, height);
+      carouselRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      carouselRenderer.shadowMap.enabled = false;
+      carouselRenderer.outputColorSpace = THREE.SRGBColorSpace;
+      carouselRenderer.toneMapping = THREE.ACESFilmicToneMapping;
+      carouselRenderer.toneMappingExposure = 1.2;
+
+      // Configurar iluminación
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+      carouselScene.add(ambientLight);
+
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2);
+      directionalLight.position.set(5, 5, 5);
+      carouselScene.add(directionalLight);
+
+      const fillLight = new THREE.DirectionalLight(0xffffff, 0.8);
+      fillLight.position.set(-5, 0, 5);
+      carouselScene.add(fillLight);
+
+      const topLight = new THREE.DirectionalLight(0xffffff, 1.0);
+      topLight.position.set(0, 10, 0);
+      carouselScene.add(topLight);
+
+      const warmLight = new THREE.PointLight(0xffcc66, 0.8, 25);
+      warmLight.position.set(-3, 2, 3);
+      carouselScene.add(warmLight);
+
+      const coolLight = new THREE.PointLight(0x6699ff, 0.6, 25);
+      coolLight.position.set(3, -2, -3);
+      carouselScene.add(coolLight);
+
+      const frontLight = new THREE.DirectionalLight(0xffffff, 0.7);
+      frontLight.position.set(0, 0, 8);
+      carouselScene.add(frontLight);
+
+      const backLight = new THREE.DirectionalLight(0xffffff, 0.4);
+      backLight.position.set(0, 0, -8);
+      carouselScene.add(backLight);
+
+      const warmAmbient = new THREE.AmbientLight(0xfff4e6, 0.3);
+      carouselScene.add(warmAmbient);
+
+      // Crear controles
+      carouselControls = new OrbitControls(carouselCamera, carouselRenderer.domElement);
+      carouselControls.enableDamping = true;
+      carouselControls.dampingFactor = 0.05;
+      carouselControls.screenSpacePanning = true;
+      carouselControls.maxPolarAngle = Math.PI;
+      carouselControls.minPolarAngle = 0;
+      carouselControls.autoRotate = true;
+      carouselControls.autoRotateSpeed = 3;
+      carouselControls.enableZoom = false;
+      carouselControls.enablePan = false;
+      carouselControls.enableRotate = true;
+
+      // Función de animación
+      function animateCarousel() {
+        carouselAnimationId = requestAnimationFrame(animateCarousel);
+        
+        if (carouselControls) {
+          carouselControls.update();
+        }
+        
+        if (carouselRenderer && carouselScene && carouselCamera) {
+          carouselRenderer.render(carouselScene, carouselCamera);
+        }
+      }
+
+      // Función de resize para el carrusel
+      function resizeCarousel() {
+        if (!container || !carouselCamera || !carouselRenderer) return;
+        
+        const newContainerWidth = container.clientWidth;
+        const newContainerHeight = container.clientHeight;
+        const newSize = Math.min(newContainerWidth, newContainerHeight, 420);
+        const newHeight = Math.min(newContainerHeight, 600);
+        
+        carouselCamera.aspect = newSize / newHeight;
+        carouselCamera.updateProjectionMatrix();
+        carouselRenderer.setSize(newSize, newHeight);
+        
+        if (carouselControls) {
+          carouselControls.update();
+        }
+        
+        // Recalcular altura del contenido del carrusel
+        setTimeout(() => {
+          recalculateCarouselHeight();
+        }, 100);
+      }
+
+      // Event listener para resize
+      window.addEventListener('resize', resizeCarousel);
+
+      // Iniciar animación
+      animateCarousel();
+
+      // Cargar todos los modelos del carrusel
+      const loader = new GLTFLoader();
+      carouselModels.forEach((modelConfig, index) => {
+        loader.load(
+          modelConfig.modelPath, 
+          (gltf) => {
+            try {
+              const model = gltf.scene;
+              
+              // Centrar y escalar
+              model.position.set(0, modelConfig.modelPosY, 0);
+              model.scale.setScalar(modelConfig.scale);
+              
+              // Optimizar geometrías y materiales
+              model.traverse((child: any) => {
+                if (child.isMesh) {
+                  if (child.geometry) {
+                    child.geometry.computeBoundingSphere();
+                    child.geometry.computeBoundingBox();
+                    child.geometry.computeVertexNormals();
+                  }
+                  
+                  if (child.material) {
+                    child.material.transparent = false;
+                    child.material.needsUpdate = true;
+                    
+                    if (child.material.color) {
+                      child.material.color.multiplyScalar(1.1);
+                    }
+                
+                    if (child.material.map) {
+                      child.material.map.generateMipmaps = false;
+                      child.material.map.minFilter = THREE.LinearFilter;
+                      child.material.map.magFilter = THREE.LinearFilter;
+                    }
+                  }
+                }
+              });
+
+              // Guardar modelo cargado
+              loadedCarouselModels[index] = model;
+              
+              // Si es el primer modelo, mostrarlo
+              if (index === 0) {
+                showCarouselModel(0);
+              }
+              
+            } catch (error) {
+              console.error(`Error processing carousel model ${index}:`, error);
+            }
+          }, 
+          (progress) => {
+            // Callback de progreso (opcional)
+          }, 
+          (error) => {
+            console.error(`Error loading carousel model ${index}:`, error);
+            // Intentar cargar de nuevo después de un delay
+            setTimeout(() => {
+              loader.load(modelConfig.modelPath, (gltf) => {
+                try {
+                  const model = gltf.scene;
+                  model.position.set(0, modelConfig.modelPosY, 0);
+                  model.scale.setScalar(modelConfig.scale);
+                  loadedCarouselModels[index] = model;
+                  if (index === 0) {
+                    showCarouselModel(0);
+                  }
+                } catch (retryError) {
+                  console.error(`Error on retry for carousel model ${index}:`, retryError);
+                }
+              });
+            }, 2000);
+          }
+        );
+      });
+    }
+
+    // Función para mostrar un modelo específico en el carrusel
+    function showCarouselModel(index: number) {
+      if (!carouselScene || !loadedCarouselModels[index]) return;
+
+      // Remover modelo actual
+      if (currentCarouselModel) {
+        carouselScene.remove(currentCarouselModel);
+      }
+
+      // Agregar nuevo modelo
+      currentCarouselModel = loadedCarouselModels[index];
+      carouselScene.add(currentCarouselModel);
+      currentCarouselIndex = index;
+
+      // Mostrar canvas y ocultar placeholder
+      const canvas = document.getElementById('carousel-canvas');
+      const placeholder = document.getElementById(`carousel-placeholder-${index}`);
+      
+      if (canvas && placeholder) {
+        // Ocultar todos los placeholders primero
+        for (let i = 0; i < 4; i++) {
+          const otherPlaceholder = document.getElementById(`carousel-placeholder-${i}`);
+          if (otherPlaceholder) {
+            otherPlaceholder.style.display = 'none';
+          }
+        }
+        
+        // Mostrar canvas
+        canvas.style.opacity = '1';
+        canvas.style.transition = 'opacity 0.3s ease-in';
+        canvas.classList.remove('pointer-events-none');
+        canvas.classList.add('pointer-events-auto');
+      }
+    }
+
+    // Función para calcular la altura real del contenido
+    function calculateContentHeight(slideElement: HTMLElement): number {
+      // Crear un elemento temporal para medir la altura
+      const tempDiv = document.createElement('div');
+      tempDiv.style.position = 'absolute';
+      tempDiv.style.visibility = 'hidden';
+      tempDiv.style.height = 'auto';
+      tempDiv.style.width = slideElement.offsetWidth + 'px';
+      tempDiv.innerHTML = slideElement.innerHTML;
+      document.body.appendChild(tempDiv);
+      
+      const height = tempDiv.offsetHeight;
+      document.body.removeChild(tempDiv);
+      
+      return height;
+    }
+
+    // Función para cambiar slides del carrusel
+    function showSlide(idx: number) {
+      const canvas = document.getElementById('carousel-canvas');
+      const carouselContent = document.getElementById('carousel-content');
+      
+      for (let i = 0; i < 4; i++) {
+        const slide = document.getElementById('carousel-slide-' + i);
+        const btn = document.getElementById('carousel-btn-' + i);
+        const placeholder = document.getElementById('carousel-placeholder-' + i);
+        
+        if (slide && btn && placeholder) {
+          if (i === idx) {
+            // Mostrar slide activo
+            slide.classList.remove('opacity-0','pointer-events-none','translate-x-10');
+            slide.classList.add('opacity-100','translate-x-0');
+            
+            // Calcular y aplicar la altura real del contenido al contenedor padre
+            const contentHeight = calculateContentHeight(slide);
+            if (carouselContent) {
+              carouselContent.style.height = contentHeight + 'px';
+            }
+            
+            // Mostrar placeholder activo temporalmente
+            placeholder.classList.remove('opacity-0','pointer-events-none','translate-x-10');
+            placeholder.classList.add('opacity-100','translate-x-0');
+            
+            // Botón activo
+            btn.classList.add('bg-[#CEDF00]', 'text-[#003035]');
+            btn.classList.remove('bg-transparent', 'text-[#CEDF00]');
+          } else {
+            // Ocultar slides inactivos
+            slide.classList.remove('opacity-100','translate-x-0');
+            slide.classList.add('opacity-0','pointer-events-none','translate-x-10');
+            
+            // Ocultar placeholder inactivo
+            placeholder.classList.remove('opacity-100','translate-x-0');
+            placeholder.classList.add('opacity-0','pointer-events-none','translate-x-10');
+            
+            // Botón inactivo
+            btn.classList.remove('bg-[#CEDF00]', 'text-[#003035]');
+            btn.classList.add('bg-transparent', 'text-[#CEDF00]');
+          }
+        }
+      }
+      
+      // Ocultar canvas temporalmente
+      if (canvas) {
+        canvas.style.opacity = '0';
+        canvas.classList.add('pointer-events-none');
+      }
+      
+      // Cambiar modelo 3D en el canvas después de un breve delay
+      setTimeout(() => {
+        showCarouselModel(idx);
+      }, 100);
+    }
+
+    // Función para recalcular altura del carrusel en resize
+    function recalculateCarouselHeight() {
+      const carouselContent = document.getElementById('carousel-content');
+      const activeSlide = document.querySelector('#carousel-content .opacity-100');
+      
+      if (carouselContent && activeSlide) {
+        const contentHeight = calculateContentHeight(activeSlide as HTMLElement);
+        carouselContent.style.height = contentHeight + 'px';
+      }
+    }
+
+    // Inicializar todos los modelos
+    document.addEventListener('DOMContentLoaded', () => {
+      // Inicializar modelo hero
+      Object.values(modelConfigs).forEach(config => {
+        const instance = createModel3D(config);
+        if (instance) {
+          modelInstances[config.id] = instance;
+        }
+      });
+      
+      // Inicializar carrusel
+      initCarousel();
+      
+      // Configurar botones del carrusel
+      const btn0 = document.getElementById('carousel-btn-0');
+      const btn1 = document.getElementById('carousel-btn-1');
+      const btn2 = document.getElementById('carousel-btn-2');
+      const btn3 = document.getElementById('carousel-btn-3');
+      if (btn0) btn0.onclick = () => showSlide(0);
+      if (btn1) btn1.onclick = () => showSlide(1);
+      if (btn2) btn2.onclick = () => showSlide(2);
+      if (btn3) btn3.onclick = () => showSlide(3);
+      showSlide(0); // Mostrar el primer slide por defecto
+      
+      // Event listener global para resize del carrusel
+      window.addEventListener('resize', () => {
+        setTimeout(() => {
+          recalculateCarouselHeight();
+        }, 200);
+      });
+    });
+
+    // Función de limpieza para el carrusel
+    function cleanupCarousel() {
+      if (carouselAnimationId) {
+        cancelAnimationFrame(carouselAnimationId);
+      }
+      if (carouselRenderer) {
+        carouselRenderer.dispose();
+      }
+      if (carouselControls) {
+        carouselControls.dispose();
+      }
+      if (carouselScene) {
+        carouselScene.traverse((child: any) => {
+          if (child.geometry) {
+            child.geometry.dispose();
+          }
+          if (child.material) {
+            if (Array.isArray(child.material)) {
+              child.material.forEach((material: any) => {
+                if (material.map) material.map.dispose();
+                material.dispose();
+              });
+            } else {
+              if (child.material.map) child.material.map.dispose();
+              child.material.dispose();
+            }
+          }
+        });
+      }
+    }
+
+    // Limpiar todos los modelos al salir
+    window.addEventListener('beforeunload', () => {
+      Object.values(modelInstances).forEach((instance: any) => {
+        if (instance && instance.cleanup) {
+          instance.cleanup();
+        }
+      });
+      cleanupCarousel();
+    });
+
+    // Función para animar elementos cuando entran en el viewport (PRAS)
+    function animatePRASOnScroll() {
+      const splitSection = document.querySelector('section:nth-of-type(2)'); // La sección split
+      if (!splitSection) return;
+      
+      const rect = splitSection.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      const splitText = document.querySelector('.pras-split-text');
+      const splitLine = document.querySelector('.pras-split-line');
+      const splitDescription = document.querySelector('.pras-split-description');
+      const splitMobileModel = document.querySelector('.pras-split-mobile-model');
+      
+      // Si la sección está visible (al 80% del viewport)
+      if (rect.top < windowHeight * 0.8 && rect.bottom > 0) {
+        // Animar elementos hacia su posición final
+        if (splitText) {
+          (splitText as HTMLElement).style.transform = 'translateX(0)';
+          (splitText as HTMLElement).style.opacity = '1';
+        }
+        
+        if (splitLine) {
+          (splitLine as HTMLElement).style.transform = 'scaleX(1)';
+          (splitLine as HTMLElement).style.opacity = '1';
+        }
+        
+        if (splitDescription) {
+          (splitDescription as HTMLElement).style.transform = 'translateX(0)';
+          (splitDescription as HTMLElement).style.opacity = '1';
+        }
+        
+        if (splitMobileModel) {
+          (splitMobileModel as HTMLElement).style.transform = 'translateX(0)';
+          (splitMobileModel as HTMLElement).style.opacity = '1';
+        }
+      } else {
+        // Si la sección no está visible, resetear a posición inicial
+        if (splitText) {
+          (splitText as HTMLElement).style.transform = 'translateX(100%)';
+          (splitText as HTMLElement).style.opacity = '0';
+        }
+        
+        if (splitLine) {
+          (splitLine as HTMLElement).style.transform = 'scaleX(0)';
+          (splitLine as HTMLElement).style.opacity = '0';
+        }
+        
+        if (splitDescription) {
+          (splitDescription as HTMLElement).style.transform = 'translateX(100%)';
+          (splitDescription as HTMLElement).style.opacity = '0';
+        }
+        
+        if (splitMobileModel) {
+          (splitMobileModel as HTMLElement).style.transform = 'translateX(100%)';
+          (splitMobileModel as HTMLElement).style.opacity = '0';
+        }
+      }
+    }
+
+    // Función para animar la galería de PRAS
+    function animatePRASGallery() {
+      const gallerySection = document.getElementById('section2');
+      if (!gallerySection) return;
+      
+      const rect = gallerySection.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      // Si la sección está visible (al 80% del viewport)
+      if (rect.top < windowHeight * 0.8) {
+        const prasGalleryImages = document.querySelectorAll('.pras-gallery-image');
+        
+        prasGalleryImages.forEach((image) => {
+          (image as HTMLElement).style.transform = 'scaleX(1)';
+          (image as HTMLElement).style.opacity = '1';
+        });
+      } else {
+        // Si la sección no está visible, resetear a posición inicial
+        const packagingImages = document.querySelectorAll('.pras-gallery-image');
+        
+        packagingImages.forEach((image) => {
+          (image as HTMLElement).style.transform = 'scaleX(0)';
+          (image as HTMLElement).style.opacity = '0';
+        });
+      }
+    }
+
+    // Función para animar la sección de diseño de PRAS
+    function animatePRASDesign() {
+      const designSection = document.getElementById('section3');
+      if (!designSection) return;
+      
+      const rect = designSection.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      // Si la sección está visible (al 80% del viewport)
+      if (rect.top < windowHeight * 0.8 && rect.bottom > 0) {
+        const designTitle = document.querySelector('.pras-design-title');
+        const designDescription = document.querySelector('.pras-design-description');
+        const carouselText = document.querySelector('.pras-carousel-text');
+        const carouselModel = document.querySelector('.pras-carousel-model');
+        
+        if (designTitle) {
+          (designTitle as HTMLElement).style.transform = 'translateY(0)';
+          (designTitle as HTMLElement).style.opacity = '1';
+        }
+        
+        if (designDescription) {
+          (designDescription as HTMLElement).style.transform = 'translateX(0)';
+          (designDescription as HTMLElement).style.opacity = '1';
+        }
+        
+        if (carouselText) {
+          (carouselText as HTMLElement).style.transform = 'translateX(0)';
+          (carouselText as HTMLElement).style.opacity = '1';
+        }
+        
+        if (carouselModel) {
+          (carouselModel as HTMLElement).style.transform = 'translateX(0)';
+          (carouselModel as HTMLElement).style.opacity = '1';
+        }
+      } else {
+        // Si la sección no está visible, resetear a posición inicial
+        const designTitle = document.querySelector('.pras-design-title');
+        const designDescription = document.querySelector('.pras-design-description');
+        const carouselText = document.querySelector('.pras-carousel-text');
+        const carouselModel = document.querySelector('.pras-carousel-model');
+        
+        if (designTitle) {
+          (designTitle as HTMLElement).style.transform = 'translateY(-50px)';
+          (designTitle as HTMLElement).style.opacity = '0';
+        }
+        
+        if (designDescription) {
+          (designDescription as HTMLElement).style.transform = 'translateX(100%)';
+          (designDescription as HTMLElement).style.opacity = '0';
+        }
+        
+        if (carouselText) {
+          (carouselText as HTMLElement).style.transform = 'translateX(100%)';
+          (carouselText as HTMLElement).style.opacity = '0';
+        }
+        
+        if (carouselModel) {
+          (carouselModel as HTMLElement).style.transform = 'translateX(-100%)';
+          (carouselModel as HTMLElement).style.opacity = '0';
+        }
+      }
+    }
+
+    // Función para animar las características de PRAS
+    function animatePRASFeatures() {
+      const featuresSection = document.querySelector('#section4');
+      if (!featuresSection) return;
+      
+      const rect = featuresSection.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      // Si la sección está visible (al 80% del viewport)
+      if (rect.top < windowHeight * 0.8 && rect.bottom > 0) {
+        const featureImage = document.querySelector('.pras-features-image');
+        const featureItems = document.querySelectorAll('.pras-feature-item');
+        
+        // Animar imagen desde la izquierda
+        if (featureImage) {
+          (featureImage as HTMLElement).style.transform = 'translateX(0)';
+          (featureImage as HTMLElement).style.opacity = '1';
+        }
+        
+        // Animar textos desde la derecha
+        featureItems.forEach((item) => {
+          (item as HTMLElement).style.transform = 'translateX(0)';
+          (item as HTMLElement).style.opacity = '1';
+        });
+      } else {
+        // Si la sección no está visible, resetear a posición inicial
+        const featureImage = document.querySelector('.pras-features-image');
+        const featureItems = document.querySelectorAll('.pras-feature-item');
+        
+        // Resetear imagen
+        if (featureImage) {
+          (featureImage as HTMLElement).style.transform = 'translateX(-100%)';
+          (featureImage as HTMLElement).style.opacity = '0';
+        }
+        
+        // Resetear textos
+        featureItems.forEach((item) => {
+          (item as HTMLElement).style.transform = 'translateX(100%)';
+          (item as HTMLElement).style.opacity = '0';
+        });
+      }
+    }
+
+    // Agregar la función de animación PRAS al scroll
+    window.addEventListener('scroll', function() {
+      animatePRASOnScroll();
+      
+      // Animación de la galería de PRAS
+      animatePRASGallery();
+      
+      // Animación de la sección de diseño de PRAS
+      animatePRASDesign();
+      
+      // Animación de las características de PRAS
+      animatePRASFeatures();
+      
+      // Detección para la sección horizontal
+      const horizontalZone = document.getElementById('section1');
+      if (horizontalZone) {
+        const scrollY = window.scrollY;
+        const start = horizontalZone.offsetTop;
+        const end = start + horizontalZone.offsetHeight - window.innerHeight;
+        
+        // Solo aplicar lógica horizontal en pantallas grandes
+        if (window.innerWidth >= 1200) {
+          // Si estamos en la sección horizontal y no hemos interactuado
+            if (scrollY >= start && scrollY <= end) {
+              const progress = (scrollY - start) / (end - start);
+              const snapIndex = Math.round(progress * 3); // 4 snap points (0-3)
+              
+              // Animar elementos según la posición actual
+              if ((window as any).animatePRASElementsBySection) {
+                (window as any).animatePRASElementsBySection(snapIndex);
+              }
+              
+              // Detección adicional para cuando se sube desde muy abajo
+              if (progress > 0.6) {
+                setTimeout(() => {
+                  const currentProgress = (window.scrollY - start) / (end - start);
+                  const currentSnap = Math.round(currentProgress * 3);
+                  if ((window as any).animatePRASElementsBySection) {
+                    (window as any).animatePRASElementsBySection(currentSnap);
+                  }
+                }, 100);
+              }
+            }
+        }else{
+          animatePRASSectionsOnScroll();
+        }
+      }
+    });
+
+    // Función para animar secciones en pantallas medianas y pequeñas
+    function animatePRASSectionsOnScroll() {
+      const textSections = document.querySelectorAll('.horizontal-text-section');
+      const windowHeight = window.innerHeight;
+      
+      textSections.forEach((section, index) => {
+        const rect = section.getBoundingClientRect();
+        const sectionKey = `section${index + 1}` as keyof typeof prasAnimationStates;
+        
+        // Si la sección está visible (al 70% del viewport) y no se ha animado aún
+        if (rect.top < windowHeight * 0.7 && rect.bottom > 0 && !prasAnimationStates[sectionKey]) {
+          prasAnimationStates[sectionKey] = true;
+          
+          // Animar elementos de esta sección específica
+          const number = section.querySelector('.pras-number');
+          const line = section.querySelector('.pras-line');
+          const title = section.querySelector('.pras-title');
+          const contents = section.querySelectorAll('.pras-content');
+          
+          // Animar número
+          if (number) {
+            (number as HTMLElement).style.transform = 'translateY(0)';
+            (number as HTMLElement).style.opacity = '1';
+          }
+          
+          // Animar línea
+          if (line) {
+            setTimeout(() => {
+              (line as HTMLElement).style.transform = 'scaleX(1)';
+              (line as HTMLElement).style.opacity = '1';
+            }, 300);
+          }
+          
+          // Animar título
+          if (title) {
+            setTimeout(() => {
+              (title as HTMLElement).style.transform = 'translateY(0)';
+              (title as HTMLElement).style.opacity = '1';
+            }, 600);
+          }
+          
+          // Animar contenidos
+          contents.forEach((content, contentIndex) => {
+            setTimeout(() => {
+              (content as HTMLElement).style.transform = 'translateY(0)';
+              (content as HTMLElement).style.opacity = '1';
+            }, 900 + (contentIndex * 300));
+          });
+        }
+      });
+    }
+
+    // @ts-ignore
+    if (window.i18next) window.i18next.reloadResources();
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Forzar refresco de traducción
+        if ((window as any).i18nTranslate) (window as any).i18nTranslate();
+    });
+</script>
+
+<style>
+  @media (max-width: 1200px) {
+      .horizontal-text-section, #section3 {
+          padding-left: 110px !important;
+          width: 100% !important;
+      }
+
+      .pras-image {
+        align-self: center !important;
+      }
+
+      .model-viewer-container{
+        width: 100% !important;
+        height: 400px !important;
+      }
+
+      .design-description{
+        justify-content: center !important;
+        width: 100% !important;
+        margin-left: 0 !important;
+      }
+
+      .buttons-container{
+        width: 100% !important;
+      }
+    }
+
+  @media (max-width: 700px) {
+    .horizontal-text-section, #section3, .features-container{
+            padding-left: 1.5rem !important;
+            padding-right: 1.5rem !important;
+    }
+    
+    .model-viewer-container{
+      height: 350px !important;
+    }
+  }
+</style>

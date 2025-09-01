@@ -1,0 +1,573 @@
+<section id="section4" data-index="3" data-title="Noticias" style="background-color: #003035; padding-left: 110px; padding-right: 50px; padding-top: 20px; padding-bottom: 40px;" class="min-h-screen flex items-center">
+  <div class="flex flex-col w-full">
+        <div class="text-center mb-8">
+            <h2 class="text-4xl lg:text-5xl font-light text-white leading-tight mb-4" data-i18n="Noticias.title"></h2>
+            <p class="text-gray-400 text-xl" data-i18n="Noticias.subtitle"></p>
+        </div>
+        <!-- News Carousel -->
+        <div class="relative">
+            <div id="newsCarousel" style="display: flex; gap: 5%; align-items: flex-start; justify-content: center; max-height: 65vh; height: 65vh; overflow: hidden; position: relative;">
+                <!-- Las tarjetas se generan por JS -->
+            </div>
+            <!-- Loading indicator -->
+            <div id="loadingIndicator" class="absolute inset-0 flex items-center justify-center bg-[#003035]/80 z-10" style="display: none;">
+                <div class="text-white text-lg font-['Exo']">Cargando noticias...</div>
+            </div>
+            <!-- Barra de scroll horizontal -->
+            <div class="w-full h-3 bg-[#22484b] mt-8 relative overflow-hidden rounded-full cursor-pointer" id="scrollTrack">
+                <div id="scrollThumb" class="absolute left-0 top-0 h-full bg-[#CEDF00] rounded-full transition-all duration-300 ease-out" style="width: 100px; min-width: 40px;"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Importar datos desde el archivo centralizado
+    import { noticias } from '../data/noticias';
+
+    // Función para obtener las 5 noticias más recientes
+    function getLatestNews() {
+        // Ordenar por fecha (más recientes primero) y tomar las 5 primeras
+        const sortedNews = [...noticias].sort((a, b) => {
+            return new Date(b.fecha).getTime() - new Date(a.fecha).getTime();
+        });
+        
+        return sortedNews.slice(0, 5).map(noticia => ({
+            id: noticia.id,
+            date: noticia.fecha,
+            title: noticia.titulo,
+            image: noticia.imagen
+        }));
+    }
+
+    let currentIndex: number = 0;
+    let autoPlayInterval: any = null;
+    const AUTO_PLAY_TIME: number = 5000;
+    let isDragging: boolean = false;
+    let isAutoPlaying: boolean = true;
+    let dragStartX: number = 0;
+    let thumbStartX: number = 0;
+
+    function renderNewsCarousel(news: any[]) {
+        const carousel = document.getElementById('newsCarousel');
+        if (!carousel || !news || news.length === 0) return;
+        
+        // Validar que las noticias tengan las propiedades necesarias
+        const validNews = news.filter(item => item && item.title && item.image);
+        if (validNews.length === 0) return;
+        
+        const mainIdx = currentIndex % validNews.length;
+        const secIdx = (currentIndex + 1) % validNews.length;
+        const nextIdx = (currentIndex + 2) % validNews.length;
+        
+        if (window.innerWidth > 1100) {
+            // Modo escritorio: varias tarjetas con estética original
+            carousel.innerHTML = `
+                <div id="main-card" class="news-card-clickable" style="width:55%;height:100%;max-height:100%;display:flex;flex-direction:column;align-items:center;overflow:hidden;transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);cursor:pointer;" data-noticia-id="${validNews[mainIdx].id}">
+                    <div style='width:100%;aspect-ratio:1/1;max-height:calc(100% - 2.5em);overflow:hidden;'>
+                      <img src="${validNews[mainIdx].image}" alt="${validNews[mainIdx].title}" style="width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:1/1;transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);" />
+                    </div>
+                    <div style="width:100%;display:flex;justify-content: space-between;margin-top:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+                        <span style="color:#fff;font-size:1.18rem;font-family:'Exo',sans-serif;font-weight:400;">${validNews[mainIdx].date}</span>
+                        <span style="color:#fff;font-size:1.22rem;font-family:'Exo',sans-serif;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${validNews[mainIdx].title}</span>
+                    </div>
+                </div>
+                <div id="sec-card" class="news-card-clickable" style="width:40%;height:100%;max-height:100%;opacity:0.5;display:flex;flex-direction:column;align-items:center;overflow:hidden;transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);position:relative;z-index:5;transform:translateX(7.5%);cursor:pointer;" data-noticia-id="${validNews[secIdx].id}">
+                    <div style='width:80%;aspect-ratio:1/1;max-height:calc(100% - 2.5em);overflow:hidden;'>
+                      <img src="${validNews[secIdx].image}" alt="${validNews[secIdx].title}" style="width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:1/1;transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);" />
+                    </div>
+                    <div style="width:80%;display:flex;justify-content: space-between; gap:12px; margin-top:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+                        <span style="color:#fff;font-size:1.05rem;font-family:'Exo',sans-serif;font-weight:400;">${validNews[secIdx].date}</span>
+                        <span style="color:#fff;font-size:1.09rem;font-family:'Exo',sans-serif;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${validNews[secIdx].title}</span>
+                    </div>
+                </div>
+                <div id="next-card" class="news-card-clickable" style="width:40%;height:100%;max-height:100%;display:flex;flex-direction:column;align-items:center;overflow:hidden;transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);position:absolute;right:-45%;opacity:0.3;z-index:1;cursor:pointer;" data-noticia-id="${validNews[nextIdx].id}">
+                    <div style='width:80%;aspect-ratio:1/1;max-height:calc(100% - 2.5em);overflow:hidden;'>
+                      <img src="${validNews[nextIdx].image}" alt="${validNews[nextIdx].title}" style="width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:1/1;transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);" />
+                    </div>
+                    <div style="width:80%;display:flex;justify-content: space-between; gap:12px; margin-top:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+                        <span style="color:#fff;font-size:1.05rem;font-family:'Exo',sans-serif;font-weight:400;">${validNews[nextIdx].date}</span>
+                        <span style="color:#fff;font-size:1.09rem;font-family:'Exo',sans-serif;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${validNews[nextIdx].title}</span>
+                    </div>
+                </div>
+            `;
+        } else {
+            // Modo móvil/tablet: solo la principal
+            carousel.innerHTML = `
+                <div id="main-card" class="news-card-clickable" style="width:100%;height:100%;max-height:100%;display:flex;flex-direction:column;align-items:center;overflow:hidden;transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);cursor:pointer;" data-noticia-id="${validNews[mainIdx].id}">
+                    <div style='width:100%;aspect-ratio:1/1;max-height:calc(100% - 2.5em);overflow:hidden;'>
+                      <img src="${validNews[mainIdx].image}" alt="${validNews[mainIdx].title}" style="width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:1/1;transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);" />
+                    </div>
+                    <div style="width:100%;display:flex;justify-content: space-between;margin-top:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+                        <span style="color:#fff;font-size:1.18rem;font-family:'Exo',sans-serif;font-weight:400;">${validNews[mainIdx].date}</span>
+                        <span style="color:#fff;font-size:1.22rem;font-family:'Exo',sans-serif;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${validNews[mainIdx].title}</span>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Agregar event listeners para hacer las tarjetas clickeables
+        const clickableCards = carousel.querySelectorAll('.news-card-clickable');
+        clickableCards.forEach(card => {
+            card.addEventListener('click', function(this: HTMLElement) {
+                const noticiaId = this.getAttribute('data-noticia-id');
+                if (noticiaId) {
+                    // Guardar la noticia en localStorage como respaldo
+                    const noticia = noticias.find(n => n.id === parseInt(noticiaId));
+                    if (noticia) {
+                        localStorage.setItem('noticiaActual', JSON.stringify(noticia));
+                    }
+                    // Navegar a la noticia con parámetro de URL
+                    window.location.href = `/noticia?id=${noticiaId}`;
+                }
+            });
+        });
+    }
+
+    function animateScrollThumb(news: any[]) {
+        if (isDragging) return;
+        
+        const thumb = document.getElementById('scrollThumb');
+        const track = document.getElementById('scrollTrack');
+        if (!thumb || !track || !news || news.length === 0) return;
+
+        const validNews = news.filter(item => item && item.title && item.image);
+        if (validNews.length === 0) return;
+
+        const trackWidth = track.offsetWidth;
+        const thumbWidth = 100; // Actualizado para coincidir con el nuevo ancho
+        const maxThumbPosition = trackWidth - thumbWidth;
+        const progress = currentIndex / (validNews.length - 1);
+        const targetPosition = progress * maxThumbPosition;
+        const currentPosition = parseFloat(thumb.style.left) || 0;
+
+        // Animación ultra suave para evitar saltos
+        const distance = targetPosition - currentPosition;
+        const easing = 0.08; // Easing suave pero responsivo
+        
+        if (Math.abs(distance) > 0.1) {
+            const newPosition = currentPosition + (distance * easing);
+            thumb.style.left = newPosition + 'px';
+        } else {
+            thumb.style.left = targetPosition + 'px';
+        }
+    }
+
+    function animateNewsChange(direction = 1, news: any[]) {
+        if (!news || news.length === 0) return;
+        
+        const validNews = news.filter(item => item && item.title && item.image);
+        if (validNews.length === 0) return;
+        
+        if (window.innerWidth <= 1100) {
+            // Móvil: transición suave sin saltos
+            currentIndex = (currentIndex + direction + validNews.length) % validNews.length;
+            renderNewsCarousel(validNews);
+        } else {
+            // Escritorio: transición fluida sin saltos
+            currentIndex = (currentIndex + direction + validNews.length) % validNews.length;
+            renderNewsCarousel(validNews);
+        }
+    }
+
+    function startNewsCarousel(news: any[]): void {
+        // Ocultar indicador de carga
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        if (loadingIndicator) {
+            loadingIndicator.style.display = 'none';
+        }
+        
+        // Si no hay noticias, no inicializar el carousel
+        if (!news || news.length === 0) {
+            return;
+        }
+        
+        renderNewsCarousel(news);
+        
+        // Inicializar posición del thumb sin animación
+        const thumb = document.getElementById('scrollThumb');
+        const track = document.getElementById('scrollTrack');
+        if (thumb && track && news && news.length > 0) {
+            const validNews = news.filter(item => item && item.title && item.image);
+            if (validNews.length > 0) {
+                const trackWidth = track.offsetWidth;
+                const thumbWidth = 100;
+                const maxThumbPosition = trackWidth - thumbWidth;
+                const progress = currentIndex / (validNews.length - 1);
+                const thumbPosition = progress * maxThumbPosition;
+                thumb.style.left = thumbPosition + 'px';
+            }
+        }
+        
+        if (autoPlayInterval) clearInterval(autoPlayInterval);
+        autoPlayInterval = setInterval(() => {
+            if (!isDragging && isAutoPlaying) {
+                animateNewsChange(1, news);
+            }
+        }, AUTO_PLAY_TIME);
+
+        // Animación más fluida del thumb
+        let animationFrame: number;
+        function animate() {
+            animateScrollThumb(news);
+            animationFrame = requestAnimationFrame(animate);
+        }
+        animate();
+    }
+
+    // Eventos para el scroll manual
+    function setupScrollEvents(news: any[]) {
+        const track = document.getElementById('scrollTrack');
+        const thumb = document.getElementById('scrollThumb');
+        
+        if (!track || !thumb) return;
+
+        // Función para calcular la posición exacta del thumb
+        function calculateThumbPosition(clientX: number): number {
+            if (!track) return 0;
+            const rect = track.getBoundingClientRect();
+            const clickX = clientX - rect.left;
+            const trackWidth = track.offsetWidth;
+            const thumbWidth = 40; // Actualizado para coincidir con el nuevo ancho
+            const maxThumbPosition = trackWidth - thumbWidth;
+            
+            const progress = Math.max(0, Math.min(1, clickX / trackWidth));
+            return progress * maxThumbPosition;
+        }
+
+        // Función para actualizar el índice basado en la posición
+        function updateIndexFromPosition(thumbPosition: number) {
+            if (!track) return;
+            const trackWidth = track.offsetWidth;
+            const thumbWidth = 40; // Actualizado para coincidir con el nuevo ancho
+            const maxThumbPosition = trackWidth - thumbWidth;
+            
+            const progress = thumbPosition / maxThumbPosition;
+            const newIndex = Math.round(progress * (news.length - 1));
+            
+            if (newIndex !== currentIndex && newIndex >= 0 && newIndex < news.length) {
+                currentIndex = newIndex;
+                const carousel = document.getElementById('newsCarousel');
+                if (carousel) {
+                    const cardWidth = window.innerWidth > 1100 ? 0.6 : 1;
+                    const translateX = -currentIndex * cardWidth * window.innerWidth;
+                    carousel.style.transform = `translateX(${translateX}px)`;
+                }
+            }
+        }
+
+        // Mouse events
+        track.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+            isDragging = true;
+            isAutoPlaying = false;
+            dragStartX = e.clientX;
+            thumbStartX = parseFloat(thumb.style.left) || 0;
+            
+            document.addEventListener('mousemove', handleMouseMove);
+            document.addEventListener('mouseup', handleMouseUp);
+        });
+
+        // Touch events para móviles
+        track.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            isDragging = true;
+            isAutoPlaying = false;
+            dragStartX = e.touches[0].clientX;
+            thumbStartX = parseFloat(thumb.style.left) || 0;
+            
+            document.addEventListener('touchmove', handleTouchMove);
+            document.addEventListener('touchend', handleTouchEnd);
+        });
+
+        function handleMouseMove(e: MouseEvent) {
+            if (!isDragging || !track || !thumb) return;
+            e.preventDefault();
+            
+            const deltaX = e.clientX - dragStartX;
+            const trackWidth = track.offsetWidth;
+            const thumbWidth = 40; // Actualizado para coincidir con el nuevo ancho
+            const maxThumbPosition = trackWidth - thumbWidth;
+            
+            let newThumbPosition = thumbStartX + deltaX;
+            newThumbPosition = Math.max(0, Math.min(maxThumbPosition, newThumbPosition));
+            
+            thumb.style.left = newThumbPosition + 'px';
+            
+            // Calcular el índice basado en la posición del thumb
+            const progress = newThumbPosition / maxThumbPosition;
+            const newIndex = Math.round(progress * (news.length - 1));
+            
+            if (newIndex !== currentIndex) {
+                currentIndex = newIndex;
+                renderNewsCarousel(news);
+            }
+        }
+
+        function handleTouchMove(e: TouchEvent) {
+            if (!isDragging || !track || !thumb) return;
+            e.preventDefault();
+            
+            const deltaX = e.touches[0].clientX - dragStartX;
+            const trackWidth = track.offsetWidth;
+            const thumbWidth = 40; // Actualizado para coincidir con el nuevo ancho
+            const maxThumbPosition = trackWidth - thumbWidth;
+            
+            let newThumbPosition = thumbStartX + deltaX;
+            newThumbPosition = Math.max(0, Math.min(maxThumbPosition, newThumbPosition));
+            
+            thumb.style.left = newThumbPosition + 'px';
+            
+            // Calcular el índice basado en la posición del thumb
+            const progress = newThumbPosition / maxThumbPosition;
+            const newIndex = Math.round(progress * (news.length - 1));
+            
+            if (newIndex !== currentIndex) {
+                currentIndex = newIndex;
+                renderNewsCarousel(news);
+            }
+        }
+
+        function handleMouseUp() {
+            isDragging = false;
+            // El auto-play continúa inmediatamente desde la nueva posición
+            isAutoPlaying = true;
+            
+            document.removeEventListener('mousemove', handleMouseMove);
+            document.removeEventListener('mouseup', handleMouseUp);
+        }
+
+        function handleTouchEnd() {
+            isDragging = false;
+            // El auto-play continúa inmediatamente desde la nueva posición
+            isAutoPlaying = true;
+            
+            document.removeEventListener('touchmove', handleTouchMove);
+            document.removeEventListener('touchend', handleTouchEnd);
+        }
+
+        // Click directo en la pista para saltar a una posición
+        track.addEventListener('click', (e) => {
+            if (isDragging) return;
+            
+            const rect = track.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const trackWidth = track.offsetWidth;
+            const thumbWidth = 40; // Actualizado para coincidir con el nuevo ancho
+            const maxThumbPosition = trackWidth - thumbWidth;
+            
+            const progress = Math.max(0, Math.min(1, clickX / trackWidth));
+            const newThumbPosition = progress * maxThumbPosition;
+            
+            thumb.style.left = newThumbPosition + 'px';
+            
+            const newIndex = Math.round(progress * (news.length - 1));
+            if (newIndex !== currentIndex) {
+                currentIndex = newIndex;
+                renderNewsCarousel(news);
+            }
+            
+            // El auto-play continúa inmediatamente desde la nueva posición
+            isAutoPlaying = true;
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Obtener las 5 noticias más recientes
+        const news = getLatestNews();
+        
+        // Inicializar el carousel con las noticias obtenidas
+        startNewsCarousel(news);
+        if (news && news.length > 0) {
+            setupScrollEvents(news);
+        }
+    });
+</script>
+
+<style>
+#scrollThumb {
+  cursor: grab;
+  box-shadow: 0 2px 8px rgba(206, 223, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  will-change: transform, left;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+#scrollThumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 4px 16px rgba(206, 223, 0, 0.5);
+}
+
+#scrollThumb:active {
+  cursor: grabbing;
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(206, 223, 0, 0.6);
+}
+
+#scrollTrack {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+#scrollTrack:hover {
+  background-color: #2a5a5e;
+}
+
+#scrollTrack:active {
+  background-color: #1e3f42;
+}
+
+#newsCarousel {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(0);
+  will-change: transform;
+  position: relative;
+}
+
+#main-card, #sec-card, #next-card {
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, width, opacity, right;
+}
+
+#sec-card {
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Animaciones para las imágenes dentro del carousel */
+#newsCarousel img {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
+}
+
+#newsCarousel img:hover {
+  transform: scale(1.02);
+}
+
+/* Estilos para las tarjetas clickeables */
+.news-card-clickable {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.news-card-clickable:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(206, 223, 0, 0.3);
+}
+
+.news-card-clickable:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(206, 223, 0, 0.4);
+}
+
+/* Efecto de brillo en hover */
+.news-card-clickable::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(206, 223, 0, 0.1), transparent);
+  transition: left 0.5s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.news-card-clickable:hover::before {
+  left: 100%;
+}
+
+@media (max-width: 1100px) {
+  section#section4 {
+    padding-left: 110px !important;
+    padding-right: 20px !important ;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+    min-height: 70vh;
+  }
+  .text-center.mb-8 {
+    margin-bottom: 1.5rem !important;
+  }
+  #newsCarousel {
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 1.5rem !important;
+    max-height: none !important;
+    height: auto !important;
+    min-height: 220px !important;
+  }
+  #sec-card, #next-card {
+    display: none !important;
+  }
+  #main-card {
+    width: 100% !important;
+    max-width: 400px !important;
+    min-width: 0 !important;
+    height: 220px !important;
+    margin: 0 auto 1.2rem auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: static !important;
+    transform: none !important;
+    opacity: 1 !important;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .news-card img {
+    width: 100% !important;
+    height: 140px !important;
+    max-width: 100vw !important;
+    object-fit: cover !important;
+    aspect-ratio: 1/1 !important;
+  }
+  .news-card > div {
+    width: 100% !important;
+    max-width: 100vw !important;
+    aspect-ratio: 1/1 !important;
+    height: 140px !important;
+  }
+  .news-card div[style*='display:flex'] {
+    justify-content: space-between !important;
+    gap: 8px !important;
+    margin-top: 10px !important;
+    font-size: 1rem !important;
+  }
+  .w-full.h-3.bg-\[\#22484b\].mt-8.relative.overflow-hidden.rounded-full.cursor-pointer#scrollTrack {
+    margin-top: 1.5rem !important;
+    height: 2.2rem !important;
+    min-width: 0 !important;
+  }
+}
+@media (max-width: 700px) {
+  section#section4 {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+  #main-card {
+    max-width: 98vw !important;
+    height: 140px !important;
+  }
+  #main-card img {
+    height: 90px !important;
+  }
+  #main-card > div {
+    height: 90px !important;
+  }
+  .w-full.h-3.bg-\[\#22484b\].mt-8.relative.overflow-hidden.rounded-full.cursor-pointer#scrollTrack {
+    height: 1.2rem !important;
+    margin-top: 1rem !important;
+  }
+}
+</style> 

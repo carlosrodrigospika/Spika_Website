@@ -1,0 +1,545 @@
+---
+import { getCurrentLocale, i18nConfig } from '../i18n/config';
+
+// Obtener idioma actual
+const currentLang = getCurrentLocale();
+---
+
+<div id="overlay-menu" class="hidden fixed inset-0 w-full h-full z-[100] bg-cover bg-center" style="background-image: url(/assets/Fondo_Menu_Reduced.webp);">
+    <!-- Overlay azul oscuro sutil -->
+    <div class="absolute inset-0 bg-[#003035]/60 z-0"></div>
+    <!--<div class="absolute inset-0 bg-brand-dark/90 backdrop-blur-sm lg:bg-transparent z-10"></div>-->
+    <!-- Botón de cierre (X) siempre visible -->
+    <button id="close-menu-btn" class="text-white z-50 m-4 absolute top-4 right-4 hover:cursor-pointer hover:text-[#CEDF00]">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+    </button>
+    <!-- Panel azul verdoso mitad izquierda en escritorio -->
+    <div class="hidden lg:block absolute left-0 top-0 h-full w-1/2 bg-brand-dark z-10"></div>
+    
+    <!-- Contenido del panel izquierdo (logo principal, menú, redes) -->
+    <div class="hidden lg:flex absolute left-0 top-0 h-full w-1/2 z-30 flex-col justify-between p-12" style="background-color: #003035; width:fit-content;">
+        <div class="mb-8">
+            <a href="/" class="block">
+                <img 
+                    src="/assets/Logo_SpikaTech.webp" 
+                    alt="SpikaTech Logo" 
+                    class="w-40"
+                />
+            </a>
+        </div>
+        <!-- Logo de marca de agua blanco como fondo, tocando el borde derecho -->
+        <div class="hidden lg:flex absolute top-0 right-0 h-screen w-96 z-20 pointer-events-none overflow-hidden" style="width:100%;">
+            <img 
+                src="/assets/Silueta_Estrella_Spika_.webp" 
+                alt="Logo SpikaTech Marca de Agua" 
+                class="h-screen w-auto opacity-10 select-none"
+                style="filter: brightness(0) invert(1); transform: translateX(-50%); min-width: 120%;"
+            />
+        </div>
+        <!-- Menú -->
+        <nav class="flex flex-col space-y-6 text-3xl md:text-4xl text-left">
+            <a href="/company" class="menu-link text-white font-light hover:text-[#CEDF00] transition-colors" data-i18n="OverlayMenu.Compañia"></a>
+            <div class="group" id="proyectos-group">
+                <a id="proyectos-link" class="menu-link text-white font-light hover:text-[#CEDF00] transition-colors flex items-center select-none" tabindex="0" role="button" data-i18n="OverlayMenu.Proyectos">
+                    Proyectos
+                </a>
+                <!-- Submenú escritorio -->
+                <div id="submenu-escritorio" class="hidden absolute left-full top-1/2 transform -translate-y-1/2 ml-4 py-4 px-8 space-y-4 z-40 min-w-[220px] border-l-2 border-white pl-8">
+                    <a href="/vrcardio" class="block text-white hover:text-[#CEDF00] transition-colors" style="white-space: nowrap"data-i18n="OverlayMenu.VRCardio"></a>
+                    <a href="/pras" class="block text-white hover:text-[#CEDF00] transition-colors" style="white-space: nowrap" data-i18n="OverlayMenu.PRAS"></a>
+                    <a href="/magallanes" class="block text-white hover:text-[#CEDF00] transition-colors" style="white-space: nowrap" data-i18n="OverlayMenu.Magallanes"></a>
+                </div>
+            </div>
+            <a href="/#desarrollos" class="menu-link text-white font-light hover:text-[#CEDF00] transition-colors" data-i18n="OverlayMenu.Desarrollos"></a>
+            <div class="group" id="actualidad-group">
+                <a id="actualidad-link" class="menu-link text-white font-light hover:text-[#CEDF00] transition-colors flex items-center select-none" tabindex="0" role="button" data-i18n="OverlayMenu.Actualidad">
+                    Actualidad
+                </a>
+                <!-- Submenú escritorio -->
+                <div id="submenu-actualidad-escritorio" class="hidden absolute left-full top-1/2 transform -translate-y-1/2 ml-4 py-4 px-8 space-y-4 z-40 min-w-[220px] border-l-2 border-white pl-8">
+                    <a href="/noticias" class="block text-white hover:text-[#CEDF00] transition-colors" style="white-space: nowrap" data-i18n="OverlayMenu.Noticias"></a>
+                    <!--<a href="/eventos" class="block text-white hover:text-[#CEDF00] transition-colors" style="white-space: nowrap" data-i18n="OverlayMenu.Eventos"></a>-->
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Contacto encima de redes sociales -->
+        <div class="flex flex-col mt-12 w-full">
+            
+            <!-- Idiomas -->
+            <div class="flex flex-row space-x-8 text-lg text-white mt-12 w-full justify-between items-center">
+                <a 
+                    href="/contacto" 
+                    class="font-light hover:text-[#CEDF00] transition-colors mb-0"
+                    data-i18n="OverlayMenu.Contacto"
+                >
+                    
+                </a>
+                
+                {Object.entries(i18nConfig.locales).map(([code, name]) => (
+                    <button 
+                        data-lang={code} 
+                        class={`language-btn font-light hover:text-[#CEDF00] transition-colors cursor-pointer mb-0 ${currentLang === code ? 'text-[#CEDF00] font-semibold' : ''}`}
+                    >
+                        {name}
+                    </button>
+                ))}
+            </div>
+            
+            
+            <div class="flex flex-row space-x-8 text-lg text-white w-full justify-between border-t-2 border-white pt-2">
+                <a href="https://es.linkedin.com/company/spikatech" target="_blank" class="block text-center w-full hover:text-[#CEDF00] transition-colors text-lg" data-i18n="OverlayMenu.Linkedin"></a>
+                <a href="https://www.youtube.com/@spikatech3778" target="_blank" class="px-4 block text-center w-full hover:text-[#CEDF00] transition-colors text-lg" data-i18n="OverlayMenu.Youtube"></a>
+                <a href="https://www.instagram.com/spika_tech" target="_blank" class="px-4 block text-center w-full hover:text-[#CEDF00] transition-colors text-lg" data-i18n="OverlayMenu.Instagram"></a>
+                <a href="https://x.com/SpikaTech" target="_blank" class="px-4 block text-center w-full hover:text-[#CEDF00] transition-colors text-lg" data-i18n="OverlayMenu.X"></a> 
+            </div>
+        </div>
+    </div>
+    <!-- Contenido móvil (pantalla completa) -->
+    <div class="relative w-full h-full flex flex-col p-8 sm:p-12 lg:hidden z-20">
+        <!-- Header with Logo y el botón de cierre ya está arriba -->
+        <!--<div class="flex justify-between items-start">
+            <a href="/" class="block">
+                <img src="/assets/Logo_SpikaTech_1-removebg-preview.ico" alt="SpikaTech Logo" class="w-48">
+            </a>
+        </div>-->
+        <!-- Navigation Links -->
+        <div class="flex-grow flex flex-col justify-center">
+            <nav class="flex flex-col space-y-6 text-3xl md:text-4xl text-left">
+                <a href="/company" class="text-white menu-link" style="font-size: min(1.6em, min(13.5vw, 40px));" data-i18n="OverlayMenu.Compañia"></a>
+                
+                <!-- Proyectos con submenú en móvil -->
+                <div class="relative">
+                    <button id="proyectos-mobile-btn" class="text-white flex items-center w-full transition-colors" style="font-size: min(1.6em, min(13.5vw, 40px));">
+                        <span data-i18n="OverlayMenu.Proyectos"></span>
+                        <svg class="w-8 h-8 ml-3 transition-transform duration-300" fill="none" stroke="white" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <!-- Submenú móvil -->
+                    <div id="submenu-movil" class="hidden mt-4 ml-6 space-y-4 border-l-2 border-white pl-8">
+                        <a href="/vrcardio" class="block text-white hover:text-[#CEDF00] transition-colors" style="font-size: min(1.4em, min(12vw, 35px));" data-i18n="OverlayMenu.VRCardio"></a>
+                        <a href="/pras" class="block text-white hover:text-[#CEDF00] transition-colors" style="font-size: min(1.4em, min(12vw, 35px));" data-i18n="OverlayMenu.PRAS"></a>
+                        <a href="/magallanes" class="block text-white hover:text-[#CEDF00] transition-colors" style="font-size: min(1.4em, min(12vw, 35px));" data-i18n="OverlayMenu.Magallanes"></a>
+                    </div>
+                </div>
+                
+                <a href="/#desarrollos" class="text-white menu-link" style="font-size: min(1.6em, min(13.5vw, 40px));" data-i18n="OverlayMenu.Desarrollos"></a>
+                
+                <!-- Actualidad con submenú en móvil -->
+                <div class="relative">
+                    <button id="actualidad-mobile-btn" class="text-white flex items-center w-full transition-colors" style="font-size: min(1.6em, min(13.5vw, 40px));">
+                        <span data-i18n="OverlayMenu.Actualidad"></span>
+                        <svg class="w-8 h-8 ml-3 transition-transform duration-300" fill="none" stroke="white" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <!-- Submenú móvil -->
+                    <div id="submenu-actualidad-movil" class="hidden mt-4 ml-6 space-y-4 border-l-2 border-white pl-8">
+                        <a href="/noticias" class="block text-white hover:text-[#CEDF00] transition-colors" style="font-size: min(1.4em, min(12vw, 35px));" data-i18n="OverlayMenu.Noticias"></a>
+                        <!--<a href="/eventos" class="block text-white hover:text-[#CEDF00] transition-colors" style="font-size: min(1.4em, min(12vw, 35px));" data-i18n="OverlayMenu.Eventos"></a>-->
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="flex flex-col w-full">
+            
+            <!-- Idiomas -->
+            <div class="flex flex-row space-x-6 text-lg text-white">
+                <a 
+                    href="/contacto" 
+                    class="font-light mb-0"
+                    data-i18n="OverlayMenu.Contacto"
+                >
+                    
+                </a>
+                
+                {Object.entries(i18nConfig.locales).map(([code, name]) => (
+                    <button 
+                        data-lang={code} 
+                        class={`language-btn font-light hover:text-[#CEDF00] transition-colors cursor-pointer mb-0 ${currentLang === code ? 'text-[#CEDF00] font-semibold' : ''}`}
+                    >
+                        {name}
+                    </button>
+                ))}
+            </div>
+            
+            <!-- Social Media Links -->
+            <div class="flex flex-row space-x-6 text-lg text-white border-t-2 border-white pt-2">
+                <a href="https://www.instagram.com/spika_tech" target="_blank" class="text-white" style="font-size:30px"><i
+                    class="bi bi-instagram"></i></a>
+                <a href="https://www.youtube.com/@spikatech3778" target="_blank" class="text-white" style="font-size:30px"><i
+                    class="bi bi-youtube"></i></a>
+                <a href="https://es.linkedin.com/company/spikatech" target="_blank" class="text-white" style="font-size:30px"><i
+                    class="bi bi-linkedin"></i></a>
+                <a href="https://x.com/SpikaTech" target="_blank" class="text-white" style="font-size:30px"><i
+                    class="bi bi-twitter-x"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    import { setLocale, updatePageTranslations, initializeTranslations } from '../i18n/config';
+
+    // Función para inicializar el sistema de idiomas
+    function initLanguageSystem() {
+        // Inicializar traducciones al cargar
+        initializeTranslations();
+        
+        // Manejar clics en botones de idioma
+        const languageButtons = document.querySelectorAll('.language-btn');
+        
+        languageButtons.forEach(button => {
+            button.addEventListener('click', async (e) => {
+                e.preventDefault(); // Prevenir comportamiento por defecto
+                const target = e.target as HTMLElement;
+                if (!target) return;
+                
+                const lang = target.getAttribute('data-lang');
+                
+                if (lang) {
+                    // Establecer el idioma
+                    setLocale(lang);
+                    
+                    // Actualizar traducciones sin cerrar el menú
+                    await updatePageTranslations(lang);
+                }
+            });
+        });
+
+        // Escuchar cambios de idioma desde otros componentes
+        window.addEventListener('localeChanged', async (event: any) => {
+            const { locale } = event.detail;
+            await updatePageTranslations(locale);
+        });
+    }
+
+    // Inicializar cuando la página cargue
+    document.addEventListener('astro:page-load', initLanguageSystem);
+    
+    // También inicializar si ya está cargado
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initLanguageSystem);
+    } else {
+        initLanguageSystem();
+    }
+
+    // Manejo del botón de cierre
+    const closeMenuBtn = document.getElementById('close-menu-btn');
+    const menu = document.getElementById('overlay-menu');
+    
+    if (closeMenuBtn && menu) {
+        closeMenuBtn.addEventListener('click', function () {            
+            menu.classList.remove('animate-open');
+            // Ocultar después de la animación
+            setTimeout(() => {
+                menu.classList.add('hidden');
+            }, 400);
+        });
+    }
+    
+    // Obtener todos los enlaces de navegación dentro del menú
+    const menuLinks = document.querySelectorAll('.menu-link');
+
+    // Agregar el evento click a cada enlace para cerrar el menú
+    menuLinks.forEach(link => {
+        link.addEventListener('click', function () {
+            const menu = document.getElementById('overlay-menu');
+            if (menu) {
+                menu.classList.remove('animate-open');
+                // Ocultar después de la animación
+                setTimeout(() => {
+                    menu.classList.add('hidden');
+                }, 400);
+            }
+        });
+    });
+    
+    // Cerrar submenú móvil cuando se hace clic en un enlace del submenú
+    const submenuLinks = document.querySelectorAll('#submenu-movil a');
+    submenuLinks.forEach(link => {
+        link.addEventListener('click', function () {
+            const submenuMovil = document.getElementById('submenu-movil');
+            const proyectosArrow = document.querySelector('#proyectos-mobile-btn svg');
+            
+            if (submenuMovil && proyectosArrow && proyectosArrow instanceof HTMLElement) {
+                submenuMovil.classList.add('hidden');
+                proyectosArrow.style.transform = 'rotate(0deg)';
+            }
+        });
+    });
+
+    // Cerrar submenú móvil de actualidad cuando se hace clic en un enlace del submenú
+    const submenuActualidadLinks = document.querySelectorAll('#submenu-actualidad-movil a');
+    submenuActualidadLinks.forEach(link => {
+        link.addEventListener('click', function () {
+            const submenuActualidadMovil = document.getElementById('submenu-actualidad-movil');
+            const actualidadArrow = document.querySelector('#actualidad-mobile-btn svg');
+            
+            if (submenuActualidadMovil && actualidadArrow && actualidadArrow instanceof HTMLElement) {
+                submenuActualidadMovil.classList.add('hidden');
+                actualidadArrow.style.transform = 'rotate(0deg)';
+            }
+        });
+    });
+
+    // Mostrar/ocultar submenú de proyectos en móvil
+    const proyectosMobileBtn = document.getElementById('proyectos-mobile-btn');
+    const submenuMovil = document.getElementById('submenu-movil');
+    const proyectosArrow = proyectosMobileBtn?.querySelector('svg');
+    
+    if (proyectosMobileBtn && submenuMovil && proyectosArrow) {
+        proyectosMobileBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation(); // Evitar que el evento se propague
+            const isHidden = submenuMovil.classList.contains('hidden');
+            
+            if (isHidden) {
+                // Mostrar submenú
+                submenuMovil.classList.remove('hidden');
+                proyectosArrow.style.transform = 'rotate(180deg)';
+            } else {
+                // Ocultar submenú
+                submenuMovil.classList.add('hidden');
+                proyectosArrow.style.transform = 'rotate(0deg)';
+            }
+        });
+        
+        // Prevenir que el botón se comporte como un enlace
+        proyectosMobileBtn.addEventListener('mousedown', function (e) {
+            e.preventDefault();
+        });
+    }
+
+    // Mostrar/ocultar submenú de actualidad en móvil
+    const actualidadMobileBtn = document.getElementById('actualidad-mobile-btn');
+    const submenuActualidadMovil = document.getElementById('submenu-actualidad-movil');
+    const actualidadArrow = actualidadMobileBtn?.querySelector('svg');
+    
+    if (actualidadMobileBtn && submenuActualidadMovil && actualidadArrow) {
+        actualidadMobileBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation(); // Evitar que el evento se propague
+            const isHidden = submenuActualidadMovil.classList.contains('hidden');
+            
+            if (isHidden) {
+                // Mostrar submenú
+                submenuActualidadMovil.classList.remove('hidden');
+                actualidadArrow.style.transform = 'rotate(180deg)';
+            } else {
+                // Ocultar submenú
+                submenuActualidadMovil.classList.add('hidden');
+                actualidadArrow.style.transform = 'rotate(0deg)';
+            }
+        });
+        
+        // Prevenir que el botón se comporte como un enlace
+        actualidadMobileBtn.addEventListener('mousedown', function (e) {
+            e.preventDefault();
+        });
+    }
+
+    // Lógica para delay en ocultar submenú de proyectos en escritorio
+    const proyectosGroup = document.getElementById('proyectos-group');
+    const submenuEscritorio = document.getElementById('submenu-escritorio');
+    let hideTimeout: any = null;
+    if (proyectosGroup && submenuEscritorio) {
+        // Mostrar submenú al hacer hover en el grupo
+        proyectosGroup.addEventListener('mouseenter', function () {
+            if (window.innerWidth >= 1024) {
+                clearTimeout(hideTimeout);
+                submenuEscritorio.classList.remove('hidden');
+                // Añadir clase para animación escalonada
+                setTimeout(() => {
+                    submenuEscritorio.classList.add('show-animation');
+                }, 10);
+            }
+        });
+        // Ocultar submenú con delay al salir del grupo
+        proyectosGroup.addEventListener('mouseleave', function () {
+            if (window.innerWidth >= 1024) {
+                hideTimeout = setTimeout(() => {
+                    submenuEscritorio.classList.remove('show-animation');
+                    setTimeout(() => {
+                        submenuEscritorio.classList.add('hidden');
+                    }, 300);
+                }, 500);
+            }
+        });
+        // Si el mouse entra al submenú, cancelar el timeout
+        submenuEscritorio.addEventListener('mouseenter', function () {
+            if (window.innerWidth >= 1024) {
+                clearTimeout(hideTimeout);
+            }
+        });
+        // Si el mouse sale del submenú, iniciar el timeout
+        submenuEscritorio.addEventListener('mouseleave', function () {
+            if (window.innerWidth >= 1024) {
+                hideTimeout = setTimeout(() => {
+                    submenuEscritorio.classList.remove('show-animation');
+                    setTimeout(() => {
+                        submenuEscritorio.classList.add('hidden');
+                    }, 300);
+                }, 500);
+            }
+        });
+    }
+
+    // Lógica para delay en ocultar submenú de actualidad en escritorio
+    const actualidadGroup = document.getElementById('actualidad-group');
+    const submenuActualidadEscritorio = document.getElementById('submenu-actualidad-escritorio');
+    let hideTimeoutActualidad: any = null;
+    if (actualidadGroup && submenuActualidadEscritorio) {
+        // Mostrar submenú al hacer hover en el grupo
+        actualidadGroup.addEventListener('mouseenter', function () {
+            if (window.innerWidth >= 1024) {
+                clearTimeout(hideTimeoutActualidad);
+                submenuActualidadEscritorio.classList.remove('hidden');
+                // Añadir clase para animación escalonada
+                setTimeout(() => {
+                    submenuActualidadEscritorio.classList.add('show-animation');
+                }, 10);
+            }
+        });
+        // Ocultar submenú con delay al salir del grupo
+        actualidadGroup.addEventListener('mouseleave', function () {
+            if (window.innerWidth >= 1024) {
+                hideTimeoutActualidad = setTimeout(() => {
+                    submenuActualidadEscritorio.classList.remove('show-animation');
+                    setTimeout(() => {
+                        submenuActualidadEscritorio.classList.add('hidden');
+                    }, 300);
+                }, 500);
+            }
+        });
+        // Si el mouse entra al submenú, cancelar el timeout
+        submenuActualidadEscritorio.addEventListener('mouseenter', function () {
+            if (window.innerWidth >= 1024) {
+                clearTimeout(hideTimeoutActualidad);
+            }
+        });
+        // Si el mouse sale del submenú, iniciar el timeout
+        submenuActualidadEscritorio.addEventListener('mouseleave', function () {
+            if (window.innerWidth >= 1024) {
+                hideTimeoutActualidad = setTimeout(() => {
+                    submenuActualidadEscritorio.classList.remove('show-animation');
+                    setTimeout(() => {
+                        submenuActualidadEscritorio.classList.add('hidden');
+                    }, 300);
+                }, 500);
+            }
+        });
+    }
+</script>
+
+<style>
+    /* Estilos para el submenú móvil */
+    #submenu-movil,
+    #submenu-actualidad-movil {
+        transition: all 0.4s ease-out;
+        opacity: 0;
+        transform: translateY(-15px);
+        max-height: 0;
+        overflow: hidden;
+    }
+    
+    #submenu-movil:not(.hidden),
+    #submenu-actualidad-movil:not(.hidden) {
+        opacity: 1;
+        transform: translateY(0);
+        max-height: 200px;
+    }
+    
+    /* Estilos para la flecha */
+    #proyectos-mobile-btn svg {
+        transition: transform 0.3s ease-in-out;
+        stroke-width: 2.5;
+    }
+    
+    /* Estilos para los enlaces del submenú móvil */
+    #submenu-movil a,
+    #submenu-actualidad-movil a {
+        transition: color 0.2s ease-in-out, opacity 0.3s ease-out, transform 0.3s ease-out;
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    /* Animación escalonada para enlaces móviles */
+    #submenu-movil:not(.hidden) a:nth-child(1),
+    #submenu-actualidad-movil:not(.hidden) a:nth-child(1) {
+        transition-delay: 0.1s;
+    }
+
+    #submenu-movil:not(.hidden) a:nth-child(2),
+    #submenu-actualidad-movil:not(.hidden) a:nth-child(2) {
+        transition-delay: 0.2s;
+    }
+
+    #submenu-movil:not(.hidden) a:nth-child(3),
+    #submenu-actualidad-movil:not(.hidden) a:nth-child(3) {
+        transition-delay: 0.3s;
+    }
+
+    #submenu-movil:not(.hidden) a,
+    #submenu-actualidad-movil:not(.hidden) a {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    /* Estilos para el botón de proyectos */
+    #proyectos-mobile-btn {
+        cursor: pointer;
+        user-select: none;
+    }
+
+    #overlay-menu {
+        transform-origin: left;
+        transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+    }
+
+    #overlay-menu.animate-open {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+
+    #overlay-menu:not(.animate-open) {
+        transform: scaleX(0);
+        opacity: 0;
+    }
+
+    /* Estilos para animación escalonada de submenús en escritorio */
+    #submenu-escritorio a,
+    #submenu-actualidad-escritorio a {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    }
+
+    #submenu-escritorio.show-animation a:nth-child(1) {
+        transition-delay: 0.1s;
+    }
+
+    #submenu-escritorio.show-animation a:nth-child(2) {
+        transition-delay: 0.2s;
+    }
+
+    #submenu-escritorio.show-animation a:nth-child(3) {
+        transition-delay: 0.3s;
+    }
+
+    #submenu-actualidad-escritorio.show-animation a:nth-child(1) {
+        transition-delay: 0.1s;
+    }
+
+    #submenu-actualidad-escritorio.show-animation a:nth-child(2) {
+        transition-delay: 0.2s;
+    }
+
+    #submenu-escritorio.show-animation a,
+    #submenu-actualidad-escritorio.show-animation a {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>

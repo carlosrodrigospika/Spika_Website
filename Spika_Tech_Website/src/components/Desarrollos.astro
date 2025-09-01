@@ -1,0 +1,528 @@
+<section id="section3" class="overflow-hidden w-full flex flex-col md:flex-row items-stretch justify-between gap-8" style="padding-left: 110px; padding-right: 50px; padding-bottom: 100px; padding-top: 80px; height: 100vh;">
+    <!-- Columna izquierda -->
+    <div class="flex flex-col justify-between items-center" style="width: 60%;">
+      <!-- Título arriba izquierda -->
+      <h2 class="text-2xl md:text-4xl uppercase text-left pb-4 text-[#003035] tracking-wide" style="text-align: center;width: fit-content;border-bottom: 2px solid #003035;" data-i18n="Desarrollos.title"></h2>
+      <!-- Visor 3D abajo izquierda -->
+      <div class="flex flex-col items-center justify-end flex-1" style="width: 100%;">
+        <div id="model-canvas-container" style="width: 600px; height: 600px; position: relative; margin: 0 auto;">
+          <img id="model-placeholder" src="/assets/Render/Gafas_VR.webp" alt="VR Model" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; z-index: 1;">
+          <canvas id="model-canvas" style="width: 100%; height: 100%; display: block; position: relative; z-index: 2; opacity: 0;"></canvas>
+        </div>
+        <!-- Puntos para cambiar modelo -->
+        <div class="flex gap-2 mt-4">
+          <button id="dot-0" class="w-3 h-3 rounded-full border-2 border-[#22484b] transition-all duration-200 cursor-pointer bg-[#CEDF00] opacity-80" aria-label="Modelo VR"></button>
+          <button id="dot-1" class="w-3 h-3 rounded-full border-2 border-[#22484b] transition-all duration-200 cursor-pointer bg-white opacity-50" aria-label="Modelo Móvil"></button>
+        </div>
+      </div>
+    </div>
+    <!-- Columna derecha -->
+    <div class="flex flex-col justify-center fade-right" style="width: 40%;"> <!--cuando se habilite el botón poner justify-end-->
+      <div class="flex flex-col gap-10">
+        <p class="text-xl text-left text-[#003035]">
+          <span class="text-[#CEDF00]" data-i18n="Desarrollos.text1"></span> 
+          <span data-i18n="Desarrollos.text2"></span>
+          <span class="text-[#CEDF00]" data-i18n="Desarrollos.text3"></span>
+        </p>
+        <p class="text-2xl text-left text-[#003035]" style="margin-left:30%;">
+            <span data-i18n="Desarrollos.text4">
+            </span> <span class="text-[#CEDF00]" data-i18n="Desarrollos.text5"></span>
+        </p>
+      </div>
+      <!-- Botón animado 
+      <div class="flex mt-8">
+        <button class="group relative w-16 h-16 flex items-center justify-center bg-transparent border-none outline-none cursor-pointer">
+          <span class="text-6xl text-[#CEDF00] font-light transition-opacity duration-200 group-hover:opacity-0 select-none">+</span>
+          <span class="absolute text-6xl text-[#CEDF00] font-light opacity-0 transition-opacity duration-200 group-hover:opacity-100 select-none">→</span>
+        </button>
+      </div>-->
+    </div>
+    
+    
+    <script>
+        import * as THREE from 'three';
+        import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+        import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+      const modelConfigs = [
+        {
+          modelPath: '/assets/models/VR.glb',
+          scale: 5.5,
+          modelPosY: 0,
+          mobileScale: 3.5 // Escala más pequeña para móvil
+        },
+        {
+          modelPath: '/assets/models/Movil.glb',
+          scale: 5,
+          modelPosY: 0,
+          mobileScale: 3.0 // Escala más pequeña para móvil
+        }
+      ];
+
+      let currentModelIdx = 0;
+      let scene:any, camera:any, renderer:any, controls:any, animationId:any;
+      let loadedModels : any = [null, null];
+      let isAnimating = false;
+      let isVisible = false; // Variable para controlar visibilidad
+
+      // Función para obtener la escala según el tamaño de pantalla
+      function getScaleForScreenSize(baseScale: number, mobileScale: number) {
+        const isMobile = window.innerWidth <= 640;
+        return isMobile ? mobileScale : baseScale;
+      }
+
+      // Posiciones para los modelos
+      const centerPosition = new THREE.Vector3(0, 0, 0);
+      const cornerPosition = new THREE.Vector3(1.7, 1.7, 0);
+      const centerScale = 1.4;
+      const cornerScale = 0.5;
+
+      // Función para actualizar el target de los controles
+      function updateControlsTarget() {
+        if (!controls) return;
+        
+        // Encontrar el modelo que está en el centro
+        const centerModel = loadedModels.find((mdl:any) => 
+          mdl && mdl.position.distanceTo(centerPosition) < 0.1
+        );
+        
+        if (centerModel) {
+          // Actualizar el target de los controles al modelo central
+          controls.target.copy(centerModel.position);
+          controls.update();
+        }
+      }
+
+      function setActiveDot(idx:any) {
+        for (let i = 0; i < 2; i++) {
+          const dot = document.getElementById('dot-' + i);
+          if (dot) {
+            if (i === idx) {
+              dot.style.background = '#CEDF00';
+              dot.style.opacity = '0.8';
+            } else {
+              dot.style.background = '#fff';
+              dot.style.opacity = '0.5';
+            }
+          }
+        }
+      }
+
+      function animateModelPosition(model:any, targetPosition:any, targetScale:any, duration:number = 1000) {
+        if (!model) return;
+        
+        const startPosition = model.position.clone();
+        const startScale = model.scale.clone();
+        const startTime = Date.now();
+        
+        // Determinar si va a la esquina para resetear rotación
+        const isGoingToCorner = targetPosition.distanceTo(cornerPosition) < 0.1;
+        
+        function updatePosition() {
+          const elapsed = Date.now() - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          
+          // Función de easing suave
+          const easeProgress = 1 - Math.pow(1 - progress, 3);
+          
+          // Interpolar posición
+          model.position.lerpVectors(startPosition, targetPosition, easeProgress);
+          
+          // Interpolar escala manteniendo la escala original del modelo
+          const targetScaleVector = new THREE.Vector3(targetScale, targetScale, targetScale);
+          model.scale.lerpVectors(startScale, targetScaleVector, easeProgress);
+          
+          // Si va a la esquina, resetear rotación gradualmente
+          if (isGoingToCorner) {
+            model.rotation.y *= (1 - easeProgress);
+          }
+          
+          if (progress < 1) {
+            requestAnimationFrame(updatePosition);
+          } else {
+            // Asegurar que la rotación esté completamente reseteada si va a la esquina
+            if (isGoingToCorner) {
+              model.rotation.y = 0;
+            }
+            isAnimating = false;
+          }
+        }
+        
+        updatePosition();
+      }
+
+      function showModel(idx:any) {
+        if (isAnimating) return; // Evitar múltiples animaciones simultáneas
+        isAnimating = true;
+        
+        // Obtener escalas según el tamaño de pantalla
+        const config = modelConfigs[idx];
+        const otherConfig = modelConfigs[idx === 0 ? 1 : 0];
+        const currentScale = getScaleForScreenSize(config.scale, config.mobileScale);
+        const otherScale = getScaleForScreenSize(otherConfig.scale, otherConfig.mobileScale);
+        
+        // Animar el modelo que va al centro con su escala original
+        if (loadedModels[idx]) {
+          const originalScale = currentScale * centerScale;
+          animateModelPosition(loadedModels[idx], centerPosition, originalScale);
+        }
+        
+        // Animar el modelo que va a la esquina con su escala original
+        const otherIdx = idx === 0 ? 1 : 0;
+        if (loadedModels[otherIdx]) {
+          const originalScale = otherScale * cornerScale;
+          animateModelPosition(loadedModels[otherIdx], cornerPosition, originalScale);
+        }
+        
+        setActiveDot(idx);
+      }
+
+      function animate() {
+        // Solo renderizar si la sección es visible
+        if (!isVisible) {
+          animationId = requestAnimationFrame(animate);
+          return;
+        }
+
+        animationId = requestAnimationFrame(animate);
+        
+        // Solo girar el modelo que está en el centro (activo) sobre sí mismo
+        loadedModels.forEach((mdl:any, i:any) => { 
+          if (mdl) {
+            const isInCenter = mdl.position.distanceTo(centerPosition) < 0.1;
+            if (isInCenter) {
+              // Solo el modelo activo rota sobre sí mismo
+              mdl.rotation.y += 0.01;
+            }
+            // El modelo inactivo NO rota - se mantiene completamente quieto
+          }
+        });
+        
+        // La cámara no rota automáticamente
+        renderer.render(scene, camera);
+      }
+
+      function init3DViewer() {
+        const canvas = document.getElementById('model-canvas');
+        if (!canvas) return;
+        const container = canvas.parentElement;
+        if (!container) return;
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+
+        // Escena y cámara
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 100);
+        camera.position.set(0, 0, 5);
+
+        // Renderer
+        renderer = new THREE.WebGLRenderer({
+          canvas: canvas,
+          alpha: true,
+          antialias: true,
+          powerPreference: 'high-performance',
+          stencil: false,
+          depth: true
+        });
+        renderer.setSize(width, height);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.shadowMap.enabled = false;
+        renderer.outputColorSpace = THREE.SRGBColorSpace;
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.2;
+
+        // Luces
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+        scene.add(ambientLight);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2);
+        directionalLight.position.set(5, 5, 5);
+        scene.add(directionalLight);
+        const fillLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        fillLight.position.set(-5, 0, 5);
+        scene.add(fillLight);
+        const topLight = new THREE.DirectionalLight(0xffffff, 1.0);
+        topLight.position.set(0, 10, 0);
+        scene.add(topLight);
+        const warmLight = new THREE.PointLight(0xffcc66, 0.8, 25);
+        warmLight.position.set(-3, 2, 3);
+        scene.add(warmLight);
+        const coolLight = new THREE.PointLight(0x6699ff, 0.6, 25);
+        coolLight.position.set(3, -2, -3);
+        scene.add(coolLight);
+        const frontLight = new THREE.DirectionalLight(0xffffff, 0.7);
+        frontLight.position.set(0, 0, 8);
+        scene.add(frontLight);
+        const backLight = new THREE.DirectionalLight(0xffffff, 0.4);
+        backLight.position.set(0, 0, -8);
+        scene.add(backLight);
+        const warmAmbient = new THREE.AmbientLight(0xfff4e6, 0.3);
+        scene.add(warmAmbient);
+
+        // Controles
+        controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.screenSpacePanning = false;
+        // Libertad total de rotación
+        controls.maxPolarAngle = Math.PI; // sin límite
+        controls.minPolarAngle = 0;
+        controls.autoRotate = false; // Deshabilitar rotación automática de la cámara
+        controls.autoRotateSpeed = 2;
+        controls.enableZoom = false;
+        controls.enablePan = false;
+        controls.enableRotate = false; // Deshabilitar interactividad del usuario
+
+        // Función para actualizar el target de los controles
+        function updateControlsTarget() {
+          if (!controls) return;
+          
+          // Encontrar el modelo que está en el centro
+          const centerModel = loadedModels.find((mdl:any) => 
+            mdl && mdl.position.distanceTo(centerPosition) < 0.1
+          );
+          
+          if (centerModel) {
+            // Actualizar el target de los controles al modelo central
+            controls.target.copy(centerModel.position);
+            controls.update();
+          }
+        }
+
+        // Cargar ambos modelos
+        let loadedCount = 0;
+        modelConfigs.forEach((cfg, idx) => {
+          const loader = new GLTFLoader();
+          loader.load(cfg.modelPath, (gltf) => {
+            const mdl = gltf.scene;
+            
+            // Centrar modelo
+            const box = new THREE.Box3().setFromObject(mdl);
+            const center = box.getCenter(new THREE.Vector3());
+            mdl.position.sub(center);
+            
+            // Obtener escala según el tamaño de pantalla
+            const scale = getScaleForScreenSize(cfg.scale, cfg.mobileScale);
+            
+            // Posicionar inicialmente
+            if (idx === 0) {
+              // Primer modelo en el centro
+              mdl.position.copy(centerPosition);
+              mdl.scale.setScalar(scale * centerScale);
+            } else {
+              // Segundo modelo en la esquina
+              mdl.position.copy(cornerPosition);
+              mdl.scale.setScalar(scale * cornerScale);
+            }
+            
+            scene.add(mdl);
+            loadedModels[idx] = mdl;
+            loadedCount++;
+            if (loadedCount === modelConfigs.length) {
+              // Ocultar placeholder cuando todos los modelos estén cargados
+              const placeholder = document.getElementById('model-placeholder');
+              const canvas = document.getElementById('model-canvas');
+              
+              if (placeholder && canvas) {
+                // Ocultar placeholder
+                placeholder.style.opacity = '0';
+                placeholder.style.transition = 'opacity 1s ease-out';
+                
+                // Mostrar canvas con transición
+                canvas.style.transition = 'opacity 0.3s ease-in';
+                
+                setTimeout(() => {
+                  placeholder.style.display = 'none';
+                  canvas.style.opacity = '1';
+                }, 300);
+              }
+              
+              animate();
+            }
+          }, undefined, (err) => {
+            console.error('Error cargando modelo:', err);
+          });
+        });
+
+        // Responsivo
+        window.addEventListener('resize', () => {
+          if (!container) return;
+          camera.aspect = container.clientWidth / container.clientHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(container.clientWidth, container.clientHeight);
+        });
+      }
+
+      function resizeRenderer() {
+        const canvas = document.getElementById('model-canvas');
+        if (!canvas) return;
+        const container = canvas.parentElement;
+        if (!container) return;
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+        renderer.setSize(width, height, false);
+      }
+
+      if (typeof window !== 'undefined') {
+        setTimeout(() => {
+          init3DViewer();
+          initDesarrollosAnimations();
+          document.getElementById('dot-0')!.onclick = () => {
+            if (currentModelIdx !== 0 && !isAnimating) {
+              currentModelIdx = 0;
+              showModel(0);
+            }
+          };
+          document.getElementById('dot-1')!.onclick = () => {
+            if (currentModelIdx !== 1 && !isAnimating) {
+              currentModelIdx = 1;
+              showModel(1);
+            }
+          };
+          resizeRenderer();
+          window.addEventListener('resize', resizeRenderer);
+        }, 200);
+      }
+
+      // Función para inicializar las animaciones de la sección Desarrollos
+      function initDesarrollosAnimations() {
+        const section = document.querySelector('#section3') as HTMLElement;
+        if (!section) return;
+
+        // Crear Intersection Observer para detectar cuando la sección es visible
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // La sección es visible, iniciar animaciones
+              animateDesarrollosElements();
+              isVisible = true; // Marcar la sección como visible
+            } else {
+              isVisible = false; // Marcar la sección como no visible
+            }
+          });
+        }, {
+          threshold: 0.1, // Se activa cuando el 10% de la sección es visible
+          rootMargin: '50px 0px 50px 0px' // Margen para anticipar la visibilidad
+        });
+
+        // Observar la sección de desarrollos
+        observer.observe(section);
+      }
+
+      function animateDesarrollosElements() {
+        // Verificar si las animaciones ya se han ejecutado
+        const textContainer = document.querySelector('#section3 .fade-right');
+        if (textContainer && textContainer.classList.contains('visible')) {
+          return; // Las animaciones ya se ejecutaron
+        }
+
+        // Animar texto desde la derecha
+        const fadeRightElements = document.querySelectorAll('#section3 .fade-right');
+        fadeRightElements.forEach((el) => {
+          setTimeout(() => el.classList.add('visible'), 300);
+        });
+      }
+    </script>
+  </section>
+  <style>
+    /* Botón animado */
+    button.group {
+      outline: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Estilos para las animaciones fade-right */
+    .fade-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1);
+    }
+
+    .fade-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    @media (max-width: 1100px) {
+      section {
+        flex-direction: column !important;
+        justify-content: center !important;
+        padding-left: 110px;
+        padding-right: 20px;
+        padding-top: 2.5rem !important;
+        padding-bottom: 2.5rem !important;
+        height: auto !important;
+        min-height: 70vh;
+        gap: 2.5rem !important;
+      }
+      .flex.flex-col.justify-between.items-center[style*="width: 60%"] {
+        width: 100% !important;
+        max-width: 100vw !important;
+        align-items: center !important;
+        margin-bottom: 2rem !important;
+      }
+      .flex.flex-col.items-center.justify-end.flex-1[style*="width: 80%"] {
+        width: 100% !important;
+        max-width: 400px !important;
+        margin: 0 auto !important;
+        min-width: 0 !important;
+        max-height: 320px !important;
+      }
+      #model-canvas-container {
+        width: 100% !important;
+        max-width: 600px !important;
+        aspect-ratio: 1 !important;
+        margin: 0 auto !important;
+      }
+      #model-canvas {
+        width: 100% !important;
+        height: 100% !important;
+        min-width: 0 !important;
+        display: block !important;
+        margin: 0 auto !important;
+      }
+      .flex.flex-col.justify-center[style*="width: 40%"] {
+        width: 100% !important;
+        max-width: 100vw !important;
+        align-items: center !important;
+        margin: 0 auto !important;
+      }
+      .flex.flex-col.gap-10 {
+        gap: 1.5rem !important;
+        align-items: center !important;
+      }
+      p.text-xl, p.text-2xl {
+        text-align: center !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        font-size: 1.1rem !important;
+      }
+      p.text-2xl {
+        font-size: 1.3rem !important;
+      }
+    }
+    @media (max-width: 700px) {
+      section {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+        padding-top: 1.2rem !important;
+        padding-bottom: 1.2rem !important;
+        gap: 1.2rem !important;
+      }
+      .flex.flex-col.items-center.justify-end.flex-1[style*="width: 80%"] {
+        margin-top: 1.5rem !important;
+      }
+      #model-canvas-container {
+        max-width: 98vw !important;
+      }
+      #model-canvas {
+        max-width: 98vw !important;
+      }
+      p.text-xl, p.text-2xl {
+        font-size: 0.98rem !important;
+      }
+      p.text-2xl {
+        font-size: 1.1rem !important;
+      }
+    }
+  </style> 

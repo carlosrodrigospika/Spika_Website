@@ -1,0 +1,33 @@
+---
+import '../styles/global.css';
+import OverlayMenu from '../components/OverlayMenu.astro';
+import SideNav from '../components/SideNav.astro';
+import Chatbot from '../components/Chatbot.astro';
+---
+<!doctype html>
+<html lang={Astro.params.lang || 'es'}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" href="/assets/Logo_SpikaTech_1-removebg-preview.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Spika Tech</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+	</head>
+	<body class="bg-brand-dark text-gray-200">
+		<OverlayMenu />
+		<slot />
+		<Chatbot />
+	</body>
+</html>
+
+<style is:global>
+	html {
+		font-family: 'Exo2', 'system-ui', sans-serif;
+		scroll-behavior: smooth;
+	}
+	body {
+		margin: 0;
+		font-family: 'Exo2', 'system-ui', sans-serif;
+	}
+</style>

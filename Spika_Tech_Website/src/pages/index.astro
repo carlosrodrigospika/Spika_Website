@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import OverlayMenu from '../components/OverlayMenu.astro';
+import Hero from '../components/Hero.astro';
+import Proyectos from '../components/Proyectos.astro';
+import Desarrollos from '../components/Desarrollos.astro';
+import Noticias from '../components/Noticias.astro';
+import Partners from '../components/Partners.astro';
+import SideNav from '../components/SideNav.astro';
+import Footer from '../components/Footer.astro';
+
+const sections = [
+  { num: '01', title: 'Hero.sections.01' },
+  { num: '02', title: 'Hero.sections.02' },
+  { num: '03', title: 'Hero.sections.03' },
+  { num: '04', title: 'Hero.sections.04' }
+];
+---
+
+<Layout>
+	<Header />
+	<SideNav sections={sections} />
+	<OverlayMenu />
+	<main>
+		<Hero />
+		<Proyectos />
+		<Desarrollos />
+		<Noticias />
+		<Partners />
+		<Footer />
+	</main>
+</Layout>
+
+<script>
+	document.addEventListener('astro:page-load', () => {
+	  const menuBtn = document.getElementById('menu-btn');
+	  const closeMenuBtn = document.getElementById('close-menu-btn');
+	  const overlayMenu = document.getElementById('overlay-menu');
+	  const menuLinks = document.querySelectorAll('.menu-link');
+  
+	  if (menuBtn && overlayMenu) {
+		menuBtn.addEventListener('click', () => {
+		  overlayMenu.classList.toggle('hidden');
+		});
+	  }
+  
+	  if (closeMenuBtn && overlayMenu) {
+		closeMenuBtn.addEventListener('click', () => {
+		  overlayMenu.classList.add('hidden');
+		});
+	  }
+
+	  menuLinks.forEach(link => {
+		link.addEventListener('click', () => {
+			if(overlayMenu){
+				overlayMenu.classList.add('hidden');
+			}
+		})
+	  })
+	});
+  </script>

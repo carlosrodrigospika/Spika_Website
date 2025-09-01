@@ -1,0 +1,415 @@
+---
+// Chatbot component for Spika Tech website
+import { getCurrentLocale, loadTranslations, getNestedTranslation } from '../i18n/config';
+---
+
+<div id="chatbot-container" class="fixed bottom-4 right-4 z-[9999] md:bottom-9 md:right-9">
+  <!-- Chatbot Button -->
+  <button 
+    id="chatbot-toggle" 
+    onclick="toggleChatbot()"
+    class="bg-brand-lime hover:bg-[#a3b800] text-brand-dark rounded-full p-4 shadow-lg transition-all duration-300 transform hover:scale-110 cursor-pointer" 
+    style="pointer-events: auto; z-index: 9999;"
+  >
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+    </svg>
+  </button>
+
+  <!-- Chatbot Window -->
+  <div id="chatbot-window" class="hidden absolute bottom-16 right-0 w-80 h-96 sm:w-96 sm:h-[28rem] bg-white rounded-lg shadow-xl border border-gray-200 flex flex-col transform transition-all duration-300 ease-in-out opacity-0 scale-95" style="z-index: 9998;">
+    <!-- Header -->
+    <div class="bg-brand-dark text-white p-4 rounded-t-lg flex items-center justify-between">
+      <div class="flex items-center space-x-2">
+        <div class="w-8 h-8 bg-brand-lime rounded-full flex items-center justify-center">
+          <svg class="w-4 h-4 text-brand-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+          </svg>
+        </div>
+        <div>
+          <h3 class="font-semibold" data-i18n="Chatbot.title">Spika Tech Assistant</h3>
+          <p class="text-xs text-gray-500" data-i18n="Chatbot.subtitle">¿En qué puedo ayudarte?</p>
+        </div>
+      </div>
+      <button id="chatbot-close" onclick="closeChatbot()" class="text-gray-500 hover:text-white">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Chat Messages -->
+    <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3">
+      <!-- Welcome message -->
+      <div class="flex items-start space-x-2">
+        <div class="w-6 h-6 bg-brand-lime rounded-full flex items-center justify-center flex-shrink-0 text-[#003035]">
+          <svg class="w-3 h-3 text-brand-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+          </svg>
+        </div>
+        <div class="bg-gray-100 rounded-lg p-3 max-w-xs">
+          <p class="text-sm text-gray-800" data-i18n="Chatbot.welcome">¡Hola! Soy tu asistente virtual de Spika Tech. Puedo explicarte todo sobre nuestra empresa, proyectos y servicios. ¿Qué te gustaría saber?</p>
+        </div>
+      </div>
+
+      <!-- Quick options -->
+      <div class="flex items-start space-x-2">
+        <div class="w-6 h-6 bg-brand-lime rounded-full flex items-center justify-center flex-shrink-0 text-[#003035]">
+          <svg class="w-3 h-3 text-brand-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+          </svg>
+        </div>
+        <div class="space-y-2 flex flex-col items-start">
+          <button class="quick-option bg-brand-dark rounded-lg px-3 py-2 text-xs hover:bg-[#003035] hover:text-white transition-colors text-[#003035] " onclick="showTopic('about')" data-i18n="Chatbot.quickOptions.about">
+            ¿Quiénes somos?
+          </button>
+          <button class="quick-option bg-brand-dark rounded-lg px-3 py-2 text-xs hover:bg-[#003035] hover:text-white transition-colors text-[#003035] hover:cursor-pointer" onclick="showTopic('projects')" data-i18n="Chatbot.quickOptions.projects">
+            Nuestros proyectos
+          </button>
+          <button class="quick-option bg-brand-dark rounded-lg px-3 py-2 text-xs hover:bg-[#003035] hover:text-white transition-colors text-[#003035] hover:cursor-pointer" onclick="showTopic('services')" data-i18n="Chatbot.quickOptions.services">
+            Servicios y desarrollos
+          </button>
+          <button class="quick-option bg-brand-dark rounded-lg px-3 py-2 text-xs hover:bg-[#003035] hover:text-white transition-colors text-[#003035] hover:cursor-pointer" onclick="showTopic('technology')" data-i18n="Chatbot.quickOptions.technology">
+            Nuestras tecnologías
+          </button>
+          <button class="quick-option bg-brand-dark rounded-lg px-3 py-2 text-xs hover:bg-[#003035] hover:text-white transition-colors text-[#003035] hover:cursor-pointer" onclick="showTopic('achievements')" data-i18n="Chatbot.quickOptions.achievements">
+            Logros y reconocimientos
+          </button>
+          <button class="quick-option bg-brand-dark rounded-lg px-3 py-2 text-xs hover:bg-[#003035] hover:text-white transition-colors text-[#003035] hover:cursor-pointer" onclick="showTopic('contact')" data-i18n="Chatbot.quickOptions.contact">
+            Contacto
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input Area -->
+    <div class="p-4 border-t border-gray-200">
+      <div class="flex space-x-2">
+        <input type="text" id="chat-input" data-i18n-placeholder="Chatbot.input.placeholder" placeholder="Escribe tu pregunta..." class="flex-1 px-3 py-2 border border-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-lime focus:border-transparent text-sm text-[#003035]" onkeypress="handleKeyPress(event)">
+        <button id="chat-send" onclick="handleUserInput()" class="hover:bg-[#cedf00] px-4 py-2 rounded-lg transition-colors text-[#003035] hover:cursor-pointer">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="rotate: 90deg;">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Chatbot translations cache
+  let chatbotTranslations: Record<string, any> = {};
+  let currentLocale: string = 'es';
+
+  // Load translations for chatbot
+  async function loadChatbotTranslations(locale: string): Promise<void> {
+    try {
+      const response = await fetch(`/i18n/translations/${locale}.json`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const translations = await response.json();
+      chatbotTranslations = translations.Chatbot || {};
+      currentLocale = locale;
+    } catch (error) {
+      console.error('Error loading chatbot translations:', error);
+      // Fallback to Spanish
+      if (locale !== 'es') {
+        await loadChatbotTranslations('es');
+      }
+    }
+  }
+
+  // Get translation helper
+  function getTranslation(key: string, fallback: string = ''): string {
+    const keys = key.split('.');
+    let value: any = chatbotTranslations;
+    for (const k of keys) {
+      value = value?.[k];
+      if (!value) break;
+    }
+    return (value as string) || fallback;
+  }
+
+  // Update chatbot UI with current translations
+  function updateChatbotUI(): void {
+    // Update title and subtitle
+    const title = document.querySelector('[data-i18n="Chatbot.title"]');
+    const subtitle = document.querySelector('[data-i18n="Chatbot.subtitle"]');
+    const welcome = document.querySelector('[data-i18n="Chatbot.welcome"]');
+    
+    if (title) title.textContent = getTranslation('title', 'Spika Tech Assistant');
+    if (subtitle) subtitle.textContent = getTranslation('subtitle', '¿En qué puedo ayudarte?');
+    if (welcome) welcome.textContent = getTranslation('welcome', '¡Hola! Soy tu asistente virtual de Spika Tech.');
+
+    // Update quick options
+    const quickOptions = document.querySelectorAll('.quick-option');
+    quickOptions.forEach(option => {
+      const key = option.getAttribute('data-i18n');
+      if (key) {
+        const translationKey = key.replace('Chatbot.quickOptions.', '');
+        const translation = getTranslation(`quickOptions.${translationKey}`, option.textContent || '');
+        option.textContent = translation;
+      }
+    });
+
+    // Update input placeholder
+    const input = document.getElementById('chat-input') as HTMLInputElement;
+    if (input) {
+      const placeholder = getTranslation('input.placeholder', 'Escribe tu pregunta...');
+      input.placeholder = placeholder;
+    }
+  }
+
+  // Initialize chatbot with translations
+  async function initializeChatbot(): Promise<void> {
+    // Get current locale from localStorage or default to Spanish
+    const savedLocale = localStorage.getItem('astro-i18n-locale') || 'es';
+    await loadChatbotTranslations(savedLocale);
+    updateChatbotUI();
+  }
+
+  // Global functions for chatbot - attach to window object
+  (window as any).toggleChatbot = function(): void {
+    const chatbotWindow = document.getElementById('chatbot-window');
+    if (chatbotWindow) {
+      if (chatbotWindow.classList.contains('hidden')) {
+        chatbotWindow.classList.remove('hidden');
+        setTimeout(() => {
+          chatbotWindow.classList.remove('opacity-0', 'scale-95');
+          chatbotWindow.classList.add('opacity-100', 'scale-100');
+        }, 10);
+      } else {
+        chatbotWindow.classList.add('opacity-0', 'scale-95');
+        chatbotWindow.classList.remove('opacity-100', 'scale-100');
+        setTimeout(() => {
+          chatbotWindow.classList.add('hidden');
+        }, 300);
+      }
+    }
+  };
+
+  (window as any).closeChatbot = function(): void {
+    const chatbotWindow = document.getElementById('chatbot-window');
+    if (chatbotWindow) {
+      chatbotWindow.classList.add('opacity-0', 'scale-95');
+      chatbotWindow.classList.remove('opacity-100', 'scale-100');
+      setTimeout(() => {
+        chatbotWindow.classList.add('hidden');
+      }, 300);
+    }
+  };
+
+  (window as any).showTopic = function(topic: string): void {
+    const content = getTranslation(`topics.${topic}.content`);
+    if (content) {
+      (window as any).addBotMessage(content);
+    }
+  };
+
+  (window as any).handleUserInput = function(): void {
+    const chatInput = document.getElementById('chat-input') as HTMLInputElement;
+    const input = chatInput?.value.trim();
+    if (!input) return;
+
+    (window as any).addUserMessage(input);
+    chatInput.value = '';
+
+    const response = (window as any).processUserInput(input);
+    setTimeout(() => {
+      (window as any).addBotMessage(response);
+    }, 500);
+  };
+
+  (window as any).handleKeyPress = function(event: KeyboardEvent): void {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      (window as any).handleUserInput();
+    }
+  };
+
+  (window as any).addUserMessage = function(message: string): void {
+    const chatMessages = document.getElementById('chat-messages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'flex items-start space-x-2 justify-end';
+    messageDiv.innerHTML = `
+      <div class="bg-brand-lime text-brand-dark rounded-lg p-3 max-w-xs text-[#003035]">
+        <p class="text-sm">${message}</p>
+      </div>
+      <div class="w-6 h-6 bg-brand-lime rounded-full flex items-center justify-center flex-shrink-0 text-[#003035]">
+        <svg class="w-3 h-3 text-brand-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+        </svg>
+      </div>
+    `;
+    chatMessages?.appendChild(messageDiv);
+    chatMessages?.scrollTo(0, chatMessages.scrollHeight);
+  };
+
+  (window as any).addBotMessage = function(message: string): void {
+    const chatMessages = document.getElementById('chat-messages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'flex items-start space-x-2';
+    messageDiv.innerHTML = `
+      <div class="w-6 h-6 bg-brand-lime rounded-full flex items-center justify-center flex-shrink-0 text-[#003035]">
+        <svg class="w-3 h-3 text-brand-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+        </svg>
+      </div>
+      <div class="bg-gray-100 rounded-lg p-3 max-w-xs">
+        <p class="text-sm text-gray-800 whitespace-pre-line">${message}</p>
+      </div>
+    `;
+    chatMessages?.appendChild(messageDiv);
+    chatMessages?.scrollTo(0, chatMessages.scrollHeight);
+  };
+
+  (window as any).processUserInput = function(input: string): string {
+    const lowerInput = input.toLowerCase();
+    
+    // Check for specific topics based on current locale
+    if (currentLocale === 'es') {
+      if (lowerInput.includes('quien') || lowerInput.includes('somos') || lowerInput.includes('empresa') || lowerInput.includes('misión') || lowerInput.includes('valores')) {
+        return getTranslation('topics.about.content');
+      }
+      if (lowerInput.includes('proyecto') || lowerInput.includes('vr-cardio') || lowerInput.includes('pras') || lowerInput.includes('magallanes') || lowerInput.includes('vuelta al mundo')) {
+        return getTranslation('topics.projects.content');
+      }
+      if (lowerInput.includes('servicio') || lowerInput.includes('desarrollo') || lowerInput.includes('tecnología') || lowerInput.includes('vr') || lowerInput.includes('ar') || lowerInput.includes('realidad virtual')) {
+        return getTranslation('topics.services.content');
+      }
+      if (lowerInput.includes('tecnología') || lowerInput.includes('ia') || lowerInput.includes('inteligencia artificial') || lowerInput.includes('robótica') || lowerInput.includes('deep tech')) {
+        return getTranslation('topics.technology.content');
+      }
+      if (lowerInput.includes('logro') || lowerInput.includes('premio') || lowerInput.includes('reconocimiento') || lowerInput.includes('certificación') || lowerInput.includes('iso') || lowerInput.includes('sello')) {
+        return getTranslation('topics.achievements.content');
+      }
+      if (lowerInput.includes('contacto') || lowerInput.includes('dirección') || lowerInput.includes('email') || lowerInput.includes('teléfono') || lowerInput.includes('redes sociales')) {
+        return getTranslation('topics.contact.content');
+      }
+    } else if (currentLocale === 'en') {
+      if (lowerInput.includes('who') || lowerInput.includes('we') || lowerInput.includes('company') || lowerInput.includes('mission') || lowerInput.includes('values')) {
+        return getTranslation('topics.about.content');
+      }
+      if (lowerInput.includes('project') || lowerInput.includes('vr-cardio') || lowerInput.includes('pras') || lowerInput.includes('magellan') || lowerInput.includes('world tour')) {
+        return getTranslation('topics.projects.content');
+      }
+      if (lowerInput.includes('service') || lowerInput.includes('development') || lowerInput.includes('technology') || lowerInput.includes('vr') || lowerInput.includes('ar') || lowerInput.includes('virtual reality')) {
+        return getTranslation('topics.services.content');
+      }
+      if (lowerInput.includes('technology') || lowerInput.includes('ai') || lowerInput.includes('artificial intelligence') || lowerInput.includes('robotics') || lowerInput.includes('deep tech')) {
+        return getTranslation('topics.technology.content');
+      }
+      if (lowerInput.includes('achievement') || lowerInput.includes('award') || lowerInput.includes('recognition') || lowerInput.includes('certification') || lowerInput.includes('iso') || lowerInput.includes('seal')) {
+        return getTranslation('topics.achievements.content');
+      }
+      if (lowerInput.includes('contact') || lowerInput.includes('address') || lowerInput.includes('email') || lowerInput.includes('phone') || lowerInput.includes('social media')) {
+        return getTranslation('topics.contact.content');
+      }
+    } else if (currentLocale === 'dt') {
+      if (lowerInput.includes('wer') || lowerInput.includes('sind') || lowerInput.includes('unternehmen') || lowerInput.includes('mission') || lowerInput.includes('werte')) {
+        return getTranslation('topics.about.content');
+      }
+      if (lowerInput.includes('projekt') || lowerInput.includes('vr-cardio') || lowerInput.includes('pras') || lowerInput.includes('magellan') || lowerInput.includes('weltumsegelung')) {
+        return getTranslation('topics.projects.content');
+      }
+      if (lowerInput.includes('dienstleistung') || lowerInput.includes('entwicklung') || lowerInput.includes('technologie') || lowerInput.includes('vr') || lowerInput.includes('ar') || lowerInput.includes('virtuelle realität')) {
+        return getTranslation('topics.services.content');
+      }
+      if (lowerInput.includes('technologie') || lowerInput.includes('ki') || lowerInput.includes('künstliche intelligenz') || lowerInput.includes('robotik') || lowerInput.includes('deep tech')) {
+        return getTranslation('topics.technology.content');
+      }
+      if (lowerInput.includes('erfolg') || lowerInput.includes('preis') || lowerInput.includes('anerkennung') || lowerInput.includes('zertifizierung') || lowerInput.includes('iso') || lowerInput.includes('siegel')) {
+        return getTranslation('topics.achievements.content');
+      }
+      if (lowerInput.includes('kontakt') || lowerInput.includes('adresse') || lowerInput.includes('email') || lowerInput.includes('telefon') || lowerInput.includes('soziale medien')) {
+        return getTranslation('topics.contact.content');
+      }
+    } else if (currentLocale === 'ar') {
+      if (lowerInput.includes('من') || lowerInput.includes('نحن') || lowerInput.includes('شركة') || lowerInput.includes('مهمة') || lowerInput.includes('قيم')) {
+        return getTranslation('topics.about.content');
+      }
+      if (lowerInput.includes('مشروع') || lowerInput.includes('vr-cardio') || lowerInput.includes('pras') || lowerInput.includes('ماجلان') || lowerInput.includes('رحلة حول العالم')) {
+        return getTranslation('topics.projects.content');
+      }
+      if (lowerInput.includes('خدمة') || lowerInput.includes('تطوير') || lowerInput.includes('تكنولوجيا') || lowerInput.includes('vr') || lowerInput.includes('ar') || lowerInput.includes('واقع افتراضي')) {
+        return getTranslation('topics.services.content');
+      }
+      if (lowerInput.includes('تكنولوجيا') || lowerInput.includes('ذكاء اصطناعي') || lowerInput.includes('روبوتات') || lowerInput.includes('deep tech')) {
+        return getTranslation('topics.technology.content');
+      }
+      if (lowerInput.includes('إنجاز') || lowerInput.includes('جائزة') || lowerInput.includes('اعتراف') || lowerInput.includes('شهادة') || lowerInput.includes('iso') || lowerInput.includes('ختم')) {
+        return getTranslation('topics.achievements.content');
+      }
+      if (lowerInput.includes('اتصال') || lowerInput.includes('عنوان') || lowerInput.includes('بريد إلكتروني') || lowerInput.includes('هاتف') || lowerInput.includes('وسائل التواصل')) {
+        return getTranslation('topics.contact.content');
+      }
+    }
+    
+    // Default response
+    return getTranslation('defaultResponse', 'Gracias por tu pregunta. Puedo ayudarte con información sobre nuestros proyectos y servicios.');
+  };
+
+  // Listen for locale changes
+  window.addEventListener('localeChanged', async (event: Event) => {
+    const customEvent = event as CustomEvent;
+    const newLocale = customEvent.detail.locale;
+    await loadChatbotTranslations(newLocale);
+    updateChatbotUI();
+  });
+  
+  // Initialize chatbot
+  document.addEventListener('DOMContentLoaded', initializeChatbot);
+  
+  // Also try immediate initialization if DOM is already ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeChatbot);
+  } else {
+    initializeChatbot();
+  }
+</script>
+
+<style>
+  #chatbot-container {
+    font-family: 'Exo2', 'system-ui', sans-serif;
+  }
+  
+  #chatbot-toggle {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+  
+  #chatbot-toggle:hover {
+    transform: scale(1.1);
+  }
+  
+  #chatbot-toggle:active {
+    transform: scale(0.95);
+  }
+  
+  #chatbot-window {
+    pointer-events: auto !important;
+  }
+  
+  #chat-messages::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  #chat-messages::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 2px;
+  }
+  
+  #chat-messages::-webkit-scrollbar-thumb {
+    background: #CEDF00;
+    border-radius: 2px;
+  }
+  
+  #chat-messages::-webkit-scrollbar-thumb:hover {
+    background: #a3b800;
+  }
+</style> 

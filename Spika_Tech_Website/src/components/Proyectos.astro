@@ -1,0 +1,777 @@
+<section id="section2" data-index="1" data-title="Nuestros proyectos" style="background-color: #003035; height: 300vh; padding-left: 110px; padding-right: 20px; padding-bottom: 100px; padding-top: 80px;" class="relative sm:px-8 md:px-12 lg:px-16 xl:px-20">
+    <div class="sticky top-0 h-screen flex items-center">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Desktop Layout (lg and above) -->
+            <div class="hidden lg:grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center h-screen">
+                <!-- Left Column: Fixed Title + Vertical Scrolling Descriptions -->
+                <div class="relative h-full overflow-hidden">
+                    <!-- Fixed Title -->
+                    <h2 class="text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-light text-white leading-tight absolute left-0 z-10" style="font-weight: 400; top: 50%; white-space:nowrap" data-i18n="Proyectos.title"></h2>
+                    
+                    <!-- Scrolling Descriptions Container -->
+                    <div class="descriptions-container" style="display: flex; flex-direction: column; height: 100%; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); padding-top: 120px;">
+                        <!-- Description 1: VR-CARDIO -->
+                        <div class="description-slide flex-shrink-0 fade-up" style="width: 100%; height: 100vh; display: flex; flex-direction: column; justify-content: center;">
+                            <p class="mt-3 md:mt-4 text-gray-400 max-w-md text-sm sm:text-base md:text-lg" style="color: white; font-weight: 300;" data-i18n="Proyectos.vrcardio.description"></p>
+                        </div>
+                        
+                        <!-- Description 2: PRAS -->
+                        <div class="description-slide flex-shrink-0 fade-up" style="width: 100%; height: 100vh; display: flex; flex-direction: column; justify-content: center;">
+                            <p class="mt-3 md:mt-4 text-gray-400 max-w-md text-sm sm:text-base md:text-lg" style="color: white; font-weight: 300;" data-i18n="Proyectos.pras.description"></p>
+                        </div>
+                        
+                        <!-- Description 3: Primera Vuelta al Mundo -->
+                        <div class="description-slide flex-shrink-0 fade-up" style="width: 100%; height: 100vh; display: flex; flex-direction: column; justify-content: center;">
+                            <p class="mt-3 md:mt-4 text-gray-400 max-w-md text-sm sm:text-base md:text-lg" style="color: white; font-weight: 300;" data-i18n="Proyectos.magallanes.description"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Vertical Scrolling Projects (100% height) -->
+                <div class="relative overflow-hidden" style="height: 100vh;">
+                    <div class="projects-container" style="display: flex; flex-direction: column; height: 100%; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);">
+                        
+                        <!-- Project 1: VR-CARDIO -->
+                        <div class="project-slide flex-shrink-0 fade-up" style="width: 100%; height: 100vh; display: flex; flex-direction: column; justify-content: flex-start; padding-top: 60px;">
+                            <div class="flex flex-wrap items-center gap-2 mb-6" style="border-top: 1px solid white; padding-top: 20px;">
+                                <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-white flex-1 min-w-0" style="font-weight: 300;" data-i18n="Proyectos.vrcardio.title"></h3>
+                                <a href="/vrcardio" class="btn-slide-arrow flex items-center justify-center rounded-lg border-2 border-[#CEDF00] bg-transparent hover:cursor-pointer transition-all duration-300">
+                                    <svg width="50" height="50" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 16H22M22 16L18 12M22 16L18 20" stroke="#CEDF00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                            </div>
+                            <div id="heart-canvas-container" style="width: auto; height: calc(100vh - 200px); background: transparent; position: relative; flex: 1;">
+                                <img id="heart-placeholder" src="/assets/Render/Corazon.webp" alt="VR-CARDIO" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; z-index: 1;">
+                                <canvas id="heart-canvas" style="width: 100%; height: 100%; display: block; position: relative; z-index: 2;"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Project 2: PRAS -->
+                        <div class="project-slide flex-shrink-0 fade-up" style="width: 100%; height: 100vh; display: flex; flex-direction: column; justify-content: flex-start; padding-top: 60px;">
+                            <div class="flex flex-wrap items-center gap-2 mb-6" style="border-top: 1px solid white; padding-top: 20px;">
+                                <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-white flex-1 min-w-0" style="font-weight: 300;" data-i18n="Proyectos.pras.title"></h3>
+                                <a href="/pras" class="btn-slide-arrow flex items-center justify-center rounded-lg border-2 border-[#CEDF00] bg-transparent hover:cursor-pointer transition-all duration-300">
+                                    <svg width="50" height="50" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 16H22M22 16L18 12M22 16L18 20" stroke="#CEDF00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                            </div>
+                            <div id="pras-canvas-container" style="width: auto; height: calc(100vh - 200px); background: transparent; position: relative; flex: 1;">
+                                <img id="pras-placeholder" src="/assets/Render/PRAS.webp" alt="PRAS" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; z-index: 1;">
+                                <canvas id="pras-canvas" style="width: 100%; height: 100%; display: block; position: relative; z-index: 2;"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Project 3: Primera Vuelta al Mundo -->
+                        <div class="project-slide flex-shrink-0 fade-up" style="width: 100%; height: 100vh; display: flex; flex-direction: column; justify-content: flex-start; padding-top: 60px;">
+                            <div class="flex flex-wrap items-center gap-2 mb-6" style="border-top: 1px solid white; padding-top: 20px;">
+                                <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-white flex-1 min-w-0" style="font-weight: 300;" data-i18n="Proyectos.magallanes.title"></h3>
+                                <a href="/magallanes" class="btn-slide-arrow flex items-center justify-center rounded-lg border-2 border-[#CEDF00] bg-transparent hover:cursor-pointer transition-all duration-300">
+                                    <svg width="50" height="50" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 16H22M22 16L18 12M22 16L18 20" stroke="#CEDF00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                            </div>
+                            <div id="armor-canvas-container" style="width: auto; height: calc(100vh - 200px); background: transparent; position: relative; flex: 1;">
+                                <img id="armor-placeholder" src="/assets/Render/Armadura.webp" alt="Primera Vuelta al Mundo" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; z-index: 1;">
+                                <canvas id="armor-canvas" style="width: 100%; height: 100%; display: block; position: relative; z-index: 2;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile/Tablet Layout (below lg) -->
+            <div class="lg:hidden flex flex-col h-screen pt-[10vh]">
+                <!-- Fixed Title at Top -->
+                <div class="flex-shrink-0 pt-8 pb-4">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-light text-white text-center leading-tight" style="font-weight: 400;" data-i18n="Proyectos.title"></h2>
+                </div>
+
+                <!-- Mobile Content Container -->
+                <div class="flex-1 relative overflow-hidden">
+                    <div class="mobile-content-container" style="display: flex; flex-direction: column; height: 100%; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);">
+                        
+                        <!-- Mobile Slide 1: VR-CARDIO -->
+                        <div class="mobile-slide flex-shrink-0 fade-up" style="width: 100%; height: 100%; display: flex; flex-direction: column;">
+                            <!-- Description -->
+                            <div class="flex-shrink-0 py-4 px-6">
+                                <p class="text-gray-400 text-sm sm:text-base md:text-lg text-center" style="color: white; font-weight: 300;" data-i18n="Proyectos.vrcardio.description"></p>
+                            </div>
+                            
+                            <!-- Project Content -->
+                            <div class="flex-1 flex flex-col justify-start px-6 pt-4">
+                                <div class="flex flex-wrap items-center gap-2 mb-6" style="border-top: 1px solid white; padding-top: 20px;">
+                                    <h3 class="text-xl sm:text-2xl md:text-3xl font-semibold text-white flex-1 min-w-0 text-center" style="font-weight: 300;" data-i18n="Proyectos.vrcardio.title"></h3>
+                                    <a href="/vrcardio" class="btn-slide-arrow flex items-center justify-center rounded-lg border-2 border-[#CEDF00] bg-transparent hover:cursor-pointer transition-all duration-300">
+                                        <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 16H22M22 16L18 12M22 16L18 20" stroke="#CEDF00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div id="heart-canvas-container-mobile" style="width: 100%; height: calc(100% - 120px); background: transparent; position: relative; flex: 1;">
+                                    <img id="heart-placeholder-mobile" src="/assets/Render/Corazon.webp" alt="VR-CARDIO" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; z-index: 1;">
+                                    <canvas id="heart-canvas-mobile" style="width: 100%; height: 80%; display: block; position: relative; z-index: 2;"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mobile Slide 2: PRAS -->
+                        <div class="mobile-slide flex-shrink-0 fade-up" style="width: 100%; height: 100%; display: flex; flex-direction: column;">
+                            <!-- Description -->
+                            <div class="flex-shrink-0 py-4 px-6">
+                                <p class="text-gray-400 text-sm sm:text-base md:text-lg text-center" style="color: white; font-weight: 300;" data-i18n="Proyectos.pras.description"></p>
+                            </div>
+                            
+                            <!-- Project Content -->
+                            <div class="flex-1 flex flex-col justify-start px-6 pt-4">
+                                <div class="flex flex-wrap items-center gap-2 mb-6" style="border-top: 1px solid white; padding-top: 20px;">
+                                    <h3 class="text-xl sm:text-2xl md:text-3xl font-semibold text-white flex-1 min-w-0 text-center" style="font-weight: 300;" data-i18n="Proyectos.pras.title"></h3>
+                                    <a href="/pras" class="btn-slide-arrow flex items-center justify-center rounded-lg border-2 border-[#CEDF00] bg-transparent hover:cursor-pointer transition-all duration-300">
+                                        <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 16H22M22 16L18 12M22 16L18 20" stroke="#CEDF00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div id="pras-canvas-container-mobile" style="width: 100%; height: calc(100% - 120px); background: transparent; position: relative; flex: 1;">
+                                    <img id="pras-placeholder-mobile" src="/assets/Render/PRAS.webp" alt="PRAS" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; z-index: 1;">
+                                    <canvas id="pras-canvas-mobile" style="width: 100%; height: 80%; display: block; position: relative; z-index: 2;"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mobile Slide 3: Primera Vuelta al Mundo -->
+                        <div class="mobile-slide flex-shrink-0 fade-up" style="width: 100%; height: 100%; display: flex; flex-direction: column;">
+                            <!-- Description -->
+                            <div class="flex-shrink-0 py-4 px-6">
+                                <p class="text-gray-400 text-sm sm:text-base md:text-lg text-center" style="color: white; font-weight: 300;" data-i18n="Proyectos.magallanes.description"></p>
+                            </div>
+                            
+                            <!-- Project Content -->
+                            <div class="flex-1 flex flex-col justify-start px-6 pt-4">
+                                <div class="flex flex-wrap items-center gap-2 mb-6" style="border-top: 1px solid white; padding-top: 20px;">
+                                    <h3 class="text-xl sm:text-2xl md:text-3xl font-semibold text-white flex-1 min-w-0 text-center" style="font-weight: 300;" data-i18n="Proyectos.magallanes.title"></h3>
+                                    <a href="/magallanes" class="btn-slide-arrow flex items-center justify-center rounded-lg border-2 border-[#CEDF00] bg-transparent hover:cursor-pointer transition-all duration-300">
+                                        <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 16H22M22 16L18 12M22 16L18 20" stroke="#CEDF00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div id="armor-canvas-container-mobile" style="width: 100%; height: calc(100% - 120px); background: transparent; position: relative; flex: 1;">
+                                    <img id="armor-placeholder-mobile" src="/assets/Render/Armadura.webp" alt="Primera Vuelta al Mundo" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; z-index: 1;">
+                                    <canvas id="armor-canvas-mobile" style="width: 100%; height: 80%; display: block; position: relative; z-index: 2;"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Elementos ocultos con las descripciones para el sistema de localización -->
+    <div style="display: none;">
+        <p data-i18n="Proyectos.vrcardio.description">Sistema de realidad virtual para entrenamiento médico en cardiología, que permite a los profesionales practicar procedimientos cardíacos en un entorno seguro y controlado.</p>
+        <p data-i18n="Proyectos.pras.description">Plataforma robótica autónoma para servicios, diseñada para asistir en tareas de logística y atención al cliente en entornos comerciales y hospitalarios.</p>
+        <p data-i18n="Proyectos.magallanes.description">Experiencia inmersiva que recrea la primera vuelta al mundo de Magallanes y Elcano, permitiendo a los usuarios vivir esta histórica expedición.</p>
+    </div>
+</section>
+
+<script>
+    // Variable global para controlar visibilidad de la sección
+    (window as any).isSectionVisible = false;
+
+    // Datos de los proyectos
+    const projectsData = [
+        {
+            id: 0,
+            description: "Proyectos.vrcardio.description"
+        },
+        {
+            id: 1,
+            description: "Proyectos.pras.description"
+        },
+        {
+            id: 2,
+            description: "Proyectos.magallanes.description"
+        }
+    ];
+
+    // Función para manejar los carruseles verticales sincronizados
+    function handleProjectsAnimation() {
+        const section = document.querySelector('#section2') as HTMLElement;
+        if (!section) return;
+
+        const projectsContainer = section.querySelector('.projects-container') as HTMLElement;
+        const descriptionsContainer = section.querySelector('.descriptions-container') as HTMLElement;
+        const mobileContentContainer = section.querySelector('.mobile-content-container') as HTMLElement;
+        
+        if (!projectsContainer || !descriptionsContainer) return;
+
+        const scrollTop = window.scrollY;
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+
+        // Exit if not in the projects section
+        if (scrollTop < sectionTop || scrollTop > sectionTop + sectionHeight) {
+            return;
+        }
+
+        // Calculate scroll progress within the section (from 0 to 1)
+        const scrollableHeight = sectionHeight - window.innerHeight;
+        const scrollProgress = Math.max(0, Math.min(1, (scrollTop - sectionTop) / scrollableHeight));
+        
+        // Determinar qué proyecto debe estar activo basado en el progreso del scroll
+        // Dividir el scroll en 3 partes iguales para los 3 proyectos
+        const projectProgress = scrollProgress * 3; // 0-3
+        const activeProjectIndex = Math.min(projectsData.length - 1, Math.floor(projectProgress));
+        
+        // Calcular el progreso dentro del proyecto actual (0-1)
+        const projectInternalProgress = projectProgress - activeProjectIndex;
+        
+        // Aplicar el scroll vertical a los contenedores de desktop
+        if (projectsContainer && descriptionsContainer) {
+            const translateY = -activeProjectIndex * 100;
+            projectsContainer.style.transform = `translateY(${translateY}%)`;
+            descriptionsContainer.style.transform = `translateY(${translateY}%)`;
+        }
+        
+        // Aplicar el scroll vertical al contenedor móvil
+        if (mobileContentContainer) {
+            const translateY = -activeProjectIndex * 100;
+            mobileContentContainer.style.transform = `translateY(${translateY}%)`;
+        }
+        
+
+        
+        // Aplicar efecto de "clavado" cuando el proyecto está en su zona central
+        if (projectInternalProgress >= 0.3 && projectInternalProgress <= 0.7) {
+            // El proyecto está en su zona central - aplicar efecto de clavado
+            applySnapEffect(activeProjectIndex);
+        }
+    }
+
+    // Función para aplicar efecto de clavado
+    function applySnapEffect(projectIndex: number) {
+        // Los elementos ya están sincronizados por el transform del contenedor
+        // No necesitamos hacer nada adicional aquí
+    }
+
+    // Función para obtener texto localizado
+    function getLocalizedText(key: string): string {
+        // Buscar elementos con data-i18n que coincidan con la clave
+        const elements = document.querySelectorAll(`[data-i18n="${key}"]`);
+        if (elements.length > 0) {
+            const text = elements[0].textContent || '';
+            console.log(`Found text for ${key}:`, text);
+            return text;
+        }
+        console.log(`No text found for key: ${key}`);
+        return '';
+    }
+
+    // Ejecutar al hacer scroll
+    document.addEventListener('scroll', handleProjectsAnimation);
+    
+    // Función para inicializar los carruseles de proyectos
+    function initializeProjectText() {
+        const projectsContainer = document.querySelector('.projects-container') as HTMLElement;
+        const descriptionsContainer = document.querySelector('.descriptions-container') as HTMLElement;
+        const mobileContentContainer = document.querySelector('.mobile-content-container') as HTMLElement;
+        
+        // Establecer posición inicial de los carruseles de desktop
+        if (projectsContainer) {
+            projectsContainer.style.transform = 'translateY(0%)';
+        }
+        if (descriptionsContainer) {
+            descriptionsContainer.style.transform = 'translateY(0%)';
+        }
+        
+        // Establecer posición inicial del carrusel móvil
+        if (mobileContentContainer) {
+            mobileContentContainer.style.transform = 'translateY(0%)';
+        }
+    }
+
+    // Ejecutar al cargar la página para verificar si ya está visible
+    document.addEventListener('DOMContentLoaded', () => {
+        initializeProjectText();
+        handleProjectsAnimation();
+        initProjectsAnimations();
+    });
+    
+    // Ejecutar inmediatamente si la página ya está cargada
+    if (document.readyState !== 'loading') {
+        initializeProjectText();
+        handleProjectsAnimation();
+        initProjectsAnimations();
+    }
+
+    // Función para inicializar las animaciones de los proyectos
+    function initProjectsAnimations() {
+        const section = document.querySelector('#section2') as HTMLElement;
+        if (!section) return;
+
+        // Crear Intersection Observer para detectar cuando la sección es visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // La sección es visible, iniciar animaciones
+                    animateProjectsElements();
+                    (window as any).isSectionVisible = true; // Marcar la sección como visible
+                } else {
+                    (window as any).isSectionVisible = false; // Marcar la sección como no visible
+                }
+            });
+        }, {
+            threshold: 0.1, // Se activa cuando el 10% de la sección es visible
+            rootMargin: '50px 0px 50px 0px' // Margen para anticipar la visibilidad
+        });
+
+        // Observar la sección de proyectos
+        observer.observe(section);
+    }
+
+    function animateProjectsElements() {
+        // Verificar si las animaciones ya se han ejecutado
+        const firstProject = document.querySelector('#section2 .project-slide, #section2 .mobile-slide');
+        if (firstProject && firstProject.classList.contains('visible')) {
+            return; // Las animaciones ya se ejecutaron
+        }
+
+        // Animar elementos con fade-up (escalonado)
+        const fadeUpElements = document.querySelectorAll('#section2 .fade-up');
+        const baseDelay = 200;
+        const step = 150;
+        
+        fadeUpElements.forEach((el, idx) => {
+            setTimeout(() => el.classList.add('visible'), baseDelay + idx * step);
+        });
+    }
+</script>
+
+<style>
+.projects-container,
+.descriptions-container,
+.mobile-content-container {
+  will-change: transform;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0%);
+}
+
+.project-slide,
+.mobile-slide {
+  will-change: transform, opacity;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+              opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Estilos para los slides de descripción */
+.description-slide {
+  will-change: transform, opacity;
+}
+
+/* Estilos para las animaciones fade-up */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1);
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 700px) {
+  #section2 {
+    padding-left: 20px !important;
+  }
+}
+
+@media (max-width: 1100px) {
+  .relative.h-full {
+    height: 100vh !important;
+  }
+}
+
+.btn-slide-arrow {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-slide-arrow::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #CEDF00;
+    z-index: 1;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+}
+
+.btn-slide-arrow svg {
+    position: relative;
+    z-index: 2;
+    transition: filter 0.4s ease;
+}
+
+.btn-slide-arrow:hover::after {
+    transform: translateX(0%);
+}
+
+.btn-slide-arrow:hover svg {
+    filter: brightness(0) invert(1);
+}
+</style>
+
+<!-- Three.js Model Renderer - Reutilizable para todos los modelos -->
+<script>
+    import * as THREE from 'three';
+    import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+    import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+
+    // Configuración de modelos
+    const modelConfigs = [
+        {
+            id: 'heart-canvas',
+            modelPath: '/assets/models/Corazon.glb',
+            scale: 3.3,
+            modelPosY: -1,
+            useEnhancedLighting: false // Mantener iluminación original
+        },
+        {
+            id: 'pras-canvas',
+            modelPath: '/assets/models/PRAS.glb',
+            scale: 2.55,
+            modelPosY: -1.7,
+            useEnhancedLighting: true // Usar iluminación mejorada
+        },
+        {
+            id: 'armor-canvas',
+            modelPath: '/assets/models/Armadura.glb',
+            scale: 2.5,
+            modelPosY: -1.65,
+            useEnhancedLighting: true // Usar iluminación mejorada
+        },
+        // Configuraciones móviles con escalas más pequeñas
+        {
+            id: 'heart-canvas-mobile',
+            modelPath: '/assets/models/Corazon.glb',
+            scale: 2.0,
+            modelPosY: 0,
+            useEnhancedLighting: false
+        },
+        {
+            id: 'pras-canvas-mobile',
+            modelPath: '/assets/models/PRAS.glb',
+            scale: 1.6,
+            modelPosY: -0.5,
+            useEnhancedLighting: true
+        },
+        {
+            id: 'armor-canvas-mobile',
+            modelPath: '/assets/models/Armadura.glb',
+            scale: 1.5,
+            modelPosY: -0.5,
+            useEnhancedLighting: true
+        }
+    ];
+
+    // Almacén de instancias de modelos
+    const modelInstances: any = {};
+
+    // Función reutilizable para crear un modelo 3D
+    function createModel3D(config: any) {
+        const canvas = document.getElementById(config.id);
+        if (!canvas) return;
+
+        const container = canvas.parentElement;
+        if (!container) return;
+        
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+
+        // Crear escena
+        const scene = new THREE.Scene();
+        scene.background = null;
+        scene.fog = null;
+
+        // Crear cámara
+        const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 100);
+        camera.position.set(0, 0, 5);
+
+        // Crear renderer con configuración según el modelo
+        const renderer = new THREE.WebGLRenderer({ 
+            canvas: canvas, 
+            alpha: true, 
+            antialias: config.useEnhancedLighting ? true : false,
+            powerPreference: "high-performance",
+            stencil: false,
+            depth: true,
+            logarithmicDepthBuffer: false
+        });
+        renderer.setSize(width, height);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, config.useEnhancedLighting ? 2 : 1.5));
+        renderer.shadowMap.enabled = false;
+        renderer.outputColorSpace = THREE.SRGBColorSpace;
+        
+        if (config.useEnhancedLighting) {
+            renderer.toneMapping = THREE.ACESFilmicToneMapping;
+            renderer.toneMappingExposure = 1.2;
+        } else {
+            renderer.toneMapping = THREE.NoToneMapping;
+        }
+
+        // Crear iluminación según la configuración del modelo
+        if (config.useEnhancedLighting) {
+            // Iluminación mejorada para PRAS y Armadura
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+            scene.add(ambientLight);
+
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2);
+            directionalLight.position.set(5, 5, 5);
+            directionalLight.castShadow = false;
+            scene.add(directionalLight);
+
+            const fillLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            fillLight.position.set(-5, 0, 5);
+            scene.add(fillLight);
+
+            const topLight = new THREE.DirectionalLight(0xffffff, 1.0);
+            topLight.position.set(0, 10, 0);
+            scene.add(topLight);
+
+            const warmLight = new THREE.PointLight(0xffcc66, 0.8, 25);
+            warmLight.position.set(-3, 2, 3);
+            scene.add(warmLight);
+
+            const coolLight = new THREE.PointLight(0x6699ff, 0.6, 25);
+            coolLight.position.set(3, -2, -3);
+            scene.add(coolLight);
+
+            const frontLight = new THREE.DirectionalLight(0xffffff, 0.7);
+            frontLight.position.set(0, 0, 8);
+            scene.add(frontLight);
+
+            const backLight = new THREE.DirectionalLight(0xffffff, 0.4);
+            backLight.position.set(0, 0, -8);
+            scene.add(backLight);
+
+            const warmAmbient = new THREE.AmbientLight(0xfff4e6, 0.3);
+            scene.add(warmAmbient);
+        } else {
+            // Iluminación original para el corazón
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+            scene.add(ambientLight);
+
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight.position.set(5, 5, 5);
+            scene.add(directionalLight);
+
+            const fillLight = new THREE.DirectionalLight(0xffffff, 0.3);
+            fillLight.position.set(-5, 0, 5);
+            scene.add(fillLight);
+
+            const topLight = new THREE.DirectionalLight(0xffffff, 0.5);
+            topLight.position.set(0, 10, 0);
+            scene.add(topLight);
+
+            const warmLight = new THREE.PointLight(0xffaa44, 0.3, 20);
+            warmLight.position.set(-3, 2, 3);
+            scene.add(warmLight);
+
+            const coolLight = new THREE.PointLight(0x4488ff, 0.2, 20);
+            coolLight.position.set(3, -2, -3);
+            scene.add(coolLight);
+        }
+
+        // Crear controles
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.screenSpacePanning = false;
+        controls.maxPolarAngle = Math.PI / 2;
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 3;
+        controls.enableZoom = false;
+        controls.enablePan = false;
+        controls.enableRotate = true;
+
+        // Variables de estado
+        let model: any = null;
+        let animationId: any = null;
+        let needsRender = true;
+
+        // Función de animación
+        function animate() {
+            // Solo renderizar si la sección es visible
+            if (!(window as any).isSectionVisible) {
+                animationId = requestAnimationFrame(animate);
+                return;
+            }
+
+            animationId = requestAnimationFrame(animate);
+
+            if (model) {
+                if (controls) {
+                    controls.update();
+                }
+                
+                if (needsRender || controls.autoRotate) {
+                    renderer.render(scene, camera);
+                    needsRender = false;
+                }
+            }
+        }
+
+        // Función de resize
+        function onResize() {
+            if (camera && renderer) {
+                const container = document.getElementById(config.id)?.parentElement;
+                if (!container) return;
+                
+                const width = container.clientWidth;
+                const height = container.clientHeight;
+                
+                camera.aspect = width / height;
+                camera.updateProjectionMatrix();
+                renderer.setSize(width, height);
+                
+                if (controls) {
+                    controls.update();
+                }
+                
+                needsRender = true;
+            }
+        }
+
+        // Función de visibilidad
+        function onVisibilityChange() {
+            const sectionVisible = !document.hidden;
+            if (sectionVisible && (window as any).isSectionVisible) needsRender = true;
+        }
+
+        // Función de limpieza
+        function cleanup() {
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+            }
+            if (renderer) {
+                renderer.dispose();
+            }
+            if (controls) {
+                controls.dispose();
+            }
+            if (scene) {
+                scene.traverse((child: any) => {
+                    if (child.geometry) {
+                        child.geometry.dispose();
+                    }
+                    if (child.material) {
+                        if (Array.isArray(child.material)) {
+                            child.material.forEach((material: any) => {
+                                if (material.map) material.map.dispose();
+                                material.dispose();
+                            });
+                        } else {
+                            if (child.material.map) child.material.map.dispose();
+                            child.material.dispose();
+                        }
+                    }
+                });
+            }
+        }
+
+        // Cargar modelo
+        const loader = new GLTFLoader();
+        loader.load(config.modelPath, (gltf) => {
+            model = gltf.scene;
+            
+            // Centrar y escalar
+            model.position.set(0, config.modelPosY, 0);
+            
+            model.scale.setScalar(config.scale);
+            
+            // Ocultar placeholder cuando el modelo se carga
+            const placeholder = document.getElementById(config.id.replace('-canvas', '-placeholder'));
+            if (placeholder) {
+                placeholder.style.display = 'none';
+            }
+            
+            // Optimizar geometrías y materiales
+            model.traverse((child: any) => {
+                if (child.isMesh) {
+                    if (child.geometry) {
+                        child.geometry.computeBoundingSphere();
+                        child.geometry.computeBoundingBox();
+                        child.geometry.computeVertexNormals();
+                    }
+                    
+                    if (child.material) {
+                        child.material.transparent = false;
+                        child.material.needsUpdate = true;
+                        
+                        // Mejorar la iluminación de los materiales
+                        if (child.material.color) {
+                            // Aumentar ligeramente la intensidad del color
+                            child.material.color.multiplyScalar(1.1);
+                        }
+                    
+                        if (child.material.map) {
+                            child.material.map.generateMipmaps = false;
+                            child.material.map.minFilter = THREE.LinearFilter;
+                            child.material.map.magFilter = THREE.LinearFilter;
+                        }
+                    }
+                }
+            });
+
+            scene.add(model);
+            needsRender = true;
+        }, undefined, (error) => {
+            console.error(`Error loading ${config.id} model:`, error);
+        });
+
+        // Iniciar animación
+        animate();
+
+        // Agregar event listeners
+        window.addEventListener('resize', onResize, { passive: true });
+        document.addEventListener('visibilitychange', onVisibilityChange, { passive: true });
+
+        // Retornar funciones de limpieza
+        return {
+            cleanup,
+            onResize,
+            onVisibilityChange
+        };
+    }
+
+    // Inicializar todos los modelos
+    document.addEventListener('DOMContentLoaded', () => {
+        modelConfigs.forEach(config => {
+            const instance = createModel3D(config);
+            if (instance) {
+                modelInstances[config.id] = instance;
+            }
+        });
+    });
+
+    // Limpiar todos los modelos al salir
+    window.addEventListener('beforeunload', () => {
+        Object.values(modelInstances).forEach((instance: any) => {
+            if (instance && instance.cleanup) {
+                instance.cleanup();
+            }
+        });
+    });
+</script>
+
+
+
+

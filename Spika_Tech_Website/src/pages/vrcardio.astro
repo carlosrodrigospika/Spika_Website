@@ -1,0 +1,930 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Layout from '../layouts/Layout.astro';
+import SideNav from '../components/SideNav.astro';
+
+const sections = [
+  { num: '01', title: 'VRCardio.sections.01' },
+  { num: '02', title: 'VRCardio.sections.02' },
+  { num: '03', title: 'VRCardio.sections.03' },
+  { num: '04', title: 'VRCardio.sections.04' },
+];
+---
+<Layout>
+  <Header />
+  <SideNav sections={sections} />
+  <main id="main-scroll" class="w-full min-h-screen overflow-hidden lg:overflow-visible">
+    <!--Inicio -->
+    <section class="relative w-full min-h-screen flex flex-col justify-between bg-[#FFFFFF]" style="min-height: 100vh;justify-content: end;">
+      <video
+            class="absolute inset-0 w-full h-full object-cover z-0"
+            src="/assets/VR-CARDIO_Logo_Animado.mp4"
+            autoplay
+            muted
+            playsinline
+          ></video>
+      <div class="w-1/2 flex flex-col mb-8 z-2" style="align-self: end;">
+        <hr class="border-t border-[#003035] w-3/4 mb-2" />
+        <div class="flex items-center w-3/4 gap-2 text-[#003035] text-lg" style="justify-content: space-between;">
+          <span class="cursor-pointer hover:opacity-70 transition-opacity" data-i18n="PRAS.hero.explore" onclick="document.querySelector('#section1').scrollIntoView({behavior: 'smooth'})"></span>
+          <svg 
+            width="28" 
+            height="28" 
+            fill="none" 
+            viewBox="0 0 24 24"  
+            class="cursor-pointer hover:opacity-70 transition-opacity"
+            onclick="document.querySelector('#section1').scrollIntoView({behavior: 'smooth'})">
+            <circle cx="12" cy="12" r="11" stroke="#003035" stroke-width="2"/>
+            <path d="M8 12l4 4 4-4" stroke="#003035" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Split con corazón animado -->
+    <section class="relative min-h-[60vh] h-auto lg:h-screen flex flex-row items-stretch overflow-visible px-0">
+      <!-- Lado izquierdo blanco - solo visible en escritorio -->
+      <div class="relative w-[35%] bg-white flex items-center justify-end hidden lg:flex">
+        <div class="relative h-full flex items-center justify-center w-full">
+          <img
+            id="heart-scroll"
+            src="/assets/Corazon_VRCardio_.webp"
+            alt="Corazón VRCardio"
+            class="z-10"
+            style="max-width: 260px; width: 60vw; min-width: 180px; transition: transform 0.2s; position: absolute; left: 100%; transform: translate(-60%, 0); top: 0;"
+          />
+        </div>
+      </div>
+      
+      <!-- Lado derecho color -->
+      <div class="w-full lg:w-[65%] bg-[#003035] flex flex-col justify-between items-start px-8 py-16 min-h-[60vh] h-full relative" style="padding-left: 12vw;">
+        <div class="flex-1 flex flex-col justify-center">
+          <h2 class="text-5xl lg:text-7xl font-bold text-white mb-2 leading-tight text-left md:text-center split-text" style="transform: translateX(100%); opacity: 0; transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);">
+            <span data-i18n="VRCardio.hero.title.line1"></span>
+            <span data-i18n="VRCardio.hero.title.line2"></span> 
+            <span style="color:#CEDF00;font-weight:bold" data-i18n="VRCardio.hero.title.highlight"></span>
+          </h2>
+          <div class="w-full border-t border-white my-4 lg:my-6 split-line" style="transform: scaleX(0); opacity: 0; transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.4s; transform-origin: center;"></div>
+
+          <div class="w-full flex lg:justify-end md:justify-center">
+            <p class="text-white text-xs max-w-xs text-left font-light mt-4 mb-2 mr-4 split-description" style="font-size: 13px; transform: translateX(100%); opacity: 0; transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.8s;">
+              <span data-i18n="VRCardio.hero.description.prefix"></span> 
+              <span style="color:#CEDF00;font-weight:600" data-i18n="VRCardio.hero.description.highlight1"></span> 
+              <span data-i18n="VRCardio.hero.description.middle"></span> 
+              <span style="color:#CEDF00;font-weight:600" data-i18n="VRCardio.hero.description.highlight2"></span><span data-i18n="VRCardio.hero.description.suffix"></span>
+            </p>
+          </div>
+          
+          <!-- Corazón centrado debajo del texto - solo visible en móvil/tablet -->
+          <div class="flex items-center justify-center mt-8 lg:hidden split-mobile-heart" style="transform: translateX(100%); opacity: 0; transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 1.2s;">
+            <img
+              src="/assets/Corazon_VRCardio_.webp"
+              alt="Corazón VRCardio"
+              class="z-10"
+              style="max-width: 200px; width: 50vw; min-width: 150px;"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contenedor de scroll horizontal simulado (3 secciones) -->
+    <section id="section1" class="relative w-full" style="height: 270vh;">
+      <div id="horizontal-container" class="sticky top-0 left-0 flex flex-col lg:flex-row w-full lg:w-[400vw] min-h-[60vh] h-auto lg:h-screen overflow-hidden">
+        <!-- Video VR-Cardio (primera horizontal) -->
+        <div class=" max-w-[100vw] h-auto  w-full relative flex items-center justify-center z-2" style="aspect-ratio: 16/9;">
+          <video
+            class="absolute inset-0 w-full h-full object-cover z-0"
+            src="/assets/VR-Cardio_Collage_ST.mp4"
+            autoplay
+            loop
+            muted
+            playsinline
+          ></video>
+        </div>
+        
+        <div class="w-full bg-white flex flex-col lg:flex-row">
+          
+          <!-- Problemas y solución -->
+          <div class="flex flex-col justify-center px-8 md:px-16 py-8 horizontal-text-section" style="width: 50vw; padding-left: 6vw;">
+            <div class="text-left">
+              <div class="flex items-center mb-2">
+                <span class="text-5xl md:text-6xl font-light text-[#003035] mr-4 vrcardio-number" style="transform: translateY(-30px); opacity: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);">01</span>
+                <div class="flex-1 border-t border-[#003035] vrcardio-line" style="transform: scaleX(0); opacity: 0; transition: all 1s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.3s; transform-origin: left;"></div>
+              </div>
+              <h2 class="text-3xl md:text-4xl font-light text-[#003035] mb-4 text-center vrcardio-title" data-i18n="VRCardio.problems.title" style="transform: translateY(-30px); opacity: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.6s;"></h2>
+              <div class="mb-2 vrcardio-content" style="transform: translateY(-30px); opacity: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.9s;">
+                <span class="block text-[#CEDF00] font-semibold mb-1" data-i18n="VRCardio.problems.problems.title"></span>
+                <ul class="list-disc ml-6 text-[#003035] text-sm mb-2" style="margin-left: 50px;">
+                  <li data-i18n="VRCardio.problems.problems.list.0"></li>
+                  <li data-i18n="VRCardio.problems.problems.list.1"></li>
+                </ul>
+              </div>
+              <div class="vrcardio-content" style="transform: translateY(-30px); opacity: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 1.2s;">
+                <span class="block text-[#CEDF00] font-semibold mb-1 text-right w-full" data-i18n="VRCardio.problems.solution.title"></span>
+                <ul class="list-disc ml-6 text-[#003035] text-sm" style="margin-left: 100px;">
+                  <li data-i18n="VRCardio.problems.solution.list.0"></li>
+                  <li data-i18n="VRCardio.problems.solution.list.1"></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Imagen 1 -->
+          <!-- <img
+            src="/assets/VRCardio_Slide1.webp"
+            alt="Modelo VRCardio"
+            style="width: 100vw;"
+          />-->
+
+          <!-- Imagen 2 -->
+          <img
+            src="/assets/VRCardio_Slide2.webp"
+            alt="Corazón VRCardio"
+            style="width: 100vw;"
+          />
+
+          <!-- Ventajas y aplicación -->
+          <div class="flex flex-col justify-center px-8 md:px-16 py-8 horizontal-text-section" style="width: 50vw;">
+            <div class="text-left">
+              <div class="flex items-center mb-2">
+                <span class="text-5xl md:text-6xl font-light text-[#003035] mr-4 vrcardio-number" style="transform: translateY(-30px); opacity: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);">02</span>
+                <div class="flex-1 border-t border-[#003035] vrcardio-line" style="transform: scaleX(0); opacity: 0; transition: all 1s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.3s; transform-origin: left;"></div>
+              </div>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-light text-[#003035] mb-4 text-center vrcardio-title" data-i18n="VRCardio.advantages.title" style="transform: translateY(-30px); opacity: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.6s;"></h2>
+            <div class="mb-2 vrcardio-content" style="transform: translateY(-30px); opacity: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.9s;">
+              <span class="block text-[#CEDF00] font-semibold mb-1" data-i18n="VRCardio.problems.problems.title"></span>
+              <ul class="list-disc ml-6 text-[#003035] text-sm mb-2" style="margin-left: 50px;">
+                <li data-i18n="VRCardio.problems.problems.list.0"></li>
+                <li data-i18n="VRCardio.problems.problems.list.1"></li>
+              </ul>
+            </div>
+            <div class="vrcardio-content" style="transform: translateY(-30px); opacity: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 1.2s;">
+              <span class="block text-[#CEDF00] font-semibold mb-1 text-right w-full" data-i18n="VRCardio.problems.solution.title"></span>
+              <ul class="list-disc ml-6 text-[#003035] text-sm" style="margin-left: 100px;">
+                <li data-i18n="VRCardio.problems.solution.list.0"></li>
+                <li data-i18n="VRCardio.problems.solution.list.1"></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Imagen 3 -->
+          <img
+            class="heart-image"
+            src="/assets/Heart_VR.webp"
+            alt="Corazón realidad aumentada"
+            style="width: 35vw;"
+          />
+
+          <!-- Negocio y proyección -->
+          <div class="flex flex-col justify-center px-8 md:px-16 py-8 horizontal-text-section" style="width: 65vw; padding-right: 12vw;">
+            <div class="text-left">
+              <div class="flex items-center mb-2">
+                <span class="text-5xl md:text-6xl font-light text-[#003035] mr-4 vrcardio-number" style="transform: translateY(-30px); opacity: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);">03</span>
+                <div class="flex-1 border-t border-[#003035] vrcardio-line" style="transform: scaleX(0); opacity: 0; transition: all 1s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.3s; transform-origin: left;"></div>
+              </div>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-light text-[#003035] mb-4 text-center vrcardio-title" data-i18n="VRCardio.business.title" style="transform: translateY(-30px); opacity: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.6s;"></h2>
+            <div class="mb-2 vrcardio-content" style="transform: translateY(-30px); opacity: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.9s;">
+              <span class="block text-[#CEDF00] font-semibold mb-1" data-i18n="VRCardio.business.model.title"></span>
+              <ul class="list-disc ml-6 text-[#003035] text-sm mb-2" style="margin-left: 50px;">
+                <li data-i18n="VRCardio.business.model.list.0"></li>
+                <li data-i18n="VRCardio.business.model.list.1"></li>
+                <li data-i18n="VRCardio.business.model.list.2"></li>
+                <li data-i18n="VRCardio.business.model.list.3"></li>
+              </ul>
+            </div>
+            <div class="vrcardio-content" style="transform: translateY(-30px); opacity: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 1.2s;">
+              <span class="block text-[#CEDF00] font-semibold mb-1 text-right w-full" data-i18n="VRCardio.business.progress.title"></span>
+              <ul class="list-disc ml-6 text-[#003035] text-sm" style="margin-left: 35%;">
+                <li data-i18n="VRCardio.business.progress.list.0"></li>
+                <li data-i18n="VRCardio.business.progress.list.1"></li>
+                <li data-i18n="VRCardio.business.progress.list.2"></li>
+              </ul>
+            </div>
+          </div>
+      </div>
+    </section>
+
+    <!-- Vertical -->
+    <section id="section2" class=" max-w-[100vw] h-auto w-full relative flex items-center justify-center z-2" style="aspect-ratio: 16/9;">
+      <video
+            class="absolute inset-0 w-full h-full object-cover z-0"
+            src="/assets/Vídeo2D_ingles.mp4"
+            autoplay
+            loop
+            muted
+            playsinline
+          ></video>
+    </section>
+
+    <!-- Packaging -->
+    <section id="section3" class="w-full flex flex-col gap-12 py-12 px-8 md:px-12" style="padding-left: 12vw;">
+      <!-- Imagen 1: arriba a la izquierda -->
+      <img src="/assets/Top_Case.webp" alt="Caja cerrada VR Cardio" class="w-full lg:row-start-3 lg:col-start-1 lg:row-end-4 packaging-image" style="height: auto; width: 49vw; flex; align-self: start; transform: scaleX(0); opacity: 0; transition: all 2.5s cubic-bezier(0.4, 0, 0.2, 1); transform-origin: left;" />
+        <!-- Imagen 2: en medio a la derecha -->
+      <img src="/assets/Middle_case.webp" alt="Caja semiabierta VR Cardio" class="w-full lg:row-start-2 lg:col-start-2 lg:row-end-3 packaging-image" style="height: auto; width: 44vw; display:flex; align-self: end; transform: scaleX(0); opacity: 0; transition: all 2.5s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.5s; transform-origin: left;" />
+      <!-- Imagen 3: abajo a la izquierda -->
+      <img src="/assets/Bottom_case.webp" alt="Caja abierta VR Cardio" class="w-full lg:row-start-1 lg:col-start-1 lg:row-end-2 packaging-image" style="height: auto; width: 68vw; display: flex; align-self: end; transform: scaleX(0); opacity: 0; transition: all 2.5s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 1s; transform-origin: left;" />
+    </section>
+
+    <!-- IFU -->
+    <section id="section4" class="w-full flex flex-col md:flex-row items-stretch justify-center lg:min-h-[50vh] py-0 bg-white">
+      <!-- Imagen a la izquierda sin borde -->
+      <div class="md:w-1/2 w-full flex items-center justify-center p-0 m-0 relative vrcardio-ifu-image" style="background: none; min-height:320px; min-width: 320px; transform: translateX(-100%); opacity: 0; transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);">
+        <img src="/assets/Imagen_IFU.webp" alt="IFU VR-CARDIO" class="object-cover w-full h-full" style="max-height:100%; max-width:100%; min-height:320px; min-width:320px;" />
+      </div>
+      <!-- Texto y botón a la derecha -->
+      <div class="md:w-1/2 w-full flex flex-col justify-center items-center px-8 md:px-16 py-8 text-center vrcardio-ifu-text" style="min-height:320px; transform: translateX(100%); opacity: 0; transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.3s;">
+        <h2 class="text-3xl md:text-4xl font-light text-[#003035] mb-4" data-i18n="VRCardio.ifu.title"></h2>
+        <p class="text-[#003035] text-lg mb-6 font-light">
+          <span data-i18n="VRCardio.ifu.description"></span> <span style="color:#CEDF00;font-weight:bold" data-i18n="VRCardio.ifu.highlight"></span> <span data-i18n="VRCardio.ifu.suffix"></span>
+        </p>
+        <div class="relative flex flex-col items-center group vrcardio-ifu-button" style="transform: translateX(100%); opacity: 0; transition: all 1s cubic-bezier(0.4, 0, 0.2, 1); transition-delay: 0.6s;">
+          <a
+            href="https://firebasestorage.googleapis.com/v0/b/vrcardioexplorer.appspot.com/o/SpikaTech%2FIFU.pdf?alt=media&token=a8f2e1a7-942f-41cc-bd1d-ac5ecf93006d"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block border-2 border-[#CEDF00] text-[#003035] font-semibold rounded transition-colors hover:bg-[#CEDF00] hover:text-white group relative overflow-hidden"
+            style="height:36px; min-width:120px; padding:0 2rem; display:flex; align-items:center; justify-content:center;"
+          >
+          <span class="block relative w-full text-center group transition-all duration-300" style="line-height:36px;">
+            <!-- Texto que desaparece al hacer hover -->
+            <span class="block group-hover:opacity-0 transition-opacity" data-i18n="VRCardio.ifu.button">
+              Ver más
+            </span>
+          
+            <!-- Flecha blanca más ancha -->
+            <span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </span>
+          </span>
+          
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+function setupHorizontalScroll() {
+  const horizontalZone = document.getElementById('section1')!;
+  const horizontalContainer = document.getElementById('horizontal-container')!;
+  if (!horizontalZone || !horizontalContainer) return;
+
+  // Solo aplicar scroll horizontal en pantallas grandes
+  if (window.innerWidth < 1200) {
+    return;
+  }
+
+  // Configuración inicial
+  const containerWidth = horizontalContainer.scrollWidth;
+  const windowWidth = window.innerWidth;
+  const totalHeight = horizontalZone.offsetHeight;
+  const scrollableHeight = totalHeight - window.innerHeight;
+  
+  // Snap points en píxeles horizontales
+  const SNAP_POINTS = [
+    0,                            // 1. Video completo
+    windowWidth * 1,              // 2. Texto1 + mitad imagen1 
+    windowWidth * 2,              // 4. Mitad imagen2 + texto2 
+    containerWidth - windowWidth   // 5. Imagen3 + texto3
+  ];
+
+  // Posiciones verticales (% del scroll)
+  const VERTICAL_POSITIONS = [0, 0.35, 0.65, 1];
+
+  let isAnimating = false;
+  let currentSnapIndex = 0;
+  let wheelCount = 0;
+  let lastWheelTime = 0;
+  let isInHorizontalSection = false;
+  let isAtEdge = false;
+  let hasUserInteracted = false; // Para saber si el usuario ha interactuado con el wheel
+
+  function goToSnap(index:any) {
+    if (isAnimating) return;
+    
+    isAnimating = true;
+    currentSnapIndex = index;
+    
+    const start = horizontalZone.offsetTop;
+    const targetScrollY = start + (VERTICAL_POSITIONS[index] * scrollableHeight);
+    const targetTranslateX = Math.min(SNAP_POINTS[index], containerWidth - windowWidth);
+
+    horizontalContainer.style.transition = 'transform 1.5s cubic-bezier(0.4, 0.0, 0.2, 1)';
+    horizontalContainer.style.transform = `translateX(-${targetTranslateX}px)`;
+    
+    window.scrollTo({
+      top: targetScrollY,
+      behavior: 'smooth'
+    });
+
+    // Animar elementos de VRCardio cuando se navega a un snap point
+    setTimeout(() => {
+      animateVRCardioElementsBySection(index);
+    }, 800); // Esperar a que el scroll se complete
+
+    setTimeout(() => {
+      isAnimating = false;
+      horizontalContainer.style.transition = 'none';
+      isAtEdge = (index === 0 || index === SNAP_POINTS.length - 1);
+    }, 1500);
+  }
+
+  function handleWheel(e:any) {
+    if (isAnimating) return;
+    
+    const now = Date.now();
+    const delta = Math.sign(e.deltaY);
+    
+    // Resetear contador si ha pasado más de 300ms desde el último wheel
+    if (now - lastWheelTime > 300) {
+      wheelCount = 0;
+    }
+    
+    wheelCount += delta;
+    lastWheelTime = now;
+
+    const scrollY = window.scrollY;
+    const start = horizontalZone.offsetTop;
+    const end = start + scrollableHeight;
+    const wasInHorizontalSection = isInHorizontalSection;
+    isInHorizontalSection = scrollY >= start && scrollY <= end;
+
+    // Si no estamos en la sección horizontal, permitir scroll normal
+    if (!isInHorizontalSection) {
+      return;
+    }
+
+    // Marcar que el usuario ha interactuado
+    hasUserInteracted = true;
+
+    // Solo procesar si hay acumulación suficiente (2 movimientos)
+    if (Math.abs(wheelCount) >= 2) {
+      const direction = Math.sign(wheelCount);
+      const newIndex = currentSnapIndex + direction;
+      
+      // Comprobar si estamos en un borde y queremos salir
+      if (isAtEdge) {
+        if ((currentSnapIndex === 0 && direction === -1) || 
+            (currentSnapIndex === SNAP_POINTS.length - 1 && direction === 1)) {
+          // Permitir salir después de 2 movimientos
+          wheelCount = 0;
+          isAtEdge = false;
+          return; // Permitirá el scroll nativo en el próximo movimiento
+        }
+      }
+
+      // Navegación normal entre secciones
+      if (newIndex >= 0 && newIndex < SNAP_POINTS.length) {
+        goToSnap(newIndex);
+        wheelCount = 0;
+      }
+    }
+    
+    // Prevenir scroll nativo solo si no estamos en un borde intentando salir
+    if (!isAtEdge || (currentSnapIndex > 0 && currentSnapIndex < SNAP_POINTS.length - 1)) {
+      e.preventDefault();
+    }
+  }
+
+  function handleScroll() {
+    if (isAnimating) return;
+    
+    const scrollY = window.scrollY;
+    const start = horizontalZone.offsetTop;
+    const end = start + scrollableHeight;
+
+    // Actualizar estado de la sección
+    const wasInHorizontalSection = isInHorizontalSection;
+    isInHorizontalSection = scrollY >= start && scrollY <= end;
+    
+    // Solo ajustar posición horizontal si el usuario ha interactuado previamente
+    if (isInHorizontalSection && hasUserInteracted) {
+      const progress = (scrollY - start) / scrollableHeight;
+      const targetTranslateX = progress * (containerWidth - windowWidth);
+      horizontalContainer.style.transform = `translateX(-${targetTranslateX}px)`;
+    } else if (!isInHorizontalSection) {
+      // Resetear al entrar/salir
+      if (scrollY < start) {
+        currentSnapIndex = 0;
+        horizontalContainer.style.transform = 'translateX(0)';
+        hasUserInteracted = false; // Resetear cuando salimos completamente
+        // Resetear animaciones de VRCardio
+        animateVRCardioElementsBySection(-1);
+      } else if (scrollY > end) {
+        currentSnapIndex = SNAP_POINTS.length - 1;
+        horizontalContainer.style.transform = `translateX(-${containerWidth - windowWidth}px)`;
+        hasUserInteracted = false; // Resetear cuando salimos completamente
+        // NO resetear animaciones cuando salimos por abajo, mantener el estado
+      }
+    } else if (isInHorizontalSection && !hasUserInteracted) {
+      // Si estamos en la sección horizontal pero no hemos interactuado,
+      // determinar el snap point actual basado en la posición del scroll
+      const progress = (scrollY - start) / scrollableHeight;
+      const snapIndex = Math.round(progress * (SNAP_POINTS.length - 1));
+      
+      if (snapIndex !== currentSnapIndex) {
+        currentSnapIndex = snapIndex;
+        // Animar elementos según el snap point detectado
+        animateVRCardioElementsBySection(snapIndex);
+      }
+    } else if (isInHorizontalSection && !wasInHorizontalSection) {
+      // Si acabamos de entrar en la sección horizontal (desde fuera),
+      // determinar el snap point actual y animar
+      const progress = (scrollY - start) / scrollableHeight;
+      const snapIndex = Math.round(progress * (SNAP_POINTS.length - 1));
+      
+      if (snapIndex !== currentSnapIndex) {
+        currentSnapIndex = snapIndex;
+        // Animar elementos según el snap point detectado
+        animateVRCardioElementsBySection(snapIndex);
+      }
+      
+      // Si entramos desde abajo (última sección), asegurar que se muestre el texto
+      if (progress > 0.8) {
+        animateVRCardioElementsBySection(SNAP_POINTS.length - 1);
+      }
+    }
+  }
+
+  // Eventos
+  window.addEventListener('wheel', handleWheel, { passive: false });
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  window.addEventListener('resize', () => {
+    setTimeout(() => {
+      if (isInHorizontalSection) {
+        goToSnap(currentSnapIndex);
+      }
+    }, 100);
+  });
+
+  // Inicialización
+  handleScroll();
+  horizontalContainer.style.transform = 'translateX(0)';
+  isAtEdge = true; // Estamos en el primer snap point
+  
+  // Detectar posición inicial y animar si es necesario
+  setTimeout(() => {
+    const scrollY = window.scrollY;
+    const start = horizontalZone.offsetTop;
+    const end = start + scrollableHeight;
+    
+    if (scrollY >= start && scrollY <= end && !hasUserInteracted) {
+      const progress = (scrollY - start) / scrollableHeight;
+      const snapIndex = Math.round(progress * (SNAP_POINTS.length - 1));
+      if (snapIndex !== currentSnapIndex) {
+        currentSnapIndex = snapIndex;
+        animateVRCardioElementsBySection(snapIndex);
+      }
+    }
+  }, 100);
+  
+  // Detección adicional para cuando se carga la página muy abajo
+  setTimeout(() => {
+    const scrollY = window.scrollY;
+    const start = horizontalZone.offsetTop;
+    const end = start + scrollableHeight;
+    
+    // Si estamos en la sección horizontal al cargar
+    if (scrollY >= start && scrollY <= end) {
+      const progress = (scrollY - start) / scrollableHeight;
+      const snapIndex = Math.round(progress * (SNAP_POINTS.length - 1));
+      
+      // Forzar la animación del snap point correspondiente
+      currentSnapIndex = snapIndex;
+      animateVRCardioElementsBySection(snapIndex);
+    }
+  }, 500); // Delay más largo para asegurar que todo esté cargado
+
+  // Función para activar la navegación horizontal desde la barra lateral
+  function activateHorizontalNavigation() {
+    if (isInHorizontalSection && !hasUserInteracted) {
+      hasUserInteracted = true;
+      goToSnap(0); // Ir al primer elemento
+    }
+  }
+
+  // Detectar cuando se hace click en la barra lateral para ir a section1
+  function setupSideNavListener() {
+    const sideNavItems = document.querySelectorAll('[data-section-id="section1"]');
+    sideNavItems.forEach(item => {
+      item.addEventListener('click', () => {
+        // Marcar que se va a navegar desde la barra lateral
+        setTimeout(() => {
+          activateHorizontalNavigation();
+        }, 500); // Esperar a que el scroll se complete
+      });
+    });
+  }
+
+  // Configurar el listener cuando el DOM esté listo
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupSideNavListener);
+  } else {
+    setupSideNavListener();
+  }
+}
+
+// Iniciar
+document.addEventListener('DOMContentLoaded', setupHorizontalScroll);
+
+// Función para animar elementos cuando entran en el viewport
+function animateOnScroll() {
+  const splitSection = document.querySelector('section:nth-of-type(2)'); // La sección split
+  if (!splitSection) return;
+  
+  const rect = splitSection.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
+  
+  const splitText = document.querySelector('.split-text');
+  const splitLine = document.querySelector('.split-line');
+  const splitDescription = document.querySelector('.split-description');
+  const splitMobileHeart = document.querySelector('.split-mobile-heart');
+  
+  // Si la sección está visible (al 80% del viewport)
+  if (rect.top < windowHeight * 0.8 && rect.bottom > 0) {
+    // Animar elementos hacia su posición final
+    if (splitText) {
+      (splitText as HTMLElement).style.transform = 'translateX(0)';
+      (splitText as HTMLElement).style.opacity = '1';
+    }
+    
+    if (splitLine) {
+      (splitLine as HTMLElement).style.transform = 'scaleX(1)';
+      (splitLine as HTMLElement).style.opacity = '1';
+    }
+    
+    if (splitDescription) {
+      (splitDescription as HTMLElement).style.transform = 'translateX(0)';
+      (splitDescription as HTMLElement).style.opacity = '1';
+    }
+    
+    if (splitMobileHeart) {
+      (splitMobileHeart as HTMLElement).style.transform = 'translateX(0)';
+      (splitMobileHeart as HTMLElement).style.opacity = '1';
+    }
+  } else {
+    // Si la sección no está visible, resetear a posición inicial
+    if (splitText) {
+      (splitText as HTMLElement).style.transform = 'translateX(100%)';
+      (splitText as HTMLElement).style.opacity = '0';
+    }
+    
+    if (splitLine) {
+      (splitLine as HTMLElement).style.transform = 'scaleX(0)';
+      (splitLine as HTMLElement).style.opacity = '0';
+    }
+    
+    if (splitDescription) {
+      (splitDescription as HTMLElement).style.transform = 'translateX(100%)';
+      (splitDescription as HTMLElement).style.opacity = '0';
+    }
+    
+    if (splitMobileHeart) {
+      (splitMobileHeart as HTMLElement).style.transform = 'translateX(100%)';
+      (splitMobileHeart as HTMLElement).style.opacity = '0';
+    }
+  }
+}
+
+// Animación del corazón al hacer scroll
+window.addEventListener('scroll', function() {
+  const heart = document.getElementById('heart-scroll');
+  if (!heart) return;
+  // Encuentra la sección y calcula el scroll relativo
+  const section = heart.closest('section');
+  if (!section) return;
+  const rect = section.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
+  // Solo animar si la sección está visible
+  if (rect.top < windowHeight && rect.bottom > 0) {
+    // Porcentaje de scroll dentro de la sección
+    const percent = Math.min(Math.max((windowHeight - rect.top) / (rect.height + windowHeight), 0), 1);
+    // Mueve el corazón de arriba a abajo (ajusta el rango según necesidad)
+    const translateY = percent * (rect.height - heart.offsetHeight);
+    heart.style.transform = `translate(-60%, ${translateY}px)`;
+  }
+});
+
+// Función para animar las imágenes de packaging
+function animatePackagingImages() {
+  const packagingSection = document.getElementById('section3');
+  if (!packagingSection) return;
+  
+  const rect = packagingSection.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
+  
+  // Si la sección está visible (al 80% del viewport)
+  if (rect.top < windowHeight * 0.8 && rect.bottom > 0) {
+    const packagingImages = document.querySelectorAll('.packaging-image');
+    
+    packagingImages.forEach((image) => {
+      (image as HTMLElement).style.transform = 'scaleX(1)';
+      (image as HTMLElement).style.opacity = '1';
+    });
+  } else {
+    // Si la sección no está visible, resetear a posición inicial
+    const packagingImages = document.querySelectorAll('.packaging-image');
+    
+    packagingImages.forEach((image) => {
+      (image as HTMLElement).style.transform = 'scaleX(0)';
+      (image as HTMLElement).style.opacity = '0';
+    });
+  }
+}
+
+// Función para animar el IFU de VRCardio
+function animateVRCardioIFU() {
+  const ifuSection = document.querySelector('#section4');
+  if (!ifuSection) return;
+  
+  const rect = ifuSection.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
+  
+  // Si la sección está visible (al 80% del viewport)
+  if (rect.top < windowHeight * 0.8 && rect.bottom > 0) {
+    const ifuImage = document.querySelector('.vrcardio-ifu-image');
+    const ifuText = document.querySelector('.vrcardio-ifu-text');
+    const ifuButton = document.querySelector('.vrcardio-ifu-button');
+    
+    // Animar imagen desde la izquierda
+    if (ifuImage) {
+      (ifuImage as HTMLElement).style.transform = 'translateX(0)';
+      (ifuImage as HTMLElement).style.opacity = '1';
+    }
+    
+    // Animar texto desde la derecha
+    if (ifuText) {
+      (ifuText as HTMLElement).style.transform = 'translateX(0)';
+      (ifuText as HTMLElement).style.opacity = '1';
+    }
+    
+    // Animar botón desde la derecha
+    if (ifuButton) {
+      (ifuButton as HTMLElement).style.transform = 'translateX(0)';
+      (ifuButton as HTMLElement).style.opacity = '1';
+    }
+  } else {
+    // Si la sección no está visible, resetear a posición inicial
+    const ifuImage = document.querySelector('.vrcardio-ifu-image');
+    const ifuText = document.querySelector('.vrcardio-ifu-text');
+    const ifuButton = document.querySelector('.vrcardio-ifu-button');
+    
+    // Resetear imagen
+    if (ifuImage) {
+      (ifuImage as HTMLElement).style.transform = 'translateX(-100%)';
+      (ifuImage as HTMLElement).style.opacity = '0';
+    }
+    
+    // Resetear texto
+    if (ifuText) {
+      (ifuText as HTMLElement).style.transform = 'translateX(100%)';
+      (ifuText as HTMLElement).style.opacity = '0';
+    }
+    
+    // Resetear botón
+    if (ifuButton) {
+      (ifuButton as HTMLElement).style.transform = 'translateX(100%)';
+      (ifuButton as HTMLElement).style.opacity = '0';
+    }
+  }
+}
+
+// Ejecutar una vez al cargar para verificar si ya está visible
+document.addEventListener('DOMContentLoaded', function() {
+  // No ejecutar inmediatamente, solo en el scroll
+});
+
+// Agregar la función de animación del IFU al scroll
+window.addEventListener('scroll', function() {
+  // Llamar a la función de animación del split
+  animateOnScroll();
+  
+  // Animación de las imágenes de packaging
+  animatePackagingImages();
+  
+  // Animación del IFU de VRCardio
+  animateVRCardioIFU();
+  
+  // Detección para la sección horizontal
+  const horizontalZone = document.getElementById('section1');
+  if (horizontalZone) {
+    const scrollY = window.scrollY;
+    const start = horizontalZone.offsetTop;
+    const end = start + horizontalZone.offsetHeight - window.innerHeight;
+    
+    // Solo aplicar lógica horizontal en pantallas grandes
+    if (window.innerWidth >= 1024) {
+      // Si estamos en la sección horizontal y no hemos interactuado
+      if (scrollY >= start && scrollY <= end) {
+        const progress = (scrollY - start) / (end - start);
+        const snapIndex = Math.round(progress * 3); // 4 snap points (0-3)
+        
+        // Animar elementos según la posición actual
+        animateVRCardioElementsBySection(snapIndex);
+      }
+    } else {
+      // En pantallas medianas y pequeñas, detectar cada sección individualmente
+      animateVRCardioSectionsOnScroll();
+    }
+  }
+});
+
+// Variables para controlar las animaciones de VRCardio
+let vrcardioAnimationStates = {
+  section1: false,
+  section2: false,
+  section3: false
+};
+
+// Función para animar secciones de VRCardio en pantallas medianas y pequeñas
+function animateVRCardioSectionsOnScroll() {
+  const textSections = document.querySelectorAll('.horizontal-text-section');
+  const windowHeight = window.innerHeight;
+  
+  textSections.forEach((section, index) => {
+    const rect = section.getBoundingClientRect();
+    const sectionKey = `section${index + 1}` as keyof typeof vrcardioAnimationStates;
+    
+    // Si la sección está visible (al 70% del viewport) y no se ha animado aún
+    if (rect.top < windowHeight * 0.7 && rect.bottom > 0 && !vrcardioAnimationStates[sectionKey]) {
+      vrcardioAnimationStates[sectionKey] = true;
+      
+      // Animar elementos de esta sección específica
+      const number = section.querySelector('.vrcardio-number');
+      const line = section.querySelector('.vrcardio-line');
+      const title = section.querySelector('.vrcardio-title');
+      const contents = section.querySelectorAll('.vrcardio-content');
+      
+      // Animar número
+      if (number) {
+        (number as HTMLElement).style.transform = 'translateY(0)';
+        (number as HTMLElement).style.opacity = '1';
+      }
+      
+      // Animar línea
+      if (line) {
+        setTimeout(() => {
+          (line as HTMLElement).style.transform = 'scaleX(1)';
+          (line as HTMLElement).style.opacity = '1';
+        }, 300);
+      }
+      
+      // Animar título
+      if (title) {
+        setTimeout(() => {
+          (title as HTMLElement).style.transform = 'translateY(0)';
+          (title as HTMLElement).style.opacity = '1';
+        }, 600);
+      }
+      
+      // Animar contenidos
+      contents.forEach((content, contentIndex) => {
+        setTimeout(() => {
+          (content as HTMLElement).style.transform = 'translateY(0)';
+          (content as HTMLElement).style.opacity = '1';
+        }, 900 + (contentIndex * 300));
+      });
+    }
+  });
+}
+
+// Función para animar elementos basada en el snap point actual
+function animateVRCardioElementsBySection(sectionIndex: number) {
+  const numbers = document.querySelectorAll('.vrcardio-number');
+  const lines = document.querySelectorAll('.vrcardio-line');
+  const titles = document.querySelectorAll('.vrcardio-title');
+  const contents = document.querySelectorAll('.vrcardio-content');
+  
+  // Determinar qué sección debe animarse basada en el snap point
+  let targetSection = -1;
+  if (sectionIndex === 1) targetSection = 0; // Primera sección de texto
+  else if (sectionIndex === 2) targetSection = 1; // Segunda sección de texto
+  else if (sectionIndex === 3) targetSection = 2; // Tercera sección de texto
+  // Si sectionIndex es 0, significa que estamos en el video, no animar nada
+  
+  // Solo resetear todas las animaciones si estamos completamente fuera de la sección horizontal
+  if (targetSection === -1) {
+    // Verificar si realmente estamos fuera de la sección horizontal
+    const horizontalZone = document.getElementById('section1');
+    if (horizontalZone) {
+      const rect = horizontalZone.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      // Solo resetear si la sección está completamente fuera del viewport
+      if (rect.bottom < -windowHeight || rect.top > windowHeight * 2) {
+        numbers.forEach((number, index) => {
+          (number as HTMLElement).style.transform = 'translateY(-30px)';
+          (number as HTMLElement).style.opacity = '0';
+        });
+        lines.forEach((line, index) => {
+          (line as HTMLElement).style.transform = 'scaleX(0)';
+          (line as HTMLElement).style.opacity = '0';
+        });
+        titles.forEach((title, index) => {
+          (title as HTMLElement).style.transform = 'translateY(-30px)';
+          (title as HTMLElement).style.opacity = '0';
+        });
+        contents.forEach((content, index) => {
+          (content as HTMLElement).style.transform = 'translateY(-30px)';
+          (content as HTMLElement).style.opacity = '0';
+        });
+      }
+    }
+    return;
+  }
+  
+  // Animar solo la sección correspondiente
+  const targetNumber = numbers[targetSection];
+  const targetLine = lines[targetSection];
+  const targetTitle = titles[targetSection];
+  const targetContents = [contents[targetSection * 2], contents[targetSection * 2 + 1]]; // Cada sección tiene 2 contenidos
+  
+  if (targetNumber) {
+    (targetNumber as HTMLElement).style.transform = 'translateY(0)';
+    (targetNumber as HTMLElement).style.opacity = '1';
+  }
+  
+  if (targetLine) {
+    setTimeout(() => {
+      (targetLine as HTMLElement).style.transform = 'scaleX(1)';
+      (targetLine as HTMLElement).style.opacity = '1';
+    }, 300);
+  }
+  
+  if (targetTitle) {
+    setTimeout(() => {
+      (targetTitle as HTMLElement).style.transform = 'translateY(0)';
+      (targetTitle as HTMLElement).style.opacity = '1';
+    }, 600);
+  }
+  
+  targetContents.forEach((content, index) => {
+    if (content) {
+      setTimeout(() => {
+        (content as HTMLElement).style.transform = 'translateY(0)';
+        (content as HTMLElement).style.opacity = '1';
+      }, 900 + (index * 300));
+    }
+  });
+  
+  // Solo resetear otras secciones si estamos en una sección diferente
+  // Esto evita que se quiten las animaciones cuando se hace scroll sutil
+  numbers.forEach((number, index) => {
+    if (index !== targetSection) {
+      (number as HTMLElement).style.transform = 'translateY(-30px)';
+      (number as HTMLElement).style.opacity = '0';
+    }
+  });
+  
+  lines.forEach((line, index) => {
+    if (index !== targetSection) {
+      (line as HTMLElement).style.transform = 'scaleX(0)';
+      (line as HTMLElement).style.opacity = '0';
+    }
+  });
+  
+  titles.forEach((title, index) => {
+    if (index !== targetSection) {
+      (title as HTMLElement).style.transform = 'translateY(-30px)';
+      (title as HTMLElement).style.opacity = '0';
+    }
+  });
+  
+  contents.forEach((content, index) => {
+    const contentSection = Math.floor(index / 2);
+    if (contentSection !== targetSection) {
+      (content as HTMLElement).style.transform = 'translateY(-30px)';
+      (content as HTMLElement).style.opacity = '0';
+    }
+  });
+}
+</script>
+
+<style>
+  @media (max-width: 1200px) {
+      .horizontal-text-section {
+          padding-left: 110px !important;
+          width: 100% !important;
+      }
+
+      .heart-image {
+        align-self: center !important;
+      }
+    }
+
+  @media (max-width: 700px) {
+    .horizontal-text-section {
+            padding-left: 1.5rem !important;
+            padding-right: 1.5rem !important;
+    }
+  }
+</style>

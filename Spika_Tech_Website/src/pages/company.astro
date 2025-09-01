@@ -1,0 +1,1014 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Layout from '../layouts/Layout.astro';
+import SideNav from '../components/SideNav.astro';
+
+const sections = [
+  { num: '01', title: 'Company.sections.01' },
+  { num: '02', title: 'Company.sections.02' },
+];
+---
+<Layout>
+  <Header />
+  <SideNav sections={sections} />
+  <main id="main-scroll" class="w-full min-h-screen overflow-hidden lg:overflow-visible">
+    <!-- Video fondo + marquee -->
+    <section id="video-section" class="min-h-[60vh] h-auto md:h-screen w-full relative flex items-center justify-center z-2">
+      <!-- Video de fondo optimizado -->
+      <video
+        id="company-video-element"
+        class="absolute inset-0 w-full h-full object-cover z-0"
+        src="/assets/company_video.mp4"
+        autoplay
+        loop
+        muted
+        playsinline
+        preload="metadata"
+      ></video>
+
+      <!-- Marquee de texto centrado optimizado -->
+      <div id="company-marquee-container" class="absolute w-full flex items-center justify-center h-full z-10 pointer-events-none px-2">
+        <div class="overflow-hidden w-full">
+          <div class="flex whitespace-nowrap animate-marquee" id="company-marquee-content">
+            <h2 class="text-white flex-shrink-0" style="font-size: 6vw;" data-i18n="Company.marquee"></h2>
+            <h2 class="text-white flex-shrink-0 ml-8" style="font-size: 6vw;" data-i18n="Company.marquee"></h2>
+            <h2 class="text-white flex-shrink-0 ml-8" style="font-size: 6vw;" data-i18n="Company.marquee"></h2>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Intro valores -->
+    <section id="section1" class="relative md:min-h-[100vh] flex flex-col md:flex-row items-center bg-white overflow-hidden px-2 sm:px-8">
+      <img
+        src="/assets/Silueta_Estrella_Spika_.webp"
+        alt="Decorativo valores"
+        class="absolute h-[150%] left-[-5vw] z-1 pointer-events-none"
+      />
+
+      <!-- Contenido principal -->
+      <div class="relative z-20 flex flex-col md:flex-row w-full h-full px-2 sm:px-8 md:px-16 pt-8 gap-[9vw]">
+        <!-- Título grande, más a la derecha -->
+        <div class="flex flex-col items-start w-full pl-[5vw]">
+          <span class="text-3xl sm:text-4xl md:text-5xl font-bold text-[#003035] mb-2" data-i18n="Company.values.title"></span>
+        </div>
+        <!-- Texto de valores a la derecha, centrado verticalmente -->
+        <div class="flex flex-col items-start justify-center pr-0 md:pr-8 md:pt-16" style="width: fit-content;">
+          <h2 class="text-5xl sm:text-8xl md:text-10xl font-bold text-[#003035] leading-tight text-center md:text-right opacity-0 transition-all duration-1000 translate-x-24" data-i18n="Company.values.values1"></h2>
+          <h2 class="text-5xl sm:text-8xl md:text-10xl text-[#003035] leading-tight text-center md:text-right opacity-0 transition-all duration-1000 -translate-x-24" data-i18n="Company.values.values2"></h2>
+          <h2 class="text-5xl sm:text-8xl md:text-10xl text-[#003035] leading-tight text-center md:text-right opacity-0 transition-all duration-1000 translate-x-24" data-i18n="Company.values.values3"></h2>
+          <h2 class="text-5xl sm:text-8xl md:text-10xl text-[#003035] leading-tight text-center md:text-right opacity-0 transition-all duration-1000 -translate-x-24" data-i18n="Company.values.values4"></h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contenedor de scroll horizontal simulado -->
+    <section id="horizontal-zone" class="relative w-full lg:h-[300vh]">
+      <div id="horizontal-container" class="lg:sticky lg:top-0 left-0 flex flex-col lg:flex-row w-full lg:w-[300vw] min-h-[60vh] h-auto lg:h-screen overflow-hidden bg-[#003035]">
+        <!-- Horizontal (contenido real) -->
+        <div class="w-full lg:w-screen min-h-[60vh] h-auto lg:h-full flex flex-col items-center justify-center px-2 sm:px-8 horizontal-text-section">
+          <!-- Canvas 3D centrado -->
+          <div class="relative w-[55vh] sm:w-[65vh] lg:w-[75vh] opacity-0 -translate-y-24 transition-all duration-1000" style="margin-bottom: 1rem;">
+            <canvas id="horizontal-model-1" class="w-full h-[55vh] sm:h-[65vh] lg:h-[75vh] opacity-0 transition-opacity duration-700"></canvas>
+            <div id="horizontal-placeholder-1" class="absolute inset-0 flex items-center justify-center">
+              <img src="/assets/Render/DeepTechParaLaSociedad.webp" alt="Preview Modelo" class="w-full h-full object-contain" />
+            </div>
+          </div>
+          <!-- Línea horizontal -->
+          <hr class="w-11/12 sm:w-2/3 border-t-2 border-[#FFFFFF] mb-6" />
+          <!-- Texto -->
+          <p class="text-base sm:text-2xl lg:text-3xl font-light text-left w-11/12 sm:w-2/3">
+            <span class="text-[#FFFFFF]" data-i18n="Company.horizontal.section1.text"></span> <span class="text-[#CEDF00] font-bold" data-i18n="Company.horizontal.section1.highlight"></span> <span class="text-[#FFFFFF]" data-i18n="Company.horizontal.section1.suffix"></span>
+          </p>
+        </div>
+
+        <!-- Horizontal -->
+        <div class="w-full lg:w-screen min-h-[60vh] h-auto lg:h-full flex flex-col items-center justify-center px-2 sm:px-8 horizontal-text-section">
+          <!-- Canvas 3D centrado -->
+          <div class="relative w-[55vh] sm:w-[65vh] lg:w-[75vh] opacity-0 -translate-y-24 transition-all duration-1000" style="margin-bottom: 1rem;">
+            <canvas id="horizontal-model-2" class="w-full h-[55vh] sm:h-[65vh] lg:h-[75vh] opacity-0 transition-opacity duration-700"></canvas>
+            <div id="horizontal-placeholder-2" class="absolute inset-0 flex items-center justify-center bg-gray-100 rounded-lg">
+              <img src="/assets/Render/CreamosSolucionesAplicadas.webp" alt="Preview Modelo" class="w-full h-full object-contain rounded-lg" />
+            </div>
+          </div>
+          <!-- Línea horizontal -->
+          <hr class="w-11/12 sm:w-2/3 border-t-2 border-[#FFFFFF] mb-6" />
+          <!-- Texto -->
+          <p class="text-[#FFFFFF] text-base sm:text-2xl lg:text-3xl font-light text-left w-11/12 sm:w-2/3" data-i18n="Company.horizontal.section2.text"></p>
+        </div>
+
+        <!-- Horizontal -->
+        <div class="w-full lg:w-screen min-h-[60vh] h-auto lg:h-full flex flex-col items-center justify-center px-2 sm:px-8 horizontal-text-section">
+          <!-- Canvas 3D centrado -->
+          <div class="relative w-[55vh] sm:w-[65vh] lg:w-[75vh] opacity-0 -translate-y-24 transition-all duration-1000" style="margin-bottom: 1rem;">
+            <canvas id="horizontal-model-3" class="w-full h-[55vh] sm:h-[65vh] lg:h-[75vh] opacity-0 transition-opacity duration-700"></canvas>
+            <div id="horizontal-placeholder-3" class="absolute inset-0 flex items-center justify-center bg-gray-100 rounded-lg">
+              <img src="/assets/Render/ComprometidosConLaCiencia.webp" alt="Preview Modelo" class="w-full h-full object-contain rounded-lg" />
+            </div>
+          </div>
+          <!-- Línea horizontal -->
+          <hr class="w-11/12 sm:w-2/3 border-t-2 border-[#FFFFFF] mb-6" />
+          <!-- Texto -->
+          <p class="text-[#FFFFFF] text-base sm:text-2xl lg:text-3xl font-light text-left w-11/12 sm:w-2/3" data-i18n="Company.horizontal.section3.text">
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vertical -->
+    <section id="section2" class="min-h-[60vh] h-auto lg:h-screen w-full flex flex-col bg-[#003035] text-white px-14 sm:px-18 lg:px-25 py-12 lg:pl-[110px]">
+      <div class="flex flex-col lg:flex-row w-full justify-between h-full items-center gap-8">
+        <!-- Columna izquierda: Título y párrafos inferiores -->
+        <div class="flex flex-col lg:w-1/2 h-full justify-center">
+          <!-- Título arriba a la izquierda -->
+          <h2 class="text-2xl md:text-4xl font-bold mb-2 text-white" data-i18n="Company.history.title"></h2>
+          <!-- Espacio para separar del bloque inferior -->
+          <div class="flex-1"></div>
+          <!-- Tres párrafos abajo a la izquierda -->
+          <ul class="space-y-4 mb-2 text-sm md:text-base">
+            <li class="leading-snug opacity-0 transition-all duration-1000 translate-x-24">
+              <span class="text-white">
+                <span data-i18n="Company.history.paragraph1.prefix"></span> <span class="text-[#CEDF00] font-bold" data-i18n="Company.history.paragraph1.highlight1"></span> <span data-i18n="Company.history.paragraph1.middle"></span> <span class="text-[#CEDF00] font-bold" data-i18n="Company.history.paragraph1.highlight2"></span>, <span class="text-[#CEDF00] font-bold" data-i18n="Company.history.paragraph1.highlight3"></span><span data-i18n="Company.history.paragraph1.suffix"></span>
+              </span>
+            </li>
+            <li class="leading-snug opacity-0 transition-all duration-1000 -translate-x-24">
+              <span class="text-white">
+                <span data-i18n="Company.history.paragraph2.prefix"></span> <span class="text-[#CEDF00] font-bold" data-i18n="Company.history.paragraph2.highlight"></span> <span data-i18n="Company.history.paragraph2.suffix"></span>
+              </span>
+            </li>
+            <li class="leading-snug opacity-0 transition-all duration-1000 translate-x-24">
+              <span class="text-white">
+                <span data-i18n="Company.history.paragraph3.prefix"></span> <span class="text-[#CEDF00] font-bold" data-i18n="Company.history.paragraph3.highlight1"></span><span data-i18n="Company.history.paragraph3.middle"></span> <span class="text-[#CEDF00] font-bold" data-i18n="Company.history.paragraph3.highlight2"></span><span data-i18n="Company.history.paragraph3.suffix"></span>
+              </span>
+            </li>
+          </ul>
+        </div>
+        <!-- Columna derecha: Párrafo destacado -->
+        <div class="flex flex-col lg:w-1/2 items-end justify-end mb-20">
+          <div class="w-full max-w-xl mb-20">
+            <p class="text-3xl md:text-4xl font-light text-right leading-tight opacity-0 transition-all duration-1000 -translate-x-24">
+              <span data-i18n="Company.history.highlight.prefix"></span><br>
+              <span data-i18n="Company.history.highlight.middle"></span> <span class="text-[#CEDF00] font-bold" data-i18n="Company.history.highlight.highlight"></span> <span data-i18n="Company.history.highlight.suffix"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline vertical -->
+    <section class="w-full bg-[#003035] text-white sm:pl-7 sm:pr-4 md:pr-12 md:pl-18 md:py-16 lg:pl-[110px] timeline-section">
+      <div class="w-full flex flex-col gap-8 sm:gap-12 md:gap-20" id="timeline"></div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+import { updatePageTranslations } from '../i18n/config.ts';
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+
+// Variables globales para controlar visibilidad
+let isVideoVisible = false;
+let isMarqueeVisible = false;
+let isHorizontalSectionVisible = false;
+let videoObserver: IntersectionObserver | null = null;
+let marqueeObserver: IntersectionObserver | null = null;
+let horizontalSectionObserver: IntersectionObserver | null = null;
+
+// Función para inicializar el Intersection Observer para el video
+function initVideoObserver() {
+    const videoSection = document.getElementById('video-section');
+    if (!videoSection) return;
+
+    videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            const video = document.getElementById('company-video-element') as HTMLVideoElement;
+            if (!video) return;
+
+            if (entry.isIntersecting) {
+                // Video visible - reanudar reproducción
+                isVideoVisible = true;
+                video.play().catch(e => console.log('Video play failed:', e));
+            } else {
+                // Video no visible - pausar reproducción
+                isVideoVisible = false;
+                video.pause();
+            }
+        });
+    }, {
+        threshold: 0.1, // Se activa cuando el 10% del video es visible
+        rootMargin: '100px 0px 100px 0px' // Margen para anticipar la visibilidad
+    });
+
+    videoObserver.observe(videoSection);
+}
+
+// Función para inicializar el Intersection Observer para el marquee
+function initMarqueeObserver() {
+    const marqueeContainer = document.getElementById('company-marquee-container');
+    if (!marqueeContainer) return;
+
+    marqueeObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                // Marquee visible - reanudar animación
+                isMarqueeVisible = true;
+                marqueeContainer.style.animationPlayState = 'running';
+            } else {
+                // Marquee no visible - pausar animación
+                isMarqueeVisible = false;
+                marqueeContainer.style.animationPlayState = 'paused';
+            }
+        });
+    }, {
+        threshold: 0.1, // Se activa cuando el 10% del marquee es visible
+        rootMargin: '100px 0px 100px 0px' // Margen para anticipar la visibilidad
+    });
+
+    marqueeObserver.observe(marqueeContainer);
+}
+
+// Función para inicializar el Intersection Observer para la sección horizontal
+function initHorizontalSectionObserver() {
+    const horizontalZone = document.getElementById('horizontal-zone');
+    if (!horizontalZone) return;
+
+    horizontalSectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                // Sección horizontal visible - activar renderizado de modelos
+                isHorizontalSectionVisible = true;
+            } else {
+                // Sección horizontal no visible - desactivar renderizado de modelos
+                isHorizontalSectionVisible = false;
+            }
+        });
+    }, {
+        threshold: 0.1, // Se activa cuando el 10% de la sección es visible
+        rootMargin: '50px 0px 50px 0px' // Margen para anticipar la visibilidad
+    });
+
+    horizontalSectionObserver.observe(horizontalZone);
+}
+
+// Configuración de los modelos 3D para el scroll horizontal
+const horizontalModelConfigs = [
+  {
+    id: 'horizontal-model-1',
+    placeholderId: 'horizontal-placeholder-1',
+    modelPath: '/assets/models/DeepTechParaLaSociedad.glb',
+    scale: 0.7,
+    modelPosY: -1.6,
+    useEnhancedLighting: true
+  },
+  {
+    id: 'horizontal-model-2',
+    placeholderId: 'horizontal-placeholder-2',
+    modelPath: '/assets/models/CreamosSolucionesAplicadas.glb',
+    scale: 0.6,
+    modelPosY: -1.9,
+    useEnhancedLighting: true
+  },
+  {
+    id: 'horizontal-model-3',
+    placeholderId: 'horizontal-placeholder-3',
+    modelPath: '/assets/models/ComprometidosConLaCiencia.glb',
+    scale: 0.7,
+    modelPosY: -1.6,
+    useEnhancedLighting: true
+  }
+];
+
+// Almacén de instancias de modelos
+const horizontalModelInstances: any = {};
+
+// Función para crear un modelo 3D
+function createHorizontalModel3D(config: any) {
+  const canvas = document.getElementById(config.id);
+  const placeholder = document.getElementById(config.placeholderId);
+  
+  if (!canvas || !placeholder) return;
+
+  const container = canvas.parentElement;
+  if (!container) return;
+  
+  const width = container.clientWidth;
+  const height = container.clientHeight;
+
+  // Crear escena
+  const scene = new THREE.Scene();
+  scene.background = null;
+  scene.fog = null;
+
+  // Crear cámara
+  const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 100);
+  camera.position.set(0, 0, 5);
+
+  // Crear renderer con configuración optimizada
+  const renderer = new THREE.WebGLRenderer({ 
+    canvas: canvas, 
+    alpha: true, 
+    antialias: config.useEnhancedLighting ? true : false,
+    powerPreference: "high-performance",
+    stencil: false,
+    depth: true,
+    logarithmicDepthBuffer: false
+  });
+  renderer.setSize(width, height);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, config.useEnhancedLighting ? 2 : 1.5));
+  renderer.shadowMap.enabled = false;
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  
+  if (config.useEnhancedLighting) {
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.2;
+  } else {
+    renderer.toneMapping = THREE.NoToneMapping;
+  }
+
+  // Configurar iluminación mejorada
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+  scene.add(ambientLight);
+
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2);
+  directionalLight.position.set(5, 5, 5);
+  directionalLight.castShadow = false;
+  scene.add(directionalLight);
+
+  const fillLight = new THREE.DirectionalLight(0xffffff, 0.8);
+  fillLight.position.set(-5, 0, 5);
+  scene.add(fillLight);
+
+  const topLight = new THREE.DirectionalLight(0xffffff, 1.0);
+  topLight.position.set(0, 10, 0);
+  scene.add(topLight);
+
+  const warmLight = new THREE.PointLight(0xffcc66, 0.8, 25);
+  warmLight.position.set(-3, 2, 3);
+  scene.add(warmLight);
+
+  const coolLight = new THREE.PointLight(0x6699ff, 0.6, 25);
+  coolLight.position.set(3, -2, -3);
+  scene.add(coolLight);
+
+  const frontLight = new THREE.DirectionalLight(0xffffff, 0.7);
+  frontLight.position.set(0, 0, 8);
+  scene.add(frontLight);
+
+  const backLight = new THREE.DirectionalLight(0xffffff, 0.4);
+  backLight.position.set(0, 0, -8);
+  scene.add(backLight);
+
+  const warmAmbient = new THREE.AmbientLight(0xfff4e6, 0.3);
+  scene.add(warmAmbient);
+
+  // Crear controles optimizados - deshabilitados para el usuario
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.05;
+  controls.screenSpacePanning = true;
+  controls.maxPolarAngle = Math.PI;
+  controls.minPolarAngle = 0;
+  controls.autoRotate = true;
+  controls.autoRotateSpeed = 1;
+  controls.enableZoom = false; // Deshabilitar zoom
+  controls.enablePan = false; // Deshabilitar pan
+  controls.enableRotate = false; // Deshabilitar rotación manual
+
+  // Variables de estado
+  let model: any = null;
+  let animationId: any = null;
+  let needsRender = true;
+
+  // Función de animación optimizada
+  function animate() {
+    // Solo renderizar si la sección horizontal es visible
+    if (!isHorizontalSectionVisible) {
+      animationId = requestAnimationFrame(animate);
+      return;
+    }
+
+    animationId = requestAnimationFrame(animate);
+
+    if (model) {
+      if (controls) {
+        controls.update();
+      }
+      
+      if (needsRender || controls.autoRotate) {
+        renderer.render(scene, camera);
+        needsRender = false;
+      }
+    }
+  }
+
+  // Función de resize
+  function onResize() {
+    if (camera && renderer) {
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(width, height);
+      
+      if (controls) {
+        controls.update();
+      }
+      
+      needsRender = true;
+    }
+  }
+
+  // Función de visibilidad
+  function onVisibilityChange() {
+    const pageVisible = !document.hidden;
+    if (pageVisible && isHorizontalSectionVisible) needsRender = true;
+  }
+
+  // Función de limpieza
+  function cleanup() {
+    if (animationId) {
+      cancelAnimationFrame(animationId);
+    }
+    if (renderer) {
+      renderer.dispose();
+    }
+    if (controls) {
+      controls.dispose();
+    }
+    if (scene) {
+      scene.traverse((child: any) => {
+        if (child.geometry) {
+          child.geometry.dispose();
+        }
+        if (child.material) {
+          if (Array.isArray(child.material)) {
+            child.material.forEach((material: any) => {
+              if (material.map) material.map.dispose();
+              material.dispose();
+            });
+          } else {
+            if (child.material.map) child.material.map.dispose();
+            child.material.dispose();
+          }
+        }
+      });
+    }
+  }
+
+  // Cargar modelo
+  const loader = new GLTFLoader();
+  loader.load(
+    config.modelPath, 
+    (gltf) => {
+      try {
+        model = gltf.scene;
+        
+        // Centrar y escalar
+        model.position.set(0, config.modelPosY, 0);
+        model.scale.setScalar(config.scale);
+        
+        // Ocultar placeholder cuando el modelo se carga
+        placeholder.style.opacity = '0';
+        placeholder.style.transition = 'opacity 0.3s ease-out';
+        canvas.style.opacity = '1';
+        canvas.style.transition = 'opacity 0.3s ease-in';
+        
+        setTimeout(() => {
+          placeholder.style.display = 'none';
+        }, 300);
+        
+        // Optimizar geometrías y materiales
+        model.traverse((child: any) => {
+          if (child.isMesh) {
+            if (child.geometry) {
+              child.geometry.computeBoundingSphere();
+              child.geometry.computeBoundingBox();
+              child.geometry.computeVertexNormals();
+            }
+            
+            if (child.material) {
+              child.material.transparent = false;
+              child.material.needsUpdate = true;
+              
+              // Mejorar la iluminación de los materiales
+              if (child.material.color) {
+                child.material.color.multiplyScalar(1.1);
+              }
+          
+              if (child.material.map) {
+                child.material.map.generateMipmaps = false;
+                child.material.map.minFilter = THREE.LinearFilter;
+                child.material.map.magFilter = THREE.LinearFilter;
+              }
+            }
+          }
+        });
+
+        scene.add(model);
+        needsRender = true;
+        
+      } catch (error) {
+        console.error(`Error processing ${config.id} model:`, error);
+      }
+    }, 
+    (progress) => {
+      // Callback de progreso (opcional)
+    }, 
+    (error) => {
+      console.error(`Error loading ${config.id} model:`, error);
+      // Intentar cargar de nuevo después de un delay
+      setTimeout(() => {
+        loader.load(config.modelPath, (gltf) => {
+          try {
+            model = gltf.scene;
+            model.position.set(0, config.modelPosY, 0);
+            model.scale.setScalar(config.scale);
+            scene.add(model);
+            needsRender = true;
+            
+            placeholder.style.opacity = '0';
+            placeholder.style.transition = 'opacity 0.3s ease-out';
+            canvas.style.opacity = '1';
+            canvas.style.transition = 'opacity 0.3s ease-in';
+            
+            setTimeout(() => {
+              placeholder.style.display = 'none';
+            }, 300);
+            
+          } catch (retryError) {
+            console.error(`Error on retry for ${config.id}:`, retryError);
+          }
+        });
+      }, 2000);
+    }
+  );
+
+  // Iniciar animación
+  animate();
+
+  // Agregar event listeners
+  window.addEventListener('resize', onResize, { passive: true });
+  document.addEventListener('visibilitychange', onVisibilityChange, { passive: true });
+
+  // Retornar funciones de limpieza
+  return {
+    cleanup,
+    onResize,
+    onVisibilityChange
+  };
+}
+
+function setupHorizontalScroll() {
+  const horizontalZone = document.getElementById('horizontal-zone')!;
+  const horizontalContainer = document.getElementById('horizontal-container')!;
+  if (!horizontalZone || !horizontalContainer) return;
+
+  // Solo aplicar scroll horizontal en pantallas grandes
+  if (window.innerWidth < 1200) {
+    return;
+  }
+
+  // Configuración inicial
+  const containerWidth = horizontalContainer.scrollWidth;
+  const windowWidth = window.innerWidth;
+  const totalHeight = horizontalZone.offsetHeight;
+  const scrollableHeight = totalHeight - window.innerHeight;
+  
+  // Snap points en píxeles horizontales
+  const SNAP_POINTS = [
+    0,                            // 1. Texto 1
+    windowWidth * 1,              // 2. Texto 2  
+    containerWidth - windowWidth   // 3. Texto 3
+  ];
+
+  // Posiciones verticales (% del scroll)
+  const VERTICAL_POSITIONS = [0, 0.5, 1];
+
+  let isAnimating = false;
+  let currentSnapIndex = 0;
+  let wheelCount = 0;
+  let lastWheelTime = 0;
+  let isInHorizontalSection = false;
+  let isAtEdge = false;
+  let hasUserInteracted = false; // Para saber si el usuario ha interactuado con el wheel
+
+  function goToSnap(index:any) {
+    if (isAnimating) return;
+    
+    isAnimating = true;
+    currentSnapIndex = index;
+    
+    const start = horizontalZone.offsetTop;
+    const targetScrollY = start + (VERTICAL_POSITIONS[index] * scrollableHeight);
+    const targetTranslateX = Math.min(SNAP_POINTS[index], containerWidth - windowWidth);
+
+    horizontalContainer.style.transition = 'transform 1.5s cubic-bezier(0.4, 0.0, 0.2, 1)';
+    horizontalContainer.style.transform = `translateX(-${targetTranslateX}px)`;
+    
+    window.scrollTo({
+      top: targetScrollY,
+      behavior: 'smooth'
+    });
+
+    setTimeout(() => {
+      isAnimating = false;
+      horizontalContainer.style.transition = 'none';
+      isAtEdge = (index === 0 || index === SNAP_POINTS.length - 1);
+      
+    }, 1500);
+  }
+
+  function handleWheel(e:any) {
+    if (isAnimating) return;
+    
+    const now = Date.now();
+    const delta = Math.sign(e.deltaY);
+    
+    // Resetear contador si ha pasado más de 300ms desde el último wheel
+    if (now - lastWheelTime > 300) {
+      wheelCount = 0;
+    }
+    
+    wheelCount += delta;
+    lastWheelTime = now;
+
+    const scrollY = window.scrollY;
+    const start = horizontalZone.offsetTop;
+    const end = start + scrollableHeight;
+    const wasInHorizontalSection = isInHorizontalSection;
+    isInHorizontalSection = scrollY >= start && scrollY <= end;
+
+    // Si no estamos en la sección horizontal, permitir scroll normal
+    if (!isInHorizontalSection) {
+      return;
+    }
+
+    // Marcar que el usuario ha interactuado
+    hasUserInteracted = true;
+
+    // Solo procesar si hay acumulación suficiente (2 movimientos)
+    if (Math.abs(wheelCount) >= 2) {
+      const direction = Math.sign(wheelCount);
+      const newIndex = currentSnapIndex + direction;
+      
+      // Comprobar si estamos en un borde y queremos salir
+      if (isAtEdge) {
+        if ((currentSnapIndex === 0 && direction === -1) || 
+            (currentSnapIndex === SNAP_POINTS.length - 1 && direction === 1)) {
+          // Permitir salir después de 2 movimientos
+          wheelCount = 0;
+          isAtEdge = false;
+          return; // Permitirá el scroll nativo en el próximo movimiento
+        }
+      }
+
+      // Navegación normal entre secciones
+      if (newIndex >= 0 && newIndex < SNAP_POINTS.length) {
+        goToSnap(newIndex);
+        wheelCount = 0;
+      }
+    }
+    
+    // Prevenir scroll nativo solo si no estamos en un borde intentando salir
+    if (!isAtEdge || (currentSnapIndex > 0 && currentSnapIndex < SNAP_POINTS.length - 1)) {
+      e.preventDefault();
+    }
+  }
+
+  function handleScroll() {
+    if (isAnimating) return;
+    
+    const scrollY = window.scrollY;
+    const start = horizontalZone.offsetTop;
+    const end = start + scrollableHeight;
+
+    // Actualizar estado de la sección
+    isInHorizontalSection = scrollY >= start && scrollY <= end;
+    
+    // Solo ajustar posición horizontal si el usuario ha interactuado previamente
+    if (isInHorizontalSection && hasUserInteracted) {
+      const progress = (scrollY - start) / scrollableHeight;
+      const targetTranslateX = progress * (containerWidth - windowWidth);
+      horizontalContainer.style.transform = `translateX(-${targetTranslateX}px)`;
+    } else if (!isInHorizontalSection) {
+      // Resetear al entrar/salir
+      if (scrollY < start) {
+        currentSnapIndex = 0;
+        horizontalContainer.style.transform = 'translateX(0)';
+        hasUserInteracted = false; // Resetear cuando salimos completamente
+      } else if (scrollY > end) {
+        currentSnapIndex = SNAP_POINTS.length - 1;
+        horizontalContainer.style.transform = `translateX(-${containerWidth - windowWidth}px)`;
+        hasUserInteracted = false; // Resetear cuando salimos completamente
+      }
+    }
+  }
+
+  // Eventos
+  window.addEventListener('wheel', handleWheel, { passive: false });
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  window.addEventListener('resize', () => {
+    setTimeout(() => {
+      // Reiniciar la funcionalidad cuando cambie el tamaño de pantalla
+      if (window.innerWidth >= 1200) {
+        if (isInHorizontalSection) {
+          goToSnap(currentSnapIndex);
+        }
+      } else {
+        // En pantallas pequeñas, resetear el contenedor
+        horizontalContainer.style.transform = 'translateX(0)';
+        horizontalContainer.style.transition = 'none';
+      }
+    }, 100);
+  });
+
+  // Inicialización
+  handleScroll();
+  horizontalContainer.style.transform = 'translateX(0)';
+  isAtEdge = true; // Estamos en el primer snap point
+
+  // Función para activar la navegación horizontal desde la barra lateral
+  function activateHorizontalNavigation() {
+    if (isInHorizontalSection && !hasUserInteracted) {
+      hasUserInteracted = true;
+      goToSnap(0); // Ir al primer elemento
+    }
+  }
+
+  // Detectar cuando se hace click en la barra lateral para ir a section1
+  function setupSideNavListener() {
+    const sideNavItems = document.querySelectorAll('[data-section-id="section1"]');
+    sideNavItems.forEach(item => {
+      item.addEventListener('click', () => {
+        // Marcar que se va a navegar desde la barra lateral
+        setTimeout(() => {
+          activateHorizontalNavigation();
+        }, 500); // Esperar a que el scroll se complete
+      });
+    });
+  }
+
+  // Configurar el listener cuando el DOM esté listo
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupSideNavListener);
+  } else {
+    setupSideNavListener();
+  }
+}
+
+// Inicializar modelos 3D y scroll horizontal
+document.addEventListener('DOMContentLoaded', () => {
+  // Inicializar modelos 3D
+  horizontalModelConfigs.forEach(config => {
+    const instance = createHorizontalModel3D(config);
+    if (instance) {
+      horizontalModelInstances[config.id] = instance;
+    }
+  });
+
+  // Inicializar scroll horizontal
+  setupHorizontalScroll();
+
+  // Inicializar observadores de visibilidad
+  initVideoObserver();
+  initMarqueeObserver();
+  initHorizontalSectionObserver();
+});
+
+// Limpiar todos los modelos al salir
+window.addEventListener('beforeunload', () => {
+  // Limpiar observers
+  if (videoObserver) videoObserver.disconnect();
+  if (marqueeObserver) marqueeObserver.disconnect();
+  if (horizontalSectionObserver) horizontalSectionObserver.disconnect();
+  
+  // Limpiar modelos 3D
+  Object.values(horizontalModelInstances).forEach((instance: any) => {
+    if (instance && instance.cleanup) {
+      instance.cleanup();
+    }
+  });
+});
+
+const timeline = [
+  {
+    year: 2019,
+    items: [
+      { img: '/assets/seal of excellence.webp', captionKey: 'Company.timeline.2019.seal' }
+    ]
+  },
+  {
+    year: 2020,
+    items: [
+      { img: '/assets/eibt seal.webp', captionKey: 'Company.timeline.2020.eibt' }
+    ]
+  },
+  {
+    year: 2021,
+    items: [
+      { img: '/assets/eu_funded_en.webp', captionKey: 'Company.timeline.2021.eu' },
+      { img: '/assets/Oracle.webp', captionKey: 'Company.timeline.2021.oracle' },
+      { img: '/assets/EIC_Accelerator.webp', captionKey: 'Company.timeline.2021.eic' }
+    ]
+  },
+  {
+    year: 2022,
+    items: [
+      { img: '/assets/Premio_QIA_Innovacion_Digital.webp', captionKey: 'Company.timeline.2022.qia' },
+    ]
+  },
+  {
+    year: 2023,
+    items: [
+      { img: '/assets/Premio_QIA_Innovacion_Digital_Internacional.webp', captionKey: 'Company.timeline.2023.qia_international' },
+    ]
+  },
+  {
+    year: 2024,
+    items: [
+      { img: '/assets/aemps-logo.webp', captionKey: 'Company.timeline.2024.aemps' },
+      { img: '/assets/Premio_Health_To_Market.webp', captionKey: 'Company.timeline.2024.health_market' },
+      { img: '/assets/Aenor_ISO13485_logo.webp', captionKey: 'Company.timeline.2024.iso13485' },
+      { img: '/assets/Madrid_Excelente.webp', captionKey: 'Company.timeline.2024.madrid'},
+    ]
+  },
+  {
+    year: 2025,
+    items: [
+      { img: '/assets/SelloAENORISO27001_EN_POS.webp', captionKey: 'Company.timeline.2025.iso27001' },
+      { img: '/assets/Premio Valor Público Esther.webp', captionKey: 'Company.timeline.2025.valor_publico' },
+    ]
+  }
+];
+
+function createTimeline() {
+  const container = document.getElementById('timeline');
+  if (!container) return;
+  container.innerHTML = '';
+  timeline.forEach((entry, idx) => {
+    container.innerHTML += `
+      <div class="flex flex-row w-full border-t-2 border-white">
+        <!-- Columna estrella -->
+        <div class="flex flex-col items-center justify-start min-w-[40px] mr-3">
+          <img src="/assets/Viñeta.webp" alt="icono año" class="w-8"/>
+        </div>
+        <!-- Columna año -->
+        <div class="flex flex-col items-start justify-start min-w-[70px] mr-3 pt-1">
+          <span class="text-2xl md:text-3xl font-bold text-white pt-1">${entry.year}</span>
+        </div>
+        <!-- Línea + contenido -->
+        <div class="flex-1 flex flex-col items-center justify-center">
+          <!-- Contenedor de elementos en columna -->
+          <div class="flex flex-col items-center justify-center w-full mt-3 space-y-6">
+            ${entry.items.map((item, itemIdx) => `
+              <div class='flex flex-col items-center justify-center'>
+                <img src="${item.img}" alt="Premio ${entry.year}" class="object-contain rounded shadow border border-[#CEDF00] bg-white mx-auto opacity-0 transition-all duration-1000 w-[110px] sm:w-[180px] md:w-[320px] h-auto ${itemIdx % 2 === 0 ? 'translate-x-24' : '-translate-x-24'}" style="margin-top:0;" />
+                <div class="text-center text-xs sm:text-sm md:text-base mt-3 text-white font-normal w-[110px] sm:w-[180px] md:w-[320px] opacity-0 transition-all duration-1000 ${itemIdx % 2 === 0 ? 'translate-x-24' : '-translate-x-24'}" data-i18n="${item.captionKey}"></div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+  });
+}
+document.addEventListener('DOMContentLoaded', async () => {
+  createTimeline();
+  
+  // Actualizar traducciones después de crear el timeline
+  await updatePageTranslations(document.documentElement.lang || 'es');
+  
+  setTimeout(() => {
+    // Animación alternada para imágenes y textos del timeline
+    const timelineElements = document.querySelectorAll('.timeline-section img, .timeline-section div[data-i18n]');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('opacity-100', 'translate-x-0');
+          entry.target.classList.remove('opacity-0', 'translate-x-24', '-translate-x-24');
+        } else {
+          entry.target.classList.remove('opacity-100', 'translate-x-0');
+          entry.target.classList.add('opacity-0');
+          // Restaurar la posición original según el índice
+          const parent = entry.target.closest('.flex.flex-col');
+          if (parent && parent.parentElement) {
+            const index = Array.from(parent.parentElement.children).indexOf(parent);
+            if (index % 2 === 0) {
+              entry.target.classList.add('translate-x-24');
+            } else {
+              entry.target.classList.add('-translate-x-24');
+            }
+          }
+        }
+      });
+    }, { threshold: 0.2 });
+    timelineElements.forEach(element => observer.observe(element));
+
+    // Animación de arriba hacia abajo para contenedores de modelos 3D
+    const horizontalContainers = [
+      document.querySelector('#horizontal-model-1')!.parentElement,
+      document.querySelector('#horizontal-model-2')!.parentElement,
+      document.querySelector('#horizontal-model-3')!.parentElement
+    ];
+    const horizontalObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('opacity-100', 'translate-y-0');
+          entry.target.classList.remove('opacity-0', '-translate-y-24');
+        } else {
+          entry.target.classList.remove('opacity-100', 'translate-y-0');
+          entry.target.classList.add('opacity-0', '-translate-y-24');
+        }
+      });
+    }, { threshold: 0.2 });
+    horizontalContainers.forEach(container => { if (container) horizontalObserver.observe(container); });
+
+    // Animación alternada para textos de valores
+    const valuesElements = document.querySelectorAll('#section1 h2[data-i18n]');
+    const valuesObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('opacity-100', 'translate-x-0');
+          entry.target.classList.remove('opacity-0', 'translate-x-24', '-translate-x-24');
+        } else {
+          entry.target.classList.remove('opacity-100', 'translate-x-0');
+          entry.target.classList.add('opacity-0');
+          // Restaurar la posición original según el índice
+          if (entry.target.parentElement) {
+            const index = Array.from(entry.target.parentElement.children).indexOf(entry.target);
+            if (index % 2 === 0) {
+              entry.target.classList.add('translate-x-24');
+            } else {
+              entry.target.classList.add('-translate-x-24');
+            }
+          }
+        }
+      });
+    }, { threshold: 0.2 });
+    valuesElements.forEach(element => valuesObserver.observe(element));
+
+    // Animación alternada para textos de la sección 2 (historia)
+    const historyElements = document.querySelectorAll('#section2 li, #section2 p');
+    const historyObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('opacity-100', 'translate-x-0');
+          entry.target.classList.remove('opacity-0', 'translate-x-24', '-translate-x-24');
+        } else {
+          entry.target.classList.remove('opacity-100', 'translate-x-0');
+          entry.target.classList.add('opacity-0');
+          // Restaurar la posición original según el índice
+          if (entry.target.parentElement) {
+            const index = Array.from(entry.target.parentElement.children).indexOf(entry.target);
+            if (index % 2 === 0) {
+              entry.target.classList.add('translate-x-24');
+            } else {
+              entry.target.classList.add('-translate-x-24');
+            }
+          }
+        }
+      });
+    }, { threshold: 0.2 });
+    historyElements.forEach(element => historyObserver.observe(element));
+  }, 100);
+});
+</script>
+
+<style>
+/* Oculta la barra de scroll horizontal */
+#horizontal-container::-webkit-scrollbar {
+  display: none;
+}
+#horizontal-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  transition: transform 0s;
+}
+</style>
+
+<style is:global>
+@keyframes marquee {
+  0% { transform: translateX(0);}
+  100% { transform: translateX(-33.333%);}
+}
+.animate-marquee {
+  animation: marquee 9s linear infinite;
+  width: max-content;
+}
+
+@media (max-width: 1200px) {
+      .horizontal-text-section, #section2, .timeline-section {
+          padding-left: 110px !important;
+          width: 100% !important;
+      }
+    }
+
+  @media (max-width: 700px) {
+    .horizontal-text-section, #section2, .timeline-section {
+            padding-left: 1.5rem !important;
+            padding-right: 1.5rem !important;
+    }
+  }
+</style> 

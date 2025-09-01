@@ -1,0 +1,161 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Política de Seguridad de la Información - Spika Tech">
+  <Header />
+  <main class="min-h-screen bg-[#f8faf9]">
+    <!-- Header con gradiente y color corporativo -->
+    <div class="bg-gradient-to-r from-[#003035] to-[#4b858e] text-white py-12" style="padding-top: 80px;">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <div class="flex items-center mb-6">
+          <div class="w-12 h-12 bg-[#cedf00] rounded-full flex items-center justify-center mr-4">
+            <svg class="w-6 h-6 text-[#003035]" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path>
+            </svg>
+          </div>
+          <h1 class="text-4xl font-bold" style="color:#cedf00" data-i18n="PoliticaSeguridad.title"></h1>
+        </div>
+        <p class="text-lg text-[#cedf00] leading-relaxed" data-i18n="PoliticaSeguridad.subtitle"></p>
+      </div>
+    </div>
+
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+      <!-- Introducción -->
+      <div class="bg-white rounded-xl shadow-lg p-8 mb-8 border-l-4" style="border-color:#cedf00">
+        <p class="text-[#003035] text-lg leading-relaxed" data-i18n="PoliticaSeguridad.introduction"></p>
+      </div>
+
+      <!-- Principios Clave -->
+      <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+        <div class="flex items-center mb-6">
+          <div class="w-10 h-10 bg-[#cedf00] rounded-full flex items-center justify-center mr-4">
+            <svg class="w-5 h-5 text-[#003035]" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h2 class="text-2xl font-bold" style="color:#003035" data-i18n="PoliticaSeguridad.sections.key_principles.title"></h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-[#f8faf9] rounded-lg p-6 border-l-4" style="border-color:#cedf00">
+            <ul class="space-y-3 text-[#003035]">
+              <li class="flex items-start">
+                <svg class="w-5 h-5 text-[#4b858e] mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                <span><b data-i18n="PoliticaSeguridad.sections.key_principles.principles.0.title"></b> <span data-i18n="PoliticaSeguridad.sections.key_principles.principles.0.description"></span></span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-5 h-5 text-[#4b858e] mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                <span><b data-i18n="PoliticaSeguridad.sections.key_principles.principles.1.title"></b> <span data-i18n="PoliticaSeguridad.sections.key_principles.principles.1.description"></span></span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-5 h-5 text-[#4b858e] mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                <span><b data-i18n="PoliticaSeguridad.sections.key_principles.principles.2.title"></b> <span data-i18n="PoliticaSeguridad.sections.key_principles.principles.2.description"></span></span>
+              </li>
+            </ul>
+          </div>
+          <div class="bg-[#f8faf9] rounded-lg p-6 border-l-4" style="border-color:#cedf00">
+            <ul class="space-y-3 text-[#003035]">
+              <li class="flex items-start">
+                <svg class="w-5 h-5 text-[#4b858e] mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                <span><b data-i18n="PoliticaSeguridad.sections.key_principles.principles.3.title"></b> <span data-i18n="PoliticaSeguridad.sections.key_principles.principles.3.description"></span></span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-5 h-5 text-[#4b858e] mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                <span><b data-i18n="PoliticaSeguridad.sections.key_principles.principles.4.title"></b> <span data-i18n="PoliticaSeguridad.sections.key_principles.principles.4.description"></span></span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-5 h-5 text-[#4b858e] mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                <span><b data-i18n="PoliticaSeguridad.sections.key_principles.principles.5.title"></b> <span data-i18n="PoliticaSeguridad.sections.key_principles.principles.5.description"></span></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compromisos -->
+      <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+        <div class="flex items-center mb-6">
+          <div class="w-10 h-10 bg-[#cedf00] rounded-full flex items-center justify-center mr-4">
+            <svg class="w-5 h-5 text-[#003035]" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h2 class="text-2xl font-bold" style="color:#003035" data-i18n="PoliticaSeguridad.sections.commitments.title"></h2>
+        </div>
+        <div class="bg-[#f8faf9] rounded-lg p-6 border-l-4" style="border-color:#4b858e">
+          <ul class="space-y-3 text-[#003035]">
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-[#4b858e] mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span data-i18n="PoliticaSeguridad.sections.commitments.commitments.0"></span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-[#4b858e] mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span data-i18n="PoliticaSeguridad.sections.commitments.commitments.1"></span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-[#4b858e] mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span data-i18n="PoliticaSeguridad.sections.commitments.commitments.2"></span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-[#4b858e] mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span data-i18n="PoliticaSeguridad.sections.commitments.commitments.3"></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Conclusión -->
+      <div class="bg-white rounded-xl shadow-lg p-8 mb-8 border-l-4" style="border-color:#cedf00">
+        <p class="text-[#003035] text-lg leading-relaxed" data-i18n="PoliticaSeguridad.sections.conclusion.description"></p>
+        <a class="inline-flex items-center mt-6 bg-[#cedf00] text-[#003035] px-6 py-3 rounded-lg font-semibold hover:bg-[#4b858e] hover:text-white transition-colors" href="https://firebasestorage.googleapis.com/v0/b/vrcardioexplorer.appspot.com/o/SGSI%2FPLT%20001.02_SEGURIDAD%20DE%20LA%20INFORMACI%C3%93N%20(1).pdf?alt=media&token=21106f22-ce33-4a20-88b5-4c75730b656d" target="_blank" rel="noopener">
+          <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V8z" clip-rule="evenodd"></path>
+          </svg>
+          <span data-i18n="PoliticaSeguridad.sections.conclusion.button_text"></span>
+        </a>
+      </div>
+
+      <!-- Botón volver -->
+      <div class="text-center">
+        <a href="/" class="inline-flex items-center bg-[#cedf00] text-[#003035] px-8 py-4 rounded-xl font-semibold hover:bg-[#4b858e] hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+          </svg>
+          <span data-i18n="PoliticaSeguridad.back_button"></span>
+        </a>
+      </div>
+    </div>
+  </main>
+  <Footer />
+
+  <script>
+    import { initializeTranslations } from '../i18n/config.ts';
+    
+    // Inicializar traducciones cuando se carga la página
+    document.addEventListener('DOMContentLoaded', () => {
+      initializeTranslations();
+    });
+  </script>
+</Layout> 

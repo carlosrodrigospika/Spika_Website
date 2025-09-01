@@ -1,0 +1,359 @@
+<section id="partners" class="py-20 bg-white overflow-hidden" style="padding-inline: 50px;">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-900">
+            <span data-i18n="Partners.prefix"></span> <span class="text-[#CEDF00]" data-i18n="Partners.highlight"></span>
+        </h2>
+        
+        <div class="image-carousel" id="partners-carousel">
+            <div class="image-carousel__track" id="partners-track">
+                <!-- Primera fila de imágenes con lazy loading -->
+                <div class="image-carousel__track__slide">
+                    <img src="/assets/partners/1.webp" alt="Partner 1" class="image-carousel__track__slide__image" loading="lazy">
+                </div>
+                <div class="image-carousel__track__slide">
+                    <img src="/assets/partners/633e8b42a9588ebaf6221169_03.Son-Espases_negre.webp" alt="Partner 2" class="image-carousel__track__slide__image" loading="lazy">
+                </div>
+                <div class="image-carousel__track__slide">
+                    <img src="/assets/partners/1689155364762.webp" alt="Partner 3" class="image-carousel__track__slide__image" loading="lazy">
+                </div>
+                <div class="image-carousel__track__slide">
+                    <img src="/assets/partners/Indra-Sistemas-Logo.webp" alt="Indra" class="image-carousel__track__slide__image" loading="lazy">
+                </div>
+                <div class="image-carousel__track__slide">
+                    <img src="/assets/partners/Imagen9.webp" alt="Partner 4" class="image-carousel__track__slide__image" loading="lazy">
+                </div>
+                <div class="image-carousel__track__slide">
+                    <img src="/assets/partners/Imagen10.webp" alt="Partner 5" class="image-carousel__track__slide__image" loading="lazy">
+                </div>
+                <div class="image-carousel__track__slide">
+                    <img src="/assets/partners/Imagen12.webp" alt="Partner 6" class="image-carousel__track__slide__image" loading="lazy">
+                </div>
+                <div class="image-carousel__track__slide">
+                    <img src="/assets/partners/Imagen11.webp" alt="Partner 7" class="image-carousel__track__slide__image" loading="lazy">
+                </div>
+                <div class="image-carousel__track__slide">
+                    <img src="/assets/partners/Imagen13.webp" alt="Partner 8" class="image-carousel__track__slide__image" loading="lazy">
+                </div>
+                <div class="image-carousel__track__slide">
+                    <img src="/assets/partners/Imagen14.webp" alt="Partner 9" class="image-carousel__track__slide__image" loading="lazy">
+                </div>
+                <div class="image-carousel__track__slide">
+                    <img src="/assets/partners/Imagen15.webp" alt="Partner 10" class="image-carousel__track__slide__image" loading="lazy">
+                </div>
+                <div class="image-carousel__track__slide">
+                    <img src="/assets/partners/Imagen17.webp" alt="Partner 11" class="image-carousel__track__slide__image" loading="lazy">
+                </div>
+                <div class="image-carousel__track__slide">
+                    <img src="/assets/partners/Imagen16.webp" alt="Partner 12" class="image-carousel__track__slide__image" loading="lazy">
+                </div>
+                <div class="image-carousel__track__slide">
+                    <img src="/assets/partners/Imagen18.webp" alt="Partner 13" class="image-carousel__track__slide__image" loading="lazy">
+                </div>
+                <div class="image-carousel__track__slide">
+                    <img src="/assets/partners/Imagen19.webp" alt="Partner 14" class="image-carousel__track__slide__image" loading="lazy">
+                </div>
+                <div class="image-carousel__track__slide">
+                    <img src="/assets/partners/Imagen20.webp" alt="Partner 15" class="image-carousel__track__slide__image" loading="lazy">
+                </div>
+                <div class="image-carousel__track__slide">
+                    <img src="/assets/partners/Imagen22.webp" alt="Partner 16" class="image-carousel__track__slide__image" loading="lazy">
+                </div>
+                <div class="image-carousel__track__slide">
+                    <img src="/assets/partners/Imagen21.webp" alt="Partner 17" class="image-carousel__track__slide__image" loading="lazy">
+                </div>
+                <div class="image-carousel__track__slide">
+                    <img src="/assets/partners/Imagen23.webp" alt="Partner 18" class="image-carousel__track__slide__image" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Variables para optimización
+    let carouselObserver: IntersectionObserver | null = null;
+    let isCarouselVisible = false;
+    let animationPaused = false;
+
+    // Función para optimizar el carrusel de partners
+    function optimizePartnersCarousel() {
+        const carousel = document.getElementById('partners-carousel');
+        const track = document.getElementById('partners-track');
+        
+        if (!carousel || !track) return;
+
+        // Observer para pausar/reanudar la animación según visibilidad
+        carouselObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                isCarouselVisible = entry.isIntersecting;
+                
+                if (entry.isIntersecting) {
+                    // Carrusel visible - reanudar animación
+                    if (animationPaused) {
+                        track.style.animationPlayState = 'running';
+                        animationPaused = false;
+                    }
+                } else {
+                    // Carrusel no visible - pausar animación
+                    if (!animationPaused) {
+                        track.style.animationPlayState = 'paused';
+                        animationPaused = true;
+                    }
+                }
+            });
+        }, {
+            threshold: 0.1, // Se activa cuando el 10% del carrusel es visible
+            rootMargin: '100px' // Margen adicional para anticipar la visibilidad
+        });
+
+        carouselObserver.observe(carousel);
+    }
+
+    // Función para optimizar las imágenes con lazy loading
+    function optimizeImages() {
+        const images = document.querySelectorAll('.image-carousel__track__slide__image');
+        
+        // Observer para lazy loading de imágenes
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const img = entry.target as HTMLImageElement;
+                    
+                    // Si la imagen no tiene src o tiene un placeholder
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                    }
+                    
+                    // Una vez cargada, desconectar el observer
+                    imageObserver.unobserve(img);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '50px'
+        });
+
+        // Observar todas las imágenes
+        images.forEach(img => {
+            imageObserver.observe(img);
+        });
+    }
+
+    // Función para optimizar el rendimiento en dispositivos móviles
+    function optimizeForMobile() {
+        const isMobile = window.innerWidth <= 768;
+        const track = document.getElementById('partners-track');
+        
+        if (!track) return;
+
+        if (isMobile) {
+            // Reducir la duración de la animación en móviles para ahorrar batería
+            track.style.animationDuration = '30s';
+        } else {
+            // Duración normal en desktop
+            track.style.animationDuration = '40s';
+        }
+    }
+
+    // Función para manejar cambios de visibilidad de la página
+    function handleVisibilityChange() {
+        const track = document.getElementById('partners-track');
+        if (!track) return;
+
+        if (document.hidden) {
+            // Página oculta - pausar animación
+            track.style.animationPlayState = 'paused';
+        } else if (isCarouselVisible) {
+            // Página visible y carrusel visible - reanudar animación
+            track.style.animationPlayState = 'running';
+        }
+    }
+
+    // Función para limpiar recursos
+    function cleanup() {
+        if (carouselObserver) {
+            carouselObserver.disconnect();
+            carouselObserver = null;
+        }
+        
+        // Remover event listeners
+        document.removeEventListener('visibilitychange', handleVisibilityChange);
+        window.removeEventListener('resize', optimizeForMobile);
+    }
+
+    // Inicializar optimizaciones cuando el DOM esté listo
+    document.addEventListener('DOMContentLoaded', () => {
+        optimizePartnersCarousel();
+        optimizeImages();
+        optimizeForMobile();
+        
+        // Event listeners
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+        window.addEventListener('resize', optimizeForMobile);
+    });
+
+    // Limpiar al salir de la página
+    window.addEventListener('beforeunload', cleanup);
+</script>
+
+<style>
+    .image-carousel {
+        background: white;
+        margin: auto;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        height: 20vh;
+        will-change: transform;
+    }
+    
+    .image-carousel::before,
+    .image-carousel::after {
+        background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+        content: "";
+        height: 100%;
+        position: absolute;
+        width: 20vw;
+        z-index: 2;
+        pointer-events: none;
+    }
+    
+    .image-carousel::after {
+        right: 0;
+        top: 0;
+        transform: rotateZ(180deg);
+    }
+
+    .image-carousel::before {
+        left: 0;
+        top: 0;
+    }
+    
+    .image-carousel__track {
+        display: flex;
+        width: fit-content;
+        gap: 5rem;
+        animation: scroll 40s linear infinite;
+        will-change: transform;
+        align-items: center;
+        /* Optimización: usar transform3d para hardware acceleration */
+        transform: translate3d(0, 0, 0);
+    }
+
+    .image-carousel__track__slide {
+        height: 100%;
+        flex-shrink: 0;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* Optimización: prevenir reflow */
+        contain: layout style paint;
+    }
+
+    .image-carousel__track__slide__image {
+        height: 12vh;
+        width: auto;
+        object-fit: contain;
+        display: block;
+        max-width: none;
+        /* Optimización: usar transform3d para hardware acceleration */
+        transform: translate3d(0, 0, 0);
+        /* Optimización: prevenir reflow */
+        contain: layout style paint;
+        /* Optimización: mejorar calidad de imagen */
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+
+    @keyframes scroll {
+        0% { 
+            transform: translate3d(0, 0, 0); 
+        }
+        100% { 
+            transform: translate3d(-50%, 0, 0); 
+        }
+    }
+
+    /* Optimización: pausar animación cuando no es visible */
+    .image-carousel__track.paused {
+        animation-play-state: paused;
+    }
+
+    /* Optimización: reducir calidad en dispositivos de baja resolución */
+    @media (-webkit-max-device-pixel-ratio: 1.5) {
+        .image-carousel__track__slide__image {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: pixelated;
+        }
+    }
+
+    /* Optimización: reducir animaciones en dispositivos que prefieren menos movimiento */
+    @media (prefers-reduced-motion: reduce) {
+        .image-carousel__track {
+            animation: none;
+        }
+    }
+
+    @media (max-width: 1100px) {
+        section#partners {
+            padding-left: 110px !important;
+            padding-right: 20px !important ;
+            padding-top: 2rem !important;
+            padding-bottom: 2rem !important;
+        }
+        
+        .image-carousel {
+            height: 15vh;
+        }
+        
+        .image-carousel__track {
+            gap: 3rem;
+            /* Optimización: reducir duración en tablets */
+            animation-duration: 35s;
+        }
+        
+        .image-carousel__track__slide__image {
+            height: 10vh;
+        }
+    }
+
+    @media (max-width: 700px) {
+        section#partners {
+            padding-left: 0.5rem !important;
+            padding-right: 0.5rem !important;
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+        }
+        
+        .image-carousel {
+            height: 12vh;
+        }
+        
+        .image-carousel__track {
+            gap: 2rem;
+            /* Optimización: reducir duración en móviles */
+            animation-duration: 30s;
+        }
+        
+        .image-carousel__track__slide__image {
+            height: 8vh;
+        }
+    }
+
+    /* Optimización: mejorar rendimiento en dispositivos de baja potencia */
+    @media (max-width: 480px) {
+        .image-carousel__track {
+            /* Reducir aún más la duración en dispositivos pequeños */
+            animation-duration: 25s;
+        }
+        
+        .image-carousel__track__slide__image {
+            /* Reducir calidad de imagen en dispositivos pequeños */
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: pixelated;
+        }
+    }
+</style> 

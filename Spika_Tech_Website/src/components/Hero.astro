@@ -1,0 +1,587 @@
+<!-- Nueva sección de video con efecto parallax -->
+<section id="hero-video" class="relative h-screen overflow-hidden">
+    <!-- Video de fondo optimizado -->
+    <video 
+        autoplay 
+        muted 
+        loop 
+        playsinline
+        preload="metadata"
+        class="absolute inset-0 w-full h-full object-cover"
+        style="z-index: 1;"
+        id="hero-video-element"
+    >
+        <source src="/assets/video_home.mp4" type="video/mp4">
+        <!-- Fallback para navegadores que no soportan video -->
+        <div class="absolute inset-0 bg-gradient-to-br from-[#003035] to-[#01443a]"></div>
+    </video>
+    
+    <!-- Marquee de texto centrado optimizado -->
+    <div class="absolute w-full flex items-center justify-center h-full z-10 pointer-events-none px-2" id="marquee-container">
+        <div class="overflow-hidden w-full">
+          <div class="flex whitespace-nowrap animate-marquee" id="marquee-content">
+            <h2 class="text-white flex-shrink-0" style="font-size: 9vw;" data-i18n="Hero.marquee"></h2>
+            <h2 class="text-white flex-shrink-0 ml-8" style="font-size: 9vw;" data-i18n="Hero.marquee"></h2>
+            <h2 class="text-white flex-shrink-0 ml-8" style="font-size: 9vw;" data-i18n="Hero.marquee"></h2>
+          </div>
+        </div>
+      </div>
+</section>
+
+<section id="section1" data-index="0" data-title="¿Quiénes somos?" class="relative min-h-screen flex items-center bg-white py-20 overflow-hidden hero-responsive" style="padding-left:110px; padding-right:60px; position: relative; z-index: 10;">
+    <!-- Canvas 3D Background -->
+    <canvas id="hero-canvas" class="absolute inset-0 w-full h-full z-5 transition-opacity duration-1000 ease-in-out" style="opacity: 0; pointer-events: auto;"></canvas>
+    
+    <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 z-4 h-full hero-content" style="display: flex; flex-direction: column; row-gap: 20px; height: 80vh; pointer-events: none;">
+        <div class="hero-flex" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; height: 100%;">
+            <!-- Left Column: Title and Logo - Static -->
+            <div class="text-center md:text-left fade-down" id="hero-title-col" style="height: 100%; display: flex; align-items: end; width: fit-content;">
+                <h1 style="color:#003035" class="text-4xl lg:text-6xl font-light leading-tight hero-title">
+                    <span data-i18n="Hero.title.line1"></span> <br>
+                    <span data-i18n="Hero.title.line2"></span> <br>
+                    <span data-i18n="Hero.title.line3"></span> <br>
+                    <span data-i18n="Hero.title.line4"></span>
+                </h1>
+            </div>
+
+            <!-- Right Column: Info Points - Animated on scroll -->
+            <div class="text-gray-700 flex flex-col gap-y-6 w-full hero-points" style="width: 40%; ">
+                <div class="flex items-start gap-x-6 border-t border-[#003035] pt-6 fade-up" data-delay="0">
+                    <span style="color: #CEDF00" class="text-brand-lime font-bold text-4xl shrink-0" data-i18n="Hero.point1.number"></span>
+                    <p class="text-2xl md:text-xl lg:text-2xl font-light pt-2 hero-point-text">
+                        <span data-i18n="Hero.point1.prefix"></span> 
+                        <strong class="font-normal" style="font-weight: var(--font-weight-bold)" data-i18n="Hero.point1.tech"></strong> 
+                        <span data-i18n="Hero.point1.middle"></span> 
+                        <strong class="font-normal" data-i18n="Hero.point1.impact"></strong> 
+                        <span data-i18n="Hero.point1.suffix"></span>
+                    </p>
+                </div>
+                <div class="flex items-start gap-x-6 border-t border-[#003035] pt-6 fade-up" data-delay="400">
+                    <span style="color: #CEDF00" class="text-brand-lime font-bold text-4xl shrink-0" data-i18n="Hero.point2.number"></span>
+                    <p class="text-2xl md:text-xl lg:text-2xl font-light pt-2 hero-point-text">
+                        <span data-i18n="Hero.point2.prefix"></span> 
+                        <strong class="font-normal" style="font-weight: var(--font-weight-bold)" data-i18n="Hero.point2.innovation"></strong>, 
+                        <span data-i18n="Hero.point2.middle"></span> 
+                        <strong class="font-normal" data-i18n="Hero.point2.transformation"></strong>.
+                    </p>
+                </div>
+                <div class="flex items-start gap-x-6 border-t border-[#003035] pt-6 fade-up" data-delay="800">
+                    <span style="color: #CEDF00" class="text-brand-lime font-bold text-4xl shrink-0" data-i18n="Hero.point3.number"></span>
+                    <p class="text-2xl md:text-xl lg:text-2xl font-light pt-2 hero-point-text">
+                        <span data-i18n="Hero.point3.prefix"></span> 
+                        <strong class="font-normal" style="font-weight: var(--font-weight-bold)" data-i18n="Hero.point3.expertise"></strong>, 
+                        <span data-i18n="Hero.point3.suffix"></span>
+                    </p>
+                </div>
+                
+            </div>
+        </div>
+        <div class="bottom-6 right-6 z-30 flex justify-end hero-btn-container" style="width:100%; pointer-events: auto; ">
+            <a href="/company" class="btn-slide-arrow flex items-center justify-center rounded-lg border-2 border-[#CEDF00] bg-[#FFFFFF] hover:cursor-pointer transition-all duration-300">
+                <svg width="50" height="50" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 16H22M22 16L18 12M22 16L18 20" stroke="#CEDF00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<script>
+    import * as THREE from 'three';
+    import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+
+    let scene: THREE.Scene;
+    let camera: THREE.PerspectiveCamera;
+    let renderer: THREE.WebGLRenderer;
+    let model: THREE.Object3D;
+    let modelGroup: THREE.Group;
+    let animationId: number;
+    let isVisible = true;
+    let targetRotationX = 0;
+    let targetRotationY = 0;
+    let videoObserver: IntersectionObserver | null = null;
+    let marqueeObserver: IntersectionObserver | null = null;
+    let heroObserver: IntersectionObserver | null = null;
+
+    // Función para inicializar el Intersection Observer para el video
+    function initVideoObserver() {
+        const videoSection = document.getElementById('hero-video');
+        if (!videoSection) return;
+
+        videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                const video = document.getElementById('hero-video-element') as HTMLVideoElement;
+                if (!video) return;
+
+                if (entry.isIntersecting) {
+                    // Video visible - reanudar reproducción
+                    video.play().catch(e => console.log('Video play failed:', e));
+                } else {
+                    // Video no visible - pausar reproducción
+                    video.pause();
+                }
+            });
+        }, {
+            threshold: 0.1, // Se activa cuando el 10% del video es visible
+            rootMargin: '100px 0px 100px 0px' // Margen para anticipar la visibilidad
+        });
+
+        videoObserver.observe(videoSection);
+    }
+
+    // Función para inicializar el Intersection Observer para el marquee
+    function initMarqueeObserver() {
+        const marqueeContainer = document.getElementById('marquee-container');
+        if (!marqueeContainer) return;
+
+        marqueeObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Marquee visible - reanudar animación
+                    if (marqueeContainer) {
+                        marqueeContainer.style.animationPlayState = 'running';
+                    }
+                } else {
+                    // Marquee no visible - pausar animación
+                    if (marqueeContainer) {
+                        marqueeContainer.style.animationPlayState = 'paused';
+                    }
+                }
+            });
+        }, {
+            threshold: 0.1, // Se activa cuando el 10% del marquee es visible
+            rootMargin: '100px 0px 100px 0px' // Margen para anticipar la visibilidad
+        });
+
+        marqueeObserver.observe(marqueeContainer);
+    }
+
+    // Función para inicializar el Intersection Observer para la sección Hero
+    function initHeroObserver() {
+        const heroSection = document.getElementById('section1');
+        if (!heroSection) return;
+
+        heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Sección Hero visible - activar detección de ratón
+                    isVisible = true;
+                } else {
+                    // Sección Hero no visible - desactivar detección de ratón
+                    isVisible = false;
+                }
+            });
+        }, {
+            threshold: 0.1, // Se activa cuando el 10% de la sección es visible
+            rootMargin: '50px 0px 50px 0px' // Margen para anticipar la visibilidad
+        });
+
+        heroObserver.observe(heroSection);
+    }
+
+    function initThreeJS() {
+        const canvas = document.getElementById('hero-canvas');
+        if (!canvas) return;
+        const container = canvas.parentElement;
+        if (!container) return;
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+
+        scene = new THREE.Scene();
+        scene.background = null;
+
+        camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+        camera.position.set(0.75, 0, 3);
+        if (width < 768) camera.position.set(0, 0, 3);
+
+        renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false, powerPreference: 'high-performance' });
+        renderer.setSize(width, height);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.2));
+        renderer.shadowMap.enabled = false;
+        renderer.toneMapping = THREE.NoToneMapping;
+
+        // Luces mínimas
+        scene.add(new THREE.AmbientLight(0xffffff, 0.8));
+        const dirLight = new THREE.DirectionalLight(0xffffff, 0.7);
+        dirLight.position.set(3, 5, 5);
+        scene.add(dirLight);
+
+        // Grupo para rotación interactiva
+        modelGroup = new THREE.Group();
+        scene.add(modelGroup);
+
+        // Cargar modelo 3D GLB
+        const loader = new GLTFLoader();
+        loader.load('/assets/models/Logo.glb', (gltf) => {
+            model = gltf.scene;
+            // Centrar y escalar correctamente
+            const box = new THREE.Box3().setFromObject(model);
+            const center = box.getCenter(new THREE.Vector3());
+            model.position.sub(center);
+            // Rotar 90 grados en Y y escalar
+            model.rotation.x = Math.PI / 2; // 90 grados en radianes
+            model.scale.setScalar(2);
+            modelGroup.add(model);
+            renderer.render(scene, camera);
+            setTimeout(() => { if (canvas) canvas.style.opacity = '0.3'; }, 100);
+        });
+
+        // Evento de movimiento de ratón solo cuando es visible
+        canvas.addEventListener('mousemove', onMouseMove);
+        animate();
+        window.addEventListener('resize', onWindowResize);
+        document.addEventListener('visibilitychange', onVisibilityChange);
+    }
+
+    function onMouseMove(event: MouseEvent) {
+        // Solo procesar movimiento del ratón si la sección es visible
+        if (!isVisible) return;
+
+        const canvas = event.target as HTMLCanvasElement;
+        const rect = canvas.getBoundingClientRect();
+        // Normalizar coordenadas entre -1 y 1
+        const x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+        const y = ((event.clientY - rect.top) / rect.height) * 2 - 1;
+        // Limitar ángulos para que no se descontrole
+        targetRotationY = x * 0.7; // rotación Y (izq-der)
+        targetRotationX = y * 0.5; // rotación X (arriba-abajo)
+    }
+
+    function animate() {
+        animationId = requestAnimationFrame(animate);
+        if (!isVisible || !modelGroup) return;
+        // Interpolación suave hacia la rotación objetivo
+        modelGroup.rotation.x += (targetRotationX - modelGroup.rotation.x) * 0.08;
+        modelGroup.rotation.y += (targetRotationY - modelGroup.rotation.y) * 0.08;
+        renderer.render(scene, camera);
+    }
+
+    function onWindowResize() {
+        if (!camera || !renderer) return;
+        const container = document.getElementById('hero-canvas')?.parentElement;
+        if (!container) return;
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+        renderer.setSize(width, height);
+        renderer.render(scene, camera);
+    }
+
+    function onVisibilityChange() {
+        const pageVisible = !document.hidden;
+        if (pageVisible && isVisible) renderer.render(scene, camera);
+    }
+
+    function cleanup() {
+        if (animationId) cancelAnimationFrame(animationId);
+        if (renderer) renderer.dispose();
+        if (scene) {
+            scene.traverse((child: any) => {
+                if ('geometry' in child && child.geometry && typeof child.geometry.dispose === 'function') {
+                    child.geometry.dispose();
+                }
+                if ('material' in child && child.material) {
+                    if (Array.isArray(child.material)) {
+                        child.material.forEach((material: THREE.Material) => {
+                            if (material && typeof material.dispose === 'function') {
+                                material.dispose();
+                            }
+                        });
+                    } else if (typeof child.material.dispose === 'function') {
+                        child.material.dispose();
+                    }
+                }
+            });
+        }
+        
+        // Limpiar observers
+        if (videoObserver) videoObserver.disconnect();
+        if (marqueeObserver) marqueeObserver.disconnect();
+        if (heroObserver) heroObserver.disconnect();
+        
+        window.removeEventListener('resize', onWindowResize);
+        document.removeEventListener('visibilitychange', onVisibilityChange);
+        const canvas = document.getElementById('hero-canvas');
+        if (canvas) canvas.removeEventListener('mousemove', onMouseMove);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        initThreeJS();
+        initVideoObserver();
+        initMarqueeObserver();
+        initHeroObserver();
+    });
+    window.addEventListener('beforeunload', cleanup);
+
+    // Animación de entrada para textos con Intersection Observer
+    function initHeroAnimations() {
+        const sectionBody = document.getElementById('section1');
+        if (!sectionBody) return;
+
+        // Crear Intersection Observer para detectar cuando la sección es visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // La sección es visible, iniciar animaciones
+                    animateHeroTexts();
+                    // Una vez que se han activado las animaciones, desconectar el observer
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.3, // Se activa cuando el 30% de la sección es visible
+            rootMargin: '0px 0px -50px 0px' // Se activa un poco antes de que la sección esté completamente visible
+        });
+
+        // Observar la sección Hero
+        observer.observe(sectionBody);
+    }
+
+    function animateHeroTexts() {
+        // Verificar si las animaciones ya se han ejecutado
+        const titleCol = document.getElementById('hero-title-col');
+        if (titleCol && titleCol.classList.contains('visible')) {
+            return; // Las animaciones ya se ejecutaron
+        }
+
+        // Título izquierda
+        if (titleCol) {
+            setTimeout(() => titleCol.classList.add('visible'), 200);
+        }
+        
+        // Puntos derecha (escalonado fijo)
+        const points = document.querySelectorAll('.fade-up');
+        const baseDelay = 400;
+        const step = 200;
+        points.forEach((el, idx) => {
+            setTimeout(() => el.classList.add('visible'), baseDelay + idx * step);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', initHeroAnimations);
+
+    // Control del video y efecto parallax optimizado
+    function initVideoSection() {
+        const video = document.querySelector('#hero-video video') as HTMLVideoElement;
+        const videoSection = document.getElementById('hero-video');
+        const sectionBody = document.getElementById('section1');
+        
+        if (!video || !videoSection || !sectionBody) return;
+
+        // Asegurar que el video se reproduzca correctamente
+        video.addEventListener('loadedmetadata', () => {
+            video.play().catch(e => console.log('Video autoplay blocked:', e));
+        });
+
+        // Efecto parallax mejorado con throttling
+        let ticking = false;
+        
+        function updateParallax() {
+            const scrolled = window.pageYOffset;
+            const videoHeight = window.innerHeight;
+            
+            // Mostrar/ocultar el video basado en la posición del scroll
+            if (scrolled >= videoHeight) {
+                // Ocultar el video cuando la sección de contenido pase por encima
+                if (videoSection) {
+                    videoSection.style.display = 'none';
+                }
+            } else {
+                // Mostrar el video cuando estemos en la parte superior
+                if (videoSection) {
+                    videoSection.style.position = 'fixed';
+                    videoSection.style.top = '0';
+                    videoSection.style.display = 'block';
+                }
+            }
+            
+            ticking = false;
+        }
+
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        }
+
+        // Ejecutar inmediatamente para establecer el estado inicial
+        updateParallax();
+        
+        window.addEventListener('scroll', requestTick);
+        window.addEventListener('resize', requestTick);
+    }
+
+    document.addEventListener('DOMContentLoaded', initVideoSection);
+</script>
+
+<style>
+    @keyframes marquee {
+    0% { transform: translateX(0);}
+    100% { transform: translateX(-33.333%);}
+    }
+    .animate-marquee {
+    animation: marquee 6s linear infinite;
+    width: max-content;
+    }
+
+    /* Estilos para la sección de video con parallax */
+    #hero-video {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 1;
+    }
+
+    #hero-video video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Asegurar que la sección de contenido pase por encima */
+    #section1 {
+        position: relative;
+        z-index: 10;
+        background: white;
+        margin-top: 100vh; /* Empuja la sección hacia abajo para que empiece después del video */
+        min-height: 100vh;
+    }
+
+    /* Contenedor principal para el resto del contenido */
+    .main-content {
+        position: relative;
+        z-index: 5;
+        background: white;
+    }
+
+    .scroll-animate-item {
+        will-change: opacity, transform;
+    }
+    
+    .scroll-animate-item.opacity-100 {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+
+    #hero-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+        z-index: 0;
+        display: block;
+    }
+
+    .fade-up {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1);
+    }
+    .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .fade-down {
+        opacity: 0;
+        transform: translateY(-30px);
+        transition: opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1);
+    }
+    .fade-down.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* --- RESPONSIVE HERO --- */
+    @media (max-width: 900px) {
+      .hero-content {
+        height: auto !important;
+        min-height: 70vh;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+      }
+      .hero-flex {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 2.5rem;
+        height: auto !important;
+      }
+      .hero-title {
+        font-size: 2rem !important;
+        text-align: left !important;
+        line-height: 1.2 !important;
+        margin-bottom: 1.5rem;
+      }
+      .hero-points {
+        width: 100% !important;
+        gap: 1.5rem !important;
+      }
+      .hero-point-text {
+        font-size: 1.1rem !important;
+        padding-top: 0.5rem !important;
+      }
+      .hero-btn-container {
+        justify-content: flex-start !important;
+        margin-top: 2rem;
+      }
+      section.hero-responsive {
+        padding-left: 1.2rem !important;
+        padding-right: 1.2rem !important;
+      }
+    }
+    @media (max-width: 600px) {
+      .hero-title {
+        font-size: 1.3rem !important;
+      }
+      .hero-point-text {
+        font-size: 0.98rem !important;
+      }
+      .hero-btn-container svg {
+        width: 38px !important;
+        height: 38px !important;
+      }
+    }
+    @media (min-width: 768px) and (max-width: 1100px) {
+      section.hero-responsive {
+        padding-left: 100px !important;
+      }
+    }
+
+    /* Estilos para el botón de flecha con efecto deslizamiento como el header */
+    .btn-slide-arrow {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-slide-arrow::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #CEDF00;
+        z-index: 1;
+        transform: translateX(-100%);
+        transition: transform 0.4s ease;
+    }
+
+    .btn-slide-arrow svg {
+        position: relative;
+        z-index: 2;
+        transition: filter 0.4s ease;
+    }
+
+    .btn-slide-arrow:hover::after {
+        transform: translateX(0%);
+    }
+
+    .btn-slide-arrow:hover svg {
+        filter: brightness(0) invert(1);
+    }
+
+</style>

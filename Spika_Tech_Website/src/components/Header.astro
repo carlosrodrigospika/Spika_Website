@@ -1,0 +1,83 @@
+---
+// No props needed, the header is always opaque with the new design
+---
+
+
+<header class="fixed top-0 left-0 right-0 z-60 p-4 sm:p-6 lg:p-8" style="width: 100vw;">
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const menuBtn = document.getElementById('menu-btn');
+    const menu = document.getElementById('overlay-menu');
+
+    if (menuBtn && menu) {
+        menuBtn.addEventListener('click', function () {
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                // Pequeño delay para asegurar que el elemento esté visible antes de animar
+                setTimeout(() => {
+                    menu.classList.add('animate-open');
+                }, 10);
+            }
+        });
+    }
+});
+</script>
+    <div class="flex items-center justify-end">
+        <!-- Logo SpikaTech a la izquierda -->
+        <!--<div class="ml-4 sm:ml-6 md:ml-8">
+            <a href="/" class="block hover:cursor-pointer transition-transform duration-300 hover:scale-105">
+                <img src="/assets/Logo_SpikaTech_Star.webp" alt="Logo SpikaTech Star" class="w-8 h-8 sm:w-10 sm:h-10" />
+            </a>
+        </div>-->
+        
+        <!-- Botones a la derecha -->
+        <div class="flex items-center space-x-2 sm:space-x-4">
+            <a href="/contacto"
+                class="btn-slide px-4 py-2 rounded-md transition-all duration-300 text-sm sm:text-base border-2 border-transparent bg-transparent hover:border-[#CEDF00] hover:cursor-pointer">
+                <span data-i18n="Header.contacto"></span>
+            </a>
+            <button id="menu-btn" class="rounded-md transition-all duration-300 text-sm sm:text-base font-bold border-2 border-[#CEDF00] bg-transparent text-[#CEDF00] font-normal hover:border-transparent hover:text-[#003035] hover:bg-[#CEDF00] p-2 hover:cursor-pointer">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+</header> 
+
+<style>
+    .btn-slide {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-slide::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #CEDF00;
+    z-index: 1;
+    transform: translateX(0%);
+    transition: transform 0.4s ease;
+  }
+
+  .btn-slide span {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    color: #003035;
+    transition: color 0.4s ease, transform 0.4s ease;
+  }
+
+  .btn-slide:hover::after {
+    transform: translateX(-100%);
+  }
+
+  .btn-slide:hover span {
+    color: #CEDF00;
+  }
+
+</style>

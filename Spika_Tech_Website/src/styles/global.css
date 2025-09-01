@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+/* Declaraciones de fuentes Exo */
+@font-face {
+    font-family: 'Exo2';
+    src: url('/assets/Fonts/exo/Exo2-Thin.otf') format('opentype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Exo2';
+    src: url('/assets/Fonts/exo/Exo2-ThinItalic.otf') format('opentype');
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Exo2';
+    src: url('/assets/Fonts/exo/Exo2-ExtraLight.otf') format('opentype');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Exo2';
+    src: url('/assets/Fonts/exo/Exo2-ExtraLightItalic.otf') format('opentype');
+    font-weight: 200;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Exo2';
+    src: url('/assets/Fonts/exo/Exo2-Light.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Exo2';
+    src: url('/assets/Fonts/exo/Exo2-LightItalic.otf') format('opentype');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Exo2';
+    src: url('/assets/Fonts/exo/Exo2-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Exo2';
+    src: url('/assets/Fonts/exo/Exo2-Italic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Exo2';
+    src: url('/assets/Fonts/exo/Exo2-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Exo2';
+    src: url('/assets/Fonts/exo/Exo2-MediumItalic.otf') format('opentype');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Exo2';
+    src: url('/assets/Fonts/exo/Exo2-SemiBold.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Exo2';
+    src: url('/assets/Fonts/exo/Exo2-SemiBoldItalic.otf') format('opentype');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Exo2';
+    src: url('/assets/Fonts/exo/Exo2-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Exo2';
+    src: url('/assets/Fonts/exo/Exo2-BoldItalic.otf') format('opentype');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Exo2';
+    src: url('/assets/Fonts/exo/Exo2-ExtraBold.otf') format('opentype');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Exo2';
+    src: url('/assets/Fonts/exo/Exo2-ExtraBoldItalic.otf') format('opentype');
+    font-weight: 800;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Exo2';
+    src: url('/assets/Fonts/exo/Exo2-Black.otf') format('opentype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Exo2';
+    src: url('/assets/Fonts/exo/Exo2-BlackItalic.otf') format('opentype');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* Aplicar fuente Exo a todos los headers */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Exo2', 'system-ui', sans-serif;
+}

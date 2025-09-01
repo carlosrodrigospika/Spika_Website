@@ -1,0 +1,253 @@
+<footer id="contacto" class="bg-brand-dark text-gray-300 pt-8 pb-4" style="background-color:#003035;">
+    <div class="container mx-auto px-2 sm:px-4 lg:px-6">
+        <div class="flex flex-col lg:flex-row justify-center lg:justify-end items-center lg:items-end gap-8 md:gap-12 text-center lg:text-right">
+            <div class="lg:w-1/5 w-full flex flex-col items-center lg:items-end footer-top-section">
+                 <a href="/" class="mb-2">
+                    <img src="/assets/Logo_SpikaTech_1-removebg-preview.ico" alt="Spika Tech Logo" class="h-8 w-auto">
+                </a>
+                <address class="text-base text-gray-400 not-italic leading-tight text-center lg:text-right">
+                    <p data-i18n="Footer.address.street"></p>
+                    <p data-i18n="Footer.address.city"></p>
+                </address>
+            </div>
+            <div class="lg:w-1/6 w-full footer-menu-section">
+                <h4 class="font-bold text-xl mb-2 text-center lg:text-right" data-i18n="Footer.menu"></h4>
+                <nav class="space-y-1 text-base text-center lg:text-right footer-menu-content">
+                    <a href="/#proyectos" class="block hover:text-white" data-i18n="Footer.menuItems.proyectos"></a>
+                    <a href="/#desarrollos" class="block hover:text-white" data-i18n="Footer.menuItems.desarrollos"></a>
+                    <a href="/#noticias" class="block hover:text-white" data-i18n="Footer.menuItems.noticias"></a>
+                    <a href="/#contacto" class="block hover:text-white" data-i18n="Footer.menuItems.contacto"></a>
+                </nav>
+            </div>
+            <div class="lg:w-1/6 w-full footer-social-section">
+                <h4 class="font-bold text-xl mb-2 text-center lg:text-right" data-i18n="Footer.social"></h4>
+                <nav class="space-y-1 text-base flex flex-col gap-1 items-center lg:items-end footer-social-content">
+                    <a href="https://www.instagram.com/spika_tech" target="_blank" class="flex items-center text-white hover:text-gray-300 transition-colors gap-1 justify-center lg:justify-end">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@spikatech3778" target="_blank" class="flex items-center text-white hover:text-gray-300 transition-colors gap-1 justify-center lg:justify-end">
+                        <i class="bi bi-youtube"></i>
+                    </a>
+                    <a href="https://es.linkedin.com/company/spikatech" target="_blank" class="flex items-center text-white hover:text-gray-300 transition-colors gap-1 justify-center lg:justify-end">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+                    <a href="https://x.com/SpikaTech" target="_blank" class="flex items-center text-white hover:text-gray-300 transition-colors gap-1 justify-center lg:justify-end">
+                        <i class="bi-twitter-x"></i>
+                    </a>
+                </nav>
+            </div>
+            <div class="lg:w-1/4 w-full">
+                <h4 class="font-bold text-xl mb-2 text-center lg:text-right" data-i18n="Footer.info"></h4>
+                <form id="email-form" class="flex justify-center lg:justify-end">
+                    <div class="flex border border-gray-500 rounded-sm p-0.5 items-center w-4/5 max-w-xs">
+                        <input type="email" id="email-input" data-i18n-placeholder="Footer.emailPlaceholder" class="bg-transparent text-white px-1 py-0.5 focus:outline-none w-full text-base text-center lg:text-right">
+                        <button type="submit" class="text-gray-500 font-bold px-1 hover:text-white transition-colors text-base" data-i18n="Footer.submit">OK</button>
+                    </div>
+                </form>
+                <div class="mt-2 text-center lg:text-right">
+                    <a href="/politica-privacidad" class="text-base text-gray-400 hover:text-white transition-colors" data-i18n="Footer.privacy"></a>
+                    <span class="mx-1 text-gray-500">|</span>
+                    <a href="/politica-cookies" class="text-base text-gray-400 hover:text-white transition-colors" data-i18n="Footer.cookies"></a>
+                    <span class="mx-1 text-gray-500">|</span>
+                    <a href="/politica-seguridad-informacion" class="text-base text-gray-400 hover:text-white transition-colors" data-i18n="Footer.security"></a>
+                </div>
+            </div>
+        </div>
+        <div class="w-full h-px bg-gray-600 mt-6"></div>
+    </div>
+</footer>
+
+<style>
+@media (max-width: 1024px) {
+    footer#contacto {
+        padding-top: 2rem !important;
+        padding-bottom: 1rem !important;
+    }
+    
+    footer#contacto .container {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+    
+    footer#contacto .flex.flex-col {
+        gap: 2rem !important;
+    }
+    
+    /* Layout en fila para menú y redes sociales */
+    .footer-top-section,
+    .footer-menu-content,
+    .footer-social-content {
+        display: flex !important;
+        flex-direction: row !important;
+        align-self: center;
+        gap: 1rem !important;
+        justify-content: center;
+    }
+    
+    .footer-menu-section {
+        margin-left: 0 !important;
+    }
+}
+
+@media (max-width: 700px) {
+    footer#contacto {
+        padding-top: 1.5rem !important;
+        padding-bottom: 1rem !important;
+    }
+    
+    footer#contacto .container {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+    
+    footer#contacto .flex.flex-col {
+        gap: 1.5rem !important;
+    }
+    
+    footer#contacto h4 {
+        font-size: 0.875rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    footer#contacto nav {
+        font-size: 0.75rem !important;
+    }
+    
+    footer#contacto address {
+        font-size: 0.75rem !important;
+    }
+    
+    footer#contacto a {
+        font-size: 0.75rem !important;
+    }
+    
+    footer#contacto input {
+        font-size: 0.75rem !important;
+    }
+    
+    footer#contacto button {
+        font-size: 0.75rem !important;
+    }
+}
+</style>
+
+<script>
+import Swal from 'sweetalert2';
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Mapeo de IDs para la página principal
+    const idMapping: Record<string, string> = {
+        'proyectos': 'section2',
+        'desarrollos': 'section3',
+        'noticias': 'section4'
+    };
+    
+    // Función para hacer scroll a la sección cuando se carga la página con hash
+    function scrollToSectionFromHash() {
+        const hash = window.location.hash;
+        if (hash) {
+            const targetId = hash.replace('#', '');
+            const mappedId = idMapping[targetId] || targetId;
+            const targetElement = document.getElementById(mappedId);
+            
+            if (targetElement) {
+                // Pequeño delay para asegurar que la página esté completamente cargada
+                setTimeout(() => {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }, 100);
+            }
+        }
+    }
+    
+    // Obtener todos los enlaces del menú del footer
+    const footerLinks = document.querySelectorAll('.footer-menu-content a[href^="/#"]');
+    
+    footerLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            const href = link.getAttribute('href');
+            if (!href) return;
+            
+            const targetId = href.replace('/#', '');
+            
+            // Si estamos en la página principal, usar el mapeo
+            if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+                const mappedId = idMapping[targetId] || targetId;
+                const targetElement = document.getElementById(mappedId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Actualizar la URL sin recargar la página
+                    history.pushState(null, '', href);
+                }
+            } else {
+                // Si estamos en otra página, navegar normalmente
+                if (href) {
+                    window.location.href = href;
+                }
+            }
+        });
+    });
+    
+    // Ejecutar cuando se carga la página
+    scrollToSectionFromHash();
+    
+    // También ejecutar cuando se navega con el botón atrás/adelante
+    window.addEventListener('popstate', scrollToSectionFromHash);
+    
+    // Funcionalidad del formulario de email
+    const emailForm = document.getElementById('email-form') as HTMLFormElement;
+    const emailInput = document.getElementById('email-input') as HTMLInputElement;
+    
+    if (emailForm && emailInput) {
+        emailForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = emailInput.value.trim();
+            
+            // Función para obtener traducción usando el sistema existente
+            async function getTranslation(key: string): Promise<string> {
+                try {
+                    const currentLang = document.documentElement.lang || 'es';
+                    const response = await fetch(`/i18n/translations/${currentLang}.json`);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const translations = await response.json();
+                    
+                    // Si la clave contiene puntos, dividirla para navegar por la estructura
+                    if (key.includes('.')) {
+                        const keys = key.split('.');
+                        let value = translations;
+                        for (const k of keys) {
+                            value = value?.[k];
+                        }
+                        return value || key;
+                    }
+                    
+                    return translations?.Footer?.[key] || key;
+                } catch (error) {
+                    console.error('Error loading translations:', error);
+                    return key;
+                }
+            }
+            
+            const title = await getTranslation('Footer.emailValidation.success');
+            Swal.fire({
+                title: title,
+                icon: 'success'
+            });
+            
+            // Limpiar el formulario
+            emailInput.value = '';
+        });
+    }
+});
+</script> 

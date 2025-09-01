@@ -1,0 +1,216 @@
+---
+export interface Section {
+  id: string;
+  num: string;
+  title: string; // clave de traducción
+}
+const { sections } = Astro.props;
+---
+<aside
+  class="fixed left-4 sm:left-6 md:left-8 top-8 h-[85vh] z-70 flex flex-col items-center"
+  data-sections={JSON.stringify(sections)}
+>
+    <!-- Logo siempre visible en contenedor separado -->
+    <div class="flex mb-4 justify-end relative" style="width: 100%;height: auto;">
+        <a href="/" class="block hover:cursor-pointer star-container">
+            <img src="/assets/Logo_SpikaTech_Star.webp" alt="Logo SpikaTech Star" class="w-8 h-8 sm:w-10 sm:h-10 star-icon" />
+        </a>
+        <!-- Imagen que aparece en hover -->
+        <div class="star-hover-image absolute left-full pointer-events-none" style="width: 100%; height: 100%; opacity: 1; clip-path: inset(0 0 0 100%); transition: clip-path 0.5s ease;">
+            <img src="/assets/Name_SpikaTech.webp" alt="SpikaTech Logo" class="w-16 h-8 sm:w-20 sm:h-10"/>
+        </div>
+    </div>
+    
+    <!-- Contenedor para elementos que se ocultan -->
+    <div id="side-nav-content" class="hidden md:flex flex-col items-center h-full justify-between opacity-0 transition-opacity duration-300">
+        <div class="relative flex flex-row items-center h-full">
+            <!-- Columna de textos y números en vertical -->
+            <div class="flex flex-col justify-between h-full py-4 z-10" style="display: flex; justify-content: center;">
+                <div class="flex flex-col items-center h-full justify-between">
+                    <div class="flex flex-col items-center h-full justify-between" id="sidenav-items-container" style="display: flex; justify-content: center; transform: rotate(-90deg); flex-direction: row-reverse; width: 10px; column-gap: 20px;">
+                        {sections.map((section: Section, idx: number) => (
+                          <>
+                            <span id={`sidenav-title-${idx}`} class="sidenav-vertical-text opacity-0 cursor-pointer hover:text-brand-dark transition-colors duration-200" style="opacity: 0;" data-i18n={section.title} data-section-id={`section${idx + 1}`}></span>
+                            <span id={`sidenav-num-${idx}`} class="sidenav-vertical-num text-gray-500 cursor-pointer hover:text-brand-dark transition-colors duration-200" data-section-id={`section${idx + 1}`}>{section.num}</span>
+                          </>
+                        ))}
+                    </div>
+                </div>
+            </div>
+            <!-- Barra vertical -->
+            <div class="relative h-full flex flex-col items-center ml-4" style="min-width: 24px;">
+                <!-- Contenedor de barra de progreso -->
+                <div id="sidenav-bar-container" style="position: relative; width: 5px; height: 100%; background: #ffffff00; overflow: hidden;">
+                    <div id="sidenav-bar-progress" style="position: absolute; left: 0; top: 0; width: 100%; height: 0; background: #CEDF00; z-index: 10;"></div>
+                    <div id="sidenav-bar-background" style="position: absolute; left: 30%; top: 0; width: 40%; height: 100%; background: #A3AC00; z-index: 9;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>
+
+<script is:inline>
+document.addEventListener('DOMContentLoaded', () => {
+    const aside = document.querySelector('aside[data-sections]');
+    const sideNavContent = document.getElementById('side-nav-content');
+    const sections = aside ? JSON.parse(aside.getAttribute('data-sections')) : [];
+    const numEls = Array.from(document.querySelectorAll('#sidenav-items-container .sidenav-vertical-num'));
+    const titleEls = Array.from(document.querySelectorAll('#sidenav-items-container .sidenav-vertical-text'));
+    
+    // Efecto hover para la estrella
+    const starContainer = document.querySelector('.star-container');
+    const starHoverImage = document.querySelector('.star-hover-image');
+
+    if (starContainer && starHoverImage) {
+        // Hover: revela de derecha a izquierda
+        starContainer.addEventListener('mouseenter', () => {
+            starHoverImage.style.clipPath = 'inset(0 0 0 0)';
+        });
+
+        // Al salir: oculta de izquierda a derecha
+        starContainer.addEventListener('mouseleave', () => {
+            starHoverImage.style.clipPath = 'inset(0 100% 0 0)';
+        });
+    }
+    
+    // Función para hacer scroll suave a una sección
+    function smoothScrollToSection(sectionId) {
+        const targetElement = document.getElementById(sectionId);
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        } else {
+            console.log('Sección no encontrada:', sectionId);
+        }
+    }
+    
+    // Añadir event listeners para hacer las secciones clickeables
+    function addClickListeners() {
+        // Añadir listeners a los números
+        numEls.forEach((el) => {
+            if (el) {
+                el.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const sectionId = el.getAttribute('data-section-id');
+                    if (sectionId) {
+                        smoothScrollToSection(sectionId);
+                    }
+                });
+            }
+        });
+        
+        // Añadir listeners a los títulos
+        titleEls.forEach((el) => {
+            if (el) {
+                el.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const sectionId = el.getAttribute('data-section-id');
+                    if (sectionId) {
+                        smoothScrollToSection(sectionId);
+                    }
+                });
+            }
+        });
+    }
+    
+    function updateSideNav() {
+        // Buscar todas las secciones con IDs section1, section2, etc.
+        const sectionElements = [];
+        for (let i = 1; i <= sections.length; i++) {
+            const elements = document.querySelectorAll(`#section${i}`);
+            if (elements.length > 0) {
+                sectionElements.push({
+                    id: `section${i}`,
+                    elements: Array.from(elements),
+                    sectionIndex: i - 1
+                });
+            }
+        }
+        
+        if (sectionElements.length === 0) {
+            // Si no hay secciones con IDs específicos, ocultar solo el contenido de navegación
+            if (sideNavContent) {
+                sideNavContent.style.opacity = '0';
+            }
+            return;
+        }
+        
+        // Encontrar la sección activa
+        let activeSectionIndex = -1;
+        const windowHeight = window.innerHeight;
+        const threshold = windowHeight * 0.3;
+        
+        for (let i = 0; i < sectionElements.length; i++) {
+            const sectionData = sectionElements[i];
+            const isAnyElementVisible = sectionData.elements.some(el => {
+                const rect = el.getBoundingClientRect();
+                return rect.top <= threshold;
+            });
+            
+            if (isAnyElementVisible) {
+                activeSectionIndex = sectionData.sectionIndex;
+            }
+        }
+        
+        // Mostrar u ocultar la barra de navegación
+        if (activeSectionIndex >= 0) {
+            if (sideNavContent) {
+                sideNavContent.style.opacity = '1';
+            }
+            
+            // Actualizar títulos y números
+            titleEls.forEach((el, idx) => {
+                if (el) {
+                    if (idx === activeSectionIndex) {
+                        el.style.display = 'inline-block';
+                        el.style.opacity = '1';
+                        el.style.whiteSpace = 'nowrap';
+                    } else {
+                        el.style.display = 'none';
+                        el.style.opacity = '0';
+                    }
+                }
+            });
+            
+            numEls.forEach((el, idx) => {
+                if (el) {
+                    if (idx === activeSectionIndex) {
+                        el.classList.add('text-brand-dark');
+                        el.classList.remove('text-gray-500');
+                    } else {
+                        el.classList.remove('text-brand-dark');
+                        el.classList.add('text-gray-500');
+                    }
+                }
+            });
+        } else {
+            // Si no estamos en ninguna sección, ocultar solo el contenido de navegación
+            if (sideNavContent) {
+                sideNavContent.style.opacity = '0';
+            }
+        }
+    }
+    
+    window.addEventListener('scroll', updateSideNav);
+    window.addEventListener('resize', updateSideNav);
+    setTimeout(updateSideNav, 100);
+
+    const progressBar = document.getElementById('sidenav-bar-progress');
+    const barContainer = document.getElementById('sidenav-bar-container');
+    function updateBarProgress() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.body.scrollHeight - window.innerHeight;
+        const percent = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
+        const barHeight = barContainer.offsetHeight;
+        progressBar.style.height = `${percent * barHeight}px`;
+    }
+    window.addEventListener('scroll', updateBarProgress);
+    window.addEventListener('resize', updateBarProgress);
+    setTimeout(updateBarProgress, 100);
+    
+    // Añadir los event listeners para hacer las secciones clickeables
+    setTimeout(addClickListeners, 100);
+});
+</script>

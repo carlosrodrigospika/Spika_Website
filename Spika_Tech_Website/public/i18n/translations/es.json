@@ -1,0 +1,714 @@
+{
+  "OverlayMenu": {
+    "Compañia": "Compañía",
+    "Proyectos": "Proyectos",
+    "Desarrollos": "Desarrollos",
+    "Noticias": "Noticias",
+    "Contacto": "Contacto",
+    "Linkedin": "LinkedIn",
+    "Instagram": "Instagram",
+    "X": "X",
+    "Youtube": "YouTube",
+    "VRCardio": "VR-CARDIO",
+    "PRAS": "PRAS",
+    "Magallanes": "La Primera Vuelta al Mundo",
+    "Eventos": "Eventos",
+    "Actualidad": "Actualidad"
+  },
+  "Desarrollos": {
+    "title": "DESARROLLO E INVESTIGACIÓN",
+    "text1": "Explora",
+    "text2": "todo lo que podemos hacer. Mostramos nuestros desarrollos más destacados, investigaciones, datos clave y artículos exclusivos sobre los sectores donde",
+    "text3": "marcamos la diferencia.",
+    "text4": "Conoce cómo en Spika Tech transformamos ideas en",
+    "text5": "soluciones reales e innovadoras."
+  },
+  "Hero": {
+    "title": {
+      "line1": "Comprometidos",
+      "line2": "con la",
+      "line3": "transformación",
+      "line4": "de la sociedad"
+    },
+    "point1": {
+      "number": "01.",
+      "prefix": "Aplicamos",
+      "tech": "deep tech",
+      "middle": "para resolver desafíos reales con",
+      "impact": "impacto directo",
+      "suffix": "en personas y organizaciones"
+    },
+    "point2": {
+      "number": "02.",
+      "prefix": "Referentes en",
+      "innovation": "innovación aplicada",
+      "middle": "liderando la",
+      "transformation": "transformación digital"
+    },
+    "point3": {
+      "number": "03.",
+      "prefix": "Equipo compuesto por doctores e ingenieros, expertos en",
+      "expertise": "IA, sistemas autónomos y realidad extendida",
+      "suffix": "comprometidos con la excelencia y el impacto real."
+    },
+    "sections": {
+      "01": "Quiénes somos",
+      "02": "Nuestros proyectos",
+      "03": "Tipos de desarrollo",
+      "04": "Noticias"
+    },
+    "marquee": "Bienvenido a Spika Tech - "
+  },
+  "Proyectos": {
+    "title": "Nuestros proyectos",
+    "subtitle": {
+      "prefix": "Equipo compuesto por doctores e ingenieros,",
+      "expertise": "expertos en IA, sistemas autónomos y realidad extendida",
+      "suffix": "comprometidos con la excelencia y el impacto real."
+    },
+    "vrcardio": {
+      "title": "VR-CARDIO",
+      "description": "Plataforma para la planificación y el guiado intraoperatorio de intervenciones de arritmias cardíacas mediante el uso de tecnologías de Realidad Virtual."
+    },
+    "pras": {
+      "title": "PRAS",
+      "description": "Plataforma Robótica para Asistencia Sanitaria. Robot social y asistencial para entornos hospitalarios y residencias de mayores."
+    },
+    "magallanes": {
+      "title": "Primera Vuelta al Mundo",
+      "description": "Exhibición inmersiva en 3D, Realidad Virtual y Realidad Aumentada que relata la épica historia de la primera vuelta al mundo de Magallanes y Elcano."
+    }
+  },
+  "Noticias": {
+    "title": "Últimas noticias",
+    "subtitle": "Descubre las novedades y logros de Spika Tech",
+    "volver": "Volver",
+    "masNoticias": "Más noticias",
+    "etiquetas": "Etiquetas",
+    "todasNoticias": "Todas las noticias",
+    "categorias": "Categorías",
+    "todasCategorias": "Todas las categorías",
+    "anterior": "Anterior",
+    "siguiente": "Siguiente"
+  },
+  "Partners": {
+    "prefix": "Nuestros",
+    "highlight": "Partners"
+  },
+  "SideNav": {
+    "hero": "¿Quiénes somos?",
+    "proyectos": "Nuestros proyectos",
+    "desarrollos": "Tipos de desarrollo",
+    "noticias": "Noticias"
+  },
+  "Header": {
+    "contacto": "Contacto"
+  },
+  "Footer": {
+    "address": {
+      "street": "Calle Alcalá de Guadaíra 6",
+      "city": "Madrid (28018)"
+    },
+    "menu": "MENÚ",
+    "menuItems": {
+      "proyectos": "Proyectos",
+      "desarrollos": "Desarrollos",
+      "noticias": "Noticias",
+      "contacto": "Contacto"
+    },
+    "social": "RRSS",
+    "socialItems": {
+      "instagram": "Instagram",
+      "youtube": "YouTube",
+      "linkedin": "LinkedIn",
+      "X": "X"
+    },
+    "info": "INFORMACIÓN",
+    "emailPlaceholder": "Introduce tu email",
+    "submit": "OK",
+    "privacy": "Política de Privacidad",
+    "cookies": "Política de Cookies",
+    "security": "Política de Seguridad de la Información",
+    "emailValidation": {
+      "success": "Email enviado correctamente"
+    }
+  },
+  "Company": {
+    "marquee": "Iluminando el camino de la tecnologíadel mañana",
+    "values": {
+      "title": "01 Nuestros Valores",
+      "values1": "innovación",
+      "values2": "experiencia",
+      "values3": "personas",
+      "values4": "excelencia"
+    },
+    "horizontal": {
+      "section1": {
+        "text": "Usamos deep tech para generar",
+        "highlight": "impacto positivo",
+        "suffix": "en la sociedad."
+      },
+      "section2": {
+        "text": "Creamos soluciones aplicadas con tecnologías emergentes que resuelven retos concretos."
+      },
+      "section3": {
+        "text": "Comprometidos con el rigor científico y la calidad al servicio de las personas."
+      }
+    },
+    "history": {
+      "title": "02 Nuestra Historia",
+      "paragraph1": {
+        "prefix": "• Apostamos por la",
+        "highlight1": "transformación social",
+        "middle": "a través de la creación de",
+        "highlight2": "soluciones innovadoras",
+        "highlight3": "investigación en algoritmos y la mejora de la usabilidad y accesibilidad",
+        "suffix": ", siguiendo un plan estratégico que busca el éxito a través de la pasión y el esfuerzo por llegar a la sociedad."
+      },
+      "paragraph2": {
+        "prefix": "• Comprometidos con la",
+        "highlight": "transformación de la sociedad",
+        "suffix": "a través de la creación de herramientas innovadoras, la investigación en algoritmos y la mejora de la usabilidad y calidad del software."
+      },
+      "paragraph3": {
+        "prefix": "• Nuestro objetivo es convertirnos en",
+        "highlight1": "líderes y referentes mundiales de mercado",
+        "middle": ", productos y calidad, colaborando en la investigación y fomentando el uso de la",
+        "highlight2": "Inteligencia Artificial, la Realidad Virtual, Realidad Aumentada, y la Robótica",
+        "suffix": "."
+      },
+      "highlight": {
+        "prefix": "Spika Tech fue fundada en 2015,",
+        "middle": "enfocándose en la",
+        "highlight": "investigación e innovación",
+        "suffix": "en diversos sectores."
+      }
+    },
+    "timeline": {
+      "2019": {
+        "seal": "Sello de excelencia"
+      },
+      "2020": {
+        "eibt": "Sello EIBT"
+      },
+      "2021": {
+        "eu": "Financiado por la Unión Europea",
+        "oracle": "Premio Oracle",
+        "eic": "EIC Accelerator concedido"
+      },
+      "2022": {
+        "qia": "Premio QIA en Innovación Potencial"
+      },
+      "2023": {
+        "qia_international": "Premio QIA Internacional en Innovación Potencial"
+      },
+      "2024": {
+        "aemps": "Validación de producto sanitario en VR-CARDIO",
+        "health_market": "Premio Health to Market",
+        "iso13485": "Certificación ISO 13485",
+        "madrid": "Sello Madrid Excelente por innovación y calidad"
+      },
+      "2025": {
+        "iso27001": "Certificación ISO 27001",
+        "valor_publico": "Premio al Valor Público MWC Barcelona"
+      }
+    },
+    "sections": {
+      "01": "Nuestros valores",
+      "02": "Nuestra historia"
+    }
+  },
+  "Magallanes": {
+    "hero": {
+      "title": "PRIMERA VUELTA AL MUNDO",
+      "explore": "Explora la experiencia"
+    },
+    "experience": {
+      "title": {
+        "prefix": "ELCANO Y MAGALLANES CONSTRUYERON",
+        "highlight": "NUESTRA HISTORIA"
+      },
+      "subtitle": "La realidad virtual, aumentada y mixta transportan al público a escenarios claves de la expedición"
+    },
+    "slides": {
+      "slide1": {
+        "title": {
+          "prefix": "Viaje inmersivo de",
+          "highlight": "Realidad Virtual"
+        },
+        "description": "La realidad virtual permite a los usuarios explorar el viaje histórico de Magallanes y Elcano con barcos interactivos, mapas y paisajes inmersivos."
+      },
+      "slide2": {
+        "title": {
+          "prefix": "Instrumentos de",
+          "highlight": "Realidad Aumentada",
+          "suffix": "Realistas"
+        },
+        "description": "La Realidad Aumentada permite a los usuarios interactuar con instrumentos realistas y específicos de la época del viaje de Magallanes y Elcano."
+      },
+      "slide3": {
+        "title": "Vídeo histórico de 360º",
+        "description": "Las proyecciones de 360º sumergen a los usuarios en momentos clave del viaje de Magallanes, destacando los momentos cruciales de la expedición en un entorno dinámico e interactivo."
+      },
+      "slide4": {
+        "title": {
+          "highlight": "Experiencia",
+          "suffix": "histórica y realista"
+        },
+        "description": "Explora elementos realistas y detallados del viaje de Magallanes, dando vida a la historia con réplicas auténticas."
+      }
+    },
+    "sections": {
+      "01": "Presentación",
+      "02": "Galería"
+    }
+  },
+  "PRAS": {
+    "hero": {
+      "title": "PRAS",
+      "explore": "Explora el producto"
+    },
+    "experience": {
+      "title": {
+        "prefix": "EL",
+        "highlight": "FUTURO",
+        "suffix": "DE LOS ROBOTS"
+      },
+      "description": "PRAS es una plataforma robótica actual desarrollada para la asistencia sanitaria. Su diseño social y asistencial está pensado para entornos hospitalarios y residencias de mayores, facilitando la interacción y el apoyo a pacientes y personal sanitario mediante tecnología avanzada y segura."
+    },
+    "slides": {
+      "slide1": {
+        "title": "¿Qué es PRAS?",
+        "subtitle": "Tecnología avanzada en uso real",
+        "description1": "PRAS es una plataforma robótica móvil diseñada para entornos hospitalarios. Actualmente cuenta con una versión funcional (TRL-7) capaz de entregar medicamentos mediante un brazo robótico y tomar la temperatura de pacientes con cámaras RGB y térmica.",
+        "description2": "Integra ChatOS, un sistema de control por voz o texto a través de app móvil, facilitando la interacción con el personal sanitario. Fue presentada en el MWC Shanghai 2023."
+      },
+      "slide2": {
+        "title": "Ventajas competitivas de PRAS",
+        "description1": "PRAS ofrece una solución robótica low-cost, mucho más asequible que otras plataformas (>30.000 USD). Su diseño modular permite adaptaciones y actualizaciones sin sustituir el equipo completo.",
+        "description2": "Cuenta con un sistema de batería ilimitada, basado en doble batería intercambiable, evitando tiempos muertos. Además, permite interacción simultánea desde múltiples interfaces."
+      },
+      "slide3": {
+        "title": "Visión",
+        "description1": "PRAS se apoya en diseño optimizado, fabricación con componentes estándar e impresión 3D.",
+        "description2": "Su software basado en ROS permite personalización flexible y reducción de costes. Se proyecta como una solución accesible ante el crecimiento global del mercado de cobots.",
+        "description3": "Se proyecta como una solución accesible ante el crecimiento global del mercado de cobots."
+      }
+    },
+    "features": {
+      "lowcost": {
+        "title": "Low-cost real:",
+        "items": [
+          "Coste drásticamente inferior al de otras plataformas.",
+          "Enfocado a hacer viable la robótica en PYMES y centros sanitarios con presupuestos ajustados."
+        ]
+      },
+      "modular": {
+        "title": "Diseño modular",
+        "items": [
+          "Permite añadir, reemplazar o actualizar componentes sin cambiar toda la unidad.",
+          "Adaptable a distintos entornos y necesidades clínicas."
+        ]
+      },
+      "battery": {
+        "title": "Sistema de batería ilimitada",
+        "items": [
+          "Opera continuamente gracias a un sistema de doble batería con conmutación automática.",
+          "El operador puede reemplazar baterías sin interrumpir la operación del robot."
+        ]
+      },
+      "interface": {
+        "title": "Interfaz múltiple",
+        "items": [
+          "Control simultáneo desde distintos dispositivos y medios.",
+          "Comunicación fluida entre el personal y el robot (texto, voz, móvil, etc.)."
+        ]
+      }
+    },
+    "design": {
+      "title": "Diseño",
+      "description1": "Su diseño elegante es intuitivo y combina",
+      "description2": "elegancia y rendimiento.",
+      "description3": "PRAS puede modularse en diversos prototipos según el trabajo que deba desempeñar."
+    },
+    "design_carousel": {
+      "01": "PRAS Botlite es una plataforma robótica autónoma diseñada para desplazarse con precisión en entornos interiores. Se mueve mediante dos ruedas motrices y una arquitectura de tracción diferencial, lo que le permite girar sobre sí misma y navegar por espacios estrechos con agilidad. Está equipada con sensores como LiDAR, cámaras y una unidad de medición inercial (IMU) que le permiten construir un mapa del entorno, detectar obstáculos y moverse de forma inteligente. Su estructura es robusta y personalizable, lo que la convierte en el punto de partida ideal para aplicaciones educativas, industriales o de investigación.",
+      "01_title": "PRAS Botlite",
+      "02": "Al añadir un brazo robótico colaborativo sobre la base, PRAS Botlite adquiere la capacidad de interactuar físicamente con su entorno. Esta configuración permite al robot no solo desplazarse, sino también realizar acciones como agarrar objetos, colocarlos en diferentes ubicaciones o pulsar botones, entre muchas otras tareas. Combinado con su cámara RGB-D, el sistema puede detectar y localizar objetos en 3D, seguir movimientos, identificar puntos de interés y ajustar el movimiento del brazo en tiempo real. Esto permite realizar tareas complejas como pick and place asistido por visión, manipulación guiada por IA o interacción con elementos del entorno sin necesidad de intervención humana. Todo ello se puede programar y controlar mediante una interfaz intuitiva, pensada incluso para usuarios sin conocimientos técnicos.",
+      "02_title": "PRAS Botlite + Brazo Robótico",
+      "03": "Con la incorporación de un torso humanoide, PRAS Botlite se transforma en un robot social, capaz de expresarse y comunicarse con las personas. El módulo humanoide cuenta con una cabeza móvil, una pantalla que muestra expresiones faciales y brazos articulados que le permiten acompañar sus mensajes con gestos. Gracias a su sistema de voz y comprensión del lenguaje natural, puede mantener conversaciones sencillas, responder a preguntas o guiar a usuarios en una experiencia interactiva. Esta versión es ideal para demostraciones, atención al público, educación o entornos donde la comunicación entre humanos y robots es clave.",
+      "03_title": "PRAS Botlite + Humanoide",
+      "04": "En su versión para telepresencia, PRAS Botlite incorpora una pantalla de gran formato y un sistema de audio bidireccional, permitiendo que una persona se conecte de forma remota y se desplace por un espacio físico como si estuviera allí. Esta configuración convierte al robot en un avatar móvil, ideal para reuniones, visitas guiadas, asistencia remota o participación en eventos sin necesidad de estar presencialmente. El usuario puede controlar la dirección del robot desde cualquier lugar del mundo y comunicarse en tiempo real a través de vídeo y audio, mientras la plataforma se encarga de navegar con suavidad y seguridad gracias a sus sensores y capacidades de autonomía. Una solución eficaz y versátil para romper barreras geográficas.",
+      "04_title": "PRAS Botlite para telepresencia"
+    },
+    "sections": {
+      "01": "Presentación",
+      "02": "Galería",
+      "03": "Diseño",
+      "04": "Características"
+    }
+  },
+  "VRCardio": {
+    "hero": {
+      "title": {
+        "line1": "SALVAR VIDAS",
+        "line2": "ES UNA",
+        "highlight": "OBLIGACIÓN"
+      },
+      "description": {
+        "prefix": "VR-CARDIO es una herramienta innovadora y versátil que ofrece",
+        "highlight1": "visualización endoscópica y holografía 3D, 360º",
+        "middle": "en",
+        "highlight2": "realidad virtual y aumentada",
+        "suffix": ", revolucionando el diagnóstico y tratamiento de las arritmias."
+      }
+    },
+    "problems": {
+      "title": "Problemas y solución",
+      "problems": {
+        "title": "Problemas",
+        "list": [
+          "Las arritmias cardíacas afectan al 10%-20% de la población y causan el 15% de los ictus en adultos.",
+          "Las intervenciones actuales (ablación con catéter) son invasivas, costosas, prolongadas y requieren de especialistas altamente cualificados."
+        ]
+      },
+      "solution": {
+        "title": "Solución",
+        "list": [
+          "Sistema no invasivo que combina un traje IoT, electrónica y software con visualización 3D, 360º y AI.",
+          "Ofrece diagnóstico más rápido, seguro y preciso sin necesidad de cirugías invasivas ni catéteres."
+        ]
+      }
+    },
+    "advantages": {
+      "title": "Ventajas y Aplicación Clínica",
+      "benefits": {
+        "title": "Beneficios",
+        "list": [
+          "Diagnóstico avanzado sin riesgos quirúrgicos.",
+          "Ahorro en costes operativos y hospitalarios.",
+          "Visualización precisa de la actividad eléctrica en 3D holográfica.",
+          "Reducción de factores psicológicos negativos."
+        ]
+      },
+      "clinical": {
+        "title": "En práctica clínica",
+        "list": [
+          "Identificación temprana de arritmias.",
+          "Medida en tiempo real.",
+          "Mejora en planificación quirúrgica y decisiones terapéuticas."
+        ]
+      }
+    },
+    "business": {
+      "title": "Modelo de Negocio y Proyección",
+      "model": {
+        "title": "Modelo",
+        "list": [
+          "SaaS con hardware reutilizable (licencia completa + wearable).",
+          "Ahorro en costes y tiempos de hospitalización.",
+          "Visualización precisa de actividad eléctrica en 3D holográfico.",
+          "Reducción de falsos positivos/negativos."
+        ]
+      },
+      "progress": {
+        "title": "Progreso y Mercado",
+        "list": [
+          "Identificación temprana de arritmias.",
+          "Análisis detallado no invasivo.",
+          "Mejora en planificación quirúrgica y decisiones terapéuticas."
+        ]
+      }
+    },
+    "packaging": {
+      "title": "Presentación del Packaging"
+    },
+    "ifu": {
+      "title": "IFU VR-CARDIO",
+      "description": "Descarga aquí las",
+      "highlight": "Instrucciones de Uso",
+      "suffix": "de nuestro proyecto",
+      "button": "DESCARGAR"
+    },
+    "sections": {
+      "01": "Presentación",
+      "02": "Función",
+      "03": "Packaging",
+      "04": "IFU"
+    }
+  },
+  "Contacto": {
+    "hero": {
+      "title": "Contacto",
+      "subtitle": "¿Necesitas más información? Contacta con nosotros y organizamos una reunión."
+    },
+    "info": {
+      "title": "Información de contacto",
+      "email": "Correo electrónico",
+      "address": "Dirección",
+      "address_text": "Av. del Alcalde de Móstoles, s/n 28933 Móstoles, Madrid",
+      "phone": "Teléfono"
+    },
+    "form": {
+      "title": "Envíanos un mensaje",
+      "name": "Nombre completo *",
+      "name_placeholder": "Tu nombre completo",
+      "email": "Correo electrónico *",
+      "email_placeholder": "tu@email.com",
+      "subject": "Asunto *",
+      "subject_placeholder": "¿En qué podemos ayudarte?",
+      "message": "Mensaje *",
+      "message_placeholder": "Cuéntanos más detalles sobre tu consulta...",
+      "button": "Enviar mensaje",
+      "success": "¡Mensaje enviado correctamente! Te responderemos pronto."
+    }
+  },
+  "PoliticaPrivacidad": {
+    "title": "Política de Privacidad",
+    "subtitle": "En Spika Tech nos comprometemos a proteger tu privacidad y transparencia en el manejo de tus datos personales.",
+    "introduction": "En Spika Tech (https://spikatech.com), nos comprometemos a proteger tu privacidad. Esta Política de Privacidad explica cómo recopilamos, utilizamos, divulgamos y protegemos tu información cuando visitas nuestro sitio web. Por favor, lee esta política cuidadosamente. Si no estás de acuerdo con los términos de esta política, te pedimos que no utilices nuestro sitio.",
+    "sections": {
+      "info_collection": {
+        "title": "Información que Recopilamos",
+        "description": "Podemos recopilar información sobre ti de diversas maneras, incluyendo:",
+        "personal_data": {
+          "title": "Datos Personales",
+          "description": "Información de Contacto: Cuando te suscribes a nuestro boletín, te pones en contacto con nosotros o participas en cualquier función interactiva de nuestro sitio, podemos recopilar tu nombre, dirección de correo electrónico, número de teléfono u otros datos de contacto."
+        },
+        "non_personal_data": {
+          "title": "Datos No Personales",
+          "description": "Datos de Registro y Cookies: Incluyen tu dirección IP, tipo de navegador, sistema operativo, las páginas que visitas y otra información de uso."
+        },
+        "third_party_data": {
+          "title": "Datos de Terceros",
+          "description": "Servicios de Análisis: Recibimos datos de servicios como Google Analytics sobre tu comportamiento de navegación para mejorar nuestro sitio."
+        }
+      },
+      "usage": {
+        "title": "Cómo Utilizamos tu Información",
+        "purposes": [
+          "Proporcionar, operar y mantener nuestro sitio web",
+          "Mejorar, personalizar y expandir nuestro sitio web",
+          "Comunicarnos contigo, incluyendo atención al cliente",
+          "Analizar cómo utilizas el sitio web y monitorear rendimiento",
+          "Proteger la seguridad e integridad de nuestro sitio",
+          "Cumplir con obligaciones legales y normativas"
+        ]
+      },
+      "sharing": {
+        "title": "Compartir tu Información",
+        "service_providers": {
+          "title": "Proveedores de Servicios",
+          "description": "Podemos compartir tu información con terceros que realizan servicios para nosotros o en nuestro nombre, tales como servicios de alojamiento, entrega de correos electrónicos y servicios de análisis."
+        },
+        "legal_obligations": {
+          "title": "Obligaciones Legales",
+          "description": "Podemos divulgar tu información cuando estamos obligados a hacerlo por ley, para cumplir con procedimientos legales o para proteger nuestros derechos, propiedad y seguridad."
+        },
+        "business_transfers": {
+          "title": "Transferencias Comerciales",
+          "description": "Si experimentamos una fusión, adquisición o venta de activos, tu información puede ser transferida como parte de esa transacción."
+        }
+      },
+      "security": {
+        "title": "Seguridad de los Datos",
+        "description": "Utilizamos medidas de seguridad administrativas, técnicas y físicas para proteger tu información. Aunque nos esforzamos por proteger tu información personal, ningún método de transmisión por Internet o método de almacenamiento electrónico es 100% seguro, por lo que no podemos garantizar seguridad absoluta."
+      },
+      "rights": {
+        "title": "Tus Derechos",
+        "description": "Dependiendo de tu ubicación, puedes tener ciertos derechos bajo las leyes de protección de datos aplicables, incluidos:",
+        "access": {
+          "title": "Acceso y Portabilidad",
+          "description": "Puedes solicitar acceso a los datos personales que tenemos sobre ti y, en algunos casos, solicitar una copia de tus datos en un formato portátil."
+        },
+        "correction": {
+          "title": "Corrección",
+          "description": "Puedes solicitar que corrijamos cualquier inexactitud en los datos personales que poseemos sobre ti."
+        },
+        "deletion": {
+          "title": "Eliminación",
+          "description": "Puedes solicitar que eliminemos tus datos personales, sujeto a ciertas excepciones."
+        },
+        "objection": {
+          "title": "Objeción y Restricción",
+          "description": "Puedes oponerte o solicitar que restrinjamos nuestro procesamiento de tus datos personales."
+        },
+        "contact_info": "Para ejercer cualquiera de estos derechos, contáctanos en carlosz@spikatech.com o admin.its@spikatech.com."
+      },
+      "third_party": {
+        "title": "Sitios Web de Terceros",
+        "description": "Nuestro sitio web puede contener enlaces a sitios web de terceros. No somos responsables de las prácticas de privacidad ni del contenido de dichos sitios. Te recomendamos que revises las políticas de privacidad de cualquier sitio que visites desde nuestro sitio."
+      },
+      "changes": {
+        "title": "Cambios a Esta Política de Privacidad",
+        "description": "Podemos actualizar esta Política de Privacidad de vez en cuando. Cualquier cambio será publicado en esta página y esta política será actualizada. Te recomendamos que revises periódicamente esta política para estar al tanto de cualquier actualización."
+      },
+      "contact": {
+        "title": "Contáctanos",
+        "description": "Si tienes alguna pregunta sobre esta Política de Privacidad o sobre cómo manejamos tus datos, puedes contactarnos en:"
+      }
+    },
+    "back_button": "Volver al inicio"
+  },
+  "PoliticaCookies": {
+    "title": "Política de Cookies",
+    "subtitle": "Información sobre el uso de cookies en nuestro sitio web y cómo gestionar tus preferencias de privacidad.",
+    "introduction": "De acuerdo con la normativa española que regula el uso de cookies en relación a la prestación de servicios de comunicaciones electrónicas, recogida por la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico, informamos a continuación sobre las cookies.",
+    "sections": {
+      "what_are_cookies": {
+        "title": "¿Qué son las cookies?",
+        "description": "Las Cookies son pequeños archivos de texto que se descargan y almacenan en el navegador del Ordenador, Smartphone o Tablet del usuario al acceder a determinadas páginas web. En ningún caso pueden contener virus informáticos ni instalar malware en el equipo del usuario.",
+        "advantages": "La utilización de cookies, ofrece numerosas ventajas en la prestación de servicios de la Sociedad de la Información, puesto que, entre otras:",
+        "benefits": [
+          "Facilita la navegación del usuario en el Sitio Web",
+          "Facilita al usuario el acceso a los diferentes servicios que ofrece el Sitio Web",
+          "Evita al usuario volver a configurar características generales predefinidas cada vez que accede al Sitio Web",
+          "Favorece la mejora del funcionamiento y de los servicios prestados a través del Sitio Web"
+        ]
+      },
+      "types_of_cookies": {
+        "title": "¿Qué tipos de cookies utiliza esta página web?",
+        "own_cookies": {
+          "title": "Cookies propias:",
+          "description": "Son aquéllas que se envían al equipo terminal del usuario desde un equipo o dominio gestionado por Spika Tech y desde el que se presta el servicio solicitado por el usuario.",
+          "list_description": "A continuación, la lista de las que utilizamos:"
+        },
+        "third_party_cookies": {
+          "title": "Cookies de Terceros:",
+          "description": "Son aquéllas que se envían al equipo terminal del usuario desde un equipo o dominio que no es gestionado por Spika Tech, sino por otra entidad que trata los datos obtenidos través de las cookies."
+        }
+      },
+      "authorization": {
+        "title": "¿Cómo se autoriza a SPIKA TECH, S.L. para el uso de las cookies de este sitio web?",
+        "description": "En relación con la utilización de cookies de este sitio web descritos en el apartado anterior, el usuario autoriza y consiente su uso de la siguiente forma: Cuando el usuario accede a cualquier página de la web, verá un aviso donde se indica que la página web de SPIKA TECH, S.L. utiliza cookies, pudiendo el usuario aceptar o rechazar el uso de las mismas a través de la configuración de su navegador. Si el usuario no configura su navegador para que las cookies no se activen, al navegar por el sitio web de SPIKA TECH, S.L. y utilizar sus servicios, el usuario acepta el uso que se hace de las cookies."
+      },
+      "withdraw_consent": {
+        "title": "¿Cómo se retira el consentimiento para la utilización de las cookies de este site?",
+        "description": "El usuario tiene la opción de dejar de aceptar el uso de cookies en cualquier momento a través de su navegador, pudiendo permitir, bloquear o eliminar las cookies instaladas en su equipo mediante la configuración de las opciones del navegador que utiliza en su dispositivo (ordenador, móvil, tablet).",
+        "warning": "Sin la habilitación de las cookies descritas en el cuadro anterior los servicios web indicados no se prestarán.",
+        "browsers": {
+          "title": "Navegadores principales:",
+          "chrome": "Chrome:",
+          "explorer": "Explorer:",
+          "firefox": "Firefox:",
+          "safari": "Safari:",
+          "cookie_settings": "Configuración de cookies"
+        }
+      },
+      "updates": {
+        "title": "Actualización de la Política de Cookies",
+        "description": "SPIKA TECH, S.L. actualizará la presente política cuando sea necesario, ya sea porque lo exija una normativa o bien suprima o emplee nuevas cookies. Cualquier modificación de estas condiciones será publicada en este sitio web.",
+        "new_conditions": "A partir del momento en que se ponga en conocimiento y a disposición del usuario las nuevas condiciones mediante la publicación antes citada, las nuevas políticas de cookies serán de aplicación sustituyendo de forma automática a las anteriormente publicadas.",
+        "contact": "Si tiene dudas acerca de esta política de cookies, puede contactar con SPIKA TECH, S.L. a través del siguiente correo electrónico comercial@spikatech.com"
+      },
+      "security_policy": {
+        "title": "Política de la Seguridad de la Información",
+        "description": "Al navegar por nuestro Sitio Web está aceptando el uso de las cookies, puede retirar su aceptación cuando lo desee.",
+        "button_text": "Spika Tech – Política de Seguridad de la Información"
+      }
+    },
+    "back_button": "Volver al inicio"
+  },
+  "PoliticaSeguridad": {
+    "title": "Política de Seguridad de la Información",
+    "subtitle": "En Spika Tech protegemos la información como un activo estratégico para el negocio, garantizando la confidencialidad, integridad y disponibilidad.",
+    "introduction": "Nuestra Política de Seguridad de la Información, basada en la norma ISO 27001, garantiza la confidencialidad, integridad y disponibilidad de la información, minimizando riesgos y asegurando la continuidad de las operaciones.",
+    "sections": {
+      "key_principles": {
+        "title": "Principios Clave",
+        "principles": [
+          {
+            "title": "Gestión de riesgos:",
+            "description": "Identificamos, evaluamos y mitigamos los riesgos asociados a nuestros sistemas y procesos."
+          },
+          {
+            "title": "Control de accesos:",
+            "description": "Solo el personal autorizado accede a la información, con mínimos privilegios y bajo estrictos controles lógicos y físicos."
+          },
+          {
+            "title": "Protección integral:",
+            "description": "La información almacenada y en tránsito está protegida con medidas técnicas y organizativas actualizadas."
+          },
+          {
+            "title": "Gestión de incidentes:",
+            "description": "Contamos con protocolos de detección, respuesta y recuperación ante incidentes de seguridad."
+          },
+          {
+            "title": "Formación continua:",
+            "description": "Todo el personal recibe formación y concienciación en ciberseguridad de manera periódica."
+          },
+          {
+            "title": "Mejora continua:",
+            "description": "Revisamos y actualizamos nuestras medidas de seguridad de forma constante, adaptándonos a los cambios tecnológicos y regulatorios."
+          }
+        ]
+      },
+      "commitments": {
+        "title": "Compromisos",
+        "commitments": [
+          "Aplicación obligatoria a todo el personal, proveedores y terceros que accedan a nuestros sistemas o información.",
+          "Cumplimiento de la legislación vigente, incluyendo el Reglamento General de Protección de Datos (RGPD) y la Ley Orgánica de Protección de Datos (LOPDGDD).",
+          "Garantía de seguridad en la adquisición de productos y servicios tecnológicos.",
+          "Control estricto sobre accesos, tanto físicos como digitales."
+        ]
+      },
+      "conclusion": {
+        "description": "Con esta política, en Spika Tech reafirmamos nuestro compromiso con la seguridad de la información, la protección de nuestros clientes y la excelencia operativa.",
+        "button_text": "Descargar política completa (PDF)"
+      }
+    },
+    "back_button": "Volver al inicio"
+  },
+  "Chatbot": {
+    "title": "Spika Tech Assistant",
+    "subtitle": "¿En qué puedo ayudarte?",
+    "welcome": "¡Hola! Soy tu asistente virtual de Spika Tech. Puedo explicarte todo sobre nuestra empresa, proyectos y servicios. ¿Qué te gustaría saber?",
+    "quickOptions": {
+      "about": "¿Quiénes somos?",
+      "projects": "Nuestros proyectos",
+      "services": "Servicios y desarrollos",
+      "technology": "Nuestras tecnologías",
+      "achievements": "Logros y reconocimientos",
+      "contact": "Contacto"
+    },
+    "input": {
+      "placeholder": "Escribe tu pregunta...",
+      "send": "Enviar"
+    },
+    "topics": {
+      "about": {
+        "title": "¿Quiénes somos?",
+        "content": "Spika Tech es una empresa de tecnología que ilumina el camino del mañana aplicando deep tech para resolver desafíos reales con impacto directo en personas y organizaciones.\n\nSomos referentes en innovación aplicada, liderando la transformación digital con un equipo compuesto por doctores e ingenieros expertos en:\n• Inteligencia Artificial\n• Sistemas autónomos  \n• Realidad extendida (VR/AR)\n\nComprometidos con la excelencia y el impacto real, usamos tecnologías emergentes para generar impacto positivo en la sociedad.\n\n**Nuestra misión**: Aplicamos deep tech para resolver desafíos reales con impacto directo en personas y organizaciones.\n\n**Nuestros valores**: Innovación, experiencia, personas y excelencia."
+      },
+      "projects": {
+        "title": "Nuestros proyectos",
+        "content": "Tenemos tres proyectos principales que demuestran nuestra experiencia en tecnologías emergentes:\n\n1. **VR-CARDIO**: Plataforma para la planificación y guiado intraoperatorio de intervenciones de arritmias cardíacas mediante Realidad Virtual. Este proyecto ha recibido validación de producto sanitario por la AEMPS.\n\n2. **PRAS**: Plataforma Robótica para Asistencia Sanitaria. Robot social y asistencial para entornos hospitalarios y residencias de mayores, diseñado para mejorar la calidad de vida de los pacientes.\n\n3. **Primera Vuelta al Mundo**: Exhibición inmersiva en 3D, Realidad Virtual y Realidad Aumentada que relata la épica historia de la primera vuelta al mundo de Magallanes y Elcano, combinando educación y entretenimiento.\n\nCada proyecto refleja nuestro compromiso con la innovación aplicada y el impacto social positivo."
+      },
+      "services": {
+        "title": "Servicios y desarrollos",
+        "content": "Desarrollamos soluciones en realidad virtual para cualquier dispositivo y desde cualquier motor de desarrollo.\n\n**Nuestros servicios incluyen**:\n• Desarrollo de aplicaciones VR/AR\n• Sistemas de inteligencia artificial\n• Robótica y sistemas autónomos\n• Soluciones de transformación digital\n• Investigación en algoritmos\n• Mejora de usabilidad y accesibilidad\n\n**Tecnologías que manejamos**:\n• Realidad Virtual (VR)\n• Realidad Aumentada (AR)\n• Inteligencia Artificial\n• Sistemas autónomos\n• Robótica social\n\nCreamos soluciones aplicadas con tecnologías emergentes que resuelven retos concretos, siguiendo un plan estratégico que busca el éxito a través de la pasión y el esfuerzo."
+      },
+      "technology": {
+        "title": "Nuestras tecnologías",
+        "content": "En Spika Tech trabajamos con las tecnologías más avanzadas:\n\n**Realidad Virtual y Aumentada**:\n• Desarrollo de experiencias inmersivas\n• Aplicaciones médicas (VR-CARDIO)\n• Exhibiciones culturales (Primera Vuelta al Mundo)\n• Soluciones para cualquier dispositivo\n\n**Inteligencia Artificial**:\n• Algoritmos de machine learning\n• Sistemas de procesamiento de datos\n• Automatización inteligente\n• Investigación en IA aplicada\n\n**Robótica y Sistemas Autónomos**:\n• Robots sociales (PRAS)\n• Sistemas de asistencia\n• Automatización industrial\n• Soluciones para entornos hospitalarios\n\n**Deep Tech**:\n• Tecnologías emergentes\n• Innovación aplicada\n• Soluciones de vanguardia\n• Transformación digital\n\nNuestro equipo de doctores e ingenieros combina experiencia académica con aplicación práctica."
+      },
+      "achievements": {
+        "title": "Logros y reconocimientos",
+        "content": "Spika Tech ha recibido numerosos reconocimientos que avalan nuestra excelencia:\n\n**2019**: Sello de excelencia\n**2020**: Sello EIBT\n**2021**: \n• Financiado por la Unión Europea\n• Premio Oracle\n• EIC Accelerator concedido\n**2022**: Premio QIA en Innovación Potencial\n**2023**: Premio QIA Internacional en Innovación Potencial\n**2024**:\n• Validación de producto sanitario en VR-CARDIO\n• Premio Health to Market\n• Certificación ISO 13485\n• Sello Madrid Excelente por innovación y calidad\n**2025**:\n• Certificación ISO 27001\n• Premio al Valor Público MWC Barcelona\n\nEstos reconocimientos reflejan nuestro compromiso con la calidad, innovación y excelencia en todos nuestros proyectos."
+      },
+      "contact": {
+        "title": "Contacto",
+        "content": "Puedes contactarnos de las siguientes maneras:\n\n📍 **Dirección**: Calle Alcalá de Guadaíra 6, Madrid (28018)\n\n📧 **Email**: Puedes usar el formulario de contacto en nuestra web\n\n📱 **Redes Sociales**:\n• LinkedIn\n• Instagram  \n• YouTube\n• X (Twitter)\n\nTambién puedes navegar por nuestra web para conocer más sobre nuestros proyectos y servicios.\n\n**Horarios de atención**: Estamos disponibles para responder tus consultas sobre nuestros proyectos y servicios tecnológicos."
+      }
+    },
+    "defaultResponse": "Gracias por tu pregunta. Puedo ayudarte con información sobre:\n\n• Quiénes somos y nuestra misión\n• Nuestros proyectos (VR-CARDIO, PRAS, Primera Vuelta al Mundo)\n• Nuestros servicios y desarrollos tecnológicos\n• Las tecnologías que utilizamos\n• Nuestros logros y reconocimientos\n• Información de contacto\n\n¿Qué te gustaría saber específicamente?"
+  },
+  "Eventos": {
+    "title": "Eventos destacados",
+    "events": "Eventos",
+    "learn_more": "Leer más",
+    "past": "Eventos pasados",
+    "upcoming": "Eventos próximos",
+    "event_date": "Fecha del evento"
+  }
+}
