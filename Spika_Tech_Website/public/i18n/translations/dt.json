@@ -57,7 +57,8 @@
       "03": "Entwicklungstypen",
       "04": "Nachrichten"
     },
-    "marquee": "Willkommen bei Spika Tech - "
+    "marquee": "Willkommen bei Spika Tech - ",
+    "explore": "Scrollen Sie für mehr"
   },
   "Proyectos": {
     "title": "Unsere Projekte",
@@ -72,7 +73,7 @@
     },
     "pras": {
       "title": "PRAS",
-      "description": "Robotische Plattform für die Gesundheitsversorgung. Sozialer und assistiver Roboter für Krankenhausumgebungen und Seniorenheime."
+      "description": "Robotische Plattform für Autonome Dienste. Sozialer und assistiver Roboter für Krankenhausumgebungen und Seniorenheime."
     },
     "magallanes": {
       "title": "Erste Weltumsegelung",
@@ -166,16 +167,17 @@
         "suffix": ", einem strategischen Plan folgend, der Erfolg durch Leidenschaft und Anstrengung anstrebt, um die Gesellschaft zu erreichen."
       },
       "paragraph2": {
-        "prefix": "• Verpflichtet zur",
-        "highlight": "Gesellschaftstransformation",
-        "suffix": "durch die Schaffung innovativer Werkzeuge, Algorithmusforschung und Verbesserung der Softwarebenutzerfreundlichkeit und -qualität."
+        "prefix": "• Wir fördern ein Ökosystem der Zusammenarbeit, in dem Unternehmen, Institutionen und Fachleute Teil unserer Vision bei der",
+        "highlight1": "Entwicklung und Gestaltung",
+        "suffix": "von Lösungen sind, die Realitäten verändern. Unsere Erfahrung hat uns dazu gebracht,",
+        "highlight2": "Künstliche Intelligenz, Extended Reality und Robotik",
+        "suffix2": "in Projekten einzusetzen, die das Leben der Menschen verbessern und die Wettbewerbsfähigkeit von Organisationen in Schlüsselsektoren wie Gesundheit, Sicherheit, Verteidigung, Industrie, Bildung oder Kultur steigern."
       },
       "paragraph3": {
-        "prefix": "• Unser Ziel ist es, zu",
-        "highlight1": "Weltführern und Marktreferenzen",
-        "middle": ", Produkten und Qualität zu werden, in der Forschung zu kooperieren und die Nutzung von",
-        "highlight2": "Künstlicher Intelligenz, Virtual Reality, Augmented Reality und Robotik",
-        "suffix": "zu fördern."
+        "prefix": "• Unser Ziel ist es,",
+        "highlight1": "globale Marktführer und Maßstäbe",
+        "middle": ", für Produkte und Qualität zu werden, bei fortgeschrittener Forschung mitzuwirken und den Einsatz von Deep-Tech-Technologien zu fördern, um Produkte und Dienstleistungen zu entwickeln, die nicht nur auf aktuelle Bedürfnisse reagieren, sondern auch die Herausforderungen der Gesellschaft von morgen vorwegnehmen. Bei Spika Tech verstehen wir Technologie als Motor des Fortschritts und streben danach, dass jeder Fortschritt, den wir erzielen,",
+        "highlight2": "inspiriert, transformiert und Grenzen überschreitet."
       },
       "highlight": {
         "prefix": "Spika Tech wurde 2015 gegründet,",

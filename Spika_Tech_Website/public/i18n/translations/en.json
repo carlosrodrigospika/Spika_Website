@@ -57,7 +57,8 @@
       "03": "Development types",
       "04": "News"
     },
-    "marquee": "Welcome to Spika Tech - "
+    "marquee": "Welcome to Spika Tech - ",
+    "explore": "Slide to see more"
   },
   "Proyectos": {
     "title": "Our projects",
@@ -72,7 +73,7 @@
     },
     "pras": {
       "title": "PRAS",
-      "description": "Robotic Platform for Healthcare Assistance. Social and assistive robot for hospital environments and senior residences."
+      "description": "Robotic Platform for Autonomous Services. Social and assistive robot for hospital environments and senior residences."
     },
     "magallanes": {
       "title": "First World Tour",
@@ -166,16 +167,17 @@
         "suffix": ", following a strategic plan that seeks success through passion and effort to reach society."
       },
       "paragraph2": {
-        "prefix": "• Committed to",
-        "highlight": "society transformation",
-        "suffix": "through the creation of innovative tools, algorithm research and improving software usability and quality."
+        "prefix": "• We promote a collaborative ecosystem where companies, institutions and professionals are part of our vision in the",
+        "highlight1": "development and creation",
+        "suffix": "of solutions that transform realities. Our experience has led us to apply",
+        "highlight2": "Artificial Intelligence, Extended Reality and Robotics",
+        "suffix2": "in projects that improve people's lives and enhance the competitiveness of organizations in key sectors such as health, security, defense, industry, education and culture."
       },
       "paragraph3": {
         "prefix": "• Our goal is to become",
-        "highlight1": "world leaders and market references",
-        "middle": ", products and quality, collaborating in research and promoting the use of",
-        "highlight2": "Artificial Intelligence, Virtual Reality, Augmented Reality, and Robotics",
-        "suffix": "."
+        "highlight1": "global market leaders and benchmarks",
+        "middle": ", in products and quality, collaborating in advanced research and promoting the use of deep tech technologies, generating products and services that not only respond to current needs, but anticipate the challenges of future society. At Spika Tech we understand technology as a driver of progress and we seek that every advance we achieve",
+        "highlight2": "inspires, transforms and transcends borders."
       },
       "highlight": {
         "prefix": "Spika Tech was founded in 2015,",
@@ -274,7 +276,7 @@
         "highlight": "FUTURE",
         "suffix": "OF ROBOTICS"
       },
-      "description": "PRAS is a current robotic platform developed for healthcare assistance. Its social and assistive design is intended for hospital environments and nursing homes, facilitating interaction and support for patients and healthcare staff through advanced and secure technology."
+      "description": "PRAS is an autonomous service robotic platform. Its social and assistive design is intended for hospital environments and nursing homes, facilitating interaction and support for patients and healthcare staff through advanced and secure technology."
     },
     "slides": {
       "slide1": {

@@ -1,31 +1,45 @@
 <!-- Nueva sección de video con efecto parallax -->
 <section id="hero-video" class="relative h-screen overflow-hidden">
-    <!-- Video de fondo optimizado -->
-    <video 
-        autoplay 
-        muted 
-        loop 
-        playsinline
-        preload="metadata"
-        class="absolute inset-0 w-full h-full object-cover"
-        style="z-index: 1;"
-        id="hero-video-element"
-    >
-        <source src="/assets/video_home.mp4" type="video/mp4">
-        <!-- Fallback para navegadores que no soportan video -->
-        <div class="absolute inset-0 bg-gradient-to-br from-[#003035] to-[#01443a]"></div>
-    </video>
+    <img src="/assets/Nucleo_Spika.png" alt="Spika Tech" 
+    class="absolute inset-0 w-full h-full object-cover"
+    style="z-index: 1;"
+    id="hero-image-element">
     
     <!-- Marquee de texto centrado optimizado -->
     <div class="absolute w-full flex items-center justify-center h-full z-10 pointer-events-none px-2" id="marquee-container">
         <div class="overflow-hidden w-full">
           <div class="flex whitespace-nowrap animate-marquee" id="marquee-content">
-            <h2 class="text-white flex-shrink-0" style="font-size: 9vw;" data-i18n="Hero.marquee"></h2>
-            <h2 class="text-white flex-shrink-0 ml-8" style="font-size: 9vw;" data-i18n="Hero.marquee"></h2>
-            <h2 class="text-white flex-shrink-0 ml-8" style="font-size: 9vw;" data-i18n="Hero.marquee"></h2>
+            <h2 class="text-white flex-shrink-0 font-light" style="font-size: 8vw;" data-i18n="Hero.marquee"></h2>
+            <h2 class="text-white flex-shrink-0 font-light ml-8" style="font-size: 8vw;" data-i18n="Hero.marquee"></h2>
+            <h2 class="text-white flex-shrink-0 font-light ml-8" style="font-size: 8vw;" data-i18n="Hero.marquee"></h2>
+            <h2 class="text-white flex-shrink-0 font-light ml-8" style="font-size: 8vw;" data-i18n="Hero.marquee"></h2>
+            <h2 class="text-white flex-shrink-0 font-light ml-8" style="font-size: 8vw;" data-i18n="Hero.marquee"></h2>
+            <h2 class="text-white flex-shrink-0 font-light ml-8" style="font-size: 8vw;" data-i18n="Hero.marquee"></h2>
+            <h2 class="text-white flex-shrink-0 font-light ml-8" style="font-size: 8vw;" data-i18n="Hero.marquee"></h2>
+            <h2 class="text-white flex-shrink-0 font-light ml-8" style="font-size: 8vw;" data-i18n="Hero.marquee"></h2>
+            <h2 class="text-white flex-shrink-0 font-light ml-8" style="font-size: 8vw;" data-i18n="Hero.marquee"></h2>
+            <h2 class="text-white flex-shrink-0 font-thin ml-8" style="font-size: 8vw;" data-i18n="Hero.marquee"></h2>
+            <h2 class="text-white flex-shrink-0 font-thin ml-8" style="font-size: 8vw;" data-i18n="Hero.marquee"></h2>
+            <h2 class="text-white flex-shrink-0 font-thin ml-8" style="font-size: 8vw;" data-i18n="Hero.marquee"></h2>
           </div>
         </div>
-      </div>
+    </div>
+
+    <div class="absolute bottom-2 left-6 w-1/2 flex flex-col mb-8 z-2" style="align-self: end;">
+        <hr class="border-t border-white w-3/4 mb-2" />
+        <div class="flex items-center w-3/4 gap-2 text-white text-lg" style="justify-content: space-between;">
+            <span class="" data-i18n="Hero.explore" onclick="document.querySelector('#section1').scrollIntoView({behavior: 'smooth'})"></span>
+            <svg 
+            width="28" 
+            height="28" 
+            fill="none" 
+            viewBox="0 0 24 24"  
+            class="">
+            <circle cx="12" cy="12" r="11" stroke="white" stroke-width="2"/>
+            <path d="M8 12l4 4 4-4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </div>
 </section>
 
 <section id="section1" data-index="0" data-title="¿Quiénes somos?" class="relative min-h-screen flex items-center bg-white py-20 overflow-hidden hero-responsive" style="padding-left:110px; padding-right:60px; position: relative; z-index: 10;">
@@ -103,31 +117,7 @@
     let marqueeObserver: IntersectionObserver | null = null;
     let heroObserver: IntersectionObserver | null = null;
 
-    // Función para inicializar el Intersection Observer para el video
-    function initVideoObserver() {
-        const videoSection = document.getElementById('hero-video');
-        if (!videoSection) return;
-
-        videoObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                const video = document.getElementById('hero-video-element') as HTMLVideoElement;
-                if (!video) return;
-
-                if (entry.isIntersecting) {
-                    // Video visible - reanudar reproducción
-                    video.play().catch(e => console.log('Video play failed:', e));
-                } else {
-                    // Video no visible - pausar reproducción
-                    video.pause();
-                }
-            });
-        }, {
-            threshold: 0.1, // Se activa cuando el 10% del video es visible
-            rootMargin: '100px 0px 100px 0px' // Margen para anticipar la visibilidad
-        });
-
-        videoObserver.observe(videoSection);
-    }
+      
 
     // Función para inicializar el Intersection Observer para el marquee
     function initMarqueeObserver() {
@@ -306,12 +296,11 @@
         if (canvas) canvas.removeEventListener('mousemove', onMouseMove);
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-        initThreeJS();
-        initVideoObserver();
-        initMarqueeObserver();
-        initHeroObserver();
-    });
+         document.addEventListener('DOMContentLoaded', () => {
+         initThreeJS();
+         initMarqueeObserver();
+         initHeroObserver();
+     });
     window.addEventListener('beforeunload', cleanup);
 
     // Animación de entrada para textos con Intersection Observer
@@ -361,59 +350,63 @@
 
     document.addEventListener('DOMContentLoaded', initHeroAnimations);
 
-    // Control del video y efecto parallax optimizado
-    function initVideoSection() {
-        const video = document.querySelector('#hero-video video') as HTMLVideoElement;
-        const videoSection = document.getElementById('hero-video');
-        const sectionBody = document.getElementById('section1');
-        
-        if (!video || !videoSection || !sectionBody) return;
-
-        // Asegurar que el video se reproduzca correctamente
-        video.addEventListener('loadedmetadata', () => {
-            video.play().catch(e => console.log('Video autoplay blocked:', e));
-        });
-
-        // Efecto parallax mejorado con throttling
-        let ticking = false;
-        
-        function updateParallax() {
-            const scrolled = window.pageYOffset;
-            const videoHeight = window.innerHeight;
-            
-            // Mostrar/ocultar el video basado en la posición del scroll
-            if (scrolled >= videoHeight) {
-                // Ocultar el video cuando la sección de contenido pase por encima
-                if (videoSection) {
-                    videoSection.style.display = 'none';
-                }
-            } else {
-                // Mostrar el video cuando estemos en la parte superior
-                if (videoSection) {
-                    videoSection.style.position = 'fixed';
-                    videoSection.style.top = '0';
-                    videoSection.style.display = 'block';
-                }
-            }
-            
-            ticking = false;
-        }
-
-        function requestTick() {
-            if (!ticking) {
-                requestAnimationFrame(updateParallax);
-                ticking = true;
-            }
-        }
-
-        // Ejecutar inmediatamente para establecer el estado inicial
-        updateParallax();
-        
-        window.addEventListener('scroll', requestTick);
-        window.addEventListener('resize', requestTick);
-    }
-
-    document.addEventListener('DOMContentLoaded', initVideoSection);
+         // Control de la imagen y efecto parallax optimizado
+     function initImageSection() {
+         const image = document.querySelector('#hero-video img') as HTMLImageElement;
+         const imageSection = document.getElementById('hero-video');
+         const sectionBody = document.getElementById('section1');
+         
+         if (!image || !imageSection || !sectionBody) return;
+ 
+         // Asegurar que la imagen esté cargada correctamente
+         if (image.complete) {
+             image.style.opacity = '1';
+         } else {
+             image.addEventListener('load', () => {
+                 image.style.opacity = '1';
+             });
+         }
+ 
+         // Efecto parallax mejorado con throttling
+         let ticking = false;
+         
+         function updateParallax() {
+             const scrolled = window.pageYOffset;
+             const imageHeight = window.innerHeight;
+             
+             // Mostrar/ocultar la imagen basado en la posición del scroll
+             if (scrolled >= imageHeight) {
+                 // Ocultar la imagen cuando la sección de contenido pase por encima
+                 if (imageSection) {
+                     imageSection.style.display = 'none';
+                 }
+             } else {
+                 // Mostrar la imagen cuando estemos en la parte superior
+                 if (imageSection) {
+                     imageSection.style.position = 'fixed';
+                     imageSection.style.top = '0';
+                     imageSection.style.display = 'block';
+                 }
+             }
+             
+             ticking = false;
+         }
+ 
+         function requestTick() {
+             if (!ticking) {
+                 requestAnimationFrame(updateParallax);
+                 ticking = true;
+             }
+         }
+ 
+         // Ejecutar inmediatamente para establecer el estado inicial
+         updateParallax();
+         
+         window.addEventListener('scroll', requestTick);
+         window.addEventListener('resize', requestTick);
+     }
+ 
+     document.addEventListener('DOMContentLoaded', initImageSection);
 </script>
 
 <style>
@@ -422,7 +415,7 @@
     100% { transform: translateX(-33.333%);}
     }
     .animate-marquee {
-    animation: marquee 6s linear infinite;
+    animation: marquee 60s linear infinite;
     width: max-content;
     }
 
@@ -436,11 +429,12 @@
         z-index: 1;
     }
 
-    #hero-video video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+         #hero-video img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         transition: opacity 0.3s ease-in-out;
+     }
 
     /* Asegurar que la sección de contenido pase por encima */
     #section1 {

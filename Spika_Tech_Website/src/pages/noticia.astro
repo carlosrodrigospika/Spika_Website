@@ -115,9 +115,13 @@ const noticiasRelacionadas = obtenerNoticiasRelacionadas(noticiaActual, 3);
               <!-- Contenido de la noticia -->
               <div class="flex flex-col gap-4 aling-center mt-4">
                 <h4 class="text-lg font-semibold text-[#003035] line-clamp-2 relative">
-                  {noticiaRel.titulo}
-                  <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#003035] group-hover:w-full transition-all duration-500 ease-out"></span>
-                </h4>
+                <span class="bg-[linear-gradient(to_bottom,#003035,#003035)] 
+                            bg-[length:0%_2px] bg-no-repeat 
+                            [background-position:0_100%]
+                            transition-[background-size] duration-1000 linear hover:bg-[length:100%_2px]">
+                  ${noticiaRel.titulo}
+                </span>
+              </h4>
                 <p class="text-[#003035] text-sm line-clamp-3">
                   {noticiaRel.descripcion}
                 </p>
@@ -260,8 +264,12 @@ const noticiasRelacionadas = obtenerNoticiasRelacionadas(noticiaActual, 3);
             
             <div class="flex flex-col gap-4 aling-center mt-4">
               <h4 class="text-lg font-semibold text-[#003035] line-clamp-2 relative">
-                ${noticiaRel.titulo}
-                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#003035] group-hover:w-full transition-all duration-500 ease-out"></span>
+                <span class="bg-[linear-gradient(to_bottom,#003035,#003035)] 
+                            bg-[length:0%_2px] bg-no-repeat 
+                            [background-position:0_100%]
+                            transition-[background-size] duration-1000 linear hover:bg-[length:100%_2px]">
+                  ${noticiaRel.titulo}
+                </span>
               </h4>
               <p class="text-[#003035] text-sm line-clamp-3">
                 ${noticiaRel.descripcion}
