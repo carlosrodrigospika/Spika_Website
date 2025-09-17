@@ -19,6 +19,27 @@ export default defineConfig({
         host: 'localhost',
         port: 24678
       }
+    },
+    build: {
+      target: 'es2015',
+      minify: 'terser',
+      terserOptions: {
+        compress: {
+          drop_console: true,
+          drop_debugger: true,
+          pure_funcs: ['console.log', 'console.warn']
+        },
+        mangle: {
+          safari10: true
+        }
+      },
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'model-viewer': ['@google/model-viewer']
+          }
+        }
+      }
     }
   },
   i18n: {

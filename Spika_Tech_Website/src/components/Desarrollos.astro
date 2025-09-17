@@ -7,10 +7,20 @@
       <div class="flex flex-col items-center justify-end flex-1" style="width: 100%;">
         <div id="model-canvas-container" style="width: 600px; height: 600px; position: relative; margin: 0 auto;">
           <img id="model-placeholder" src="/assets/Render/Gafas_VR.webp" alt="VR Model" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; z-index: 1;">
-          <canvas id="model-canvas" style="width: 100%; height: 100%; display: block; position: relative; z-index: 2; opacity: 0;"></canvas>
+          <div id="loading-indicator" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 3; display: none; background: rgba(0, 0, 0, 0.7); color: white; padding: 10px 20px; border-radius: 20px; font-size: 14px;">
+            Cargando...
+          </div>
+          <model-viewer 
+            id="model-viewer"
+            src="/assets/models/VR.glb"
+            alt="VR Model"
+            auto-rotate
+            camera-controls
+            style="width: 100%; height: 100%; background: transparent; position: relative; z-index: 2;">
+          </model-viewer>
         </div>
         <!-- Puntos para cambiar modelo -->
-        <div class="flex gap-2 mt-4">
+        <div class="flex gap-2 mt-4 dots-container">
           <button id="dot-0" class="w-3 h-3 rounded-full border-2 border-[#22484b] transition-all duration-200 cursor-pointer bg-[#CEDF00] opacity-80" aria-label="Modelo VR"></button>
           <button id="dot-1" class="w-3 h-3 rounded-full border-2 border-[#22484b] transition-all duration-200 cursor-pointer bg-white opacity-50" aria-label="Modelo Móvil"></button>
         </div>
@@ -40,59 +50,25 @@
     
     
     <script>
-        import * as THREE from 'three';
-        import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-        import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+      // Configuración de modelos para model-viewer
       const modelConfigs = [
         {
           modelPath: '/assets/models/VR.glb',
-          scale: 5.5,
-          modelPosY: 0,
-          mobileScale: 3.5 // Escala más pequeña para móvil
+          previewImage: '/assets/Render/Gafas_VR.webp',
+          alt: 'VR Model'
         },
         {
           modelPath: '/assets/models/Movil.glb',
-          scale: 5,
-          modelPosY: 0,
-          mobileScale: 3.0 // Escala más pequeña para móvil
+          previewImage: '/assets/Render/Movil.webp',
+          alt: 'Mobile Model'
         }
       ];
 
       let currentModelIdx = 0;
-      let scene:any, camera:any, renderer:any, controls:any, animationId:any;
-      let loadedModels : any = [null, null];
-      let isAnimating = false;
-      let isVisible = false; // Variable para controlar visibilidad
+      let isVisible = false;
+      let modelsLoaded = [false, false]; // Track which models have been loaded
 
-      // Función para obtener la escala según el tamaño de pantalla
-      function getScaleForScreenSize(baseScale: number, mobileScale: number) {
-        const isMobile = window.innerWidth <= 640;
-        return isMobile ? mobileScale : baseScale;
-      }
-
-      // Posiciones para los modelos
-      const centerPosition = new THREE.Vector3(0, 0, 0);
-      const cornerPosition = new THREE.Vector3(1.7, 1.7, 0);
-      const centerScale = 1.4;
-      const cornerScale = 0.5;
-
-      // Función para actualizar el target de los controles
-      function updateControlsTarget() {
-        if (!controls) return;
-        
-        // Encontrar el modelo que está en el centro
-        const centerModel = loadedModels.find((mdl:any) => 
-          mdl && mdl.position.distanceTo(centerPosition) < 0.1
-        );
-        
-        if (centerModel) {
-          // Actualizar el target de los controles al modelo central
-          controls.target.copy(centerModel.position);
-          controls.update();
-        }
-      }
-
-      function setActiveDot(idx:any) {
+      function setActiveDot(idx: number) {
         for (let i = 0; i < 2; i++) {
           const dot = document.getElementById('dot-' + i);
           if (dot) {
@@ -107,281 +83,104 @@
         }
       }
 
-      function animateModelPosition(model:any, targetPosition:any, targetScale:any, duration:number = 1000) {
-        if (!model) return;
+      function showModel(idx: number) {
+        if (idx === currentModelIdx) return;
         
-        const startPosition = model.position.clone();
-        const startScale = model.scale.clone();
-        const startTime = Date.now();
-        
-        // Determinar si va a la esquina para resetear rotación
-        const isGoingToCorner = targetPosition.distanceTo(cornerPosition) < 0.1;
-        
-        function updatePosition() {
-          const elapsed = Date.now() - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-          
-          // Función de easing suave
-          const easeProgress = 1 - Math.pow(1 - progress, 3);
-          
-          // Interpolar posición
-          model.position.lerpVectors(startPosition, targetPosition, easeProgress);
-          
-          // Interpolar escala manteniendo la escala original del modelo
-          const targetScaleVector = new THREE.Vector3(targetScale, targetScale, targetScale);
-          model.scale.lerpVectors(startScale, targetScaleVector, easeProgress);
-          
-          // Si va a la esquina, resetear rotación gradualmente
-          if (isGoingToCorner) {
-            model.rotation.y *= (1 - easeProgress);
-          }
-          
-          if (progress < 1) {
-            requestAnimationFrame(updatePosition);
-          } else {
-            // Asegurar que la rotación esté completamente reseteada si va a la esquina
-            if (isGoingToCorner) {
-              model.rotation.y = 0;
-            }
-            isAnimating = false;
-          }
+        // Solo permitir cambio de modelo en pantallas grandes
+        if (window.innerWidth <= 1100) {
+          return;
         }
         
-        updatePosition();
-      }
-
-      function showModel(idx:any) {
-        if (isAnimating) return; // Evitar múltiples animaciones simultáneas
-        isAnimating = true;
-        
-        // Obtener escalas según el tamaño de pantalla
         const config = modelConfigs[idx];
-        const otherConfig = modelConfigs[idx === 0 ? 1 : 0];
-        const currentScale = getScaleForScreenSize(config.scale, config.mobileScale);
-        const otherScale = getScaleForScreenSize(otherConfig.scale, otherConfig.mobileScale);
+        const modelViewer = document.getElementById('model-viewer') as any;
+        const placeholder = document.getElementById('model-placeholder') as HTMLImageElement;
+        const loadingIndicator = document.getElementById('loading-indicator') as HTMLElement;
         
-        // Animar el modelo que va al centro con su escala original
-        if (loadedModels[idx]) {
-          const originalScale = currentScale * centerScale;
-          animateModelPosition(loadedModels[idx], centerPosition, originalScale);
-        }
-        
-        // Animar el modelo que va a la esquina con su escala original
-        const otherIdx = idx === 0 ? 1 : 0;
-        if (loadedModels[otherIdx]) {
-          const originalScale = otherScale * cornerScale;
-          animateModelPosition(loadedModels[otherIdx], cornerPosition, originalScale);
+        if (modelViewer && placeholder && loadingIndicator) {
+          // Actualizar currentModelIdx ANTES de cambiar el modelo
+          currentModelIdx = idx;
+          
+          // Solo mostrar preview e indicador de carga si el modelo no ha sido cargado antes
+          if (!modelsLoaded[idx]) {
+            // Cambiar la imagen de preview INMEDIATAMENTE
+            placeholder.src = config.previewImage;
+            placeholder.alt = config.alt;
+            placeholder.style.display = 'block';
+            placeholder.style.opacity = '1';
+            // Mostrar indicador de carga
+            loadingIndicator.style.display = 'block';
+            // Ocultar model-viewer temporalmente
+            modelViewer.style.opacity = '0';
+          } else {
+            // Transición directa sin preview ni indicador
+            placeholder.style.display = 'none';
+            loadingIndicator.style.display = 'none';
+            // Mantener model-viewer visible
+            modelViewer.style.opacity = '1';
+          }
+          
+          // Cambiar el modelo después de un pequeño delay
+          setTimeout(() => {
+            modelViewer.src = config.modelPath;
+            modelViewer.alt = config.alt;
+          }, 100);
         }
         
         setActiveDot(idx);
       }
 
-      function animate() {
-        // Solo renderizar si la sección es visible
-        if (!isVisible) {
-          animationId = requestAnimationFrame(animate);
-          return;
-        }
-
-        animationId = requestAnimationFrame(animate);
+      function configureModelViewer() {
+        const modelViewer = document.getElementById('model-viewer') as any;
+        const placeholder = document.getElementById('model-placeholder') as HTMLImageElement;
+        const loadingIndicator = document.getElementById('loading-indicator') as HTMLElement;
         
-        // Solo girar el modelo que está en el centro (activo) sobre sí mismo
-        loadedModels.forEach((mdl:any, i:any) => { 
-          if (mdl) {
-            const isInCenter = mdl.position.distanceTo(centerPosition) < 0.1;
-            if (isInCenter) {
-              // Solo el modelo activo rota sobre sí mismo
-              mdl.rotation.y += 0.01;
-            }
-            // El modelo inactivo NO rota - se mantiene completamente quieto
-          }
-        });
-        
-        // La cámara no rota automáticamente
-        renderer.render(scene, camera);
-      }
-
-      function init3DViewer() {
-        const canvas = document.getElementById('model-canvas');
-        if (!canvas) return;
-        const container = canvas.parentElement;
-        if (!container) return;
-        const width = container.clientWidth;
-        const height = container.clientHeight;
-
-        // Escena y cámara
-        scene = new THREE.Scene();
-        camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 100);
-        camera.position.set(0, 0, 5);
-
-        // Renderer
-        renderer = new THREE.WebGLRenderer({
-          canvas: canvas,
-          alpha: true,
-          antialias: true,
-          powerPreference: 'high-performance',
-          stencil: false,
-          depth: true
-        });
-        renderer.setSize(width, height);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        renderer.shadowMap.enabled = false;
-        renderer.outputColorSpace = THREE.SRGBColorSpace;
-        renderer.toneMapping = THREE.ACESFilmicToneMapping;
-        renderer.toneMappingExposure = 1.2;
-
-        // Luces
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
-        scene.add(ambientLight);
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2);
-        directionalLight.position.set(5, 5, 5);
-        scene.add(directionalLight);
-        const fillLight = new THREE.DirectionalLight(0xffffff, 0.8);
-        fillLight.position.set(-5, 0, 5);
-        scene.add(fillLight);
-        const topLight = new THREE.DirectionalLight(0xffffff, 1.0);
-        topLight.position.set(0, 10, 0);
-        scene.add(topLight);
-        const warmLight = new THREE.PointLight(0xffcc66, 0.8, 25);
-        warmLight.position.set(-3, 2, 3);
-        scene.add(warmLight);
-        const coolLight = new THREE.PointLight(0x6699ff, 0.6, 25);
-        coolLight.position.set(3, -2, -3);
-        scene.add(coolLight);
-        const frontLight = new THREE.DirectionalLight(0xffffff, 0.7);
-        frontLight.position.set(0, 0, 8);
-        scene.add(frontLight);
-        const backLight = new THREE.DirectionalLight(0xffffff, 0.4);
-        backLight.position.set(0, 0, -8);
-        scene.add(backLight);
-        const warmAmbient = new THREE.AmbientLight(0xfff4e6, 0.3);
-        scene.add(warmAmbient);
-
-        // Controles
-        controls = new OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true;
-        controls.dampingFactor = 0.05;
-        controls.screenSpacePanning = false;
-        // Libertad total de rotación
-        controls.maxPolarAngle = Math.PI; // sin límite
-        controls.minPolarAngle = 0;
-        controls.autoRotate = false; // Deshabilitar rotación automática de la cámara
-        controls.autoRotateSpeed = 2;
-        controls.enableZoom = false;
-        controls.enablePan = false;
-        controls.enableRotate = false; // Deshabilitar interactividad del usuario
-
-        // Función para actualizar el target de los controles
-        function updateControlsTarget() {
-          if (!controls) return;
+        if (modelViewer && placeholder && loadingIndicator) {
+          // Configurar model-viewer
+          modelViewer.setAttribute('interaction-prompt', 'none');
           
-          // Encontrar el modelo que está en el centro
-          const centerModel = loadedModels.find((mdl:any) => 
-            mdl && mdl.position.distanceTo(centerPosition) < 0.1
-          );
+          // Configurar transiciones CSS
+          modelViewer.style.transition = 'opacity 0.3s ease-in-out';
+          placeholder.style.transition = 'opacity 0.3s ease-in-out';
           
-          if (centerModel) {
-            // Actualizar el target de los controles al modelo central
-            controls.target.copy(centerModel.position);
-            controls.update();
-          }
-        }
-
-        // Cargar ambos modelos
-        let loadedCount = 0;
-        modelConfigs.forEach((cfg, idx) => {
-          const loader = new GLTFLoader();
-          loader.load(cfg.modelPath, (gltf) => {
-            const mdl = gltf.scene;
-            
-            // Centrar modelo
-            const box = new THREE.Box3().setFromObject(mdl);
-            const center = box.getCenter(new THREE.Vector3());
-            mdl.position.sub(center);
-            
-            // Obtener escala según el tamaño de pantalla
-            const scale = getScaleForScreenSize(cfg.scale, cfg.mobileScale);
-            
-            // Posicionar inicialmente
-            if (idx === 0) {
-              // Primer modelo en el centro
-              mdl.position.copy(centerPosition);
-              mdl.scale.setScalar(scale * centerScale);
-            } else {
-              // Segundo modelo en la esquina
-              mdl.position.copy(cornerPosition);
-              mdl.scale.setScalar(scale * cornerScale);
-            }
-            
-            scene.add(mdl);
-            loadedModels[idx] = mdl;
-            loadedCount++;
-            if (loadedCount === modelConfigs.length) {
-              // Ocultar placeholder cuando todos los modelos estén cargados
-              const placeholder = document.getElementById('model-placeholder');
-              const canvas = document.getElementById('model-canvas');
-              
-              if (placeholder && canvas) {
-                // Ocultar placeholder
-                placeholder.style.opacity = '0';
-                placeholder.style.transition = 'opacity 1s ease-out';
-                
-                // Mostrar canvas con transición
-                canvas.style.transition = 'opacity 0.3s ease-in';
-                
-                setTimeout(() => {
-                  placeholder.style.display = 'none';
-                  canvas.style.opacity = '1';
-                }, 300);
-              }
-              
-              animate();
-            }
-          }, undefined, (err) => {
-            console.error('Error cargando modelo:', err);
+          // Event listener para cuando el modelo se carga
+          modelViewer.addEventListener('load', () => {
+            // Marcar el modelo actual como cargado
+            modelsLoaded[currentModelIdx] = true;
+            // Ocultar indicador de carga
+            loadingIndicator.style.display = 'none';
+            // Siempre ocultar preview y mostrar modelo cuando se carga
+            placeholder.style.opacity = '0';
+            setTimeout(() => {
+              placeholder.style.display = 'none';
+              modelViewer.style.opacity = '1';
+            }, 300);
           });
-        });
-
-        // Responsivo
-        window.addEventListener('resize', () => {
-          if (!container) return;
-          camera.aspect = container.clientWidth / container.clientHeight;
-          camera.updateProjectionMatrix();
-          renderer.setSize(container.clientWidth, container.clientHeight);
-        });
-      }
-
-      function resizeRenderer() {
-        const canvas = document.getElementById('model-canvas');
-        if (!canvas) return;
-        const container = canvas.parentElement;
-        if (!container) return;
-        const width = container.clientWidth;
-        const height = container.clientHeight;
-        camera.aspect = width / height;
-        camera.updateProjectionMatrix();
-        renderer.setSize(width, height, false);
-      }
-
-      if (typeof window !== 'undefined') {
-        setTimeout(() => {
-          init3DViewer();
-          initDesarrollosAnimations();
-          document.getElementById('dot-0')!.onclick = () => {
-            if (currentModelIdx !== 0 && !isAnimating) {
-              currentModelIdx = 0;
-              showModel(0);
+          
+          // Event listener para errores
+          modelViewer.addEventListener('error', (event: any) => {
+            // Ocultar indicador de carga
+            loadingIndicator.style.display = 'none';
+            // Mantener la imagen de preview visible si hay error
+            placeholder.style.opacity = '1';
+            modelViewer.style.opacity = '0';
+          });
+          
+          // Event listener para cuando el modelo se está cargando
+          modelViewer.addEventListener('progress', (event: any) => {
+            const progress = event.detail.totalProgress;
+            if (progress === 1) {
+              // Modelo completamente cargado
+              modelsLoaded[currentModelIdx] = true;
+              loadingIndicator.style.display = 'none';
+              // Siempre ocultar preview y mostrar modelo cuando se carga
+              placeholder.style.opacity = '0';
+              setTimeout(() => {
+                placeholder.style.display = 'none';
+                modelViewer.style.opacity = '1';
+              }, 300);
             }
-          };
-          document.getElementById('dot-1')!.onclick = () => {
-            if (currentModelIdx !== 1 && !isAnimating) {
-              currentModelIdx = 1;
-              showModel(1);
-            }
-          };
-          resizeRenderer();
-          window.addEventListener('resize', resizeRenderer);
-        }, 200);
+          });
+        }
       }
 
       // Función para inicializar las animaciones de la sección Desarrollos
@@ -422,6 +221,48 @@
           setTimeout(() => el.classList.add('visible'), 300);
         });
       }
+
+      // Inicializar cuando el DOM esté listo
+      document.addEventListener('DOMContentLoaded', () => {
+        // Marcar el modelo inicial (VR) como ya cargado
+        modelsLoaded[0] = true;
+        
+        configureModelViewer();
+        initDesarrollosAnimations();
+        
+        // Event listeners para los puntos solo en pantallas grandes
+        if (window.innerWidth > 1100) {
+          for (let i = 0; i < 2; i++) {
+            const dot = document.getElementById('dot-' + i);
+            if (dot) {
+              dot.addEventListener('click', () => {
+                showModel(i);
+              });
+            }
+          }
+        }
+      });
+      
+      // También inicializar si ya está cargado
+      if (document.readyState !== 'loading') {
+        // Marcar el modelo inicial (VR) como ya cargado
+        modelsLoaded[0] = true;
+        
+        configureModelViewer();
+        initDesarrollosAnimations();
+        
+        // Event listeners para los puntos solo en pantallas grandes
+        if (window.innerWidth > 1100) {
+          for (let i = 0; i < 2; i++) {
+            const dot = document.getElementById('dot-' + i);
+            if (dot) {
+              dot.addEventListener('click', () => {
+                showModel(i);
+              });
+            }
+          }
+        }
+      }
     </script>
   </section>
   <style>
@@ -455,6 +296,9 @@
         min-height: 70vh;
         gap: 2.5rem !important;
       }
+      .dots-container {
+        display: none !important;
+      }
       .flex.flex-col.justify-between.items-center[style*="width: 60%"] {
         width: 100% !important;
         max-width: 100vw !important;
@@ -474,7 +318,7 @@
         aspect-ratio: 1 !important;
         margin: 0 auto !important;
       }
-      #model-canvas {
+      #model-viewer {
         width: 100% !important;
         height: 100% !important;
         min-width: 0 !important;
@@ -515,7 +359,7 @@
       #model-canvas-container {
         max-width: 98vw !important;
       }
-      #model-canvas {
+      #model-viewer {
         max-width: 98vw !important;
       }
       p.text-xl, p.text-2xl {

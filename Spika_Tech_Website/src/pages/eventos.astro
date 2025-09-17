@@ -3,11 +3,15 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Layout from '../layouts/Layout.astro';
 import SideNav from '../components/SideNav.astro';
-import { eventos, obtenerEventosProximos, obtenerEventosPasados, formatearFecha } from '../data/eventos';
+import { eventos, obtenerEventosProximos, obtenerEventosPasados } from '../data/eventos';
 
 // Función para ordenar eventos por fecha
-function ordenarEventosPorFecha(eventos) {
-  return eventos.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+function ordenarEventosPorFecha(eventos: any) {
+  return eventos.sort((a:any, b:any) => {
+    const fechaA = new Date(a.fecha).getTime();
+    const fechaB = new Date(b.fecha).getTime();
+    return fechaA - fechaB;
+  });
 }
 
 // Función para obtener eventos destacados: próximos 4 ordenados por fecha, si no hay suficientes, rellenar con últimos 4 pasados
@@ -32,7 +36,7 @@ function obtenerEventosDestacados() {
 }
 
 // Función para obtener eventos paginados (5 por página)
-function obtenerEventosPaginados(eventos, pagina = 1, porPagina = 5) {
+function obtenerEventosPaginados(eventos:any, pagina = 1, porPagina = 5) {
   const eventosOrdenados = ordenarEventosPorFecha(eventos);
   const inicio = (pagina - 1) * porPagina;
   const fin = inicio + porPagina;
@@ -42,6 +46,10 @@ function obtenerEventosPaginados(eventos, pagina = 1, porPagina = 5) {
 const events = obtenerEventosDestacados();
 const upcomingEvents = obtenerEventosPaginados(obtenerEventosProximos(), 1, 5);
 const pastEvents = obtenerEventosPaginados(obtenerEventosPasados(), 1, 5);
+
+// Datos completos para el paginado del lado del cliente
+const allUpcomingEventsData = ordenarEventosPorFecha(obtenerEventosProximos());
+const allPastEventsData = ordenarEventosPorFecha(obtenerEventosPasados());
 ---
 
 <Layout>
@@ -53,7 +61,7 @@ const pastEvents = obtenerEventosPaginados(obtenerEventosPasados(), 1, 5);
         <h1 class="text-5xl font-bold text-white font-['Trebuchet_MS']" data-i18n="Eventos.title"></h1>
       </div>
       <div class="grid grid-cols-4 gap-8 mx-auto mt-8" id="eventsGrid">
-        {events.map((event, index) => (
+        {events.map((event:any, index:any) => (
           <div class="event-item bg-white/10 backdrop-blur-sm rounded-lg p-4 cursor-pointer transition-all duration-300 hover:bg-white/20"
             data-event-id={event.id}
             data-index={index}>
@@ -68,9 +76,9 @@ const pastEvents = obtenerEventosPaginados(obtenerEventosPasados(), 1, 5);
       </div>
     </div>
     <span class="p-8 text-4xl font-bold text-[#003035] font-['Trebuchet_MS']" data-i18n="Eventos.events"></span>
-    <div class="flex flex-row gap-8 px-8 pb-8 justify-between">
-      <div class="flex flex-col w-[15%] min-w-[200px]">
-        <div class="flex flex-row mb-4">
+    <div class="flex flex-row gap-8 px-8 pb-8 justify-between z-71">
+      <div class="flex flex-col gap-6 w-[15%] min-w-[200px] h-fit">
+        <div class="flex flex-row">
           <button class="px-4 py-2 border-none bg-white font-['Trebuchet_MS'] text-sm font-normal text-[#003035] cursor-pointer transition-all duration-300 relative z-10 rounded-md active-tab" data-tab="upcoming">
             <span data-i18n="Eventos.upcoming"></span>
           </button>
@@ -79,7 +87,7 @@ const pastEvents = obtenerEventosPaginados(obtenerEventosPasados(), 1, 5);
           </button>
         </div>
         <div class="flex-1 overflow-y-auto" id="upcomingEventsList">
-          {upcomingEvents.map((event) => (
+          {upcomingEvents.map((event:any) => (
             <div class="event-item p-3 cursor-pointer transition-all duration-300 relative" data-event-id={event.id}>
               <h3 class="m-0 text-base font-normal text-[#003035]">{event.titulo}</h3>
             </div>
@@ -91,19 +99,19 @@ const pastEvents = obtenerEventosPaginados(obtenerEventosPasados(), 1, 5);
           )}
         </div>
         <div class="flex-1 overflow-y-auto hidden" id="pastEventsList">
-          {pastEvents.map((event) => (
+          {pastEvents.map((event:any) => (
             <div class="event-item p-3 cursor-pointer transition-all duration-300 relative" data-event-id={event.id}>
               <h3 class="m-0 text-base font-normal text-[#003035]">{event.titulo}</h3>
             </div>
           ))}
         </div>
         <!-- Controles de paginación -->
-        <div class="flex justify-between items-center mt-4 px-2" id="paginationControls">
-          <button id="prevPage" class="px-3 py-1 bg-[#003035] text-white rounded text-sm disabled:opacity-50 disabled:cursor-not-allowed">
+        <div class="flex gap-2 justify-between w-full" id="paginationControls">
+          <button id="prevPage" class="px-2 py-1 bg-[#003035] text-white rounded text-s disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#004a52] transition-colors duration-200 cursor-pointer whitespace-nowrap">
             Anterior
           </button>
-          <span id="pageInfo" class="text-sm text-[#003035]">Página 1</span>
-          <button id="nextPage" class="px-3 py-1 bg-[#003035] text-white rounded text-sm disabled:opacity-50 disabled:cursor-not-allowed">
+          <span id="pageInfo" class="text-s text-[#003035] text-center flex items-center">Página 1</span>
+          <button id="nextPage" class="px-2 py-1 bg-[#003035] text-white rounded text-s disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#004a52] transition-colors duration-200 cursor-pointer whitespace-nowrap">
             Siguiente
           </button>
         </div>
@@ -111,7 +119,7 @@ const pastEvents = obtenerEventosPaginados(obtenerEventosPasados(), 1, 5);
       <div class="w-[25%] min-w-[300px] relative hidden" id="eventCard">
         <div class="h-full flex flex-col relative bg-[#003035]">
           <button class="absolute top-0 right-0 w-8 h-8 border-none bg-transparent text-white text-2xl cursor-pointer z-10 flex justify-center items-center transition-all duration-300 hover:text-[#CEDF00]" id="closeEventButton">×</button>
-          <img id="eventImage" src="" alt="" class="w-full object-cover" />
+          <img id="eventImage" src="" alt="" class="w-full aspect-square" />
           <div class="p-6 flex-1 flex flex-col">
             <h2 id="eventTitle" class="m-0 text-2xl font-semibold text-white font-['Trebuchet_MS']"></h2>
             <p id="eventDescription" class="my-4 leading-relaxed text-sm text-white font-['Trebuchet_MS'] flex-1"></p>
@@ -120,7 +128,7 @@ const pastEvents = obtenerEventosPaginados(obtenerEventosPasados(), 1, 5);
                 <span class="text-xs text-white font-['Trebuchet_MS'] opacity-70" data-i18n="Eventos.event_date"></span>
                 <p id="eventDate" class="m-0 text-sm text-white font-['Trebuchet_MS'] opacity-80"></p>
               </div>
-              <button class="px-3 py-1 bg-transparent text-[#CEDF00] font-['Trebuchet_MS'] border border-[#CEDF00] rounded text-sm font-medium cursor-pointer transition-all duration-300 hover:border-[#CEDF00] hover:text-[#CEDF00]" data-i18n="Eventos.learn_more"></button>
+              <!--<button class="px-3 py-1 bg-transparent text-[#CEDF00] font-['Trebuchet_MS'] border border-[#CEDF00] rounded text-sm font-medium cursor-pointer transition-all duration-300 hover:border-[#CEDF00] hover:text-[#CEDF00]" data-i18n="Eventos.learn_more"></button>-->
             </div>
           </div>
         </div>
@@ -129,12 +137,6 @@ const pastEvents = obtenerEventosPaginados(obtenerEventosPasados(), 1, 5);
         <div class="relative w-full mx-auto aspect-[2/1] map-container">
           <img src="/assets/Mapa.svg" alt="Mapa del mundo" class="w-full h-full object-contain absolute top-0 left-0 map-svg" style="transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);" />
           <div class="absolute top-0 left-0 w-full h-full pointer-events-none map-points"></div>
-          <button 
-            id="resetZoomButton" 
-            class="absolute top-4 right-4 bg-[#003035] text-white px-3 py-2 rounded-md text-sm font-medium opacity-0 pointer-events-none transition-all duration-300 hover:bg-[#CEDF00] hover:text-[#003035]"
-            style="z-index: 10;">
-            <span data-i18n="Eventos.reset_zoom">Ver todo el mapa</span>
-          </button>
         </div>
       </div>
     </div>
@@ -146,6 +148,8 @@ const pastEvents = obtenerEventosPaginados(obtenerEventosPasados(), 1, 5);
 <script id="events-data" type="application/json" set:html={JSON.stringify(events)}></script>
 <script id="upcoming-events-data" type="application/json" set:html={JSON.stringify(upcomingEvents)}></script>
 <script id="past-events-data" type="application/json" set:html={JSON.stringify(pastEvents)}></script>
+<script id="all-upcoming-events-data" type="application/json" set:html={JSON.stringify(allUpcomingEventsData)}></script>
+<script id="all-past-events-data" type="application/json" set:html={JSON.stringify(allPastEventsData)}></script>
 
 <style>
   .active-tab { 
@@ -163,28 +167,11 @@ const pastEvents = obtenerEventosPaginados(obtenerEventosPasados(), 1, 5);
     background-color: #003035 !important; 
     z-index: 2 !important; 
   }
-  
-  /* Estilos para el zoom del mapa */
-  .map-container {
-    overflow: hidden;
-  }
-  
-  .map-svg {
-    transform-origin: center;
-  }
-  
-  #resetZoomButton {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  #resetZoomButton:hover {
-    transform: scale(1.05);
-  }
 </style>
 
 <script>
   // Función para formatear fecha
-  function formatearFecha(fecha) {
+  function formatearFecha(fecha:any) {
     return new Date(fecha).toLocaleDateString('es-ES', {
       year: 'numeric',
       month: 'long',
@@ -196,62 +183,167 @@ const pastEvents = obtenerEventosPaginados(obtenerEventosPasados(), 1, 5);
   const events = JSON.parse(document.getElementById('events-data')?.textContent || '[]');
   const upcomingEvents = JSON.parse(document.getElementById('upcoming-events-data')?.textContent || '[]');
   const pastEvents = JSON.parse(document.getElementById('past-events-data')?.textContent || '[]');
+  const allUpcomingEventsData = JSON.parse(document.getElementById('all-upcoming-events-data')?.textContent || '[]');
+  const allPastEventsData = JSON.parse(document.getElementById('all-past-events-data')?.textContent || '[]');
   
   let currentEventIndex = 0;
   let progress = 0;
-  let intervalId = null;
+  let intervalId:any = null;
   const ANIMATION_DURATION = 10000;
   const UPDATE_INTERVAL = 100;
-  let selectedEvent = null;
+  let selectedEvent:any = null;
   let showPastEvents = false;
-  let currentMapZoom = null;
 
   function renderMapPoints() {
     const mapContainer = document.querySelector('.map-points');
     if (!mapContainer) return;
     mapContainer.innerHTML = '';
     const currentEvents = showPastEvents ? pastEvents : upcomingEvents;
-    currentEvents.forEach(event => {
-      const point = document.createElement('div');
-      point.className = 'map-point absolute w-2 h-2 rounded-full transform -translate-x-1/2 -translate-y-1/2 cursor-pointer transition-all duration-300 pointer-events-auto hover:z-10';
-      point.style.backgroundColor = '#CEDF00';
-      
+    
+    // Agrupar eventos por ubicación
+    const locationGroups: { [key: string]: any[] } = {};
+    
+    currentEvents.forEach((event:any) => {
       // Usar las coordenadas del zoom si existen, sino usar valores por defecto
+      let x, y;
       if (event.zoom && event.zoom.x && event.zoom.y) {
-        point.style.left = `${event.zoom.x}%`;
-        point.style.top = `${event.zoom.y}%`;
+        x = event.zoom.x;
+        y = event.zoom.y;
       } else {
         // Valores por defecto para España (Madrid)
-        point.style.left = '30%';
-        point.style.top = '40%';
+        x = 30;
+        y = 40;
       }
       
-      point.dataset.eventId = String(event.id);
+      const locationKey = `${x},${y}`;
+      if (!locationGroups[locationKey]) {
+        locationGroups[locationKey] = [];
+      }
+      locationGroups[locationKey].push({ ...event, x, y });
+    });
+    
+    // Renderizar puntos agrupados
+    Object.keys(locationGroups).forEach(locationKey => {
+      const eventsAtLocation = locationGroups[locationKey];
+      const [x, y] = locationKey.split(',').map(Number);
       
-      // Agregar clase active si el evento está seleccionado
-      if (selectedEvent && selectedEvent.id === event.id) {
+      // Crear un solo punto visual para la ubicación
+      const point = document.createElement('div');
+      point.className = 'map-point absolute w-2 h-2 rounded-full transform -translate-x-1/2 -translate-y-1/2 cursor-pointer transition-all duration-300 pointer-events-auto hover:z-40';
+      point.style.backgroundColor = '#CEDF00';
+      point.style.left = `${x}%`;
+      point.style.top = `${y}%`;
+      point.dataset.locationKey = locationKey;
+      
+      // Agregar clase active si algún evento de esta ubicación está seleccionado
+      const hasActiveEvent = eventsAtLocation.some(event => selectedEvent && selectedEvent.id === event.id);
+      if (hasActiveEvent) {
         point.classList.add('active');
         point.style.backgroundColor = '#003035';
       }
       
-      const tooltip = document.createElement('div');
-      tooltip.className = 'point-tooltip hidden absolute bottom-full left-1/2 transform -translate-x-1/2 bg-[#003035] px-4 py-2 rounded text-white text-xs font-["Trebuchet_MS"] shadow-lg mb-2 whitespace-nowrap pointer-events-none';
-      tooltip.textContent = event.titulo;
-      point.appendChild(tooltip);
+      // Crear contenedor para tooltips
+      const tooltipContainer = document.createElement('div');
+      tooltipContainer.className = 'tooltip-container hidden absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 pointer-events-auto z-50';
       
-      point.addEventListener('click', () => selectEventFromMap(point));
+      // Crear tooltips para cada evento en esta ubicación
+      eventsAtLocation.forEach((event:any, index:any) => {
+        const tooltip = document.createElement('div');
+        tooltip.className = 'point-tooltip bg-[#003035] px-4 py-2 rounded text-white text-xs font-["Trebuchet_MS"] shadow-lg whitespace-nowrap cursor-pointer hover:bg-[#004a52] transition-colors duration-200';
+        tooltip.textContent = event.titulo;
+        tooltip.dataset.eventId = String(event.id);
+        
+        // Espaciar tooltips verticalmente si hay múltiples
+        if (eventsAtLocation.length > 1) {
+          tooltip.style.marginBottom = index < eventsAtLocation.length - 1 ? '4px' : '0px';
+        }
+        
+        tooltipContainer.appendChild(tooltip);
+      });
+      
+      point.appendChild(tooltipContainer);
+      
+      // Si solo hay un evento, hacer el punto clickeable directamente
+      if (eventsAtLocation.length === 1) {
+        point.dataset.eventId = String(eventsAtLocation[0].id);
+      }
+      
+      // Variables para manejar el delay
+      let hideTimeout: any = null;
+      let isHoveringTooltips = false;
+      
+      // Event listeners para el punto
       point.addEventListener('mouseenter', () => {
-        tooltip.classList.remove('hidden');
+        // Cancelar cualquier timeout pendiente
+        if (hideTimeout) {
+          clearTimeout(hideTimeout);
+          hideTimeout = null;
+        }
+        
+        tooltipContainer.classList.remove('hidden');
         if (!point.classList.contains('active')) {
           point.style.backgroundColor = '#003035';
         }
       });
+      
       point.addEventListener('mouseleave', () => {
-        tooltip.classList.add('hidden');
-        if (!point.classList.contains('active')) {
-          point.style.backgroundColor = '#CEDF00';
+        // Solo ocultar si no estamos hovereando los tooltips
+        if (!isHoveringTooltips) {
+          hideTimeout = setTimeout(() => {
+            tooltipContainer.classList.add('hidden');
+            if (!point.classList.contains('active')) {
+              point.style.backgroundColor = '#CEDF00';
+            }
+          }, 300); // 300ms de delay
         }
       });
+      
+      // Event listeners para los tooltips (siempre activos)
+      tooltipContainer.addEventListener('mouseenter', () => {
+        isHoveringTooltips = true;
+        // Cancelar cualquier timeout pendiente
+        if (hideTimeout) {
+          clearTimeout(hideTimeout);
+          hideTimeout = null;
+        }
+        tooltipContainer.classList.remove('hidden');
+      });
+      
+      tooltipContainer.addEventListener('mouseleave', () => {
+        isHoveringTooltips = false;
+        // Ocultar con delay
+        hideTimeout = setTimeout(() => {
+          tooltipContainer.classList.add('hidden');
+          if (!point.classList.contains('active')) {
+            point.style.backgroundColor = '#CEDF00';
+          }
+        }, 300); // 300ms de delay
+      });
+      
+      // Hacer los tooltips clickeables
+      tooltipContainer.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        const tooltip = target.closest('.point-tooltip') as HTMLElement;
+        if (tooltip) {
+          const eventId = tooltip.dataset.eventId;
+          const event = eventsAtLocation.find(ev => ev.id.toString() === eventId);
+          if (event) {
+            selectedEvent = event;
+            showEventCard(selectedEvent);
+            updateEventSelection();
+          }
+        }
+      });
+      
+      // Hacer el punto clickeable si solo tiene un evento
+      if (eventsAtLocation.length === 1) {
+        point.addEventListener('click', () => {
+          const event = eventsAtLocation[0];
+          selectedEvent = event;
+          showEventCard(selectedEvent);
+          updateEventSelection();
+        });
+      }
       
       mapContainer.appendChild(point);
     });
@@ -261,42 +353,26 @@ const pastEvents = obtenerEventosPaginados(obtenerEventosPasados(), 1, 5);
     document.querySelectorAll('.event-item').forEach(item => { item.classList.remove('active'); });
     if (selectedEvent) {
       const currentEvents = showPastEvents ? pastEvents : upcomingEvents;
-      const eventIndex = currentEvents.findIndex(event => event.id === selectedEvent.id);
+      const eventIndex = currentEvents.findIndex((event:any) => event.id === selectedEvent.id);
       const eventItems = document.querySelectorAll(`#${showPastEvents ? 'past' : 'upcoming'}EventsList .event-item`);
       if (eventItems[eventIndex]) eventItems[eventIndex].classList.add('active');
     }
     renderMapPoints();
   }
 
-  function selectEvent(element) {
+  function selectEvent(element:any) {
     const eventId = element.dataset.eventId;
     const currentEvents = showPastEvents ? pastEvents : upcomingEvents;
-    selectedEvent = currentEvents.find(event => event.id === eventId);
+    selectedEvent = currentEvents.find((event:any) => event.id === eventId);
     if (selectedEvent) {
       showEventCard(selectedEvent);
       updateEventSelection();
-      if (selectedEvent.zoom) {
-        zoomToEvent(selectedEvent);
-      }
     }
   }
 
-  function selectEventFromMap(element) {
-    const eventId = element.dataset.eventId;
-    const currentEvents = showPastEvents ? pastEvents : upcomingEvents;
-    selectedEvent = currentEvents.find(event => event.id === eventId);
-    if (selectedEvent) {
-      showEventCard(selectedEvent);
-      updateEventSelection();
-      if (selectedEvent.zoom) {
-        zoomToEvent(selectedEvent);
-      }
-    }
-  }
-
-  function showEventCard(event) {
+  function showEventCard(event:any) {
     const card = document.getElementById('eventCard');
-    const image = document.getElementById('eventImage');
+    const image: any= document.getElementById('eventImage');
     const title = document.getElementById('eventTitle');
     const description = document.getElementById('eventDescription');
     const date = document.getElementById('eventDate');
@@ -315,75 +391,9 @@ const pastEvents = obtenerEventosPaginados(obtenerEventosPasados(), 1, 5);
     if (eventCard) eventCard.classList.add('hidden');
     selectedEvent = null;
     updateEventSelection();
-    resetMapZoom();
   }
 
-  // Función para hacer zoom al evento seleccionado
-  function zoomToEvent(event) {
-    if (!event.zoom) return;
-    
-    const mapSvg = document.querySelector('.map-svg');
-    const resetButton = document.getElementById('resetZoomButton');
-    if (!mapSvg) return;
-    
-    currentMapZoom = event.zoom;
-    
-    // Aplicar transformación de zoom
-    mapSvg.style.transform = `scale(${event.zoom.scale}) translate(${event.zoom.x}%, ${event.zoom.y}%)`;
-    
-    // Ocultar puntos que no están en la zona de zoom
-    const allPoints = document.querySelectorAll('.map-point');
-    allPoints.forEach(point => {
-      const pointEventId = point.dataset.eventId;
-      if (pointEventId !== event.id) {
-        point.style.opacity = '0.3';
-        point.style.pointerEvents = 'none';
-      } else {
-        point.style.opacity = '1';
-        point.style.pointerEvents = 'auto';
-      }
-    });
-    
-    // Mostrar botón de reset
-    if (resetButton) {
-      resetButton.style.opacity = '1';
-      resetButton.style.pointerEvents = 'auto';
-    }
-  }
-
-  // Función para resetear el zoom del mapa
-  function resetMapZoom() {
-    const mapSvg = document.querySelector('.map-svg');
-    const resetButton = document.getElementById('resetZoomButton');
-    if (!mapSvg) return;
-    
-    currentMapZoom = null;
-    mapSvg.style.transform = 'scale(1) translate(0%, 0%)';
-    
-    // Restaurar todos los puntos
-    const allPoints = document.querySelectorAll('.map-point');
-    allPoints.forEach(point => {
-      point.style.opacity = '1';
-      point.style.pointerEvents = 'auto';
-    });
-    
-    // Ocultar botón de reset
-    if (resetButton) {
-      resetButton.style.opacity = '0';
-      resetButton.style.pointerEvents = 'none';
-    }
-  }
-
-  // Función para hacer zoom a una región específica
-  function zoomToRegion(region) {
-    const mapSvg = document.querySelector('.map-svg');
-    if (!mapSvg) return;
-    
-    currentMapZoom = region;
-    mapSvg.style.transform = `scale(${region.scale}) translate(${region.translateX}%, ${region.translateY}%)`;
-  }
-
-  function toggleEventType(showPast) {
+  function toggleEventType(showPast:any) {
     showPastEvents = showPast;
     selectedEvent = null;
     document.querySelectorAll('[data-tab]').forEach(btn => { btn.classList.remove('active-tab'); });
@@ -399,7 +409,6 @@ const pastEvents = obtenerEventosPaginados(obtenerEventosPasados(), 1, 5);
     }
     updateEventSelection();
     renderMapPoints();
-    resetMapZoom(); // Resetear zoom al cambiar de tipo de evento
   }
 
   function startAnimation() {
@@ -432,7 +441,7 @@ const pastEvents = obtenerEventosPaginados(obtenerEventosPasados(), 1, 5);
     const eventItems = document.querySelectorAll('#eventsGrid .event-item');
     eventItems.forEach((item, index) => {
       const event = events[index];
-      const progressBar = item.querySelector('.progress-bar');
+      const progressBar:any = item.querySelector('.progress-bar');
       if (event && event.isActive) {
         item.classList.add('bg-white/30');
         if (progressBar) progressBar.style.width = `${event.progress}%`;
@@ -446,8 +455,8 @@ const pastEvents = obtenerEventosPaginados(obtenerEventosPasados(), 1, 5);
   // Variables de paginación
   let currentPage = 1;
   const eventsPerPage = 5;
-  let allUpcomingEvents = [];
-  let allPastEvents = [];
+  let allUpcomingEvents:any = [];
+  let allPastEvents:any = [];
 
   // Función para cargar eventos paginados
   function loadPaginatedEvents() {
@@ -464,6 +473,7 @@ const pastEvents = obtenerEventosPaginados(obtenerEventosPasados(), 1, 5);
     
     renderEventLists();
     updatePaginationControls();
+    renderMapPoints(); // Actualizar puntos del mapa
   }
 
   // Función para renderizar las listas de eventos
@@ -473,7 +483,7 @@ const pastEvents = obtenerEventosPaginados(obtenerEventosPasados(), 1, 5);
     
     if (upcomingList) {
       upcomingList.innerHTML = '';
-      upcomingEvents.forEach(event => {
+      upcomingEvents.forEach((event:any) => {
         const eventDiv = document.createElement('div');
         eventDiv.className = 'event-item p-3 cursor-pointer transition-all duration-300 relative';
         eventDiv.dataset.eventId = event.id;
@@ -488,7 +498,7 @@ const pastEvents = obtenerEventosPaginados(obtenerEventosPasados(), 1, 5);
     
     if (pastList) {
       pastList.innerHTML = '';
-      pastEvents.forEach(event => {
+      pastEvents.forEach((event:any) => {
         const eventDiv = document.createElement('div');
         eventDiv.className = 'event-item p-3 cursor-pointer transition-all duration-300 relative';
         eventDiv.dataset.eventId = event.id;
@@ -500,29 +510,37 @@ const pastEvents = obtenerEventosPaginados(obtenerEventosPasados(), 1, 5);
 
   // Función para actualizar controles de paginación
   function updatePaginationControls() {
-    const prevButton = document.getElementById('prevPage');
-    const nextButton = document.getElementById('nextPage');
+    const prevButton:any = document.getElementById('prevPage');
+    const nextButton:any = document.getElementById('nextPage');
     const pageInfo = document.getElementById('pageInfo');
+    const paginationControls = document.getElementById('paginationControls');
     
     const currentEvents = showPastEvents ? allPastEvents : allUpcomingEvents;
     const totalPages = Math.ceil(currentEvents.length / eventsPerPage);
     
-    if (prevButton) prevButton.disabled = currentPage <= 1;
-    if (nextButton) nextButton.disabled = currentPage >= totalPages;
+    // Si solo hay una página o menos, ocultar los controles de paginación
+    if (totalPages <= 1) {
+      if (paginationControls) paginationControls.style.display = 'none';
+    } else {
+      if (paginationControls) paginationControls.style.display = 'flex';
+      if (prevButton) prevButton.disabled = currentPage <= 1;
+      if (nextButton) nextButton.disabled = currentPage >= totalPages;
+    }
+    
     if (pageInfo) pageInfo.textContent = `Página ${currentPage} de ${totalPages}`;
   }
 
   document.addEventListener('DOMContentLoaded', function() {
-    // Cargar todos los eventos
-    allUpcomingEvents = [...upcomingEvents];
-    allPastEvents = [...pastEvents];
+    // Cargar todos los eventos (no paginados)
+    allUpcomingEvents = [...allUpcomingEventsData];
+    allPastEvents = [...allPastEventsData];
     
     startAnimation();
     loadPaginatedEvents();
     
     // Event listeners para tabs
     document.querySelectorAll('[data-tab]').forEach(btn => {
-      btn.addEventListener('click', function() {
+      btn.addEventListener('click', function(this: HTMLElement) {
         const showPast = this.dataset.tab === 'past';
         currentPage = 1; // Reset a la primera página
         toggleEventType(showPast);
@@ -556,7 +574,7 @@ const pastEvents = obtenerEventosPaginados(obtenerEventosPasados(), 1, 5);
     
     // Event listeners para elementos de eventos usando delegación de eventos
     document.addEventListener('click', function(e) {
-      const target = e.target;
+      const target:any = e.target;
       const eventItem = target.closest('.event-item');
       if (eventItem && (eventItem.closest('#upcomingEventsList') || eventItem.closest('#pastEventsList'))) {
         selectEvent(eventItem);
@@ -567,12 +585,6 @@ const pastEvents = obtenerEventosPaginados(obtenerEventosPasados(), 1, 5);
     const closeButton = document.getElementById('closeEventButton');
     if (closeButton) {
       closeButton.addEventListener('click', closeEventCard);
-    }
-    
-    // Event listener para el botón de reset del zoom
-    const resetButton = document.getElementById('resetZoomButton');
-    if (resetButton) {
-      resetButton.addEventListener('click', resetMapZoom);
     }
     
     renderMapPoints();

@@ -17,7 +17,7 @@ const currentLang = getCurrentLocale();
     <div class="hidden lg:block absolute left-0 top-0 h-full w-1/2 bg-brand-dark z-10"></div>
     
     <!-- Contenido del panel izquierdo (logo principal, menú, redes) -->
-    <div class="hidden lg:flex absolute left-0 top-0 h-full w-1/2 z-30 flex-col justify-between p-12" style="background-color: #003035; width:fit-content;">
+    <div class="hidden lg:flex absolute left-0 top-0 h-full w-[50%] z-30 flex-col justify-between p-12" style="background-color: #003035; width:fit-content;">
         <div class="mb-8">
             <a href="/" class="block">
                 <img 
@@ -58,7 +58,7 @@ const currentLang = getCurrentLocale();
                 <!-- Submenú escritorio -->
                 <div id="submenu-actualidad-escritorio" class="hidden absolute left-full top-1/2 transform -translate-y-1/2 ml-4 py-4 px-8 space-y-4 z-40 min-w-[220px] border-l-2 border-white pl-8">
                     <a href="/noticias" class="block text-white hover:text-[#CEDF00] transition-colors" style="white-space: nowrap" data-i18n="OverlayMenu.Noticias"></a>
-                    <!--<a href="/eventos" class="block text-white hover:text-[#CEDF00] transition-colors" style="white-space: nowrap" data-i18n="OverlayMenu.Eventos"></a>-->
+                    <!-- <a href="/eventos" class="block text-white hover:text-[#CEDF00] transition-colors" style="white-space: nowrap" data-i18n="OverlayMenu.Eventos"></a> -->
                 </div>
             </div>
         </nav>
@@ -137,7 +137,7 @@ const currentLang = getCurrentLocale();
                     <!-- Submenú móvil -->
                     <div id="submenu-actualidad-movil" class="hidden mt-4 ml-6 space-y-4 border-l-2 border-white pl-8">
                         <a href="/noticias" class="block text-white hover:text-[#CEDF00] transition-colors" style="font-size: min(1.4em, min(12vw, 35px));" data-i18n="OverlayMenu.Noticias"></a>
-                        <!--<a href="/eventos" class="block text-white hover:text-[#CEDF00] transition-colors" style="font-size: min(1.4em, min(12vw, 35px));" data-i18n="OverlayMenu.Eventos"></a>-->
+                        <!-- <a href="/eventos" class="block text-white hover:text-[#CEDF00] transition-colors" style="font-size: min(1.4em, min(12vw, 35px));" data-i18n="OverlayMenu.Eventos"></a> -->
                     </div>
                 </div>
             </nav>

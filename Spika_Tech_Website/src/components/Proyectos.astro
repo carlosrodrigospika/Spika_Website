@@ -42,8 +42,15 @@
                                 </a>
                             </div>
                             <div id="heart-canvas-container" style="width: auto; height: calc(100vh - 200px); background: transparent; position: relative; flex: 1;">
-                                <img id="heart-placeholder" src="/assets/Render/Corazon.webp" alt="VR-CARDIO" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; z-index: 1;">
-                                <canvas id="heart-canvas" style="width: 100%; height: 100%; display: block; position: relative; z-index: 2;"></canvas>
+                                <img id="heart-preview" src="/assets/Render/Corazon.webp" alt="VR-CARDIO" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; z-index: 1;">
+                                <model-viewer 
+                                    id="heart-model"
+                                    src="/assets/models/Corazon.glb"
+                                    alt="VR-CARDIO"
+                                    auto-rotate
+                                    camera-controls
+                                    style="width: 100%; height: 100%; background: transparent; position: relative; z-index: 2;">
+                                </model-viewer>
                             </div>
                         </div>
 
@@ -58,8 +65,15 @@
                                 </a>
                             </div>
                             <div id="pras-canvas-container" style="width: auto; height: calc(100vh - 200px); background: transparent; position: relative; flex: 1;">
-                                <img id="pras-placeholder" src="/assets/Render/PRAS.webp" alt="PRAS" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; z-index: 1;">
-                                <canvas id="pras-canvas" style="width: 100%; height: 100%; display: block; position: relative; z-index: 2;"></canvas>
+                                <img id="pras-preview" src="/assets/Render/PRAS.webp" alt="PRAS" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; z-index: 1;">
+                                <model-viewer 
+                                    id="pras-model"
+                                    src="/assets/models/PRAS.glb"
+                                    alt="PRAS"
+                                    auto-rotate
+                                    camera-controls
+                                    style="width: 100%; height: 100%; background: transparent; position: relative; z-index: 2;">
+                                </model-viewer>
                             </div>
                         </div>
 
@@ -74,8 +88,15 @@
                                 </a>
                             </div>
                             <div id="armor-canvas-container" style="width: auto; height: calc(100vh - 200px); background: transparent; position: relative; flex: 1;">
-                                <img id="armor-placeholder" src="/assets/Render/Armadura.webp" alt="Primera Vuelta al Mundo" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; z-index: 1;">
-                                <canvas id="armor-canvas" style="width: 100%; height: 100%; display: block; position: relative; z-index: 2;"></canvas>
+                                <img id="armor-preview" src="/assets/Render/Armadura.webp" alt="Primera Vuelta al Mundo" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; z-index: 1;">
+                                <model-viewer 
+                                    id="armor-model"
+                                    src="/assets/models/Armadura.glb"
+                                    alt="Primera Vuelta al Mundo"
+                                    auto-rotate
+                                    camera-controls
+                                    style="width: 100%; height: 100%; background: transparent; position: relative; z-index: 2;">
+                                </model-viewer>
                             </div>
                         </div>
                     </div>
@@ -111,8 +132,15 @@
                                     </a>
                                 </div>
                                 <div id="heart-canvas-container-mobile" style="width: 100%; height: calc(100% - 120px); background: transparent; position: relative; flex: 1;">
-                                    <img id="heart-placeholder-mobile" src="/assets/Render/Corazon.webp" alt="VR-CARDIO" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; z-index: 1;">
-                                    <canvas id="heart-canvas-mobile" style="width: 100%; height: 80%; display: block; position: relative; z-index: 2;"></canvas>
+                                    <img id="heart-preview-mobile" src="/assets/Render/Corazon.webp" alt="VR-CARDIO" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; z-index: 1;">
+                                    <model-viewer 
+                                        id="heart-model-mobile"
+                                        src="/assets/models/Corazon.glb"
+                                        alt="VR-CARDIO"
+                                        auto-rotate
+                                        camera-controls
+                                        style="width: 100%; height: 100%; background: transparent; position: relative; z-index: 2;">
+                                    </model-viewer>
                                 </div>
                             </div>
                         </div>
@@ -135,8 +163,15 @@
                                     </a>
                                 </div>
                                 <div id="pras-canvas-container-mobile" style="width: 100%; height: calc(100% - 120px); background: transparent; position: relative; flex: 1;">
-                                    <img id="pras-placeholder-mobile" src="/assets/Render/PRAS.webp" alt="PRAS" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; z-index: 1;">
-                                    <canvas id="pras-canvas-mobile" style="width: 100%; height: 80%; display: block; position: relative; z-index: 2;"></canvas>
+                                    <img id="pras-preview-mobile" src="/assets/Render/PRAS.webp" alt="PRAS" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; z-index: 1;">
+                                    <model-viewer 
+                                        id="pras-model-mobile"
+                                        src="/assets/models/PRAS.glb"
+                                        alt="PRAS"
+                                        auto-rotate
+                                        camera-controls
+                                        style="width: 100%; height: 100%; background: transparent; position: relative; z-index: 2;">
+                                    </model-viewer>
                                 </div>
                             </div>
                         </div>
@@ -159,8 +194,15 @@
                                     </a>
                                 </div>
                                 <div id="armor-canvas-container-mobile" style="width: 100%; height: calc(100% - 120px); background: transparent; position: relative; flex: 1;">
-                                    <img id="armor-placeholder-mobile" src="/assets/Render/Armadura.webp" alt="Primera Vuelta al Mundo" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; z-index: 1;">
-                                    <canvas id="armor-canvas-mobile" style="width: 100%; height: 80%; display: block; position: relative; z-index: 2;"></canvas>
+                                    <img id="armor-preview-mobile" src="/assets/Render/Armadura.webp" alt="Primera Vuelta al Mundo" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; z-index: 1;">
+                                    <model-viewer 
+                                        id="armor-model-mobile"
+                                        src="/assets/models/Armadura.glb"
+                                        alt="Primera Vuelta al Mundo"
+                                        auto-rotate
+                                        camera-controls
+                                        style="width: 100%; height: 100%; background: transparent; position: relative; z-index: 2;">
+                                    </model-viewer>
                                 </div>
                             </div>
                         </div>
@@ -426,351 +468,63 @@
 
 .btn-slide-arrow:hover svg {
     filter: brightness(0) invert(1);
-}
+  }
 </style>
 
-<!-- Three.js Model Renderer - Reutilizable para todos los modelos -->
+<!-- Model Viewer Configuration -->
 <script>
-    import * as THREE from 'three';
-    import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-    import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-
-    // Configuración de modelos
-    const modelConfigs = [
-        {
-            id: 'heart-canvas',
-            modelPath: '/assets/models/Corazon.glb',
-            scale: 3.3,
-            modelPosY: -1,
-            useEnhancedLighting: false // Mantener iluminación original
-        },
-        {
-            id: 'pras-canvas',
-            modelPath: '/assets/models/PRAS.glb',
-            scale: 2.55,
-            modelPosY: -1.7,
-            useEnhancedLighting: true // Usar iluminación mejorada
-        },
-        {
-            id: 'armor-canvas',
-            modelPath: '/assets/models/Armadura.glb',
-            scale: 2.5,
-            modelPosY: -1.65,
-            useEnhancedLighting: true // Usar iluminación mejorada
-        },
-        // Configuraciones móviles con escalas más pequeñas
-        {
-            id: 'heart-canvas-mobile',
-            modelPath: '/assets/models/Corazon.glb',
-            scale: 2.0,
-            modelPosY: 0,
-            useEnhancedLighting: false
-        },
-        {
-            id: 'pras-canvas-mobile',
-            modelPath: '/assets/models/PRAS.glb',
-            scale: 1.6,
-            modelPosY: -0.5,
-            useEnhancedLighting: true
-        },
-        {
-            id: 'armor-canvas-mobile',
-            modelPath: '/assets/models/Armadura.glb',
-            scale: 1.5,
-            modelPosY: -0.5,
-            useEnhancedLighting: true
-        }
-    ];
-
-    // Almacén de instancias de modelos
-    const modelInstances: any = {};
-
-    // Función reutilizable para crear un modelo 3D
-    function createModel3D(config: any) {
-        const canvas = document.getElementById(config.id);
-        if (!canvas) return;
-
-        const container = canvas.parentElement;
-        if (!container) return;
+    // Configuración de model-viewer con imágenes de preview
+    function configureModelViewer() {
+        const modelConfigs = [
+            { id: 'heart-model', previewId: 'heart-preview' },
+            { id: 'pras-model', previewId: 'pras-preview' },
+            { id: 'armor-model', previewId: 'armor-preview' },
+            { id: 'heart-model-mobile', previewId: 'heart-preview-mobile' },
+            { id: 'pras-model-mobile', previewId: 'pras-preview-mobile' },
+            { id: 'armor-model-mobile', previewId: 'armor-preview-mobile' }
+        ];
         
-        const width = container.clientWidth;
-        const height = container.clientHeight;
-
-        // Crear escena
-        const scene = new THREE.Scene();
-        scene.background = null;
-        scene.fog = null;
-
-        // Crear cámara
-        const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 100);
-        camera.position.set(0, 0, 5);
-
-        // Crear renderer con configuración según el modelo
-        const renderer = new THREE.WebGLRenderer({ 
-            canvas: canvas, 
-            alpha: true, 
-            antialias: config.useEnhancedLighting ? true : false,
-            powerPreference: "high-performance",
-            stencil: false,
-            depth: true,
-            logarithmicDepthBuffer: false
-        });
-        renderer.setSize(width, height);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, config.useEnhancedLighting ? 2 : 1.5));
-        renderer.shadowMap.enabled = false;
-        renderer.outputColorSpace = THREE.SRGBColorSpace;
-        
-        if (config.useEnhancedLighting) {
-            renderer.toneMapping = THREE.ACESFilmicToneMapping;
-            renderer.toneMappingExposure = 1.2;
-        } else {
-            renderer.toneMapping = THREE.NoToneMapping;
-        }
-
-        // Crear iluminación según la configuración del modelo
-        if (config.useEnhancedLighting) {
-            // Iluminación mejorada para PRAS y Armadura
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
-            scene.add(ambientLight);
-
-            const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2);
-            directionalLight.position.set(5, 5, 5);
-            directionalLight.castShadow = false;
-            scene.add(directionalLight);
-
-            const fillLight = new THREE.DirectionalLight(0xffffff, 0.8);
-            fillLight.position.set(-5, 0, 5);
-            scene.add(fillLight);
-
-            const topLight = new THREE.DirectionalLight(0xffffff, 1.0);
-            topLight.position.set(0, 10, 0);
-            scene.add(topLight);
-
-            const warmLight = new THREE.PointLight(0xffcc66, 0.8, 25);
-            warmLight.position.set(-3, 2, 3);
-            scene.add(warmLight);
-
-            const coolLight = new THREE.PointLight(0x6699ff, 0.6, 25);
-            coolLight.position.set(3, -2, -3);
-            scene.add(coolLight);
-
-            const frontLight = new THREE.DirectionalLight(0xffffff, 0.7);
-            frontLight.position.set(0, 0, 8);
-            scene.add(frontLight);
-
-            const backLight = new THREE.DirectionalLight(0xffffff, 0.4);
-            backLight.position.set(0, 0, -8);
-            scene.add(backLight);
-
-            const warmAmbient = new THREE.AmbientLight(0xfff4e6, 0.3);
-            scene.add(warmAmbient);
-        } else {
-            // Iluminación original para el corazón
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
-            scene.add(ambientLight);
-
-            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-            directionalLight.position.set(5, 5, 5);
-            scene.add(directionalLight);
-
-            const fillLight = new THREE.DirectionalLight(0xffffff, 0.3);
-            fillLight.position.set(-5, 0, 5);
-            scene.add(fillLight);
-
-            const topLight = new THREE.DirectionalLight(0xffffff, 0.5);
-            topLight.position.set(0, 10, 0);
-            scene.add(topLight);
-
-            const warmLight = new THREE.PointLight(0xffaa44, 0.3, 20);
-            warmLight.position.set(-3, 2, 3);
-            scene.add(warmLight);
-
-            const coolLight = new THREE.PointLight(0x4488ff, 0.2, 20);
-            coolLight.position.set(3, -2, -3);
-            scene.add(coolLight);
-        }
-
-        // Crear controles
-        const controls = new OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true;
-        controls.dampingFactor = 0.05;
-        controls.screenSpacePanning = false;
-        controls.maxPolarAngle = Math.PI / 2;
-        controls.autoRotate = true;
-        controls.autoRotateSpeed = 3;
-        controls.enableZoom = false;
-        controls.enablePan = false;
-        controls.enableRotate = true;
-
-        // Variables de estado
-        let model: any = null;
-        let animationId: any = null;
-        let needsRender = true;
-
-        // Función de animación
-        function animate() {
-            // Solo renderizar si la sección es visible
-            if (!(window as any).isSectionVisible) {
-                animationId = requestAnimationFrame(animate);
-                return;
-            }
-
-            animationId = requestAnimationFrame(animate);
-
-            if (model) {
-                if (controls) {
-                    controls.update();
-                }
+        modelConfigs.forEach(config => {
+            const modelViewer = document.getElementById(config.id);
+            const previewImg = document.getElementById(config.previewId);
+            
+            if (modelViewer && previewImg) {
+                // Configurar model-viewer
+                modelViewer.setAttribute('interaction-prompt', 'none');
                 
-                if (needsRender || controls.autoRotate) {
-                    renderer.render(scene, camera);
-                    needsRender = false;
-                }
-            }
-        }
-
-        // Función de resize
-        function onResize() {
-            if (camera && renderer) {
-                const container = document.getElementById(config.id)?.parentElement;
-                if (!container) return;
+                // Event listener para cuando el modelo se carga
+                modelViewer.addEventListener('load', () => {
+                    // Ocultar la imagen de preview
+                    previewImg.style.display = 'none';
+                });
                 
-                const width = container.clientWidth;
-                const height = container.clientHeight;
+                // Event listener para errores
+                modelViewer.addEventListener('error', (event:any) => {
+                    console.error(`Error cargando modelo ${config.id}:`, event.detail);
+                    // Mantener la imagen de preview visible si hay error
+                });
                 
-                camera.aspect = width / height;
-                camera.updateProjectionMatrix();
-                renderer.setSize(width, height);
-                
-                if (controls) {
-                    controls.update();
-                }
-                
-                needsRender = true;
-            }
-        }
-
-        // Función de visibilidad
-        function onVisibilityChange() {
-            const sectionVisible = !document.hidden;
-            if (sectionVisible && (window as any).isSectionVisible) needsRender = true;
-        }
-
-        // Función de limpieza
-        function cleanup() {
-            if (animationId) {
-                cancelAnimationFrame(animationId);
-            }
-            if (renderer) {
-                renderer.dispose();
-            }
-            if (controls) {
-                controls.dispose();
-            }
-            if (scene) {
-                scene.traverse((child: any) => {
-                    if (child.geometry) {
-                        child.geometry.dispose();
-                    }
-                    if (child.material) {
-                        if (Array.isArray(child.material)) {
-                            child.material.forEach((material: any) => {
-                                if (material.map) material.map.dispose();
-                                material.dispose();
-                            });
-                        } else {
-                            if (child.material.map) child.material.map.dispose();
-                            child.material.dispose();
-                        }
+                // Event listener para cuando el modelo se está cargando
+                modelViewer.addEventListener('progress', (event:any) => {
+                    const progress = event.detail.totalProgress;
+                    if (progress === 1) {
+                        // Modelo completamente cargado
+                        previewImg.style.display = 'none';
                     }
                 });
             }
-        }
-
-        // Cargar modelo
-        const loader = new GLTFLoader();
-        loader.load(config.modelPath, (gltf) => {
-            model = gltf.scene;
-            
-            // Centrar y escalar
-            model.position.set(0, config.modelPosY, 0);
-            
-            model.scale.setScalar(config.scale);
-            
-            // Ocultar placeholder cuando el modelo se carga
-            const placeholder = document.getElementById(config.id.replace('-canvas', '-placeholder'));
-            if (placeholder) {
-                placeholder.style.display = 'none';
-            }
-            
-            // Optimizar geometrías y materiales
-            model.traverse((child: any) => {
-                if (child.isMesh) {
-                    if (child.geometry) {
-                        child.geometry.computeBoundingSphere();
-                        child.geometry.computeBoundingBox();
-                        child.geometry.computeVertexNormals();
-                    }
-                    
-                    if (child.material) {
-                        child.material.transparent = false;
-                        child.material.needsUpdate = true;
-                        
-                        // Mejorar la iluminación de los materiales
-                        if (child.material.color) {
-                            // Aumentar ligeramente la intensidad del color
-                            child.material.color.multiplyScalar(1.1);
-                        }
-                    
-                        if (child.material.map) {
-                            child.material.map.generateMipmaps = false;
-                            child.material.map.minFilter = THREE.LinearFilter;
-                            child.material.map.magFilter = THREE.LinearFilter;
-                        }
-                    }
-                }
-            });
-
-            scene.add(model);
-            needsRender = true;
-        }, undefined, (error) => {
-            console.error(`Error loading ${config.id} model:`, error);
         });
-
-        // Iniciar animación
-        animate();
-
-        // Agregar event listeners
-        window.addEventListener('resize', onResize, { passive: true });
-        document.addEventListener('visibilitychange', onVisibilityChange, { passive: true });
-
-        // Retornar funciones de limpieza
-        return {
-            cleanup,
-            onResize,
-            onVisibilityChange
-        };
     }
 
-    // Inicializar todos los modelos
-    document.addEventListener('DOMContentLoaded', () => {
-        modelConfigs.forEach(config => {
-            const instance = createModel3D(config);
-            if (instance) {
-                modelInstances[config.id] = instance;
-            }
-        });
-    });
-
-    // Limpiar todos los modelos al salir
-    window.addEventListener('beforeunload', () => {
-        Object.values(modelInstances).forEach((instance: any) => {
-            if (instance && instance.cleanup) {
-                instance.cleanup();
-            }
-        });
-    });
+    // Inicializar cuando el DOM esté listo
+    document.addEventListener('DOMContentLoaded', configureModelViewer);
+    
+    // También inicializar si ya está cargado
+    if (document.readyState !== 'loading') {
+        configureModelViewer();
+    }
 </script>
+
 
 
 
