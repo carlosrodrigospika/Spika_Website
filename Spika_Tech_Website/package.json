@@ -14,5 +14,8 @@
     "astro": "^5.13.5",
     "sweetalert2": "^11.22.2",
     "three": "^0.177.0"
+  },
+  "devDependencies": {
+    "terser": "^5.44.0"
   }
 }
