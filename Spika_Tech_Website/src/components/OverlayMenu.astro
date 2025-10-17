@@ -48,6 +48,7 @@ const currentLang = getCurrentLocale();
                     <a href="/vrcardio" class="block text-white hover:text-[#CEDF00] transition-colors" style="white-space: nowrap"data-i18n="OverlayMenu.VRCardio"></a>
                     <a href="/pras" class="block text-white hover:text-[#CEDF00] transition-colors" style="white-space: nowrap" data-i18n="OverlayMenu.PRAS"></a>
                     <a href="/magallanes" class="block text-white hover:text-[#CEDF00] transition-colors" style="white-space: nowrap" data-i18n="OverlayMenu.Magallanes"></a>
+                    <a href="/edfs" class="block text-white hover:text-[#CEDF00] transition-colors" style="white-space: nowrap" data-i18n="OverlayMenu.EDFS"></a>
                 </div>
             </div>
             <a href="/#desarrollos" class="menu-link text-white font-light hover:text-[#CEDF00] transition-colors" data-i18n="OverlayMenu.Desarrollos"></a>
@@ -121,6 +122,7 @@ const currentLang = getCurrentLocale();
                         <a href="/vrcardio" class="block text-white hover:text-[#CEDF00] transition-colors" style="font-size: min(1.4em, min(12vw, 35px));" data-i18n="OverlayMenu.VRCardio"></a>
                         <a href="/pras" class="block text-white hover:text-[#CEDF00] transition-colors" style="font-size: min(1.4em, min(12vw, 35px));" data-i18n="OverlayMenu.PRAS"></a>
                         <a href="/magallanes" class="block text-white hover:text-[#CEDF00] transition-colors" style="font-size: min(1.4em, min(12vw, 35px));" data-i18n="OverlayMenu.Magallanes"></a>
+                        <a href="/edfs" class="block text-white hover:text-[#CEDF00] transition-colors" style="font-size: min(1.4em, min(12vw, 35px));" data-i18n="OverlayMenu.EDFS"></a>
                     </div>
                 </div>
                 
@@ -480,15 +482,17 @@ const currentLang = getCurrentLocale();
     #submenu-actualidad-movil.is-open a:nth-child(1) {
         transition-delay: 0.1s;
     }
-
     #submenu-movil.is-open a:nth-child(2),
     #submenu-actualidad-movil.is-open a:nth-child(2) {
         transition-delay: 0.2s;
     }
-
     #submenu-movil.is-open a:nth-child(3),
     #submenu-actualidad-movil.is-open a:nth-child(3) {
         transition-delay: 0.3s;
+    }
+    #submenu-movil.is-open a:nth-child(4),
+    #submenu-actualidad-movil.is-open a:nth-child(4) {
+        transition-delay: 0.4s;
     }
 
     #submenu-movil.is-open a,
@@ -529,21 +533,27 @@ const currentLang = getCurrentLocale();
     #submenu-escritorio.show-animation a:nth-child(1) {
         transition-delay: 0.1s;
     }
-
     #submenu-escritorio.show-animation a:nth-child(2) {
         transition-delay: 0.2s;
     }
-
     #submenu-escritorio.show-animation a:nth-child(3) {
         transition-delay: 0.3s;
+    }
+    #submenu-escritorio.show-animation a:nth-child(4) {
+        transition-delay: 0.4s;
     }
 
     #submenu-actualidad-escritorio.show-animation a:nth-child(1) {
         transition-delay: 0.1s;
     }
-
     #submenu-actualidad-escritorio.show-animation a:nth-child(2) {
         transition-delay: 0.2s;
+    }
+    #submenu-actualidad-escritorio.show-animation a:nth-child(3) {
+        transition-delay: 0.3s;
+    }
+    #submenu-actualidad-escritorio.show-animation a:nth-child(4) {
+        transition-delay: 0.4s;
     }
 
     #submenu-escritorio.show-animation a,

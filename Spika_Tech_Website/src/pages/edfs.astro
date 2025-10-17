@@ -1,0 +1,273 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Layout from '../layouts/Layout.astro';
+import SideNav from '../components/SideNav.astro';
+
+const sections = [
+  { num: '01', title: 'EDFS.CASSATA' },
+  { num: '02', title: 'EDFS.SESSIOP' },
+  { num: '03', title: 'EDFS.EISNET' },
+  { num: '04', title: 'EDFS.REACT' },
+];
+---
+
+<Layout>
+  <Header />
+  <SideNav sections={sections} />
+
+  <main id="main" class="w-full min-h-screen">
+    
+    <!-- HERO -->
+    <section id="edfs-hero" class="px-6 sm:px-8 md:px-[100px] py-20 relative overflow-hidden flex items-center justify-center text-center px-6 sm:px-12 md:px-20">
+      <div class="absolute inset-0 z-0">
+      <img 
+        src="/assets/edfs/efd_background.png" 
+        alt="" 
+        class="w-full h-full object-cover opacity-60"
+      />
+      </div>
+      <div class="relative z-10">
+      <h1 
+        class="font-['Trebuchet_MS'] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-[#003035] drop-shadow-lg"
+        data-i18n="EDFS.title">
+      </h1>
+      <p 
+        class="mt-6 text-[#003035] text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed"
+        data-i18n="EDFS.subtitle">
+      </p>
+      </div>
+    </section>
+
+    <!-- ==================================================== -->
+    <!-- 01: CASSATA (Fondo oscuro) -->
+    <!-- ==================================================== -->
+    <section class="px-6 sm:px-8 md:px-[100px] py-20 bg-[#003035] text-white" >
+      <h2 class="text-3xl sm:text-4xl font-semibold text-[#cedf00] font-['Trebuchet_MS']" data-i18n="EDFS.CASSATA.title"></h2>
+
+      <div class="flex justify-center mt-[5vh] mb-[5vh]">
+        <img src="/assets/edfs/CASSATA.png" alt="CASSATA Logo"
+             class="h-40 w-auto object-contain bg-white rounded-2xl px-6 shadow-lg hover:scale-105 transition-transform duration-300" />
+      </div>
+
+      <p class="mt-4 text-white/80 text-base sm:text-lg leading-relaxed" data-i18n="EDFS.CASSATA.description"></p>
+    
+      <h3 class="mt-8 font-semibold text-xl sm:text-2xl" data-i18n="EDFS.CASSATA.section1_title"></h3>
+      <p class="mt-3 text-white/80" data-i18n="EDFS.CASSATA.section1_paragraph"></p>
+    
+      <h3 class="mt-10 font-semibold text-xl sm:text-2xl" data-i18n="EDFS.CASSATA.section2_title"></h3>
+      <p class="mt-3 text-white/80" data-i18n="EDFS.CASSATA.section2_paragraph"></p>
+    
+      <h3 class="mt-10 font-semibold text-xl sm:text-2xl" data-i18n="EDFS.CASSATA.section3_title"></h3>
+      <p class="mt-3 text-white/80" data-i18n="EDFS.CASSATA.section3_paragraph"></p>
+
+      <!-- Disclaimer -->
+      <div class="flex flex-col md:flex-row items-center gap-8 mt-12 border-t border-white/10 pt-6">
+        <img src="assets/edfs/funded_white.png" alt="EU Logo"
+             class="h-24 w-auto" />
+
+        <div class="flex items-start gap-3 text-white/80 max-w-3xl">
+          <svg xmlns="http://www.w3.org/2000/svg" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke-width="2" 
+              stroke="#cedf00" 
+              class="w-7 h-7 mt-1 flex-shrink-0">
+            <path stroke-linecap="round" stroke-linejoin="round" 
+                  d="M12 9h.01M12 12v3m0 6a9 9 0 110-18 9 9 0 010 18z" />
+          </svg>
+
+          <div>
+            <p class="text-sm italic" data-i18n="EDFS.CASSATA.disclaimer"></p>
+            <p class="mt-1 text-sm text-white/70">
+              Grant Agreement No: <span class="font-semibold">101121447</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================== -->
+    <!-- 02: SESSIOP (Fondo claro) -->
+    <!-- ==================================================== -->
+    <section class="px-6 sm:px-8 md:px-[100px] py-20 bg-white text-[#003035]" >
+      <h2 class="text-3xl sm:text-4xl font-semibold font-['Trebuchet_MS']" data-i18n="EDFS.SESSIOP.title"></h2>
+
+      <div class="flex justify-center mt-[5vh] mb-[5vh]">
+        <img src="/assets/edfs/SESSIOP.png" alt="SESSIOP Logo"
+             class="h-40 w-auto object-contain p-6 hover:scale-105 transition-transform duration-300" />
+      </div>
+
+      <p class="mt-4 text-[#003035]/80 text-base sm:text-lg leading-relaxed" data-i18n="EDFS.SESSIOP.description"></p>
+    
+      <h3 class="mt-8 font-semibold text-xl sm:text-2xl" data-i18n="EDFS.SESSIOP.section1_title"></h3>
+      <p class="mt-3 text-[#003035]/80" data-i18n="EDFS.SESSIOP.section1_paragraph"></p>
+    
+      <ul class="list-disc list-inside mt-3 space-y-2">
+        <li data-i18n="EDFS.SESSIOP.section1_list.0"></li>
+        <li data-i18n="EDFS.SESSIOP.section1_list.1"></li>
+        <li data-i18n="EDFS.SESSIOP.section1_list.2"></li>
+      </ul>
+    
+      <p class="mt-3 text-[#003035]/80" data-i18n="EDFS.SESSIOP.section1_conclusion"></p>
+      
+      <h3 class="mt-10 font-semibold text-xl sm:text-2xl" data-i18n="EDFS.SESSIOP.section2_title"></h3>
+      <p class="mt-3 text-[#003035]/80" data-i18n="EDFS.SESSIOP.section2_paragraph"></p>
+    
+      <p class="mt-6 font-medium text-[#003035]/90" data-i18n="EDFS.SESSIOP.estimated_cost"></p>
+
+      <div class="flex justify-center my-8">
+        <div class="w-full max-w-2xl aspect-video">
+          <iframe 
+            class="w-full h-full rounded-xl shadow-lg"
+            
+            src="https://www.youtube.com/embed/Mx724xZqoaU" 
+            title="YouTube video player" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Disclaimer -->
+      <div class="flex flex-col md:flex-row items-center gap-8 mt-12 border-t border-[#003035]/10 pt-6">
+        <img src="assets/edfs/funded_blue.png" alt="EU Logo"
+             class="h-24 w-auto" />
+        <div class="flex items-start gap-3 text-[#003035]/80 max-w-3xl">
+          <svg xmlns="http://www.w3.org/2000/svg" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke-width="2" 
+              stroke="#003035" 
+              class="w-7 h-7 mt-1 flex-shrink-0">
+            <path stroke-linecap="round" stroke-linejoin="round" 
+                  d="M12 9h.01M12 12v3m0 6a9 9 0 110-18 9 9 0 010 18z" />
+          </svg>
+
+          <div>
+            <p class="text-sm italic" data-i18n="EDFS.SESSIOP.disclaimer"></p>
+            <p class="mt-1 text-sm text-[#003035]/70">
+              Grant Agreement No: <span class="font-semibold">101121440</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================== -->
+    <!-- 03: EISNET (Fondo oscuro) -->
+    <!-- ==================================================== -->
+    <section class="px-6 sm:px-8 md:px-[100px] py-20 bg-[#003035] text-white" >
+      <h2 class="text-3xl sm:text-4xl font-semibold text-[#cedf00] font-['Trebuchet_MS']" data-i18n="EDFS.EISNET.title"></h2>
+
+      <div class="flex justify-center mt-[5vh] mb-[5vh]">
+        <img src="/assets/edfs/EISNET.png" alt="EISNET Logo"
+             class="h-40 w-auto object-contain bg-white rounded-2xl px-6 shadow-lg hover:scale-105 transition-transform duration-300" />
+      </div>
+
+      <p class="mt-4 text-white/80 text-base sm:text-lg leading-relaxed" data-i18n="EDFS.EISNET.description"></p>
+    
+      <h3 class="mt-8 font-semibold text-xl sm:text-2xl" data-i18n="EDFS.EISNET.section1_title"></h3>
+      <p class="mt-3 text-white/80" data-i18n="EDFS.EISNET.section1_paragraph"></p>
+    
+      <h3 class="mt-10 font-semibold text-xl sm:text-2xl" data-i18n="EDFS.EISNET.section2_title"></h3>
+      <p class="mt-3 text-white/80" data-i18n="EDFS.EISNET.section2_paragraph1"></p>
+      <p class="mt-3 text-white/80" data-i18n="EDFS.EISNET.section2_paragraph2"></p>
+    
+      <h3 class="mt-10 font-semibold text-xl sm:text-2xl" data-i18n="EDFS.EISNET.section3_title"></h3>
+      <p class="mt-3 text-white/80" data-i18n="EDFS.EISNET.section3_paragraph"></p>
+    
+      <h3 class="mt-10 font-semibold text-xl sm:text-2xl" data-i18n="EDFS.EISNET.section4_title"></h3>
+      <p class="mt-3 text-white/80" data-i18n="EDFS.EISNET.section4_paragraph"></p>
+    
+      <h4 class="mt-10 font-semibold text-lg sm:text-xl" data-i18n="EDFS.EISNET.disclaimer_title"></h4>
+      <ul class="list-disc list-inside mt-3 space-y-2">
+        <li data-i18n="EDFS.EISNET.disclaimer_list.0"></li>
+        <li data-i18n="EDFS.EISNET.disclaimer_list.1"></li>
+      </ul>
+
+      <!-- Disclaimer -->
+      <div class="flex flex-col md:flex-row items-center gap-8 mt-12 border-t border-white/10 pt-6">
+        <img src="assets/edfs/funded_white.png" alt="EU Logo"
+             class="h-24 w-auto" />
+        <div class="flex items-start gap-3 text-white/80 max-w-3xl">
+          <svg xmlns="http://www.w3.org/2000/svg" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke-width="2" 
+              stroke="#cedf00" 
+              class="w-7 h-7 mt-1 flex-shrink-0">
+            <path stroke-linecap="round" stroke-linejoin="round" 
+                  d="M12 9h.01M12 12v3m0 6a9 9 0 110-18 9 9 0 010 18z" />
+          </svg>
+
+          <div>
+            <p class="text-sm italic" data-i18n="EDFS.EISNET.disclaimer"></p>
+            <p class="mt-1 text-sm text-white/70">
+              Grant Agreement No: <span class="font-semibold">101168047</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================== -->
+    <!-- 04: REACT (Fondo claro) -->
+    <!-- ==================================================== -->
+    <section class="px-6 sm:px-8 md:px-[100px] py-20 bg-white text-[#003035]" >
+      <h2 class="text-3xl sm:text-4xl font-semibold font-['Trebuchet_MS']" data-i18n="EDFS.REACTII.title"></h2>
+
+      <div class="flex justify-center mt-[5vh] mb-[5vh]">
+        <img src="/assets/edfs/REACT.png" alt="REACT Logo"
+             class="h-40 w-auto object-contain px-6 hover:scale-105 transition-transform duration-300" />
+      </div>
+
+      <p class="mt-4 text-[#003035]/80 text-base sm:text-lg leading-relaxed" data-i18n="EDFS.REACTII.description"></p>
+    
+      <h3 class="mt-8 font-semibold text-xl sm:text-2xl" data-i18n="EDFS.REACTII.section1_title"></h3>
+      <p class="mt-3 text-[#003035]/80" data-i18n="EDFS.REACTII.section1_paragraph"></p>
+    
+      <h3 class="mt-10 font-semibold text-xl sm:text-2xl" data-i18n="EDFS.REACTII.section2_title"></h3>
+      <p class="mt-3 text-[#003035]/80" data-i18n="EDFS.REACTII.section2_paragraph1"></p>
+    
+      <p class="mt-3 font-medium text-[#003035]/90" data-i18n="EDFS.REACTII.section2_intro"></p>
+      <ul class="list-disc list-inside mt-2 space-y-2">
+        <li data-i18n="EDFS.REACTII.section2_list.0"></li>
+        <li data-i18n="EDFS.REACTII.section2_list.1"></li>
+        <li data-i18n="EDFS.REACTII.section2_list.2"></li>
+      </ul>
+    
+      <p class="mt-3 text-[#003035]/80" data-i18n="EDFS.REACTII.section2_conclusion"></p>
+    
+      <h3 class="mt-10 font-semibold text-xl sm:text-2xl" data-i18n="EDFS.REACTII.section3_title"></h3>
+      <p class="mt-3 text-[#003035]/80" data-i18n="EDFS.REACTII.section3_paragraph"></p>
+
+      <!-- Disclaimer -->
+      <div class="flex flex-col md:flex-row items-center gap-8 mt-12 border-t border-[#003035]/10 pt-6">
+        <img src="assets/edfs/funded_blue.png" alt="EU Logo"
+             class="h-24 w-auto" />
+        <div class="flex items-start gap-3 text-[#003035]/80 max-w-3xl">
+          <svg xmlns="http://www.w3.org/2000/svg" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke-width="2" 
+              stroke="#003035" 
+              class="w-7 h-7 mt-1 flex-shrink-0">
+            <path stroke-linecap="round" stroke-linejoin="round" 
+                  d="M12 9h.01M12 12v3m0 6a9 9 0 110-18 9 9 0 010 18z" />
+          </svg>
+
+          <div>
+            <p class="text-sm italic" data-i18n="EDFS.REACTII.disclaimer"></p>
+            <p class="mt-1 text-sm text-[#003035]/70">
+              Grant Agreement No: <span class="font-semibold">101121456</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+

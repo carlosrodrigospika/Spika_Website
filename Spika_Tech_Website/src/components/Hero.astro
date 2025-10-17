@@ -1,9 +1,8 @@
-<!-- Nueva sección de video con efecto parallax -->
 <section id="hero-video" class="relative h-screen overflow-hidden">
-    <img src="/assets/Nucleo_Spika.png" alt="Spika Tech" 
-    class="absolute inset-0 w-full h-full object-cover"
-    style="z-index: 1;"
-    id="hero-image-element">
+    <canvas
+        id="shaderCanvas"
+        class="absolute inset-0 w-full h-full object-cover"
+        style="z-index: 1;"></canvas>
     
     <!-- Marquee de texto centrado optimizado -->
     <div class="absolute w-full flex items-center justify-center h-full z-10 pointer-events-none px-2" id="marquee-container">
@@ -117,8 +116,6 @@
     let marqueeObserver: IntersectionObserver | null = null;
     let heroObserver: IntersectionObserver | null = null;
 
-      
-
     // Función para inicializar el Intersection Observer para el marquee
     function initMarqueeObserver() {
         const marqueeContainer = document.getElementById('marquee-container');
@@ -148,7 +145,7 @@
 
     // Función para inicializar el Intersection Observer para la sección Hero
     function initHeroObserver() {
-        const heroSection = document.getElementById('section1');
+        const heroSection = document.getElementById("section1");
         if (!heroSection) return;
 
         heroObserver = new IntersectionObserver((entries) => {
@@ -241,14 +238,16 @@
         animationId = requestAnimationFrame(animate);
         if (!isVisible || !modelGroup) return;
         // Interpolación suave hacia la rotación objetivo
-        modelGroup.rotation.x += (targetRotationX - modelGroup.rotation.x) * 0.08;
-        modelGroup.rotation.y += (targetRotationY - modelGroup.rotation.y) * 0.08;
+        modelGroup.rotation.x +=
+            (targetRotationX - modelGroup.rotation.x) * 0.08;
+        modelGroup.rotation.y +=
+            (targetRotationY - modelGroup.rotation.y) * 0.08;
         renderer.render(scene, camera);
     }
 
     function onWindowResize() {
         if (!camera || !renderer) return;
-        const container = document.getElementById('hero-canvas')?.parentElement;
+        const container = document.getElementById("hero-canvas")?.parentElement;
         if (!container) return;
         const width = container.clientWidth;
         const height = container.clientHeight;
@@ -268,60 +267,70 @@
         if (renderer) renderer.dispose();
         if (scene) {
             scene.traverse((child: any) => {
-                if ('geometry' in child && child.geometry && typeof child.geometry.dispose === 'function') {
+                if (
+                    "geometry" in child &&
+                    child.geometry &&
+                    typeof child.geometry.dispose === "function"
+                ) {
                     child.geometry.dispose();
                 }
-                if ('material' in child && child.material) {
+                if ("material" in child && child.material) {
                     if (Array.isArray(child.material)) {
                         child.material.forEach((material: THREE.Material) => {
-                            if (material && typeof material.dispose === 'function') {
+                            if (
+                                material &&
+                                typeof material.dispose === "function"
+                            ) {
                                 material.dispose();
                             }
                         });
-                    } else if (typeof child.material.dispose === 'function') {
+                    } else if (typeof child.material.dispose === "function") {
                         child.material.dispose();
                     }
                 }
             });
         }
-        
+
         // Limpiar observers
         if (videoObserver) videoObserver.disconnect();
         if (marqueeObserver) marqueeObserver.disconnect();
         if (heroObserver) heroObserver.disconnect();
-        
-        window.removeEventListener('resize', onWindowResize);
-        document.removeEventListener('visibilitychange', onVisibilityChange);
-        const canvas = document.getElementById('hero-canvas');
-        if (canvas) canvas.removeEventListener('mousemove', onMouseMove);
+
+        window.removeEventListener("resize", onWindowResize);
+        document.removeEventListener("visibilitychange", onVisibilityChange);
+        const canvas = document.getElementById("hero-canvas");
+        if (canvas) canvas.removeEventListener("mousemove", onMouseMove);
     }
 
-         document.addEventListener('DOMContentLoaded', () => {
-         initThreeJS();
-         initMarqueeObserver();
-         initHeroObserver();
-     });
-    window.addEventListener('beforeunload', cleanup);
+    document.addEventListener("DOMContentLoaded", () => {
+        initThreeJS();
+        initMarqueeObserver();
+        initHeroObserver();
+    });
+    window.addEventListener("beforeunload", cleanup);
 
     // Animación de entrada para textos con Intersection Observer
     function initHeroAnimations() {
-        const sectionBody = document.getElementById('section1');
+        const sectionBody = document.getElementById("section1");
         if (!sectionBody) return;
 
         // Crear Intersection Observer para detectar cuando la sección es visible
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    // La sección es visible, iniciar animaciones
-                    animateHeroTexts();
-                    // Una vez que se han activado las animaciones, desconectar el observer
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.3, // Se activa cuando el 30% de la sección es visible
-            rootMargin: '0px 0px -50px 0px' // Se activa un poco antes de que la sección esté completamente visible
-        });
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        // La sección es visible, iniciar animaciones
+                        animateHeroTexts();
+                        // Una vez que se han activado las animaciones, desconectar el observer
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            {
+                threshold: 0.3, // Se activa cuando el 30% de la sección es visible
+                rootMargin: "0px 0px -50px 0px", // Se activa un poco antes de que la sección esté completamente visible
+            },
+        );
 
         // Observar la sección Hero
         observer.observe(sectionBody);
@@ -329,94 +338,219 @@
 
     function animateHeroTexts() {
         // Verificar si las animaciones ya se han ejecutado
-        const titleCol = document.getElementById('hero-title-col');
-        if (titleCol && titleCol.classList.contains('visible')) {
+        const titleCol = document.getElementById("hero-title-col");
+        if (titleCol && titleCol.classList.contains("visible")) {
             return; // Las animaciones ya se ejecutaron
         }
 
         // Título izquierda
         if (titleCol) {
-            setTimeout(() => titleCol.classList.add('visible'), 200);
+            setTimeout(() => titleCol.classList.add("visible"), 200);
         }
-        
+
         // Puntos derecha (escalonado fijo)
-        const points = document.querySelectorAll('.fade-up');
+        const points = document.querySelectorAll(".fade-up");
         const baseDelay = 400;
         const step = 200;
         points.forEach((el, idx) => {
-            setTimeout(() => el.classList.add('visible'), baseDelay + idx * step);
+            setTimeout(
+                () => el.classList.add("visible"),
+                baseDelay + idx * step,
+            );
         });
     }
 
-    document.addEventListener('DOMContentLoaded', initHeroAnimations);
+    document.addEventListener("DOMContentLoaded", initHeroAnimations);
 
-         // Control de la imagen y efecto parallax optimizado
-     function initImageSection() {
-         const image = document.querySelector('#hero-video img') as HTMLImageElement;
-         const imageSection = document.getElementById('hero-video');
-         const sectionBody = document.getElementById('section1');
-         
-         if (!image || !imageSection || !sectionBody) return;
- 
-         // Asegurar que la imagen esté cargada correctamente
-         if (image.complete) {
-             image.style.opacity = '1';
-         } else {
-             image.addEventListener('load', () => {
-                 image.style.opacity = '1';
-             });
-         }
- 
-         // Efecto parallax mejorado con throttling
-         let ticking = false;
-         
-         function updateParallax() {
-             const scrolled = window.pageYOffset;
-             const imageHeight = window.innerHeight;
-             
-             // Mostrar/ocultar la imagen basado en la posición del scroll
-             if (scrolled >= imageHeight) {
-                 // Ocultar la imagen cuando la sección de contenido pase por encima
-                 if (imageSection) {
-                     imageSection.style.display = 'none';
-                 }
-             } else {
-                 // Mostrar la imagen cuando estemos en la parte superior
-                 if (imageSection) {
-                     imageSection.style.position = 'fixed';
-                     imageSection.style.top = '0';
-                     imageSection.style.display = 'block';
-                 }
-             }
-             
-             ticking = false;
-         }
- 
-         function requestTick() {
-             if (!ticking) {
-                 requestAnimationFrame(updateParallax);
-                 ticking = true;
-             }
-         }
- 
-         // Ejecutar inmediatamente para establecer el estado inicial
-         updateParallax();
-         
-         window.addEventListener('scroll', requestTick);
-         window.addEventListener('resize', requestTick);
-     }
- 
-     document.addEventListener('DOMContentLoaded', initImageSection);
+    // Control de la imagen y efecto parallax optimizado
+    function initImageSection() {
+        const image : any = document.querySelector(
+            "#hero-video",
+        ) as HTMLElement;
+        const imageSection = document.getElementById("hero-video");
+        const sectionBody = document.getElementById("section1");
+
+        if (!image || !imageSection || !sectionBody) return;
+
+        // Asegurar que la imagen esté cargada correctamente
+        if (image.complete) {
+            image.style.opacity = "1";
+        } else {
+            image.addEventListener("load", () => {
+                image.style.opacity = "1";
+            });
+        }
+
+        // Efecto parallax mejorado con throttling
+        let ticking = false;
+
+        function updateParallax() {
+            const scrolled = window.pageYOffset;
+            const imageHeight = window.innerHeight;
+
+            // Mostrar/ocultar la imagen basado en la posición del scroll
+            if (scrolled >= imageHeight) {
+                // Ocultar la imagen cuando la sección de contenido pase por encima
+                if (imageSection) {
+                    imageSection.style.display = "none";
+                }
+            } else {
+                // Mostrar la imagen cuando estemos en la parte superior
+                if (imageSection) {
+                    imageSection.style.position = "fixed";
+                    imageSection.style.top = "0";
+                    imageSection.style.display = "block";
+                }
+            }
+
+            ticking = false;
+        }
+
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        }
+
+        // Ejecutar inmediatamente para establecer el estado inicial
+        updateParallax();
+
+        window.addEventListener("scroll", requestTick);
+        window.addEventListener("resize", requestTick);
+    }
+
+    document.addEventListener("DOMContentLoaded", initImageSection);
+
+    //TOP SHADER
+    const canvasTop: any = document.getElementById(
+        "shaderCanvas",
+    )! as HTMLCanvasElement;
+
+    const sceneTop = new THREE.Scene();
+    const cameraTop = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    const rendererTop: any = new THREE.WebGLRenderer({
+        canvas: canvasTop,
+        antialias: true,
+    });
+    rendererTop.setSize(window.innerWidth, window.innerHeight);
+
+    const uniforms = {
+        iTime: { value: 0 },
+        iResolution: {
+            value: new THREE.Vector3(window.innerWidth, window.innerHeight, 1),
+        },
+    };
+
+    const vertexShader = `
+        varying vec2 vUv;
+        void main() {
+            vUv = uv;
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+    `;
+
+    const fragmentShader = `
+        uniform float iTime;
+        uniform vec3 iResolution;
+        varying vec2 vUv;
+
+        float gradient(float p)
+        {
+            vec2 pt0 = vec2(0.00,0.0);
+            vec2 pt1 = vec2(0.86,0.1);
+            vec2 pt2 = vec2(0.955,0.40);
+            vec2 pt3 = vec2(0.99,1.0);
+            vec2 pt4 = vec2(1.00,0.0);
+            if (p < pt0.x) return pt0.y;
+            if (p < pt1.x) return mix(pt0.y, pt1.y, (p-pt0.x) / (pt1.x-pt0.x));
+            if (p < pt2.x) return mix(pt1.y, pt2.y, (p-pt1.x) / (pt2.x-pt1.x));
+            if (p < pt3.x) return mix(pt2.y, pt3.y, (p-pt2.x) / (pt3.x-pt2.x));
+            if (p < pt4.x) return mix(pt3.y, pt4.y, (p-pt3.x) / (pt4.x-pt3.x));
+            return pt4.y;
+        }
+
+        float waveN(vec2 uv, vec2 s12, vec2 t12, vec2 f12, vec2 h12)
+        {
+            vec2 x12 = sin((iTime * s12 + t12 + uv.x) * f12) * h12;
+            float g = gradient(uv.y / (0.5 + x12.x + x12.y));
+            return g * 0.27;
+        }
+
+        float wave1(vec2 uv)
+        {
+            return waveN(vec2(uv.x,uv.y-0.25), vec2(0.03,0.06), vec2(0.00,0.02), vec2(8.0,3.7), vec2(0.06,0.05));
+        }
+
+        float wave2(vec2 uv)
+        {
+            return waveN(vec2(uv.x,uv.y-0.25), vec2(0.04,0.07), vec2(0.16,-0.37), vec2(6.7,2.89), vec2(0.06,0.05));
+        }
+
+        float wave3(vec2 uv)
+        {
+            return waveN(vec2(uv.x,0.75-uv.y), vec2(0.035,0.055), vec2(-0.09,0.27), vec2(7.4,2.51), vec2(0.06,0.05));
+        }
+
+        float wave4(vec2 uv)
+        {
+            return waveN(vec2(uv.x,0.75-uv.y), vec2(0.032,0.09), vec2(0.08,-0.22), vec2(6.5,3.89), vec2(0.06,0.05));
+        }
+
+        void main() {
+            vec2 uv = vUv;
+            float waves = wave1(uv) + wave2(uv) + wave3(uv) + wave4(uv);
+            
+            float x = uv.x;
+            float y = 1.0 - uv.y;
+
+            vec3 bg = mix(vec3(0.0, 0.188, 0.208), vec3(0.0, 0.188, 0.208), (x+y)*0.7);
+            vec3 waveColor = vec3(1.0, 1.0, 1.0); // blanco
+            vec3 ac = bg + waveColor * waves * 1.5;
+
+            gl_FragColor = vec4(ac, 1.0);
+        }
+    `;
+
+    const material = new THREE.ShaderMaterial({
+        uniforms,
+        vertexShader,
+        fragmentShader,
+    });
+
+    const geometry = new THREE.PlaneGeometry(2, 2);
+    const mesh = new THREE.Mesh(geometry, material);
+    sceneTop.add(mesh);
+
+    function animateTop(time: number) {
+        uniforms.iTime.value = time * 0.001;
+        rendererTop.render(sceneTop, cameraTop);
+        requestAnimationFrame(animateTop);
+    }
+    requestAnimationFrame(animateTop);
+
+    window.addEventListener("resize", () => {
+        rendererTop.setSize(window.innerWidth, window.innerHeight);
+        uniforms.iResolution.value.set(
+            window.innerWidth,
+            window.innerHeight,
+            1,
+        );
+    });
 </script>
 
 <style>
     @keyframes marquee {
-    0% { transform: translateX(0);}
-    100% { transform: translateX(-33.333%);}
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-33.333%);
+        }
     }
     .animate-marquee {
-    animation: marquee 60s linear infinite;
-    width: max-content;
+        animation: marquee 60s linear infinite;
+        width: max-content;
     }
 
     /* Estilos para la sección de video con parallax */
@@ -428,13 +562,6 @@
         height: 100vh;
         z-index: 1;
     }
-
-         #hero-video img {
-         width: 100%;
-         height: 100%;
-         object-fit: cover;
-         transition: opacity 0.3s ease-in-out;
-     }
 
     /* Asegurar que la sección de contenido pase por encima */
     #section1 {
@@ -455,7 +582,7 @@
     .scroll-animate-item {
         will-change: opacity, transform;
     }
-    
+
     .scroll-animate-item.opacity-100 {
         opacity: 1 !important;
         transform: translateY(0) !important;
@@ -474,7 +601,9 @@
     .fade-up {
         opacity: 0;
         transform: translateY(30px);
-        transition: opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1);
+        transition:
+            opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+            transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .fade-up.visible {
         opacity: 1;
@@ -483,7 +612,9 @@
     .fade-down {
         opacity: 0;
         transform: translateY(-30px);
-        transition: opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1);
+        transition:
+            opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+            transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .fade-down.visible {
         opacity: 1;
@@ -492,57 +623,57 @@
 
     /* --- RESPONSIVE HERO --- */
     @media (max-width: 900px) {
-      .hero-content {
-        height: auto !important;
-        min-height: 70vh;
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-      }
-      .hero-flex {
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        gap: 2.5rem;
-        height: auto !important;
-      }
-      .hero-title {
-        font-size: 2rem !important;
-        text-align: left !important;
-        line-height: 1.2 !important;
-        margin-bottom: 1.5rem;
-      }
-      .hero-points {
-        width: 100% !important;
-        gap: 1.5rem !important;
-      }
-      .hero-point-text {
-        font-size: 1.1rem !important;
-        padding-top: 0.5rem !important;
-      }
-      .hero-btn-container {
-        justify-content: flex-start !important;
-        margin-top: 2rem;
-      }
-      section.hero-responsive {
-        padding-left: 1.2rem !important;
-        padding-right: 1.2rem !important;
-      }
+        .hero-content {
+            height: auto !important;
+            min-height: 70vh;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+        .hero-flex {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 2.5rem;
+            height: auto !important;
+        }
+        .hero-title {
+            font-size: 2rem !important;
+            text-align: left !important;
+            line-height: 1.2 !important;
+            margin-bottom: 1.5rem;
+        }
+        .hero-points {
+            width: 100% !important;
+            gap: 1.5rem !important;
+        }
+        .hero-point-text {
+            font-size: 1.1rem !important;
+            padding-top: 0.5rem !important;
+        }
+        .hero-btn-container {
+            justify-content: flex-start !important;
+            margin-top: 2rem;
+        }
+        section.hero-responsive {
+            padding-left: 1.2rem !important;
+            padding-right: 1.2rem !important;
+        }
     }
     @media (max-width: 600px) {
-      .hero-title {
-        font-size: 1.3rem !important;
-      }
-      .hero-point-text {
-        font-size: 0.98rem !important;
-      }
-      .hero-btn-container svg {
-        width: 38px !important;
-        height: 38px !important;
-      }
+        .hero-title {
+            font-size: 1.3rem !important;
+        }
+        .hero-point-text {
+            font-size: 0.98rem !important;
+        }
+        .hero-btn-container svg {
+            width: 38px !important;
+            height: 38px !important;
+        }
     }
     @media (min-width: 768px) and (max-width: 1100px) {
-      section.hero-responsive {
-        padding-left: 100px !important;
-      }
+        section.hero-responsive {
+            padding-left: 100px !important;
+        }
     }
 
     /* Estilos para el botón de flecha con efecto deslizamiento como el header */
@@ -552,13 +683,13 @@
     }
 
     .btn-slide-arrow::after {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: #CEDF00;
+        background-color: #cedf00;
         z-index: 1;
         transform: translateX(-100%);
         transition: transform 0.4s ease;
@@ -577,5 +708,4 @@
     .btn-slide-arrow:hover svg {
         filter: brightness(0) invert(1);
     }
-
 </style>

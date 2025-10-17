@@ -13,7 +13,8 @@
     "PRAS": "PRAS",
     "Magallanes": "Erste Weltumsegelung",
     "Eventos": "Veranstaltungen",
-    "Actualidad": "Nachrichten"
+    "Actualidad": "Nachrichten",
+    "EDFS": "EDFS-Projekte"
   },
   "Desarrollos": {
     "title": "ENTWICKLUNG UND FORSCHUNG",
@@ -712,5 +713,72 @@
     "past": "Past events",
     "upcoming": "Upcoming events",
     "event_date": "Event date"
+  },
+  "EDFS": {
+    "title": "EDFS: Europäische Verteidigungsfonds",
+    "subtitle": "Bei Spika Tech sind wir stolz darauf, an verschiedenen Projekten des Europäischen Verteidigungsfonds mitarbeiten zu können.",
+    "SESSIOP": {
+      "title": "Spika Tech beteiligt sich an der Zukunft der Flugverkehrskontrolle mit dem SESIOP-Projekt",
+      "description": "Spika Tech ist Teil des Konsortiums, das das innovative SESIOP-Projekt (Single European Sky and Interoperability Project) leitet. Dieses Projekt, das von der Europäischen Union im Rahmen des Europäischen Verteidigungsfonds finanziert wird, stellt einen entscheidenden Schritt zur Entwicklung eines sichereren und effizienteren europäischen Luftraums dar.",
+      "section1_title": "Eine gemeinsame Anstrengung für die Flugsicherheit",
+      "section1_paragraph": "Das Hauptziel des SESIOP-Projekts besteht darin, die Interoperabilität zwischen militärischen Luft-C2-Systemen (Command and Control) und zivilen Flugverkehrskontrollsystemen im Rahmen des Single European Sky (SES) zu verbessern. Unsere Arbeit, zusammen mit einem angesehenen Konsortium von 20 Partnern aus sechs europäischen Ländern, konzentriert sich auf die Entwicklung einer Architektur, die einen zuverlässigeren, sichereren und geschützteren Datenaustausch zwischen zivilen und militärischen Kontrollzentren gewährleistet.",
+      "section1_list": [
+        "Erhöhung der Interoperabilität militärischer Luft-C2-Systeme, um effiziente und sichere Operationen in allen Phasen zu gewährleisten.",
+        "Entwicklung innovativer Lösungen, die die Interaktionen im zivilen und militärischen Luftverkehr verbessern.",
+        "Nutzung modernster Technologien und Integration von Errungenschaften aus dem SESAR-Rahmen, wie System Wide Information Management (SWIM) und Trajectory Based Operations (TBO)."
+      ],
+      "section1_conclusion": "Bei Spika Tech tragen wir zu einer besseren Integration des Luftverkehrs bei, optimieren Verfahren und gewährleisten die Sicherheit im europäischen Luftraum.",
+      "section2_title": "Unsere Projektpartner",
+      "section2_paragraph": "Dieses ehrgeizige Projekt profitiert vom Fachwissen eines internationalen Konsortiums. Zu den Partnern zählen neben Spika Tech renommierte Unternehmen und Organisationen der Branche wie AIRBUS, Indra, Leonardo S.p.A. und andere. Gemeinsam arbeiten wir daran, die Zukunft der Flugverkehrskontrolle zu gestalten und eine robustere und koordiniertere Infrastruktur zum Nutzen aller zu schaffen.",
+      "estimated_cost": "Geschätzte Gesamtkosten: €19.055.872,29",
+      "disclaimer": "Dieses Projekt wird von der Europäischen Union finanziert. Der Inhalt liegt in der alleinigen Verantwortung von Spika Tech und spiegelt nicht unbedingt die Ansichten der Europäischen Union wider."
+    },
+    "EISNET": {
+      "title": "EISNET: Das europäische Sensornetzwerk, an dem Spika Tech teilnimmt und die Zukunft der Verteidigung vorantreibt",
+      "description": "EISNET (European Interactive Sensor-Based Dynamic Defence Network) ist ein ehrgeiziges europäisches Projekt, das durch den Europäischen Verteidigungsfonds (EDF) finanziert wird. Ziel ist es, die Luftverteidigung gegen fortschrittliche Bedrohungen wie Drohnenschwärme oder Hyperschallraketen zu stärken. Indra und Spika Tech sind die einzigen spanischen Unternehmen, die an diesem Projekt teilnehmen, das von Thales geleitet wird und aus einem Konsortium von 23 Partnern aus 12 Ländern besteht.",
+      "section1_title": "Entwicklung des EAFT-Frameworks",
+      "section1_paragraph": "Das Projekt konzentriert sich auf die Entwicklung des EAFT (EISNET Architecture Framework Tool), eines gemeinsamen Rahmens, der die dynamische Integration von Sensoren, Radaren und Führungs- und Kontrollsystemen verschiedener Hersteller und Länder ermöglicht, um den Echtzeitdatenaustausch zu erleichtern und die Latenz in der Befehlskette zu reduzieren.",
+      "section2_title": "Die Rolle von Spika Tech",
+      "section2_paragraph1": "In diesem Zusammenhang spielt Spika Tech eine Schlüsselrolle, indem es sich auf die Entwicklung fortschrittlicher Software für Sensoren und Radare konzentriert, mit besonderem Schwerpunkt auf der Gestaltung von Datenverarbeitungs- und Analysealgorithmen.",
+      "section2_paragraph2": "Über die technische Umsetzung hinaus trägt Spika Tech zur angewandten Forschung im Bereich Sensoren und Radare bei, um deren Leistung zu optimieren und die Integration in das Multisensor-Netzwerk von EISNET zu erleichtern.",
+      "section3_title": "Ein einzigartiger Beitrag",
+      "section3_paragraph": "Der Beitrag von Spika Tech zum Konsortium zeichnet sich durch seine Expertise in Algorithmen und Software aus. Während andere Partner Wissen in Hardware, Sensorherstellung oder Systemintegration einbringen, sorgt Spika Tech dafür, dass Rohdaten in Echtzeit in verwertbare Informationen umgewandelt werden.",
+      "section4_title": "Strategische Auswirkungen",
+      "section4_paragraph": "Die Teilnahme von Spika Tech an EISNET stärkt nicht nur die Position des Unternehmens im europäischen Verteidigungssektor, sondern trägt auch zur Schaffung einer neuen Generation integrierter Luftverteidigungssysteme bei.",
+      "disclaimer_title": "Haftungsausschluss",
+      "disclaimer_list": [
+        "Fügen Sie das EU-Emblem mit gleicher Prominenz wie die anderen Logos hinzu.",
+        "Halten Sie sich an die üblichen Haftungsausschlüsse ohne Änderungen:"
+      ],
+      "disclaimer": "Dieses Projekt wird von der Europäischen Union finanziert. Der Inhalt liegt in der alleinigen Verantwortung von Spika Tech und spiegelt nicht unbedingt die Ansichten der Europäischen Union wider."},
+    "REACTII": {
+      "title": "REACT II: Europäische Innovation im elektromagnetischen Bereich",
+      "description": "In einem Verteidigungskontext, der durch die rasche Entwicklung der elektromagnetischen Kriegsführung geprägt ist, zielt das REACT II-Projekt darauf ab, die elektronischen Angriffsfähigkeiten der EU-Mitgliedstaaten zu stärken.",
+      "section1_title": "Eine gesamteuropäische Zusammenarbeit",
+      "section1_paragraph": "Dieses ehrgeizige Konsortium besteht aus Branchenführern, Forschungszentren und Universitäten aus ganz Europa, die zusammenarbeiten, um fortschrittliche Lösungen zu entwickeln, die elektronische Kriegsführung, Cyberaktivitäten und Kommando- und Kontrollsysteme integrieren.",
+      "section2_title": "Der Beitrag von Spika Tech",
+      "section2_paragraph1": "Im Rahmen dieses Projekts entwickelt Spika Tech ein Proof-of-Concept, das als Grundlage für ein fortgeschrittenes Missionsplanungs-Framework für elektronische Angriffe dienen wird.",
+      "section2_intro": "Unsere Arbeit konzentriert sich auf:",
+      "section2_list": [
+        "Definition einer offenen und flexiblen Architektur.",
+        "Entwurf von Softwaremodulen und simulierten Einsatzszenarien.",
+        "Integration und Validierung der Endlösung mit unseren Konsortiumspartnern."
+      ],
+      "section2_conclusion": "Bei Spika Tech kombinieren wir Interoperabilität, Modellierung und Optimierung, um ein modulares, skalierbares und anpassbares System zu schaffen, das in verschiedene Szenarien integriert werden kann.",
+      "section3_title": "Zusammenarbeit und Innovation im Dienste Europas",
+      "section3_paragraph": "Durch diese Verteidigungsprojekte bekräftigt Spika Tech sein Engagement für technologische Innovation und internationale Zusammenarbeit, um eine sicherere und technologisch besser vorbereitete Zukunft zu gestalten.",
+      "disclaimer": "Von der Europäischen Union finanziert. Die geäußerten Ansichten und Meinungen sind jedoch ausschließlich die der Autorinnen und Autoren und spiegeln nicht notwendigerweise die der Europäischen Union oder des Europäischen Verteidigungsfonds wider. Weder die Europäische Union noch die Bewilligungsbehörde können dafür verantwortlich gemacht werden."
+    },
+    "CASSATA": {
+      "title": "CASSATA: Fortschrittliche verdeckte und multimodale Sensorsysteme zur Zielerfassung und -erkennung",
+      "description": "Bei Spika Tech sind wir stolz darauf, am CASSATA-Projekt mitzuwirken, einer von der Europäischen Union finanzierten Initiative zur Förderung von Innovationen im Bereich verdeckter Erkennungstechnologien.",
+      "section1_title": "Eine europäische Zusammenarbeit für Innovation",
+      "section1_paragraph": "Als Teil eines Konsortiums von 27 Organisationen aus 9 Ländern trägt Spika Tech zur gemeinsamen Mission bei, fortschrittliche Konzepte, Technologien und Plattformen für multimodale Erkennung zu entwickeln und zu testen.",
+      "section2_title": "Modernste Technologien und Ziele",
+      "section2_paragraph": "Das CASSATA-Projekt konzentriert sich auf Schlüsseltechnologien wie Optronik, Akustik/Seismik, Hochfrequenz- und Radarsysteme sowie adaptive und kollaborative Erkennung, Datenfusion und künstliche Intelligenz.",
+      "section3_title": "Engagement und Vision",
+      "section3_paragraph": "Mit einer Laufzeit von 36 Monaten und einem Gesamtbudget von über 24 Millionen Euro zielt CASSATA darauf ab, einen neuen Standard für Leistung und Interoperabilität von Erkennungssystemen im Verteidigungssektor zu setzen.",
+      "disclaimer": "Dieses Projekt wird von der Europäischen Union finanziert. Der Inhalt liegt in der alleinigen Verantwortung von Spika Tech und spiegelt nicht unbedingt die Ansichten der Europäischen Union wider."
+    }
   }
 }
