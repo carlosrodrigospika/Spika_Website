@@ -1,4 +1,4 @@
-<section id="section2" data-index="1" data-title="Nuestros proyectos" style="background-color: #003035; height: 300vh; padding-left: 110px; padding-right: 20px; padding-bottom: 100px; padding-top: 80px;" class="relative sm:px-8 md:px-12 lg:px-16 xl:px-20">
+<section id="section2" data-index="1" data-title="Nuestros proyectos" style="background-color: #003035; height: 400vh; padding-left: 110px; padding-right: 20px; padding-bottom: 100px; padding-top: 80px;" class="relative sm:px-8 md:px-12 lg:px-16 xl:px-20">
     <div class="sticky top-0 h-screen flex items-center">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Desktop Layout (lg and above) -->
@@ -10,17 +10,22 @@
                     
                     <!-- Scrolling Descriptions Container -->
                     <div class="descriptions-container" style="display: flex; flex-direction: column; height: 100%; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); padding-top: 120px;">
-                        <!-- Description 1: VR-CARDIO -->
+                        <!-- Description 1: EDFs -->
+                        <div class="description-slide flex-shrink-0 fade-up" style="width: 100%; height: 100vh; display: flex; flex-direction: column; justify-content: center;">
+                            <p class="mt-3 md:mt-4 text-gray-400 max-w-md text-sm sm:text-base md:text-lg" style="color: white; font-weight: 300;" data-i18n="Proyectos.edfs.description"></p>
+                        </div>
+                        
+                        <!-- Description 2: VR-CARDIO -->
                         <div class="description-slide flex-shrink-0 fade-up" style="width: 100%; height: 100vh; display: flex; flex-direction: column; justify-content: center;">
                             <p class="mt-3 md:mt-4 text-gray-400 max-w-md text-sm sm:text-base md:text-lg" style="color: white; font-weight: 300;" data-i18n="Proyectos.vrcardio.description"></p>
                         </div>
                         
-                        <!-- Description 2: PRAS -->
+                        <!-- Description 3: PRAS -->
                         <div class="description-slide flex-shrink-0 fade-up" style="width: 100%; height: 100vh; display: flex; flex-direction: column; justify-content: center;">
                             <p class="mt-3 md:mt-4 text-gray-400 max-w-md text-sm sm:text-base md:text-lg" style="color: white; font-weight: 300;" data-i18n="Proyectos.pras.description"></p>
                         </div>
                         
-                        <!-- Description 3: Primera Vuelta al Mundo -->
+                        <!-- Description 4: Primera Vuelta al Mundo -->
                         <div class="description-slide flex-shrink-0 fade-up" style="width: 100%; height: 100vh; display: flex; flex-direction: column; justify-content: center;">
                             <p class="mt-3 md:mt-4 text-gray-400 max-w-md text-sm sm:text-base md:text-lg" style="color: white; font-weight: 300;" data-i18n="Proyectos.magallanes.description"></p>
                         </div>
@@ -31,7 +36,29 @@
                 <div class="relative overflow-hidden" style="height: 100vh;">
                     <div class="projects-container" style="display: flex; flex-direction: column; height: 100%; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);">
                         
-                        <!-- Project 1: VR-CARDIO -->
+                        <!-- Project 1: EDFs -->
+                        <div class="project-slide flex-shrink-0 fade-up" style="width: 100%; height: 100vh; display: flex; flex-direction: column; justify-content: flex-start; padding-top: 60px;">
+                            <div class="flex flex-wrap items-center gap-2 mb-6" style="border-top: 1px solid white; padding-top: 20px;">
+                                <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-white flex-1 min-w-0" style="font-weight: 300;" data-i18n="Proyectos.edfs.title"></h3>
+                                <a href="/edfs" class="btn-slide-arrow flex items-center justify-center rounded-lg border-2 border-[#CEDF00] bg-transparent hover:cursor-pointer transition-all duration-300">
+                                    <svg width="50" height="50" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 16H22M22 16L18 12M22 16L18 20" stroke="#CEDF00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                            </div>
+                            <div id="missile-canvas-container" style="width: auto; height: calc(100vh - 200px); background: transparent; position: relative; flex: 1;">
+                                <model-viewer 
+                                    id="missile-model"
+                                    src="/assets/models/frigate.glb"
+                                    alt="EDFs"
+                                    auto-rotate
+                                    camera-controls
+                                    style="width: 100%; height: 100%; background: transparent; position: relative; z-index: 2;">
+                                </model-viewer>
+                            </div>
+                        </div>
+
+                        <!-- Project 2: VR-CARDIO -->
                         <div class="project-slide flex-shrink-0 fade-up" style="width: 100%; height: 100vh; display: flex; flex-direction: column; justify-content: flex-start; padding-top: 60px;">
                             <div class="flex flex-wrap items-center gap-2 mb-6" style="border-top: 1px solid white; padding-top: 20px;">
                                 <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-white flex-1 min-w-0" style="font-weight: 300;" data-i18n="Proyectos.vrcardio.title"></h3>
@@ -54,7 +81,7 @@
                             </div>
                         </div>
 
-                        <!-- Project 2: PRAS -->
+                        <!-- Project 3: PRAS -->
                         <div class="project-slide flex-shrink-0 fade-up" style="width: 100%; height: 100vh; display: flex; flex-direction: column; justify-content: flex-start; padding-top: 60px;">
                             <div class="flex flex-wrap items-center gap-2 mb-6" style="border-top: 1px solid white; padding-top: 20px;">
                                 <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-white flex-1 min-w-0" style="font-weight: 300;" data-i18n="Proyectos.pras.title"></h3>
@@ -77,7 +104,7 @@
                             </div>
                         </div>
 
-                        <!-- Project 3: Primera Vuelta al Mundo -->
+                        <!-- Project 4: Primera Vuelta al Mundo -->
                         <div class="project-slide flex-shrink-0 fade-up" style="width: 100%; height: 100vh; display: flex; flex-direction: column; justify-content: flex-start; padding-top: 60px;">
                             <div class="flex flex-wrap items-center gap-2 mb-6" style="border-top: 1px solid white; padding-top: 20px;">
                                 <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-white flex-1 min-w-0" style="font-weight: 300;" data-i18n="Proyectos.magallanes.title"></h3>
@@ -114,7 +141,37 @@
                 <div class="flex-1 relative overflow-hidden">
                     <div class="mobile-content-container" style="display: flex; flex-direction: column; height: 100%; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);">
                         
-                        <!-- Mobile Slide 1: VR-CARDIO -->
+                        <!-- Mobile Slide 1: EDFs -->
+                        <div class="mobile-slide flex-shrink-0 fade-up" style="width: 100%; height: 100%; display: flex; flex-direction: column;">
+                            <!-- Description -->
+                            <div class="flex-shrink-0 py-4 px-6">
+                                <p class="text-gray-400 text-sm sm:text-base md:text-lg text-center" style="color: white; font-weight: 300;" data-i18n="Proyectos.edfs.description"></p>
+                            </div>
+                            
+                            <!-- Project Content -->
+                            <div class="flex-1 flex flex-col justify-start px-6 pt-4">
+                                <div class="flex flex-wrap items-center gap-2 mb-6" style="border-top: 1px solid white; padding-top: 20px;">
+                                    <h3 class="text-xl sm:text-2xl md:text-3xl font-semibold text-white flex-1 min-w-0 text-center" style="font-weight: 300;" data-i18n="Proyectos.edfs.title"></h3>
+                                    <a href="/edfs" class="btn-slide-arrow flex items-center justify-center rounded-lg border-2 border-[#CEDF00] bg-transparent hover:cursor-pointer transition-all duration-300">
+                                        <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 16H22M22 16L18 12M22 16L18 20" stroke="#CEDF00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div id="missile-canvas-container-mobile" style="width: 100%; height: calc(100% - 120px); background: transparent; position: relative; flex: 1;">
+                                    <model-viewer 
+                                        id="missile-model-mobile"
+                                        src="/assets/models/frigate.glb"
+                                        alt="EDFs"
+                                        auto-rotate
+                                        camera-controls
+                                        style="width: 100%; height: 100%; background: transparent; position: relative; z-index: 2;">
+                                    </model-viewer>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mobile Slide 2: VR-CARDIO -->
                         <div class="mobile-slide flex-shrink-0 fade-up" style="width: 100%; height: 100%; display: flex; flex-direction: column;">
                             <!-- Description -->
                             <div class="flex-shrink-0 py-4 px-6">
@@ -145,7 +202,7 @@
                             </div>
                         </div>
 
-                        <!-- Mobile Slide 2: PRAS -->
+                        <!-- Mobile Slide 3: PRAS -->
                         <div class="mobile-slide flex-shrink-0 fade-up" style="width: 100%; height: 100%; display: flex; flex-direction: column;">
                             <!-- Description -->
                             <div class="flex-shrink-0 py-4 px-6">
@@ -176,7 +233,7 @@
                             </div>
                         </div>
 
-                        <!-- Mobile Slide 3: Primera Vuelta al Mundo -->
+                        <!-- Mobile Slide 4: Primera Vuelta al Mundo -->
                         <div class="mobile-slide flex-shrink-0 fade-up" style="width: 100%; height: 100%; display: flex; flex-direction: column;">
                             <!-- Description -->
                             <div class="flex-shrink-0 py-4 px-6">
@@ -214,6 +271,7 @@
     
     <!-- Elementos ocultos con las descripciones para el sistema de localización -->
     <div style="display: none;">
+        <p data-i18n="Proyectos.edfs.description">Proyectos del Fondo Europeo de Defensa en los que Spika Tech participa desarrollando tecnologías avanzadas para sistemas de defensa y seguridad.</p>
         <p data-i18n="Proyectos.vrcardio.description">Sistema de realidad virtual para entrenamiento médico en cardiología, que permite a los profesionales practicar procedimientos cardíacos en un entorno seguro y controlado.</p>
         <p data-i18n="Proyectos.pras.description">Plataforma robótica autónoma para servicios, diseñada para asistir en tareas de logística y atención al cliente en entornos comerciales y hospitalarios.</p>
         <p data-i18n="Proyectos.magallanes.description">Experiencia inmersiva que recrea la primera vuelta al mundo de Magallanes y Elcano, permitiendo a los usuarios vivir esta histórica expedición.</p>
@@ -228,14 +286,18 @@
     const projectsData = [
         {
             id: 0,
-            description: "Proyectos.vrcardio.description"
+            description: "Proyectos.edfs.description"
         },
         {
             id: 1,
-            description: "Proyectos.pras.description"
+            description: "Proyectos.vrcardio.description"
         },
         {
             id: 2,
+            description: "Proyectos.pras.description"
+        },
+        {
+            id: 3,
             description: "Proyectos.magallanes.description"
         }
     ];
@@ -265,8 +327,8 @@
         const scrollProgress = Math.max(0, Math.min(1, (scrollTop - sectionTop) / scrollableHeight));
         
         // Determinar qué proyecto debe estar activo basado en el progreso del scroll
-        // Dividir el scroll en 3 partes iguales para los 3 proyectos
-        const projectProgress = scrollProgress * 3; // 0-3
+        // Dividir el scroll en 4 partes iguales para los 4 proyectos
+        const projectProgress = scrollProgress * 4; // 0-4
         const activeProjectIndex = Math.min(projectsData.length - 1, Math.floor(projectProgress));
         
         // Calcular el progreso dentro del proyecto actual (0-1)
@@ -476,6 +538,8 @@
     // Configuración de model-viewer con imágenes de preview
     function configureModelViewer() {
         const modelConfigs = [
+            { id: 'missile-model', previewId: null },
+            { id: 'missile-model-mobile', previewId: null },
             { id: 'heart-model', previewId: 'heart-preview' },
             { id: 'pras-model', previewId: 'pras-preview' },
             { id: 'armor-model', previewId: 'armor-preview' },
@@ -486,32 +550,35 @@
         
         modelConfigs.forEach(config => {
             const modelViewer = document.getElementById(config.id);
-            const previewImg = document.getElementById(config.previewId);
+            const previewImg = config.previewId ? document.getElementById(config.previewId) : null;
             
-            if (modelViewer && previewImg) {
+            if (modelViewer) {
                 // Configurar model-viewer
                 modelViewer.setAttribute('interaction-prompt', 'none');
                 
-                // Event listener para cuando el modelo se carga
-                modelViewer.addEventListener('load', () => {
-                    // Ocultar la imagen de preview
-                    previewImg.style.display = 'none';
-                });
-                
-                // Event listener para errores
-                modelViewer.addEventListener('error', (event:any) => {
-                    console.error(`Error cargando modelo ${config.id}:`, event.detail);
-                    // Mantener la imagen de preview visible si hay error
-                });
-                
-                // Event listener para cuando el modelo se está cargando
-                modelViewer.addEventListener('progress', (event:any) => {
-                    const progress = event.detail.totalProgress;
-                    if (progress === 1) {
-                        // Modelo completamente cargado
+                // Solo manejar preview si existe
+                if (previewImg) {
+                    // Event listener para cuando el modelo se carga
+                    modelViewer.addEventListener('load', () => {
+                        // Ocultar la imagen de preview
                         previewImg.style.display = 'none';
-                    }
-                });
+                    });
+                    
+                    // Event listener para errores
+                    modelViewer.addEventListener('error', (event:any) => {
+                        console.error(`Error cargando modelo ${config.id}:`, event.detail);
+                        // Mantener la imagen de preview visible si hay error
+                    });
+                    
+                    // Event listener para cuando el modelo se está cargando
+                    modelViewer.addEventListener('progress', (event:any) => {
+                        const progress = event.detail.totalProgress;
+                        if (progress === 1) {
+                            // Modelo completamente cargado
+                            previewImg.style.display = 'none';
+                        }
+                    });
+                }
             }
         });
     }

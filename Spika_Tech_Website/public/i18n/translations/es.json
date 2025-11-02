@@ -68,6 +68,10 @@
       "expertise": "expertos en IA, sistemas autónomos y realidad extendida",
       "suffix": "comprometidos con la excelencia y el impacto real."
     },
+    "edfs": {
+      "title": "EDFs",
+      "description": "Proyectos del Fondo Europeo de Defensa en los que Spika Tech participa desarrollando tecnologías avanzadas para sistemas de defensa y seguridad."
+    },
     "vrcardio": {
       "title": "VR-CARDIO",
       "description": "Plataforma para la planificación y el guiado intraoperatorio de intervenciones de arritmias cardíacas mediante el uso de tecnologías de Realidad Virtual."
