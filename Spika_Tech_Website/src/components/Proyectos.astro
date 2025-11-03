@@ -46,9 +46,10 @@
                                     </svg>
                                 </a>
                             </div>
-                            <div id="missile-canvas-container" style="width: auto; height: calc(100vh - 200px); background: transparent; position: relative; flex: 1;">
+                            <div id="edf-canvas-container" style="width: auto; height: calc(100vh - 200px); background: transparent; position: relative; flex: 1;">
+                                <img id="edfs-preview" src="/assets/Render/EDFs.png" alt="EDFs" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; z-index: 1;">
                                 <model-viewer 
-                                    id="missile-model"
+                                    id="edf-model"
                                     src="/assets/models/frigate.glb"
                                     alt="EDFs"
                                     auto-rotate
@@ -158,9 +159,10 @@
                                         </svg>
                                     </a>
                                 </div>
-                                <div id="missile-canvas-container-mobile" style="width: 100%; height: calc(100% - 120px); background: transparent; position: relative; flex: 1;">
+                                <div id="edf-canvas-container-mobile" style="width: 100%; height: calc(100% - 120px); background: transparent; position: relative; flex: 1;">
+                                    <img id="edfs-preview-mobile" src="/assets/Render/EDFs.png" alt="EDFs" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; z-index: 1;">
                                     <model-viewer 
-                                        id="missile-model-mobile"
+                                        id="edf-model-mobile"
                                         src="/assets/models/frigate.glb"
                                         alt="EDFs"
                                         auto-rotate
@@ -538,8 +540,8 @@
     // Configuración de model-viewer con imágenes de preview
     function configureModelViewer() {
         const modelConfigs = [
-            { id: 'missile-model', previewId: null },
-            { id: 'missile-model-mobile', previewId: null },
+            { id: 'edf-model', previewId: 'edfs-preview' },
+            { id: 'edf-model-mobile', previewId: 'edfs-preview-mobile' },
             { id: 'heart-model', previewId: 'heart-preview' },
             { id: 'pras-model', previewId: 'pras-preview' },
             { id: 'armor-model', previewId: 'armor-preview' },
