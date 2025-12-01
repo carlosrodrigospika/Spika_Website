@@ -54,9 +54,10 @@
     },
     "sections": {
       "01": "Who we are",
-      "02": "Our projects", 
-      "03": "Development types",
-      "04": "News"
+      "02": "EDFs",
+      "03": "Our projects", 
+      "04": "Development types",
+      "05": "News"
     },
     "marquee": "Welcome to Spika Tech - ",
     "explore": "Slide to see more"
@@ -721,6 +722,7 @@
   },
   "EDFS": {
     "title": "EDFS: European Defence Funds",
+    "titlepage": "European Defence Fund Projects",
     "subtitle": "At spika tech, we are satisfied to be able to collaborate on various European Defence Fund projects.",
     "SESSIOP": {
       "title": "Spika Tech Participates in the Future of Air Traffic Control with the SESIOP Project",
@@ -736,7 +738,8 @@
       "section2_title": "Our Project Partners",
       "section2_paragraph": "This ambitious project benefits from the expertise of an international consortium. The partners, along with Spika Tech, include highly prestigious companies and organizations in the sector such as AIRBUS, Indra, Leonardo S.p.A., among others. Together, we are a team of companies working to define the future of air traffic control, building a more robust and coordinated infrastructure for the benefit of all.",
       "estimated_cost": "Estimated Total Cost: €19,055,872.29",
-      "disclaimer": "This is funded by the European Union. Its contents are the sole responsibility of Spika Tech and do not necessarily reflect the views of the European Union."
+      "disclaimer": "This is funded by the European Union. Its contents are the sole responsibility of Spika Tech and do not necessarily reflect the views of the European Union.",
+      "amount": "19M €"
     },
     "EISNET": {
       "title": "EISNET: the European sensor network in which Spika Tech participates and drives the future of defense",
@@ -755,7 +758,8 @@
         "Add the EU emblem with similar prominence to the other logos.",
         "Stick to the usual disclaimers without any modifications:"
       ],
-      "disclaimer": "This is funded by the European Union. Its contents are the sole responsibility of Spika Tech and do not necessarily reflect the views of the European Union."
+      "disclaimer": "This is funded by the European Union. Its contents are the sole responsibility of Spika Tech and do not necessarily reflect the views of the European Union.",
+      "amount": "41.6M €"
     },
     "REACTII": {
       "title": "REACT II: European Innovation in the Electromagnetic Domain",
@@ -773,7 +777,8 @@
       "section2_conclusion": "At Spika Tech, we bring our expertise in combining interoperability, advanced modeling, and optimization techniques to create a modular, scalable, and adaptable system for various scenarios and future developments. This approach ensures that the solution can be integrated with other European and NATO tools and standards, strengthening technological and strategic cohesion in defense.",
       "section3_title": "Cooperation and Innovation in Service of Europe",
       "section3_paragraph": "Through these defense projects, Spika Tech evolves and reaffirms its commitment to technological innovation in defense and international cooperation as a driver for development. Being part of this consortium allows us to contribute to a safer, stronger, and technologically prepared Europe for the challenges of the future.",
-      "disclaimer": "Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Defence Fund. Neither the European Union nor the granting authority can be held responsible for them."
+      "disclaimer": "Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Defence Fund. Neither the European Union nor the granting authority can be held responsible for them.",
+      "amount": "69.7M €"
     },
     "CASSATA": {
       "title": "CASSATA: Advanced Covert and Multimodal Sensor Systems for Target Acquisition and Recognition",
@@ -784,7 +789,8 @@
       "section2_paragraph": "The CASSATA project focuses on key technologies such as optronics, acoustics/seismics, radio-frequency and radar systems, as well as adaptive and collaborative detection, data fusion, and artificial intelligence. Our goal is to provide European forces with greater situational awareness, target detection capabilities, early warning, and enhanced decision-making support.",
       "section3_title": "Commitment and Vision",
       "section3_paragraph": "With a 36-month duration and a total budget exceeding €24 million, CASSATA aims to set a new standard in the performance and interoperability of detection systems for the defense sector. At Spika Tech, we are committed to the success of this important project.",
-      "disclaimer": "This is funded by the European Union. Its contents are the sole responsibility of Spika Tech and do not necessarily reflect the views of the European Union."
+      "disclaimer": "This is funded by the European Union. Its contents are the sole responsibility of Spika Tech and do not necessarily reflect the views of the European Union.",
+      "amount": "25M €"
     }
   }
 }

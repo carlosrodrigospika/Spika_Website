@@ -8,13 +8,15 @@ import Desarrollos from '../components/Desarrollos.astro';
 import Noticias from '../components/Noticias.astro';
 import Partners from '../components/Partners.astro';
 import Footer from '../components/Footer.astro';
+import Edfs from '../components/edfs.astro';
 
 
 const sections = [
   { num: '01', title: 'Hero.sections.01' },
   { num: '02', title: 'Hero.sections.02' },
   { num: '03', title: 'Hero.sections.03' },
-  { num: '04', title: 'Hero.sections.04' }
+  { num: '04', title: 'Hero.sections.03' },
+  { num: '05', title: 'Hero.sections.04' }
 ];
 ---
 
@@ -23,6 +25,7 @@ const sections = [
 	<SideNav sections={sections} /> 
 	<main>
 		<Hero />
+		<Edfs />
 		<Proyectos />
 		<Desarrollos />
 		<Noticias />

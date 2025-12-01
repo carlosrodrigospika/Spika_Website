@@ -1,39 +1,24 @@
 <section id="hero-video" class="relative h-screen overflow-hidden">
-    <canvas
-        id="shaderCanvas"
+    <video
+        id="heroVideoElement"
         class="absolute inset-0 w-full h-full object-cover"
-        style="z-index: 1;"></canvas>
-    
-    <!-- Marquee de texto centrado optimizado -->
-    <div class="absolute w-full flex items-center justify-center h-full z-10 pointer-events-none px-2" id="marquee-container">
-        <div class="overflow-hidden w-full">
-          <div class="flex whitespace-nowrap animate-marquee" id="marquee-content">
-            <h2 class="text-white flex-shrink-0 font-light" style="font-size: 8vw;" data-i18n="Hero.marquee"></h2>
-            <h2 class="text-white flex-shrink-0 font-light ml-8" style="font-size: 8vw;" data-i18n="Hero.marquee"></h2>
-            <h2 class="text-white flex-shrink-0 font-light ml-8" style="font-size: 8vw;" data-i18n="Hero.marquee"></h2>
-            <h2 class="text-white flex-shrink-0 font-light ml-8" style="font-size: 8vw;" data-i18n="Hero.marquee"></h2>
-            <h2 class="text-white flex-shrink-0 font-light ml-8" style="font-size: 8vw;" data-i18n="Hero.marquee"></h2>
-            <h2 class="text-white flex-shrink-0 font-light ml-8" style="font-size: 8vw;" data-i18n="Hero.marquee"></h2>
-            <h2 class="text-white flex-shrink-0 font-light ml-8" style="font-size: 8vw;" data-i18n="Hero.marquee"></h2>
-            <h2 class="text-white flex-shrink-0 font-light ml-8" style="font-size: 8vw;" data-i18n="Hero.marquee"></h2>
-            <h2 class="text-white flex-shrink-0 font-light ml-8" style="font-size: 8vw;" data-i18n="Hero.marquee"></h2>
-            <h2 class="text-white flex-shrink-0 font-thin ml-8" style="font-size: 8vw;" data-i18n="Hero.marquee"></h2>
-            <h2 class="text-white flex-shrink-0 font-thin ml-8" style="font-size: 8vw;" data-i18n="Hero.marquee"></h2>
-            <h2 class="text-white flex-shrink-0 font-thin ml-8" style="font-size: 8vw;" data-i18n="Hero.marquee"></h2>
-          </div>
-        </div>
-    </div>
+        autoplay
+        muted
+        playsinline>
+        <source src="/assets/IntroCristales.mp4" type="video/mp4" />
+    </video>
 
     <div class="absolute bottom-2 left-6 w-1/2 flex flex-col mb-8 z-2" style="align-self: end;">
         <hr class="border-t border-white w-3/4 mb-2" />
         <div class="flex items-center w-3/4 gap-2 text-white text-lg" style="justify-content: space-between;">
-            <span class="" data-i18n="Hero.explore" onclick="document.querySelector('#section1').scrollIntoView({behavior: 'smooth'})"></span>
+            <span class="cursor-pointer" data-i18n="Hero.explore" onclick="document.querySelector('#section1').scrollIntoView({behavior: 'smooth'})"></span>
             <svg 
             width="28" 
             height="28" 
             fill="none" 
             viewBox="0 0 24 24"  
-            class="">
+            class="cursor-pointer"
+            onclick="document.querySelector('#section1').scrollIntoView({behavior: 'smooth'})">
             <circle cx="12" cy="12" r="11" stroke="white" stroke-width="2"/>
             <path d="M8 12l4 4 4-4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -115,33 +100,6 @@
     let videoObserver: IntersectionObserver | null = null;
     let marqueeObserver: IntersectionObserver | null = null;
     let heroObserver: IntersectionObserver | null = null;
-
-    // Función para inicializar el Intersection Observer para el marquee
-    function initMarqueeObserver() {
-        const marqueeContainer = document.getElementById('marquee-container');
-        if (!marqueeContainer) return;
-
-        marqueeObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    // Marquee visible - reanudar animación
-                    if (marqueeContainer) {
-                        marqueeContainer.style.animationPlayState = 'running';
-                    }
-                } else {
-                    // Marquee no visible - pausar animación
-                    if (marqueeContainer) {
-                        marqueeContainer.style.animationPlayState = 'paused';
-                    }
-                }
-            });
-        }, {
-            threshold: 0.1, // Se activa cuando el 10% del marquee es visible
-            rootMargin: '100px 0px 100px 0px' // Margen para anticipar la visibilidad
-        });
-
-        marqueeObserver.observe(marqueeContainer);
-    }
 
     // Función para inicializar el Intersection Observer para la sección Hero
     function initHeroObserver() {
@@ -304,7 +262,6 @@
 
     document.addEventListener("DOMContentLoaded", () => {
         initThreeJS();
-        initMarqueeObserver();
         initHeroObserver();
     });
     window.addEventListener("beforeunload", cleanup);
@@ -422,121 +379,42 @@
 
     document.addEventListener("DOMContentLoaded", initImageSection);
 
-    //TOP SHADER
-    const canvasTop: any = document.getElementById(
-        "shaderCanvas",
-    )! as HTMLCanvasElement;
+    const video = document.getElementById('heroVideoElement') as HTMLVideoElement | null;
 
-    const sceneTop = new THREE.Scene();
-    const cameraTop = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-    const rendererTop: any = new THREE.WebGLRenderer({
-        canvas: canvasTop,
-        antialias: true,
-    });
-    rendererTop.setSize(window.innerWidth, window.innerHeight);
-
-    const uniforms = {
-        iTime: { value: 0 },
-        iResolution: {
-            value: new THREE.Vector3(window.innerWidth, window.innerHeight, 1),
-        },
-    };
-
-    const vertexShader = `
-        varying vec2 vUv;
-        void main() {
-            vUv = uv;
-            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-        }
-    `;
-
-    const fragmentShader = `
-        uniform float iTime;
-        uniform vec3 iResolution;
-        varying vec2 vUv;
-
-        float gradient(float p)
-        {
-            vec2 pt0 = vec2(0.00,0.0);
-            vec2 pt1 = vec2(0.86,0.1);
-            vec2 pt2 = vec2(0.955,0.40);
-            vec2 pt3 = vec2(0.99,1.0);
-            vec2 pt4 = vec2(1.00,0.0);
-            if (p < pt0.x) return pt0.y;
-            if (p < pt1.x) return mix(pt0.y, pt1.y, (p-pt0.x) / (pt1.x-pt0.x));
-            if (p < pt2.x) return mix(pt1.y, pt2.y, (p-pt1.x) / (pt2.x-pt1.x));
-            if (p < pt3.x) return mix(pt2.y, pt3.y, (p-pt2.x) / (pt3.x-pt2.x));
-            if (p < pt4.x) return mix(pt3.y, pt4.y, (p-pt3.x) / (pt4.x-pt3.x));
-            return pt4.y;
-        }
-
-        float waveN(vec2 uv, vec2 s12, vec2 t12, vec2 f12, vec2 h12)
-        {
-            vec2 x12 = sin((iTime * s12 + t12 + uv.x) * f12) * h12;
-            float g = gradient(uv.y / (0.5 + x12.x + x12.y));
-            return g * 0.27;
-        }
-
-        float wave1(vec2 uv)
-        {
-            return waveN(vec2(uv.x,uv.y-0.25), vec2(0.03,0.06), vec2(0.00,0.02), vec2(8.0,3.7), vec2(0.06,0.05));
-        }
-
-        float wave2(vec2 uv)
-        {
-            return waveN(vec2(uv.x,uv.y-0.25), vec2(0.04,0.07), vec2(0.16,-0.37), vec2(6.7,2.89), vec2(0.06,0.05));
-        }
-
-        float wave3(vec2 uv)
-        {
-            return waveN(vec2(uv.x,0.75-uv.y), vec2(0.035,0.055), vec2(-0.09,0.27), vec2(7.4,2.51), vec2(0.06,0.05));
-        }
-
-        float wave4(vec2 uv)
-        {
-            return waveN(vec2(uv.x,0.75-uv.y), vec2(0.032,0.09), vec2(0.08,-0.22), vec2(6.5,3.89), vec2(0.06,0.05));
-        }
-
-        void main() {
-            vec2 uv = vUv;
-            float waves = wave1(uv) + wave2(uv) + wave3(uv) + wave4(uv);
-            
-            float x = uv.x;
-            float y = 1.0 - uv.y;
-
-            vec3 bg = mix(vec3(0.0, 0.188, 0.208), vec3(0.0, 0.188, 0.208), (x+y)*0.7);
-            vec3 waveColor = vec3(1.0, 1.0, 1.0); // blanco
-            vec3 ac = bg + waveColor * waves * 1.5;
-
-            gl_FragColor = vec4(ac, 1.0);
-        }
-    `;
-
-    const material = new THREE.ShaderMaterial({
-        uniforms,
-        vertexShader,
-        fragmentShader,
-    });
-
-    const geometry = new THREE.PlaneGeometry(2, 2);
-    const mesh = new THREE.Mesh(geometry, material);
-    sceneTop.add(mesh);
-
-    function animateTop(time: number) {
-        uniforms.iTime.value = time * 0.001;
-        rendererTop.render(sceneTop, cameraTop);
-        requestAnimationFrame(animateTop);
+    if (video) {
+        video.addEventListener('ended', () => {
+            const section = document.getElementById('section1');
+            if (section) {
+                smoothScrollTo(section, 1000); 
+            }
+        });
     }
-    requestAnimationFrame(animateTop);
 
-    window.addEventListener("resize", () => {
-        rendererTop.setSize(window.innerWidth, window.innerHeight);
-        uniforms.iResolution.value.set(
-            window.innerWidth,
-            window.innerHeight,
-            1,
-        );
-    });
+    function smoothScrollTo(target: HTMLElement, duration: number) {
+        const startPosition = window.scrollY;
+        const targetPosition = target.getBoundingClientRect().top + window.scrollY;
+        const distance = targetPosition - startPosition;
+        let startTime: number | null = null;
+
+        document.documentElement.style.scrollBehavior = 'auto';
+        document.body.style.scrollBehavior = 'auto';
+
+        function animation(currentTime: number) {
+            if (startTime === null) startTime = currentTime;
+            const timeElapsed = currentTime - startTime;
+            
+            const progress = Math.min(timeElapsed / duration, 1);
+
+            window.scrollTo(0, startPosition + (distance * progress));
+
+            if (timeElapsed < duration) {
+                requestAnimationFrame(animation);
+            } 
+        }
+
+        requestAnimationFrame(animation);
+    }
+
 </script>
 
 <style>

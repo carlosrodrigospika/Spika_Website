@@ -1,4 +1,4 @@
-<section id="section3" class="overflow-hidden w-full flex flex-col md:flex-row items-stretch justify-between gap-8" style="padding-left: 110px; padding-right: 50px; padding-bottom: 100px; padding-top: 80px; height: 100vh;">
+<section id="section4" class="overflow-hidden w-full flex flex-col md:flex-row items-stretch justify-between gap-8" style="padding-left: 110px; padding-right: 50px; padding-bottom: 100px; padding-top: 80px; height: 100vh;">
     <!-- Columna izquierda -->
     <div class="flex flex-col justify-between items-center" style="width: 60%;">
       <!-- Título arriba izquierda -->
@@ -185,7 +185,7 @@
 
       // Función para inicializar las animaciones de la sección Desarrollos
       function initDesarrollosAnimations() {
-        const section = document.querySelector('#section3') as HTMLElement;
+        const section = document.querySelector('#section4') as HTMLElement;
         if (!section) return;
 
         // Crear Intersection Observer para detectar cuando la sección es visible
@@ -210,13 +210,13 @@
 
       function animateDesarrollosElements() {
         // Verificar si las animaciones ya se han ejecutado
-        const textContainer = document.querySelector('#section3 .fade-right');
+        const textContainer = document.querySelector('#section4 .fade-right');
         if (textContainer && textContainer.classList.contains('visible')) {
           return; // Las animaciones ya se ejecutaron
         }
 
         // Animar texto desde la derecha
-        const fadeRightElements = document.querySelectorAll('#section3 .fade-right');
+        const fadeRightElements = document.querySelectorAll('#section4 .fade-right');
         fadeRightElements.forEach((el) => {
           setTimeout(() => el.classList.add('visible'), 300);
         });

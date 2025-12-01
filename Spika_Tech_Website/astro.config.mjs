@@ -12,7 +12,6 @@ export default defineConfig({
       port: 4321,
       strictPort: true, // Falla si el puerto no está disponible
       allowedHosts: [
-        'bracelet-corrections-trend-passport.trycloudflare.com',
         'localhost',
         '127.0.0.1',
       ],

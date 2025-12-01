@@ -54,9 +54,10 @@
     },
     "sections": {
       "01": "Wer sind wir?",
-      "02": "Unsere Projekte",
-      "03": "Entwicklungstypen",
-      "04": "Nachrichten"
+      "02": "EDFs",
+      "03": "Unsere Projekte",
+      "04": "Entwicklungstypen",
+      "05": "Nachrichten"
     },
     "marquee": "Willkommen bei Spika Tech - ",
     "explore": "Scrollen Sie für mehr"
@@ -721,6 +722,7 @@
   },
   "EDFS": {
     "title": "EDFS: Europäische Verteidigungsfonds",
+    "titlepage": "Projekte der Europäischen Verteidigungsfonds",
     "subtitle": "Bei Spika Tech sind wir stolz darauf, an verschiedenen Projekten des Europäischen Verteidigungsfonds mitarbeiten zu können.",
     "SESSIOP": {
       "title": "Spika Tech beteiligt sich an der Zukunft der Flugverkehrskontrolle mit dem SESIOP-Projekt",
@@ -736,7 +738,8 @@
       "section2_title": "Unsere Projektpartner",
       "section2_paragraph": "Dieses ehrgeizige Projekt profitiert vom Fachwissen eines internationalen Konsortiums. Zu den Partnern zählen neben Spika Tech renommierte Unternehmen und Organisationen der Branche wie AIRBUS, Indra, Leonardo S.p.A. und andere. Gemeinsam arbeiten wir daran, die Zukunft der Flugverkehrskontrolle zu gestalten und eine robustere und koordiniertere Infrastruktur zum Nutzen aller zu schaffen.",
       "estimated_cost": "Geschätzte Gesamtkosten: €19.055.872,29",
-      "disclaimer": "Dieses Projekt wird von der Europäischen Union finanziert. Der Inhalt liegt in der alleinigen Verantwortung von Spika Tech und spiegelt nicht unbedingt die Ansichten der Europäischen Union wider."
+      "disclaimer": "Dieses Projekt wird von der Europäischen Union finanziert. Der Inhalt liegt in der alleinigen Verantwortung von Spika Tech und spiegelt nicht unbedingt die Ansichten der Europäischen Union wider.",
+      "amount": "19M €"
     },
     "EISNET": {
       "title": "EISNET: Das europäische Sensornetzwerk, an dem Spika Tech teilnimmt und die Zukunft der Verteidigung vorantreibt",
@@ -755,7 +758,9 @@
         "Fügen Sie das EU-Emblem mit gleicher Prominenz wie die anderen Logos hinzu.",
         "Halten Sie sich an die üblichen Haftungsausschlüsse ohne Änderungen:"
       ],
-      "disclaimer": "Dieses Projekt wird von der Europäischen Union finanziert. Der Inhalt liegt in der alleinigen Verantwortung von Spika Tech und spiegelt nicht unbedingt die Ansichten der Europäischen Union wider."},
+      "disclaimer": "Dieses Projekt wird von der Europäischen Union finanziert. Der Inhalt liegt in der alleinigen Verantwortung von Spika Tech und spiegelt nicht unbedingt die Ansichten der Europäischen Union wider.",
+      "amount": "41.6M €"
+    },
     "REACTII": {
       "title": "REACT II: Europäische Innovation im elektromagnetischen Bereich",
       "description": "In einem Verteidigungskontext, der durch die rasche Entwicklung der elektromagnetischen Kriegsführung geprägt ist, zielt das REACT II-Projekt darauf ab, die elektronischen Angriffsfähigkeiten der EU-Mitgliedstaaten zu stärken.",
@@ -772,7 +777,8 @@
       "section2_conclusion": "Bei Spika Tech kombinieren wir Interoperabilität, Modellierung und Optimierung, um ein modulares, skalierbares und anpassbares System zu schaffen, das in verschiedene Szenarien integriert werden kann.",
       "section3_title": "Zusammenarbeit und Innovation im Dienste Europas",
       "section3_paragraph": "Durch diese Verteidigungsprojekte bekräftigt Spika Tech sein Engagement für technologische Innovation und internationale Zusammenarbeit, um eine sicherere und technologisch besser vorbereitete Zukunft zu gestalten.",
-      "disclaimer": "Von der Europäischen Union finanziert. Die geäußerten Ansichten und Meinungen sind jedoch ausschließlich die der Autorinnen und Autoren und spiegeln nicht notwendigerweise die der Europäischen Union oder des Europäischen Verteidigungsfonds wider. Weder die Europäische Union noch die Bewilligungsbehörde können dafür verantwortlich gemacht werden."
+      "disclaimer": "Von der Europäischen Union finanziert. Die geäußerten Ansichten und Meinungen sind jedoch ausschließlich die der Autorinnen und Autoren und spiegeln nicht notwendigerweise die der Europäischen Union oder des Europäischen Verteidigungsfonds wider. Weder die Europäische Union noch die Bewilligungsbehörde können dafür verantwortlich gemacht werden.",
+      "amount": "69.7M €"
     },
     "CASSATA": {
       "title": "CASSATA: Fortschrittliche verdeckte und multimodale Sensorsysteme zur Zielerfassung und -erkennung",
@@ -783,7 +789,8 @@
       "section2_paragraph": "Das CASSATA-Projekt konzentriert sich auf Schlüsseltechnologien wie Optronik, Akustik/Seismik, Hochfrequenz- und Radarsysteme sowie adaptive und kollaborative Erkennung, Datenfusion und künstliche Intelligenz.",
       "section3_title": "Engagement und Vision",
       "section3_paragraph": "Mit einer Laufzeit von 36 Monaten und einem Gesamtbudget von über 24 Millionen Euro zielt CASSATA darauf ab, einen neuen Standard für Leistung und Interoperabilität von Erkennungssystemen im Verteidigungssektor zu setzen.",
-      "disclaimer": "Dieses Projekt wird von der Europäischen Union finanziert. Der Inhalt liegt in der alleinigen Verantwortung von Spika Tech und spiegelt nicht unbedingt die Ansichten der Europäischen Union wider."
+      "disclaimer": "Dieses Projekt wird von der Europäischen Union finanziert. Der Inhalt liegt in der alleinigen Verantwortung von Spika Tech und spiegelt nicht unbedingt die Ansichten der Europäischen Union wider.",
+      "amount": "25M €"
     }
   }
 }

@@ -1,4 +1,4 @@
-<section id="section4" data-index="3" data-title="Noticias" style="background-color: #003035; padding-left: 110px; padding-right: 50px; padding-top: 20px; padding-bottom: 40px;" class="min-h-screen flex items-center">
+<section id="section5" data-index="3" data-title="Noticias" style="background-color: #003035; padding-left: 110px; padding-right: 50px; padding-top: 20px; padding-bottom: 40px;" class="min-h-screen flex items-center">
   <div class="flex flex-col w-full">
         <div class="text-center mb-8">
             <h2 class="text-4xl lg:text-5xl font-light text-white leading-tight mb-4" data-i18n="Noticias.title"></h2>
@@ -221,40 +221,6 @@
         const thumb = document.getElementById('scrollThumb');
         
         if (!track || !thumb) return;
-
-        // Función para calcular la posición exacta del thumb
-        function calculateThumbPosition(clientX: number): number {
-            if (!track) return 0;
-            const rect = track.getBoundingClientRect();
-            const clickX = clientX - rect.left;
-            const trackWidth = track.offsetWidth;
-            const thumbWidth = 40; // Actualizado para coincidir con el nuevo ancho
-            const maxThumbPosition = trackWidth - thumbWidth;
-            
-            const progress = Math.max(0, Math.min(1, clickX / trackWidth));
-            return progress * maxThumbPosition;
-        }
-
-        // Función para actualizar el índice basado en la posición
-        function updateIndexFromPosition(thumbPosition: number) {
-            if (!track) return;
-            const trackWidth = track.offsetWidth;
-            const thumbWidth = 40; // Actualizado para coincidir con el nuevo ancho
-            const maxThumbPosition = trackWidth - thumbWidth;
-            
-            const progress = thumbPosition / maxThumbPosition;
-            const newIndex = Math.round(progress * (news.length - 1));
-            
-            if (newIndex !== currentIndex && newIndex >= 0 && newIndex < news.length) {
-                currentIndex = newIndex;
-                const carousel = document.getElementById('newsCarousel');
-                if (carousel) {
-                    const cardWidth = window.innerWidth > 1100 ? 0.6 : 1;
-                    const translateX = -currentIndex * cardWidth * window.innerWidth;
-                    carousel.style.transform = `translateX(${translateX}px)`;
-                }
-            }
-        }
 
         // Mouse events
         track.addEventListener('mousedown', (e) => {
@@ -486,7 +452,7 @@
 }
 
 @media (max-width: 1100px) {
-  section#section4 {
+  section#section5 {
     padding-left: 110px !important;
     padding-right: 20px !important ;
     padding-top: 2rem !important;
@@ -549,7 +515,7 @@
   }
 }
 @media (max-width: 700px) {
-  section#section4 {
+  section#section5 {
     padding-left: 0.5rem !important;
     padding-right: 0.5rem !important;
     padding-top: 1rem !important;
