@@ -1,0 +1,112 @@
+<section id="section2" class="h-screen w-full relative overflow-hidden flex flex-col items-center justify-center text-center bg-[#003035] gap-[5vh] md:gap-[10vh] lg:gap-[15vh]">
+  <img src="/assets/edfs/edfs_background.png" alt="" class="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"/>
+ 
+  <div id="texts" class="relative z-10 sm:px-8 md:px-12 lg:px-16 xl:px-20" style="padding-left: 110px; padding-right: 20px;">
+    <h1
+      class="text-4xl lg:text-5xl font-bold text-white leading-tight drop-shadow-lg"
+      data-i18n="EDFS.titlepage"
+      aria-hidden="false"
+    ></h1>
+
+    <p
+      class="mt-6 text-white text-2xl lg:text-3xl font-light leading-tight mx-auto"
+      data-i18n="EDFS.subtitle"
+    ></p>
+  </div>
+
+  <div id="images" class="relative z-10 w-full" style="padding-left: 110px; padding-right: 20px;">
+    <div class="w-full grid grid-cols-2 lg:flex lg:flex-row items-end justify-between gap-6">
+      <!-- Card 1 -->
+       <figure class="flex-1 flex flex-col items-center gap-6 min-w-0 rounded-lg border-2 border-[#ffffff82] bg-white/30 backdrop-blur-sm">
+        <div class="w-31 h-31 sm:w-38 sm:h-38 lg:w-42 lg:h-42 flex items-center justify-center">
+          <img src="/assets/edfs/SESSIOP.png" alt="" class="max-w-full max-h-full object-contain"/>
+        </div>
+        <figcaption class="text-center">
+          <div class="mt-2 text-white text-xl sm:text-2xl font-bold pb-1" data-i18n="EDFS.SESSIOP.amount"></div>
+        </figcaption>
+      </figure>
+      
+
+
+      <!-- Card 2 -->
+      <figure class="flex-1 flex flex-col items-center gap-6 min-w-0 rounded-lg border-2 border-[#ffffff82] bg-white/30 backdrop-blur-sm">
+        <div class="w-31 h-31 sm:w-38 sm:h-38 lg:w-42 lg:h-42 flex items-center justify-center">
+          <img src="/assets/edfs/EISNET.png" alt="" class="max-w-full max-h-full object-contain"/>
+        </div>
+        <figcaption class="text-center">
+          <div class="mt-2 text-white text-xl sm:text-2xl font-bold pb-1" data-i18n="EDFS.EISNET.amount"></div>
+        </figcaption>
+      </figure>
+
+
+      <!-- Card 3 -->
+      <figure class="flex-1 flex flex-col items-center gap-6 min-w-0 rounded-lg border-2 border-[#ffffff82] bg-white/30 backdrop-blur-sm">
+        <div class="w-31 h-31 sm:w-38 sm:h-38 lg:w-42 lg:h-42 flex items-center justify-center">
+          <img src="/assets/edfs/REACT.png" alt="" class="max-w-full max-h-full object-contain"/>
+        </div>
+        <figcaption class="text-center">
+          <div class="mt-2 text-white text-xl sm:text-2xl font-bold pb-1" data-i18n="EDFS.REACTII.amount"></div>
+        </figcaption>
+      </figure>
+
+      <!-- Card 4 -->
+      <figure class="flex-1 flex flex-col items-center gap-6 min-w-0 rounded-lg border-2 border-[#ffffff82] bg-white/30 backdrop-blur-sm">
+        <div class="w-31 h-31 sm:w-38 sm:h-38 lg:w-42 lg:h-42 flex items-center justify-center">
+          <img src="/assets/edfs/CASSATA.png" alt="" class="max-w-full max-h-full object-contain"/>
+        </div>
+        <figcaption class="text-center">
+          <div class="mt-2 text-white text-xl sm:text-2xl font-bold pb-1" data-i18n="EDFS.CASSATA.amount"></div>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="absolute bottom-5 left-5 md:left-auto md:right-5 z-20">
+    <a href="/edfs" class="btn-slide-arrow flex items-center justify-center rounded-lg border-2 border-[##ffffff82] bg-transparent hover:cursor-pointer transition-all duration-300">
+      <svg width="50" height="50" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 16H22M22 16L18 12M22 16L18 20" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </a>
+  </div>
+</section>
+
+<style>
+@media (max-width: 700px) {
+  #texts, #images {
+    padding-left: 20px !important;
+  }
+}
+
+.btn-slide-arrow {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-slide-arrow::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff82;
+  z-index: 1;
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
+}
+
+.btn-slide-arrow svg {
+  position: relative;
+  z-index: 2;
+  transition: filter 0.4s ease;
+}
+
+.btn-slide-arrow:hover::after {
+  transform: translateX(0%);
+}
+
+.btn-slide-arrow:hover svg {
+  filter: brightness(0) invert(1);
+  color: white;
+}
+</style>
