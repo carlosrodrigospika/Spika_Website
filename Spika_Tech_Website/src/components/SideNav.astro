@@ -21,6 +21,23 @@ const { sections } = Astro.props;
         </div>
     </div>
     
+    <!-- SME Innovadora badge -->
+    <div class="flex justify-end mb-3" style="width:100%;">
+        <a href="https://aplicaciones.ciencia.gob.es/pyi/infoPYI.do?cif=B87386900"
+           target="_blank"
+           rel="noopener noreferrer"
+           title="PYME Innovadora · SPIKA TECH, S.L. · Válido hasta 15/03/2031"
+           style="display:flex;flex-direction:column;align-items:center;gap:3px;opacity:0.8;transition:opacity 0.2s ease;text-decoration:none;"
+           onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+            <img src="assets/PYME_no_bg.png"
+                 alt="PYME Innovadora"
+                 style="width:32px;height:auto;display:block;" />
+            <img src="https://aplicaciones.ciencia.gob.es/pyi/imagenes/escudo.jpg"
+                 alt="MEIC"
+                 style="width:20px;height:auto;display:block;" />
+        </a>
+    </div>
+
     <!-- Contenedor para elementos que se ocultan -->
     <div id="side-nav-content" class="hidden md:flex flex-col items-center h-full justify-between opacity-0 transition-opacity duration-300">
         <div class="relative flex flex-row items-center h-full">

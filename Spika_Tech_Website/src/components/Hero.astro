@@ -8,11 +8,20 @@
         <source src="/assets/IntroCristales.mp4" type="video/mp4" />
     </video>
 
-    <!-- SME innovative logo overlay: fixed, appears at ~4s, visible while video is shown -->
-    <div id="hero-sme-overlay" style="position: fixed; opacity: 0.75; bottom: -100px; left: 0; width: 100%; display: flex; align-items: center; justify-content: center; z-index: 50; opacity: 0; transition: opacity 1.4s ease; pointer-events: none;">
-        <a href="https://aplicaciones.ciencia.gob.es/pyi/infoPYI.do?cif=B87386900" target="_blank" rel="noopener noreferrer" style="display: block; pointer-events: auto;">
-            <img id="hero-sme-logo" src="/assets/pyme_innovadora_meic_SP_web.svg" alt="PYME Innovadora MEIC" style="height: 350px; width: auto; display: block;" />
-        </a>
+    <!-- SME innovative logo overlay: fixed, appears at ~3.5s, visible while video is shown -->
+    <div id="hero-sme-overlay" style="position: fixed; bottom: 0; left: 0; width: 100%; display: flex; align-items: center; justify-content: center; z-index: 50; opacity: 0; transition: opacity 1.4s ease; pointer-events: none; padding-bottom: 1.5rem;">
+        <div title="Sello PYME INNOVADORA 15/03/2031" style="width:fit-content;text-align:center;pointer-events:auto;">
+            <a style="text-decoration:none;" target="_blank" href="https://aplicaciones.ciencia.gob.es/pyi/infoPYI.do?cif=B87386900" title="Ir a 'Sello Pyme Innovadora con validez 15/03/2031 ' en ventana nueva">
+                <div style="width:100px;margin:0 auto;"><img alt="Sello PYME INNOVADORA 15/03/2031" src="https://aplicaciones.ciencia.gob.es/pyi/imagenes/sello.jpg" style="width:100%;"></div>
+                <div style="color:#000000;text-decoration:none;margin-top:10px;margin-bottom:10px;white-space:nowrap;">
+                    <div style="font-weight:bold;font-size:16px;">B87386900</div>
+                    <div style="font-weight:bold;font-size:12px;">SPIKA TECH, S.L.</div>
+                    <div style="font-weight:bold;font-size:16px;">INNOVATIVE SME</div>
+                    <div style="font-size:10px;">Valid from 16/03/2026 to 15/03/2031</div>
+                </div>
+                <div style="width:100px;margin:0 auto;"><img alt="escudo de MEIC 15/03/2031" src="https://aplicaciones.ciencia.gob.es/pyi/imagenes/escudo.jpg" style="width:100%;"></div>
+            </a>
+        </div>
     </div>
 
     <div class="absolute bottom-2 left-6 w-1/2 flex flex-col mb-8 z-2" style="align-self: end;">
@@ -388,24 +397,15 @@
 
     const video = document.getElementById('heroVideoElement') as HTMLVideoElement | null;
     const smeOverlay = document.getElementById('hero-sme-overlay');
-    const smeLogo = document.getElementById('hero-sme-logo') as HTMLImageElement | null;
-
-    // Set correct SME logo based on current language
-    if (smeLogo) {
-        const lang = document.documentElement.lang || 'es';
-        smeLogo.src = lang === 'es' || lang === ''
-            ? '/assets/pyme_innovadora_meic_SP_web.svg'
-            : '/assets/pyme_innovadora_meic_EN_web.svg';
-    }
 
     let smeShown = false;
 
     if (video) {
-        // Show SME logo when video reaches ~4s (glass break moment)
+        // Show SME seal when video reaches ~3.5s
         video.addEventListener('timeupdate', () => {
             if (!smeShown && video.currentTime >= 3.5) {
                 smeShown = true;
-                if (smeOverlay) smeOverlay.style.opacity = '0.85';
+                if (smeOverlay) smeOverlay.style.opacity = '0.75';
             }
         });
 
