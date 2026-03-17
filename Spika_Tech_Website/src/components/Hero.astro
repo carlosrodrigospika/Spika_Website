@@ -8,6 +8,13 @@
         <source src="/assets/IntroCristales.mp4" type="video/mp4" />
     </video>
 
+    <!-- SME innovative logo overlay: fixed, appears at ~4s, visible while video is shown -->
+    <div id="hero-sme-overlay" style="position: fixed; top: 700px; right: 20px; z-index: 50; opacity: 0; transition: opacity 1.4s ease; pointer-events: none;">
+        <a href="https://aplicaciones.ciencia.gob.es/pyi/infoPYI.do?cif=B87386900" target="_blank" rel="noopener noreferrer" style="display: block; pointer-events: auto;">
+            <img id="hero-sme-logo" src="/assets/pyme_innovadora_meic_SP_web.svg" alt="PYME Innovadora MEIC" style="height: 350px; width: auto; display: block;" />
+        </a>
+    </div>
+
     <div class="absolute bottom-2 left-6 w-1/2 flex flex-col mb-8 z-2" style="align-self: end;">
         <hr class="border-t border-white w-3/4 mb-2" />
         <div class="flex items-center w-3/4 gap-2 text-white text-lg" style="justify-content: space-between;">
@@ -380,12 +387,32 @@
     document.addEventListener("DOMContentLoaded", initImageSection);
 
     const video = document.getElementById('heroVideoElement') as HTMLVideoElement | null;
+    const smeOverlay = document.getElementById('hero-sme-overlay');
+    const smeLogo = document.getElementById('hero-sme-logo') as HTMLImageElement | null;
+
+    // Set correct SME logo based on current language
+    if (smeLogo) {
+        const lang = document.documentElement.lang || 'es';
+        smeLogo.src = lang === 'es' || lang === ''
+            ? '/assets/pyme_innovadora_meic_SP_web.svg'
+            : '/assets/pyme_innovadora_meic_EN_web.svg';
+    }
+
+    let smeShown = false;
 
     if (video) {
+        // Show SME logo when video reaches ~4s (glass break moment)
+        video.addEventListener('timeupdate', () => {
+            if (!smeShown && video.currentTime >= 3.5) {
+                smeShown = true;
+                if (smeOverlay) smeOverlay.style.opacity = '0.9';
+            }
+        });
+
         video.addEventListener('ended', () => {
             const section = document.getElementById('section1');
             if (section) {
-                smoothScrollTo(section, 1000); 
+                smoothScrollTo(section, 1000);
             }
         });
     }
